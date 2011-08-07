@@ -26,16 +26,16 @@
 		
 		$(document).ready(function() {
 	
-				heresay=new Object(); 
+				heresay = new Object(); 
 				
 				// initialise the map with your choice of API
 				heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
 			
 				// create a lat/lon object
 				
-				var mapCenter = gup('center'); 
+				var center = gup('center'); 
 				
-				heresay.mapCenter = mapCenter;
+				heresay.center = center;
 				
 				if (heresay.center != undefined) {
 					var myPoint = new LatLonPoint(heresay.mapCenter);
