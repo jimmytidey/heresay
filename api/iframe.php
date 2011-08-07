@@ -35,6 +35,8 @@
 				
 				heresay.center = gup('center'); 
 				
+				alert('center'+heresay.center);
+				
 				if (heresay.center != undefined) {
 					var myPoint = new LatLonPoint(heresay.center);
 				}
