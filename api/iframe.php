@@ -33,12 +33,12 @@
 			
 				// create a lat/lon object
 				
-				heresay.center = gup('center'); 
+				var mapCenter = gup('center'); 
 				
-				alert('center'+heresay.center);
+				heresay.mapCenter = mapCenter;
 				
 				if (heresay.center != undefined) {
-					var myPoint = new LatLonPoint(heresay.center);
+					var myPoint = new LatLonPoint(heresay.mapCenter);
 				}
 				
 				else {
