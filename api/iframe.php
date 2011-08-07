@@ -32,7 +32,17 @@
 				heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
 			
 				// create a lat/lon object
-				var myPoint = new LatLonPoint(51.456708, -0.101163);
+				
+				heresay.center = gup('center'); 
+				
+				if (heresay.center != undefined) {
+					var myPoint = new LatLonPoint(heresay.center);
+				}
+				
+				else {
+					var myPoint = new LatLonPoint(51.456708, -0.101163);
+				}
+				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, 13);
