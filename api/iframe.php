@@ -35,19 +35,21 @@
 				
 				var center = gup('center'); 
 				
-				heresay.center = center;
+				heresay.mapCenter = center.split(',');
 				
-				if (heresay.center != undefined) {
-					var myPoint = new LatLonPoint(heresay.mapCenter);
+			
+				
+				if (heresay.mapCenter != undefined) {
+					heresay.centerObj = new LatLonPoint(heresay.mapCenter[0],heresay.mapCenter[1]);
 				}
 				
 				else {
-					var myPoint = new LatLonPoint(51.456708, -0.101163);
+					heresay.centerObj = new LatLonPoint(51.456708, -0.101163);
 				}
 				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
-				heresay.mapstraction.setCenterAndZoom(myPoint, 13);
+				heresay.mapstraction.setCenterAndZoom(heresay.centerObj, 13);
 				
 				heresay.mapstraction.addControls({
 					pan: true, 
