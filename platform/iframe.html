@@ -53,9 +53,18 @@ heresay.init = function () {
 	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
 		
-			
-		heresay.lat = '51.454142';
-		heresay.lng = '-0.101452';
+    			var center = gup('center'); 
+				
+				heresay.center = center.split(',');
+				
+				if (heresay.center != undefined) {
+					heresay.centerObject = new LatLonPoint(heresay.center[0], heresay.center[1]);
+				}
+				
+				else {
+					heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
+				}
+                
 		var location_name = '';
 
 		if (data != 'no results found') {
@@ -68,11 +77,11 @@ heresay.init = function () {
 			$('#type').val(heresay.type); 		
 		}
 		
-	 	var latlng = new google.maps.LatLng(heresay.lat, heresay.lng);
+
 
 	    var myOptions = {
 	      zoom: 14,
-	      center: latlng,
+	      center: heresay.centerObject,
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 
