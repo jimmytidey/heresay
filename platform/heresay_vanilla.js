@@ -20,7 +20,9 @@ heresay.init = function init() {
 	//first, need to work out if the what folder vanilla is installed in 
 	var base_folder  =  jQuery('.Title').attr('href');
 	
-	var discussion_id = jQuery('body').find('[name$=DiscussionID]').val(); 
+	var discussion_id;
+	
+	discussion_id = jQuery('#DiscussionID').val(); 
 	
 	var path = base_folder+'discussion/'+discussion_id;	
 	
