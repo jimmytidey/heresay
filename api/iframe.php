@@ -53,17 +53,17 @@ heresay.init = function () {
 	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
 		
-    			var center = gup('center'); 
+        var center = gup('center'); 
 				
-				heresay.center = center;
+		heresay.center = center;
 				
-				if (heresay.center != undefined) {
-					var heresay.centerObject = new LatLonPoint(heresay.center);
-				}
-				
-				else {
-					var heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
-				}
+		if (heresay.center != undefined) {
+			var heresay.centerObject = new LatLonPoint(heresay.center);
+		}
+		
+		else {
+			var heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
+		}
                 
 		var location_name = '';
 
