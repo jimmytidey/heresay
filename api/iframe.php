@@ -58,11 +58,11 @@ heresay.init = function () {
 		heresay.center = center;
 				
 		if (heresay.center != undefined) {
-			var heresay.centerObject = new LatLonPoint(heresay.center);
+			heresay.centerObject = new LatLonPoint(heresay.center);
 		}
 		
 		else {
-			var heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
+			heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
 		}
                 
 		var location_name = '';
