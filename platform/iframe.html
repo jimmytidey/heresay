@@ -13,8 +13,9 @@
 
 <script type="text/javascript">
  
-function gup(name)
-{
+heresay = new Object(); 
+
+heresay.gup = function(name) {
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp( regexS );
@@ -24,9 +25,6 @@ function gup(name)
   else
     return results[1];
 }
-
-heresay = new Object(); 
- 
 
 $(document).ready(function() {
 	heresay.init(); 
@@ -41,30 +39,17 @@ heresay.init = function () {
   		heresay.location_touch = 1;
 	});
 		
-	
 	//see if this thread already exists
-	var title = gup('title');
-	var body_text = gup('body_text');
-	var home_url = gup('home_url');
-	var domain_name = gup('domain');
-	var home_url = gup('home_url');
-	var sub_page_id = gup('sub_page_id');
+	var title = heresay.gup('title');
+	var body_text = heresay.gup('body_text');
+	var home_url = heresay.gup('home_url');
+	var domain_name = heresay.gup('domain');
+	var home_url = heresay.gup('home_url');
+	var sub_page_id = heresay.gup('sub_page_id');
 
 	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
-		
-    			var center = gup('center'); 
-				
-				heresay.center = center.split(',');
-				
-				if (heresay.center != undefined) {
-					heresay.centerObject = new LatLonPoint(heresay.center[0], heresay.center[1]);
-				}
-				
-				else {
-					heresay.centerObject = new LatLonPoint(51.456708, -0.101163);
-				}
-                
+		        
 		var location_name = '';
 
 		if (data != 'no results found') {
@@ -77,11 +62,29 @@ heresay.init = function () {
 			$('#type').val(heresay.type); 		
 		}
 		
+		else {
+			//use the default center passed in the URL 
 
+			
+	  		center = heresay.gup('center'); 
 
+			if (center != undefined) {
+				
+				heresay.center = center.split(',');
+				
+				heresay.lat = heresay.center[0]; 
+				heresay.lng = heresay.center[1];		
+			}
+
+			else {
+				heresay.lat = '51.456708'
+				heresay.lng = '-0.101163'				
+			}			
+		}
+	
 	    var myOptions = {
 	      zoom: 14,
-	      center: heresay.centerObject,
+	      center: new google.maps.LatLng(heresay.lat, heresay.lng),
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 
@@ -135,12 +138,12 @@ heresay.init = function () {
 		var location_name = $('#location_name').val();
 		var type = $('#type').val();
 
-		var title = gup('title');
-		var body_text = gup('body_text');
-		var home_url = gup('home_url');
-		var domain_name = gup('domain');
-		var home_url = gup('home_url');	
-		var thread_date = gup('thread_date');	
+		var title = heresay.gup('title');
+		var body_text = heresay.gup('body_text');
+		var home_url = heresay.gup('home_url');
+		var domain_name = heresay.gup('domain');
+		var home_url = heresay.gup('home_url');	
+		var thread_date = heresay.gup('thread_date');	
 
 		if (location_name=="" || location_name=="null") {
 			alert('You must enter a location name');
