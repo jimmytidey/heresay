@@ -5,7 +5,7 @@
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
 
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOoFM_kDNJVs_SzvkytQRKBSpgYF3iu7PXc-1iPSD4CpffT2eCRRzD14PFyag3JY4SakJE5_wVYpLxw&sensor=false" type="text/javascript"></script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRSpgYF3iu7PXc-1iPSD4CpffT2eCRQqiY_qfPWMu5QnCq_UpmKELt30EA&sensor=false" type="text/javascript"></script>
 		
 	<script type="text/javascript" src="js/mapstraction.js"></script>    
      
@@ -33,9 +33,17 @@
 			
 				// create a lat/lon object
 				
-	
-				var myPoint = new LatLonPoint(51.5001524, -0.1262362);
-			
+				var center = gup('center'); 
+				
+				heresay.center = center;
+				
+				if (heresay.center != undefined) {
+					var myPoint = new LatLonPoint(heresay.mapCenter);
+				}
+				
+				else {
+					var myPoint = new LatLonPoint(51.456708, -0.101163);
+				}
 				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
