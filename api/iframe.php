@@ -39,7 +39,7 @@
 				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
-				heresay.mapstraction.setCenterAndZoom(myPoint, 13);
+				heresay.mapstraction.setCenterAndZoom(myPoint, 12);
 				
 				heresay.mapstraction.addControls({
 					pan: true, 
