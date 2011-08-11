@@ -5,7 +5,7 @@
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
 
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRSpgYF3iu7PXc-1iPSD4CpffT2eCRQqiY_qfPWMu5QnCq_UpmKELt30EA&sensor=false" type="text/javascript"></script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRSpgYF3iu7PXc-1iPSD4CpffT2eCRQqiY_qfPWMu5QnCq_UpmKELt30EA&sensor=false" type="text/javascript"></script>
 		
 	<script type="text/javascript" src="js/mapstraction.js"></script>    
      
