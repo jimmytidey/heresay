@@ -82,8 +82,9 @@ heresay.clickIcon = function(element) {
 		bodytext 			= escape(bodytext);
 
 		var domain			= escape(document.domain);
-		var thread_date		= jQuery(element).siblings(".DateCreated a").html();
-
+		var thread_date		= jQuery(element).children(".DateCreated").html();
+		thread_date = thread_date.replace(/^\s+|\s+$/g,"");	
+		
 		var homeurl = heresay.path; 
 		
 		var sub_page_id = heresay.findSubPageId(element);
