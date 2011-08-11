@@ -33,17 +33,9 @@
 			
 				// create a lat/lon object
 				
-				var center = gup('center'); 
-				
-				heresay.center = center;
-				
-				if (heresay.center != undefined) {
-					var myPoint = new LatLonPoint(heresay.mapCenter);
-				}
-				
-				else {
-					var myPoint = new LatLonPoint(51.456708, -0.101163);
-				}
+	
+				var myPoint = new LatLonPoint(51.5001524, -0.1262362);
+			
 				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
