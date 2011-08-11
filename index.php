@@ -14,7 +14,7 @@
 
 <?
 
-$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY thread_date DESC LIMIT 10"; 	
+$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY thread_id DESC LIMIT 10"; 	
 
 $distinct_thread_results = db_q($distinct_thread_query);
 
