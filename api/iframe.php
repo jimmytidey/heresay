@@ -34,7 +34,7 @@
 		
 				// create a lat/lon for center 
 				
-				center = heresay.gup('center');
+				center = gup('center');
 				
 				if (center != undefined && center != '') {
 
