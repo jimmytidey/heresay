@@ -66,12 +66,10 @@
 				var type = gup('type');
 				var domain_name = gup('domain_name');
 				
-				var query = "lat="+lat+"&lng="+lng+"&title="+title+"&type="+type+"&domain_name="+domain_name+"&callback=?";
+				var query = "lat="+lat+"&lng="+lng+"&title="+title+"&type="+type+"&domain_name="+domain_name;
 				
 				var url = base_url+query; 
-				
-				
-				
+								
 				$.getJSON(url, function(data) {
 					
 					var results = eval(data); 
