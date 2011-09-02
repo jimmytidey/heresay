@@ -77,13 +77,12 @@ heresay.clickIcon = function(element) {
 	//only add the map if it isn't already there
 	if ((jQuery('#garden_fence_modal').length > 0) == false) 
 	{	
-		var title	 		= escape(jQuery(".DiscussionTabs .SubTab").html());
-		var bodytext 		= jQuery(element).siblings(".Message").html().trim().replace(/(<([^>]+)>)/ig,"");
+		var title	 		= escape(jQuery(".SubTab").html());
+		var bodytext 		= jQuery(element).siblings(".Message").html();
 		bodytext 			= escape(bodytext);
 
 		var domain			= escape(document.domain);
 		var thread_date		= jQuery(element).children(".DateCreated").html();
-		thread_date = thread_date.replace(/^\s+|\s+$/g,"");	
 		
 		var homeurl = heresay.path; 
 		

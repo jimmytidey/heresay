@@ -1,11 +1,5 @@
 <? 
-$dbhost = 'internal-db.s96975.gridserver.com';
-$dbuser = 'db96975_jimmy';
-$dbpass = 'drowssap';
-$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');
-$dbname = 'db96975_jimmy';
-mysql_select_db($dbname) or die ('Error connecting to mysql');
-
+include('../db_info.php');
 
 function db_q($query)  
 {
