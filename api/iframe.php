@@ -31,12 +31,21 @@
 				// initialise the map with your choice of API
 				heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
 			
-				// create a lat/lon object
+		
+				// create a lat/lon for center 
 				
-	
+				center = heresay.gup('center');
+				
+				if (center != undefined && center != '') {
+
+					heresay.center = center.split(',');
+
+					heresay.lat = heresay.center[0]; 
+					heresay.lng = heresay.center[1];		
+				}
+								
 				var myPoint = new LatLonPoint(51.5001524, -0.1262362);
 			
-				
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, 12);
