@@ -14,7 +14,7 @@
 
 <?
 
-$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY thread_id DESC LIMIT 10"; 	
+$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY time_stamp DESC LIMIT 10"; 	
 
 $distinct_thread_results = db_q($distinct_thread_query);
 
@@ -22,7 +22,6 @@ if (is_array($distinct_thread_results)) {
 
 	foreach ($distinct_thread_results as $thread) {
 		$thread_id= $thread['thread_id']; 
-		echo ($thread_id);
 		$thread_result = db_q("SELECT * FROM heresay_updates WHERE thread_id = '$thread_id' ORDER BY time_stamp DESC LIMIT 1");	
 		
 		$time = $thread_result[0]['thread_date'];
