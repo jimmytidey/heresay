@@ -1,5 +1,7 @@
 <?
 
+//this file is referenced through a mod rewrite rule
+
 	include('header.php'); 
 
 $loction_name = mysql_real_escape_string(urldecode($_GET['location_name']));

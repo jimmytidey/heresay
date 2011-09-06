@@ -2,8 +2,10 @@
 
 include ('db_functions.php');
 
-$domain_name = mysql_real_escape_string(urldecode($_GET['domain_name']));
-$path 		 = mysql_real_escape_string(urldecode($_GET['path'])); 
+error_reporting(0);
+
+$domain_name 	= mysql_real_escape_string(urldecode($_GET['domain_name']));
+$path 		 	= mysql_real_escape_string(urldecode($_GET['path'])); 
 
 $lat			= mysql_real_escape_string(urldecode($_GET['lat']));
 $lng 			= mysql_real_escape_string(urldecode($_GET['lng'])); 

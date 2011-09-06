@@ -58,13 +58,9 @@ if ($path == '') {
 
 if ($error == 'success') {
 	
-	//you don't have to set the sub_page_id 
-	if ($sub_page_id != "") {
-		$thread_result = db_q("SELECT * FROM heresay_updates WHERE domain_name='$domain_name' && path='$path' && sub_page_id='$sub_page_id'");
-	}
-	else {
-		$thread_result = db_q("SELECT * FROM heresay_updates WHERE domain_name='$domain_name' && path='$path' ");
-	}
+
+	$thread_result = db_q("SELECT * FROM heresay_updates WHERE domain_name='$domain_name' && path='$path' ");
+	
 	
 	if (count($thread_result) > 0 ) { //thread is in the database
 		$thread_id = $thread_result[0]['thread_id'];

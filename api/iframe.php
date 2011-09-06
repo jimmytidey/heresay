@@ -58,7 +58,7 @@
 							
 				
 				//Do ajax request for points 	
-				var base_url = "http://heresay.org.uk/api/find_threads.php?&"; 
+				var base_url = "find_threads.php?"; 
 				
 				var lat = gup('lat');
 				var lng = gup('lng');

@@ -7,7 +7,7 @@
 
 <img src='images/iframe_box.jpg' id='iframe_box' /> 
 
-<iframe src="http://heresay.org.uk/api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
+<iframe src="api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
 
 <h1>Recent Posts</h1> 
@@ -22,14 +22,14 @@ if (is_array($distinct_thread_results)) {
 
 	foreach ($distinct_thread_results as $thread) {
 		$thread_id= $thread['thread_id']; 
+		echo ($thread_id);
 		$thread_result = db_q("SELECT * FROM heresay_updates WHERE thread_id = '$thread_id' ORDER BY time_stamp DESC LIMIT 1");	
 		
 		$time = $thread_result[0]['thread_date'];
 		
 		?>
 		
-		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']); ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo $thread_result[0]['title']; ?></a></p>
-
+		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']);   ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo $thread_result[0]['title']; ?></a></p>
 		
 		<?
 	}
