@@ -10,7 +10,7 @@
 <iframe src="http://heresay.org.uk/api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
 
-<h1>Recent Posts</h1> 
+<h1>TWAT Recent Posts</h1> 
 
 <?
 
