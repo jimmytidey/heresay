@@ -7,14 +7,14 @@
 
 <img src='images/iframe_box.jpg' id='iframe_box' /> 
 
-<iframe src="http://heresay.org.uk/api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
+<iframe src="api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
 
 <h1>TWAT Recent Posts</h1> 
 
 <?
 
-$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY thread_id DESC LIMIT 10"; 	
+$distinct_thread_query = "SELECT DISTINCT thread_id FROM heresay_updates ORDER BY time_stamp DESC LIMIT 10"; 	
 
 $distinct_thread_results = db_q($distinct_thread_query);
 
@@ -28,8 +28,7 @@ if (is_array($distinct_thread_results)) {
 		
 		?>
 		
-		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']); ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo $thread_result[0]['title']; ?></a></p>
-
+		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']);   ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo $thread_result[0]['title']; ?></a></p>
 		
 		<?
 	}
