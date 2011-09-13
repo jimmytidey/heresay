@@ -13,30 +13,30 @@ heresay.init = function init() {
 	//remove any existing badges 
 	jQuery('.heresay_icon').remove();
 	
-	//work out the path for this discussion
-	
-	//first, need to work out if the what folder vanilla is installed in 
-	var base_folder  =  jQuery('.Title').attr('href');
-	
-	var discussion_id;
-	
-	//discussion_id = jQuery('.byline').val(); 
-	
-	var path ='sdaf';	
-	
-	//heresay.path = path; 
-	
-	jQuery('.discussion').each(function(index) { 
+	//change the nav size 
+	jQuery('.byline').css('width','420px');
+
+	jQuery('.byline').each(function(index) { 
+
 		
-		var sub_page_id = "adsf";
+		if (jQuery(this).hasClass("navigation")) {
+			heresay.sub_page_id = 0;			
+		}	
 				
-		var query_url = "http://heresay.org.uk/api/find_threads.php?domain_name="+document.domain+"&path="+path+"&sub_page_id="+sub_page_id+"&callback=?";
+		else {
+			var sub_page_id = jQuery('a:first-child', this).attr('id').split(':');
+			heresay.sub_page_id = sub_page_id[2];
+		} 
+		
+		var query_url = "http://test.heresay.org.uk/api/find_threads.php?domain_name="+document.domain+"&path="+location.pathname+"&sub_page_id="+heresay.sub_page_id+"&callback=?";
+		
+		alert(query_url);
 		
 		jQuery.getJSON(query_url, 	
 		function(data) {
 			heresay.insertIcon(data, index);  	
-		}); 		
-	});
+		}); 
+	});	
 	
 	//re-init after every ajax update 
 
@@ -51,16 +51,24 @@ heresay.insertIcon = function(data, index) {
 	
 	var html_element; 
 
-	var icon_style = 'margin-right:3px; margin-top:-22px; float:right; cursor:pointer';
+	var icon_style = 'position:relative; margin-right:3px;  float:right; cursor:pointer; ';
 	
-	var icon_text_style = 'position:relative; top:-33px; left:65px';
+	var icon_text_style = 'margin-left:78px; margin-top:-23px; font-size:12px;';
+	
+	if (index==0) {
+		icon_style +='top:-32px;';
+	}
+	
+	else {
+		icon_style +='top:90px;';
+	}
 	
 	if (data == 'no results found') {  //This post has not been located
-		html_element = jQuery('.discussion').eq(index).append("<div class='heresay_icon' style='"+icon_style+"' ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='"+icon_text_style+"'>Locate This Comment</p></div>");		
+		html_element = jQuery('.discussion').eq(index).prepend("<div class='heresay_icon' style='"+icon_style+"' ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='"+icon_text_style+"'>Locate This Comment</p></div>");		
 	} 				
 	
 	else {	//This post has already been identified 
-		html_element = jQuery('.discussion').eq(index).append("<div class='heresay_icon' style='"+icon_style+"'  ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='"+icon_text_style+"' >"+data[0]['location_name']+"</p></div>");		
+		html_element = jQuery('.discussion').eq(index).prepend("<div class='heresay_icon' style='"+icon_style+"'  ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='"+icon_text_style+"' >"+data[0]['location_name']+"</p></div>");		
 	}		
 	
 	// attach a click handler to each of the buttons 
@@ -82,12 +90,14 @@ heresay.clickIcon = function(element) {
 		var domain			= escape(document.domain);
 		var thread_date		= jQuery(element).children(".DateCreated").html();
 		
+		heresay.sub_page_id
+		
 		var homeurl = heresay.path; 
 		
 		var sub_page_id = heresay.findSubPageId(element);
 				
 		//add the modal window
-		jQuery('body').append("<div id='garden_fence_modal' style='background-image: url(http://heresay.org.uk/platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right;' href='#'><img src='http://heresay.org.uk/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p><iframe id='map_iframe' src='http://heresay.org.uk/platform/iframe.html?title="+title+"&body_text="+bodytext+"&home_url="+homeurl+"&domain="+domain+"&thread_date="+thread_date+"&sub_page_id="+sub_page_id+"&center=51.52751593393153,-0.05604743957519531' frameborder='0' scrolling='vertical' style='height:530px; width:560px; margin: 2px 20px;' ></iframe> </div>");		
+		jQuery('body').append("<div id='garden_fence_modal' style='background-image: url(http://test.heresay.org.uk/platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right;' href='#'><img src='http://heresay.org.uk/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p><iframe id='map_iframe' src='http://test.heresay.org.uk/platform/iframe.html?title="+title+"&body_text="+bodytext+"&home_url="+homeurl+"&domain="+domain+"&thread_date="+thread_date+"&sub_page_id="+sub_page_id+"&center=51.52751593393153,-0.05604743957519531' frameborder='0' scrolling='vertical' style='height:530px; width:560px; margin: 2px 20px;' ></iframe> </div>");		
 		
 		//make it the right size
 		jQuery('#garden_fence_modal').css({
@@ -153,6 +163,14 @@ function displayBox()
 	jQuery('#garden_fence_modal').center();
 }
 	
+heresay.getUrlVars = function () {
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
+}
+
 	
 //Initialise!
 jQuery(document).ready(function() {
