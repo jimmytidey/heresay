@@ -7,7 +7,7 @@
 
 <img src='images/iframe_box.jpg' id='iframe_box' /> 
 
-<iframe src="api/iframe.php" id="iframe" scrolling="no" frameborder="no" align="center">
+<iframe src="api/iframe.php?center=51.5293312,-0.0559076" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
 
 <h1>Recent Posts</h1> 
