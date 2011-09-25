@@ -43,8 +43,15 @@
 					heresay.lat = heresay.center[0]; 
 					heresay.lng = heresay.center[1];		
 				}
+				
+				else {
+					heresay.lat = 51.5001524;
+					heresay.lng = -0.1262362;
+				}
+				
+				
 								
-				var myPoint = new LatLonPoint(51.5001524, -0.1262362);
+				var myPoint = new LatLonPoint(heresay.lat, heresay.lng);
 			
 				
 				// display the map centered on a latitude and longitude (Google zoom levels)
