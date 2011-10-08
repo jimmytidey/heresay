@@ -10,7 +10,7 @@
 <iframe src="api/iframe.php?center=51.538114321228925,-0.0542449951171875" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
 
-<h1>TWAT Recent Posts</h1> 
+<h1>Recent Posts</h1> 
 
 <?
 
