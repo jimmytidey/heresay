@@ -41,7 +41,10 @@ heresay.processPost = function(index) {
 	
     //only add the locate button to posts and replies, but not replies to replies and further down 	 	
     if (jQuery(this).parent().hasClass('i0') || jQuery(this).parent().parent().hasClass('xg_headline')) {
-
+		
+		
+		alert('found something to pcrocess');
+			
         if (jQuery(this).hasClass("navigation")) {heresay.sub_page_id = 0;}
 
         else {
