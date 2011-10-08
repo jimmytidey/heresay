@@ -2,6 +2,12 @@
 //give a scope to all the code 
 heresay = new Object();
 
+heresay.baseURL = 'http://test.heresay.org.uk'; 
+
+//this is the location the pop up map centres on by default 
+heresay.homeCoords = '51.4609323,-0.1160239';
+
+
 //When the page has loaded, we can parse it and add in the stuff we need 
 jQuery(document).ready(function() {
 	
@@ -54,7 +60,7 @@ heresay.processPost = function(index) {
             heresay.sub_page_id = sub_page_id[2];
         }
 
-        var query_url = "http://test.heresay.org.uk/api/find_threads.php?domain_name=" + document.domain + "&path=" + location.pathname + "&sub_page_id=" + heresay.sub_page_id + "&callback=?";
+        var query_url = "/api/find_threads.php?domain_name=" + document.domain + "&path=" + location.pathname + "&sub_page_id=" + heresay.sub_page_id + "&callback=?";
 
         jQuery.getJSON(query_url,
         function(data) {
@@ -78,11 +84,11 @@ heresay.insertIcon = function(data, index) {
 	
 	// test to see if post has been located 
     if (data == 'no results found') {
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
+        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
     }
 
     else {
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='http://heresay.org.uk/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + data[0]['location_name'] + "</p></div>");
+        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + data[0]['location_name'] + "</p></div>");
     }
 
     // attach a click handler to each of the buttons
@@ -110,7 +116,7 @@ heresay.clickIcon = function(element, index) {
         var sub_page_id = heresay.findSubPageId(element);
 
         //add the modal window
-        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url(http://test.heresay.org.uk/platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right;' href='#'><img src='http://test.heresay.org.uk/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p><iframe id='map_iframe' src='http://test.heresay.org.uk/platform/iframe_test.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center=51.5799498306,-0.099048614501' frameborder='0' scrolling='vertical' style='height:530px; width:560px; margin: 2px 20px;' ></iframe> </div>");
+        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right;' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p><iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe_test.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:530px; width:560px; margin: 2px 20px;' ></iframe> </div>");
 
         //make it the right size
         jQuery('#garden_fence_modal').css({
