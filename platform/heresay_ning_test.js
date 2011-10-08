@@ -19,7 +19,7 @@ jQuery('.byline').css('display', 'block');
 heresay.init = function() {
 	
     jQuery('.byline').each(function(index) {
-		heresay.processPost(index);
+		heresay.processPost(index, this);
     });
 
     //re-init after every ajax update
@@ -32,7 +32,7 @@ heresay.init = function() {
 	
 
 //process every part of the page which needs a location button adding 
-heresay.processPost = function(index) {
+heresay.processPost = function(index, element) {
 	
 	var sub_page_id;
 	var query_url
@@ -40,15 +40,15 @@ heresay.processPost = function(index) {
 	alert(typeof(jQuery));
 	
     //only add the locate button to posts and replies, but not replies to replies and further down 	 	
-    if (jQuery(this).parent().hasClass('i0') || jQuery(this).parent().parent().hasClass('xg_headline')) {
+    if (jQuery(element).parent().hasClass('i0') || jQuery(element).parent().parent().hasClass('xg_headline')) {
 		
 		
 		alert('found something to pcrocess');
 			
-        if (jQuery(this).hasClass("navigation")) {heresay.sub_page_id = 0;}
+        if (jQuery(element).hasClass("navigation")) {heresay.sub_page_id = 0;}
 
         else {
-            sub_page_id = jQuery('a:first-child', this).attr('id').split(':');
+            sub_page_id = jQuery('a:first-child', element).attr('id').split(':');
             heresay.sub_page_id = sub_page_id[2];
         }
 
