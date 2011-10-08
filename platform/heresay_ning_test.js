@@ -2,36 +2,22 @@
 //give a scope to all the code 
 heresay = new Object();
 
+//the api url 
 heresay.baseURL = 'http://test.heresay.org.uk'; 
 
 //this is the location the pop up map centres on by default 
 heresay.homeCoords = '51.4609323,-0.1160239';
 
-//aparently ning doesn't use jQuery 
-	
-heresay.script = document.createElement('script');
-heresay.script.src = 'http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js';
-heresay.script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(heresay.script);
+//remove any existing badges
+jQuery('.heresay_icon').remove();
 
-
-
-//When the page has loaded, we can parse it and add in the stuff we need 
-jQuery(document).ready(function() {
-
-    //remove any existing badges
-    jQuery('.heresay_icon').remove();
-
-    //change the nav size
-    jQuery('.byline').css('display', 'block'); 	
-
-	heresay.init();
-});
+//change the nav size
+jQuery('.byline').css('display', 'block'); 	
 
 
 //init function triggers icon adding
 heresay.init = function() {
-
+	
     jQuery('.byline').each(function(index) {
 		heresay.processPost(index);
     });
@@ -43,10 +29,15 @@ heresay.init = function() {
 
 }
 
+	
+
 //process every part of the page which needs a location button adding 
 heresay.processPost = function(index) {
 	
 	var sub_page_id;
+	var query_url
+	
+	alert(typeof(jQuery));
 	
     //only add the locate button to posts and replies, but not replies to replies and further down 	 	
     if (jQuery(this).parent().hasClass('i0') || jQuery(this).parent().parent().hasClass('xg_headline')) {
@@ -58,8 +49,10 @@ heresay.processPost = function(index) {
             heresay.sub_page_id = sub_page_id[2];
         }
 
-        var query_url = "/api/find_threads.php?domain_name=" + document.domain + "&path=" + location.pathname + "&sub_page_id=" + heresay.sub_page_id + "&callback=?";
-
+        query_url = heresay.baseURL+"/api/find_threads.php?domain_name=" + document.domain + "&path=" + location.pathname + "&sub_page_id=" + heresay.sub_page_id + "&callback=?";
+		
+		alert(query_url);
+		
         jQuery.getJSON(query_url,
         function(data) {
             heresay.insertIcon(data, index);
@@ -194,4 +187,4 @@ heresay.getUrlVars = function() {
 }
 
 
-
+heresay.init();
