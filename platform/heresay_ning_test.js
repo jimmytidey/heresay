@@ -74,7 +74,6 @@ heresay.insertIcon = function(data, index) {
 	
 	// attach a click handler to each of the buttons 
 	jQuery('.byline').eq(index).children('.heresay_icon').click(function() {
-		alert(index);
 		heresay.clickIcon(this, index);
 	});
 }
@@ -134,9 +133,7 @@ heresay.findSubPageId = function(element) {
 		sub_page_id = sub_page_id.split(':'); 
 		sub_page_id = sub_page_id[2]; 
 		
-	}	
-	
-	alert(sub_page_id);
+	}
 	
 	return sub_page_id; 
 }
