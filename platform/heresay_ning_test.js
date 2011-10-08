@@ -7,11 +7,10 @@ heresay.baseURL = 'http://test.heresay.org.uk';
 //this is the location the pop up map centres on by default 
 heresay.homeCoords = '51.4609323,-0.1160239';
 
+heresay.addjQuery(); 
 
 //When the page has loaded, we can parse it and add in the stuff we need 
 jQuery(document).ready(function() {
-	
-	heresay.addjQuery(); //add jquery because Ning apparently doesn't have it 
 
     //remove any existing badges
     jQuery('.heresay_icon').remove();
@@ -23,7 +22,7 @@ jQuery(document).ready(function() {
 });
 
 
-heresay.addjQuery() {	
+heresay.addjQuery = function() {	
 	var script = document.createElement('script');
 	script.src = 'http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js';
 	script.type = 'text/javascript';
