@@ -182,6 +182,10 @@ heresay.init = function () {
 		}	
 	});
 };
+
+$('#close_button').click(function() {
+	parent.heresay.closeModal();
+})
     
 
  
@@ -239,7 +243,7 @@ body, p, input, label {
 		
 		
 		<center><input type='button' value='save' id='save_button' style='position:relative; width:100px; margin:0px auto; font-size:16px'  /> 
-	
+		<input type='button' value='close' id='close_button' />
 	</div>
   
 </body>
