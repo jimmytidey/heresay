@@ -184,7 +184,7 @@ heresay.init = function () {
 };
 
 $('#close_button').click(function() {
-	parent.heresay.closeModal();
+	heresay.closeModal();
 })
     
 
@@ -242,8 +242,10 @@ body, p, input, label {
 		<center><label for='location_possible'>This post has no specific location</label><input type='checkbox' checked='checked' id='location_possible'></p></center>
 		
 		
-		<center><input type='button' value='save' id='save_button' style='position:relative; width:100px; margin:0px auto; font-size:16px'  /> 
-		<input type='button' value='close' id='close_button' />
+		<center><input type='button' value='save' id='save_button' style='position:relative; width:100px; margin:0px auto; font-size:16px; left:-120px'  /> 
+		
+	
+	
 	</div>
   
 </body>
