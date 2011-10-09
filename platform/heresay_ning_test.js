@@ -337,9 +337,13 @@ heresay.clickIcon = function(element, index) {
 
     //bind close action to cross
     jQuery('#garden_fence_close').unbind('click').click(function() {
-        jQuery('#garden_fence_modal').remove();
-        heresay.init();
+		heresay.closeModal();
     });
+}
+
+heresay.closeModal = function() {
+	jQuery('#garden_fence_modal').remove();
+    heresay.init();
 }
 
 heresay.findSubPageId = function(element) {

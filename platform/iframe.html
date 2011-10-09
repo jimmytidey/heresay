@@ -177,7 +177,10 @@ heresay.init = function () {
 };
     
 
- 
+ $('#close_button').click(function() {
+	parent.heresay.closeModal();
+})
+
 
 </script>
 
@@ -231,7 +234,7 @@ body, p, input, label {
 		
 		
 		<input type='button' value='save' id='save_button'  /> 
-	
+		<input type='button' value='close' id='close_button'>
 	</div>
   
 </body>
