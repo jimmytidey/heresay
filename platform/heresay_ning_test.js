@@ -3,7 +3,7 @@
 heresay = new Object();
 heresay.validation = new Object();
 
-//the api url 
+//the api url
 heresay.baseURL = 'http://test.heresay.org.uk'; 
 
 //this is the location the pop up map centres on by default 
@@ -39,7 +39,6 @@ heresay.init = function() {
 		heresay.addIndexMap(); 
 	}
 	
-	
     //re-init after every ajax update
     jQuery('#Form_PostComment').click(function() {
         setTimeout(heresay.init(), 1250);
@@ -57,11 +56,22 @@ heresay.addDiscussionLoction = function() {
 	"<input type='checkbox' checked='checked' id='location_possible'></p>"+
 	"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 	"<input type='text' id='location_name'>";
-	
+		
 	var mapHtml = '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div></div>';
 	
+	var selectHtml = "<label for='id' >Categories:</label><select id='type' style='margin-left:40px'>";
+	selectHtml += "<option value='select'>-select category-</option>";
+	selectHtml += "<option value='Environment'>Environment</option>";
+	selectHtml += "<option value='Crime'>Crime</option>";
+	selectHtml += "<option value='Animals and Nature'>Animals and nature</option>";
+	selectHtml += "<option value='Events'>Events</option>";
+	selectHtml += "<option value='Travel'>Travel</option>";
+	selectHtml += "<option value='Local Knowlege'>Local Knowledge</option>";
+	selectHtml += "<option value='No Category'>No Category</option>";
+	selectHtml += "</select>";
+	
 	//add the map canvas element 
-	jQuery('#xj_post_dd').after(locationHTML+mapHtml); 
+	jQuery('#xj_post_dd').after(locationHTML+mapHtml+selectHtml); 
 
 	//hide / show the map depending on the status of the check box 
 	jQuery('#location_possible').change(function() {
@@ -108,22 +118,20 @@ heresay.drawValidation = function() {
 	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  >Indicate a location on map</li>";
 	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
 	validationHTML +="<li><img id='category_status' class='validation_status'  >Choose a category</li>";
-	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'Child care' or 'police')</li>";		
-	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete'>0%</span></li></div>";
+	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'child care' or 'police')</li>";		
+	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete' style='position:relative; top:-20px; right:21s0px;'>0%</span></li></div>";
 	
 	jQuery('.buttongroup').before(validationHTML);
 	jQuery('.validation_tick').hide();
 	
 	//update the validation as soon as anyone hits the page
 	heresay.validation.showCross('.validation_status');
-	jQuery('.validation_status').css('margin-right', '10px')
+	jQuery('li img').css('margin-right', '10px');
 	
 	//remove bullets 
 	jQuery('#heresay_validation li').css('list-style-type', 'none');
 	
-	heresay.validation.update(); 
-
-			
+	heresay.validation.update();			
 }
 
 
@@ -150,7 +158,7 @@ heresay.validation.update = function() {
 	$("#location_name").keyup(function() {
 		if (jQuery('#location_name').val() != '') {heresay.validation.showTick('#location_name_status');}
 		else {heresay.validation.showCross('#location_name_status');}
-		heresay.validation.progressBarDraw(); 		
+		heresay.validation.progressBarDraw();
 	});
 	
 	//check the map marker has moved 
@@ -195,7 +203,7 @@ heresay.validation.progressBarDraw = function () {
 
 heresay.saveAddDiscussionLoction = function() {
 		
-	var url; 
+	var url;
 	var data;
 	var no_specific_location = 0; 
 	
@@ -225,8 +233,6 @@ heresay.saveAddDiscussionLoction = function() {
 		window.onbeforeunload ='';
 	 	jQuery('#add_topic_form').submit();
 	});
-
-
 }
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
@@ -281,7 +287,15 @@ heresay.insertIcon = function(data, index) {
     }
 
     else {
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + data[0]['location_name'] + "</p></div>");
+		
+		//handling the case where there is no specific location 
+		var location_name = data[0]['location_name'];
+		
+		if (data[0]['no_specific_location']) {
+			location_name = "No specific location";
+		}
+		
+        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
     }
 
     // attach a click handler to each of the buttons

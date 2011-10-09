@@ -64,14 +64,10 @@ heresay.init = function () {
 		
 		else {
 			//use the default center passed in the URL 
-
-			
 	  		center = heresay.gup('center'); 
 
 			if (center != undefined) {
-				
 				heresay.center = center.split(',');
-				
 				heresay.lat = heresay.center[0]; 
 				heresay.lng = heresay.center[1];		
 			}
@@ -113,12 +109,10 @@ heresay.init = function () {
 						heresay.autosuggest = eval(data);
 						
 						$('#location_name').val(heresay.autosuggest.geonames[0]['name']);
-				});	
-		  	}
-		  }	  
+					});	
+		  		}
+		  	}	  
   		});
-
-	
 	});
 	
 	$('#heresay_more_btn').click(function() {
@@ -231,8 +225,12 @@ body, p, input, label {
 			<option value='Events'>Events</option>
 			<option value='Travel'>Travel</option>
 			<option value='Local Knowlege'>Local Knowledge</option>
-			<option value='No Category'></option> 
+			<option value='No Category'>No Category</option> 
 		</select>
+		
+		<center><em style='14px;'>OR</em></center>
+		<center><label for='location_possible'>This post has no specific location</label><input type='checkbox' checked='checked' id='location_possible'></p></center>
+		
 		
 		<input type='button' value='save' id='save_button'  /> 
 	
