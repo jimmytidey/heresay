@@ -51,7 +51,7 @@
 				// set zoom 
 				heresay.zoom = gup('zoom');
 				
-				if (zoom != undefined || zoom != '') {
+				if (heresay.zoom === undefined || heresay.zoom === '') {
 					heresay.zoom = 13;
 				}
 				
