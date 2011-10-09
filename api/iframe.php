@@ -33,13 +33,10 @@
 			
 		
 				// create a lat/lon for center 
-				
-				center = gup('center');
+				var center = gup('center');
 				
 				if (center != undefined && center != '') {
-
 					heresay.center = center.split(',');
-
 					heresay.lat = heresay.center[0]; 
 					heresay.lng = heresay.center[1];		
 				}
@@ -48,14 +45,18 @@
 					heresay.lat = 51.5001524;
 					heresay.lng = -0.1262362;
 				}
-				
-				
-								
+
 				var myPoint = new LatLonPoint(heresay.lat, heresay.lng);
-			
+
+				// set zoom 
+				heresay.zoom = gup('zoom');
 				
+				if (zoom != undefined || zoom != '') {
+					heresay.zoom = 13
+				}
+															
 				// display the map centered on a latitude and longitude (Google zoom levels)
-				heresay.mapstraction.setCenterAndZoom(myPoint, 12);
+				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
 				
 				heresay.mapstraction.addControls({
 					pan: true, 
@@ -63,7 +64,6 @@
 					map_type: true 
 				});
 							
-				
 				//Do ajax request for points 	
 				var base_url = "find_threads.php?"; 
 				

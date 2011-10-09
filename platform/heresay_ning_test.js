@@ -33,6 +33,11 @@ heresay.init = function() {
 		heresay.addDiscussionLoction(); 
 	}
 	
+	//this for the forum homepage - adding a map 
+	if (location.pathname == '/forum') {
+		heresay.addIndexMap(); 
+	}
+	
 	
     //re-init after every ajax update
     jQuery('#Form_PostComment').click(function() {
@@ -52,7 +57,7 @@ heresay.addDiscussionLoction = function() {
 	"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 	"<input type='text' id='location_name'>";
 	
-	var mapHtml = '<div id="map_canvas" style="width:500px; height:325px; margin-top:20px"></div></div></div>';
+	var mapHtml = '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div></div>';
 	
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(locationHTML+mapHtml); 
@@ -62,6 +67,7 @@ heresay.addDiscussionLoction = function() {
 		jQuery('#toggle_content').slideToggle(); 
 	});
 	
+	//load the map into it's div 
     var myOptions = {
       zoom: 14,
       center: new google.maps.LatLng(heresay.lat, heresay.lng),
@@ -78,9 +84,27 @@ heresay.addDiscussionLoction = function() {
 		position: marker_position
 	});
 	
-	jQuery('input[value="Add Discussion"]').click(function(){
+	//Stop the form from submitting when the user clicks the add button
+	//for some reason you cannot change the type of an element once it is in the DOM 
+	jQuery('input[value="Add Discussion"]').after('<input type="button" value="Add discussion" class="button action-primary">');
+	jQuery('input[value="Add Discussion"]').remove(); 
+	
+	//make the submit button save to our database 
+	jQuery('input[value="Add discussion"]').click(function(){
 		heresay.saveAddDiscussionLoction(); 
 	});
+	
+	//keep monitoring the validation status
+	heresay.updateValidation();
+
+}
+
+heresay.updateValidation = function() {
+	jQuery('.buttongroup').before('<div id="progress_indicator"></div>');
+	
+	if (jQuery('#location_name').val() == '' || jQuery('#location_name').val() == null) {
+		jQuery('#progress_indicator').append('please add a location'); 
+	}	
 }
 
 heresay.saveAddDiscussionLoction = function() {
@@ -91,7 +115,7 @@ heresay.saveAddDiscussionLoction = function() {
 	var date = new Date();
 	url =  heresay.baseURL+"/api/write_comment.php?";
 	data = 'domain_name='+document.domain; 
-	data += '&path='+location.pathname ;
+	data += '&path=/forum/topics/'+jQuery('#url').val(); ;
 	data += '&sub_page_id=0';
 	data += '&lat='+save_marker_position.lat(); 
 	data += '&lng='+save_marker_position.lng();
@@ -100,22 +124,28 @@ heresay.saveAddDiscussionLoction = function() {
 	data += '&type=test';
 	data += '&body='+jQuery('#post_ifr').contents().find('body').html();
 	data += '&title='+jQuery('#title').val();
-
-	alert(data);
-
-	$.ajax({
-	   type: "GET",
-	   url: url,
-	   data: data,
-	   
-	   success: function(msg){
-		alert('msg');
-	   }
+	
+	
+	//have to do this as a jsonp request 	
+	jQuery.getJSON(url+data+"&callback=?", function(data) {
+	   	//bet this doesn't work cross browser 
+		window.onbeforeunload ='';
+	 	jQuery('#add_topic_form').submit();
 	});
+
+
 }
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
+heresay.addIndexMap = function() {
+		
+	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=14" id="forum_iframe" scrolling="no" frameborder="no" >';
+	
+	jQuery('.categories').before(mapHtml);	
+	
 
+	  
+}
 
 //********************************* THESE FUNCTIONS FOR ADDING LOCATIONS TO AFTER CREATION 	
 
@@ -270,7 +300,10 @@ heresay.getUrlVars = function() {
     return vars;
 }
 
-heresay.init();	
+$(document).ready(function() {
+  heresay.init();	
+});
+
 
 
 
