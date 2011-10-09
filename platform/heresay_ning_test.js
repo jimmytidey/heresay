@@ -1,6 +1,7 @@
 
 //give a scope to all the code 
 heresay = new Object();
+heresay.validation = new Object();
 
 //the api url 
 heresay.baseURL = 'http://test.heresay.org.uk'; 
@@ -100,33 +101,52 @@ heresay.addDiscussionLoction = function() {
 }
 
 heresay.drawValidation = function() {
-	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p><ul id="progress_indicator">'; 
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'> Give your post a title (required)</li>";
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Explain what your post is about (required)</li>";
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Indicate a location on map</li>";
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Choose a category</li>";
-	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Tag the post (eg 'Child care' or 'police')</li>";		
+	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p>'; 
+	validationHTML +="<ul id='progress_indicator' ><li><img id='title_tick' class='validation_status'  > Give your post a title (required)</li>";
+	validationHTML +="<li><img id='body_tick' class='validation_status'  >Explain what your post is about (required)</li>";
+	validationHTML +="<li><img id='location_tick' class='validation_status'  >Indicate a location on map</li>";
+	validationHTML +="<li><img id='location_name_tick' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
+	validationHTML +="<li><img id='category_tick' class='validation_status'  >Choose a category</li>";
+	validationHTML +="<li><img id='tag_tick' class='validation_tick'  >Tag the post (eg 'Child care' or 'police')</li>";		
 	validationHTML +="</ul><div id='progress bar'></div><span id='percent_complete'>0%</span></li></div>";
 	
 	jQuery('.buttongroup').before(validationHTML);
 	jQuery('.validation_tick').hide();
 	
+	//update the validation as soon as anyone hits the page
+	 heresay.validation.showCross('.validation_status');
+	
+	//remove bullets 
+	jQuery('.validation_status').css('list-style-type',  'none');
+	
 	//update this anytime anyone clicks anywhere
 	$(document).click(function(e) { 
 	    // Check for left button
 	    if (e.button == 0) {
-	       heresay.updateValidation(); 
+	       heresay.validation.update(); 
 	    }
 	});
-	
-	
 			
 }
 
-heresay.updateValidation = function() {
-	if (jQuery('#title').val() != '') {jQuery('#title_tick').show();}
+
+heresay.validation.update = function() {
 	
+	if (jQuery('#title').val() != '') {heresay.validation.showTick('#title_tick');}
+
+		
+}
+
+heresay.validation.showTick = function(selector) {
+	var src = heresay.baseURL+"/images/tick.jpg";
+	elem = jQuery(selector).attr('src', src);
+	return elem; 
+}
+
+heresay.validation.showCross = function(selector) {
+	var src = heresay.baseURL+"/images/cross.jpg";
+	elem = jQuery(selector).attr('src', src); 
+	return elem; 
 }
 
 heresay.saveAddDiscussionLoction = function() {
