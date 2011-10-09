@@ -54,8 +54,6 @@
 				if (heresay.zoom === undefined || heresay.zoom === '') {
 					heresay.zoom = 13;
 				}
-				
-				alert('zoom');
 															
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
