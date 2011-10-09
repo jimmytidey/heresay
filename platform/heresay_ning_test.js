@@ -119,7 +119,7 @@ heresay.drawValidation = function() {
 	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
 	validationHTML +="<li><img id='category_status' class='validation_status'  >Choose a category</li>";
 	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'child care' or 'police')</li>";		
-	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete' style='position:relative; top:-20px; right:21s0px;'>0%</span></li></div>";
+	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete' style='position:relative; top:0px; right:21s0px;'>0%</span></li></div>";
 	
 	jQuery('.buttongroup').before(validationHTML);
 	jQuery('.validation_tick').hide();
