@@ -66,6 +66,7 @@ heresay.addDiscussionLoction = function() {
 	//hide / show the map depending on the status of the check box 
 	jQuery('#location_possible').change(function() {
 		jQuery('#toggle_content').slideToggle(); 
+		jQuery('.geo_hide').slideToggle();		
 	});
 	
 	//load the map into it's div 
@@ -102,57 +103,106 @@ heresay.addDiscussionLoction = function() {
 
 heresay.drawValidation = function() {
 	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p>'; 
-	validationHTML +="<ul id='progress_indicator' ><li><img id='title_tick' class='validation_status'  > Give your post a title (required)</li>";
-	validationHTML +="<li><img id='body_tick' class='validation_status'  >Explain what your post is about (required)</li>";
-	validationHTML +="<li><img id='location_tick' class='validation_status'  >Indicate a location on map</li>";
-	validationHTML +="<li><img id='location_name_tick' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
-	validationHTML +="<li><img id='category_tick' class='validation_status'  >Choose a category</li>";
-	validationHTML +="<li><img id='tag_tick' class='validation_tick'  >Tag the post (eg 'Child care' or 'police')</li>";		
-	validationHTML +="</ul><div id='progress bar'></div><span id='percent_complete'>0%</span></li></div>";
+	validationHTML +="<ul id='progress_indicator' ><li><img id='title_status' class='validation_status'  >Give your post a title (required)</li>";
+	validationHTML +="<li><img id='body_status' class='validation_status'  >Explain what your post is about (required)</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  >Indicate a location on map</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
+	validationHTML +="<li><img id='category_status' class='validation_status'  >Choose a category</li>";
+	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'Child care' or 'police')</li>";		
+	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete'>0%</span></li></div>";
 	
 	jQuery('.buttongroup').before(validationHTML);
 	jQuery('.validation_tick').hide();
 	
 	//update the validation as soon as anyone hits the page
-	 heresay.validation.showCross('.validation_status');
+	heresay.validation.showCross('.validation_status');
+	jQuery('.validation_status').css('margin-right', '10px')
 	
 	//remove bullets 
-	jQuery('.validation_status').css('list-style-type',  'none');
+	jQuery('#heresay_validation li').css('list-style-type', 'none');
 	
-	//update this anytime anyone clicks anywhere
-	$(document).click(function(e) { 
-	    // Check for left button
-	    if (e.button == 0) {
-	       heresay.validation.update(); 
-	    }
-	});
+	heresay.validation.update(); 
+
 			
 }
 
 
 heresay.validation.update = function() {
 	
-	if (jQuery('#title').val() != '') {heresay.validation.showTick('#title_tick');}
-
-		
+	heresay.validation.progress_bar = 0; 
+	
+	$("#title").keyup(function() {	
+		if (jQuery('#title').val() != '') {heresay.validation.showTick('#title_status');}
+		else {heresay.validation.showCross('#title_status');}
+		heresay.validation.progress_bar +=1;
+		heresay.validation.progressBarDraw();  
+	});
+	
+	//can't detect clicks inside the iFrame
+	setInterval( function() {
+		var bodyText = jQuery('#post_ifr').contents().find('body').html();
+		if (bodyText !== '<br _mce_bogus="1">' && bodyText !== '' ){heresay.validation.showTick('#body_status');}
+		else {heresay.validation.showCross('#body_status');}
+		heresay.validation.progressBarDraw(); 	
+	}
+	,2000);
+	
+	$("#location_name").keyup(function() {
+		if (jQuery('#location_name').val() != '') {heresay.validation.showTick('#location_name_status');}
+		else {heresay.validation.showCross('#location_name_status');}
+		heresay.validation.progressBarDraw(); 		
+	});
+	
+	//check the map marker has moved 
+	google.maps.event.addListener(heresay.marker, 'mouseup', function() {
+		heresay.validation.showTick('#location_status');
+		heresay.validation.progressBarDraw();		
+	});
+	
+	$("#tags").keyup(function() {
+		if (jQuery('#tags').val() !== '') {heresay.validation.showTick('#tag_status');}
+		else {heresay.validation.showCross('#tag_status');}
+		heresay.validation.progressBarDraw(); 		
+	});	
+	
 }
 
 heresay.validation.showTick = function(selector) {
 	var src = heresay.baseURL+"/images/tick.jpg";
 	elem = jQuery(selector).attr('src', src);
+	elem = jQuery(selector).attr('class', 'tick');
 	return elem; 
 }
 
 heresay.validation.showCross = function(selector) {
 	var src = heresay.baseURL+"/images/cross.jpg";
 	elem = jQuery(selector).attr('src', src); 
+	elem = jQuery(selector).attr('class', 'cross');	
 	return elem; 
 }
+
+heresay.validation.progressBarDraw = function () {
+	var bar_status = jQuery('.tick').length * 20;
+	
+	//this because user is nearer to completing the process if they have chosen not to give location
+	if ($('#location_possible').attr('checked')) {
+		bar_status = Math.floor(bar_status * 0.3);
+	}
+		
+	jQuery('#progress_bar_fill').css('width', bar_status * 2 );
+	jQuery('#percent_complete').html(bar_status+'%'); 
+} 
 
 heresay.saveAddDiscussionLoction = function() {
 		
 	var url; 
-	var data; 	
+	var data;
+	var no_specific_location = 0; 
+	
+	if (!($('#location_possible').attr('checked'))) {
+		no_specific_location = 1; 
+	}
+	 	
 	var save_marker_position = heresay.marker.getPosition();
 	var date = new Date();
 	url =  heresay.baseURL+"/api/write_comment.php?";
@@ -166,6 +216,7 @@ heresay.saveAddDiscussionLoction = function() {
 	data += '&type=test';
 	data += '&body='+jQuery('#post_ifr').contents().find('body').html();
 	data += '&title='+jQuery('#title').val();
+	data += '&no_specific_location='+no_specific_location;
 	
 	
 	//have to do this as a jsonp request 	
