@@ -95,16 +95,38 @@ heresay.addDiscussionLoction = function() {
 	});
 	
 	//keep monitoring the validation status
-	heresay.updateValidation();
+	heresay.drawValidation();
 
 }
 
-heresay.updateValidation = function() {
-	jQuery('.buttongroup').before('<div id="progress_indicator"></div>');
+heresay.drawValidation = function() {
+	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p><ul id="progress_indicator">'; 
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'> Give your post a title (required)</li>";
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Explain what your post is about (required)</li>";
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Indicate a location on map</li>";
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Choose a category</li>";
+	validationHTML +="<li><img id='title_tick' class='validation_tick' src='"+heresay.baseURL+"/images/tick.jpg'>Tag the post (eg 'Child care' or 'police')</li>";		
+	validationHTML +="</ul><div id='progress bar'></div><span id='percent_complete'>0%</span></li></div>";
 	
-	if (jQuery('#location_name').val() == '' || jQuery('#location_name').val() == null) {
-		jQuery('#progress_indicator').append('please add a location'); 
-	}	
+	jQuery('.buttongroup').before(validationHTML);
+	jQuery('.validation_tick').hide();
+	
+	//update this anytime anyone clicks anywhere
+	$(document).click(function(e) { 
+	    // Check for left button
+	    if (e.button == 0) {
+	       heresay.updateValidation(); 
+	    }
+	});
+	
+	
+			
+}
+
+heresay.updateValidation = function() {
+	if (jQuery('#title').val() != '') {jQuery('#title_tick').show();}
+	
 }
 
 heresay.saveAddDiscussionLoction = function() {
@@ -138,13 +160,8 @@ heresay.saveAddDiscussionLoction = function() {
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
 heresay.addIndexMap = function() {
-		
 	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=14" id="forum_iframe" scrolling="no" frameborder="no" >';
-	
 	jQuery('.categories').before(mapHtml);	
-	
-
-	  
 }
 
 //********************************* THESE FUNCTIONS FOR ADDING LOCATIONS TO AFTER CREATION 	
