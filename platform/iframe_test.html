@@ -152,8 +152,11 @@ heresay.init = function () {
 		else if (type=="" || type=="null" || type=='select') {
 			alert('You must enter a category');
 		}		
+		
+		var no_specific_location; 
 
-	
+		if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
+		else {no_specific_location = 0;}
 
 		else {
 			 $("#header").html("<center><strong>Saving...</strong></center>");
@@ -169,6 +172,7 @@ heresay.init = function () {
 			data += '&type='+ type;
 			data += '&body='+body_text;
 			data += '&title='+title;
+			data += '&no_specific_location='+no_specific_location;
 
 			$.ajax({
 			   type: "GET",
@@ -241,7 +245,7 @@ body, p, input, label {
 			<label for='location_possible'>If location is not relevant to this discussion, tick this box </label><input type='checkbox' id='location_possible'></p>
 		</div>
 		
-		<input type='button' value='save' id='save_button' style='position:absolute; font-size:16px; top:437px; width:100px; left:200px; height:26px;'  /> 
+		<input type='button' value='save' id='save_button' style='position:absolute; font-size:16px; top:437px; width:100px; left:195px; height:26px; margin-left:0px'  /> 
 		
 	</div>
   

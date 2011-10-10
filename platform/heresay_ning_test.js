@@ -166,6 +166,24 @@ heresay.validation.update = function() {
 		heresay.validation.showTick('#location_status');
 		heresay.validation.progressBarDraw();		
 	});
+
+	$("#type").change(function() {
+		
+		var category = jQuery('#type').val();
+		
+		if (category !== 'select') {heresay.validation.showTick('#category_status');}
+		else {heresay.validation.showCross('#category_status');}
+		
+		/*
+		//also add the category to the tags... 
+		var current_tags = jQuery('#tags').val();
+		
+		jQuery('#tags').val(category + ", " + current_tags );
+		*/
+		
+		heresay.validation.progressBarDraw(); 		
+	});	
+	
 	
 	$("#tags").keyup(function() {
 		if (jQuery('#tags').val() !== '') {heresay.validation.showTick('#tag_status');}
@@ -190,15 +208,26 @@ heresay.validation.showCross = function(selector) {
 }
 
 heresay.validation.progressBarDraw = function () {
-	var bar_status = jQuery('.tick').length * 20;
+	var bar_status = jQuery('.tick').length;
 	
 	//this because user is nearer to completing the process if they have chosen not to give location
 	if ($('#location_possible').attr('checked')) {
-		bar_status = Math.floor(bar_status * 0.3);
+		bar_status = bar_status * 16.66666;
 	}
+	
+	else {
+		bar_status = jQuery('.tick').length * 25;
+	}
+	
+	//make sure it looks properly like 100%
+	if (bar_status > 96) {bar_status = 100;}
+	
+	//colour it in nicely to encourage people 
+	if (bar_status > 30) {jQuery('#progress_bar_fill').css('background-color', '#ffff00')};
+	if (bar_status > 70) {jQuery('#progress_bar_fill').css('background-color', '#3eda1f')};
 		
 	jQuery('#progress_bar_fill').css('width', bar_status * 2 );
-	jQuery('#percent_complete').html(bar_status+'%'); 
+	jQuery('#percent_complete').html(Math.floor(bar_status)+'%'); 
 } 
 
 heresay.saveAddDiscussionLoction = function() {
@@ -206,33 +235,43 @@ heresay.saveAddDiscussionLoction = function() {
 	var url;
 	var data;
 	var no_specific_location = 0; 
+	var title = jQuery('#title').val();
+	var body = jQuery('#post_ifr').contents().find('body').html();
+	body = body.replace('<br _mce_bogus="1">', "");
 	
-	if (!($('#location_possible').attr('checked'))) {
-		no_specific_location = 1; 
-	}
+	if (title == "") {alert("You must enter a title for this discussion");}
+	else if (body == "") {alert("You must add some text to this discussion");}
+	else if (jQuery('#location_name').val() == "") {alert("You must name the location, or uncheck the 'This post is about a specific location' box.");}
+	else if (jQuery('#location_status').attr('class') == "cross") {alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
+
+	
+	else {
+		
+		if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
 	 	
-	var save_marker_position = heresay.marker.getPosition();
-	var date = new Date();
-	url =  heresay.baseURL+"/api/write_comment.php?";
-	data = 'domain_name='+document.domain; 
-	data += '&path=/forum/topics/'+jQuery('#url').val(); ;
-	data += '&sub_page_id=0';
-	data += '&lat='+save_marker_position.lat(); 
-	data += '&lng='+save_marker_position.lng();
-	data += '&location_name='+ jQuery('#location_name').val();
-	data += '&thread_date='+ parseInt(date.getTime()/1000);
-	data += '&type=test';
-	data += '&body='+jQuery('#post_ifr').contents().find('body').html();
-	data += '&title='+jQuery('#title').val();
-	data += '&no_specific_location='+no_specific_location;
+		var save_marker_position = heresay.marker.getPosition();
+		var date = new Date();
+		url =  heresay.baseURL+"/api/write_comment.php?";
+		data = 'domain_name='+document.domain; 
+		data += '&path=/forum/topics/'+jQuery('#url').val(); ;
+		data += '&sub_page_id=0';
+		data += '&lat='+save_marker_position.lat(); 
+		data += '&lng='+save_marker_position.lng();
+		data += '&location_name='+ jQuery('#location_name').val();
+		data += '&thread_date='+ parseInt(date.getTime()/1000);
+		data += '&type=test';
+		data += '&body='+body;
+		data += '&title='+title;
+		data += '&no_specific_location='+no_specific_location;
 	
 	
-	//have to do this as a jsonp request 	
-	jQuery.getJSON(url+data+"&callback=?", function(data) {
-	   	//bet this doesn't work cross browser 
-		window.onbeforeunload ='';
-	 	jQuery('#add_topic_form').submit();
-	});
+		//have to do this as a jsonp request 	
+		jQuery.getJSON(url+data+"&callback=?", function(data) {
+		   	//bet this doesn't work cross browser 
+			window.onbeforeunload ='';
+		 	jQuery('#add_topic_form').submit();
+		});
+	}
 }
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
@@ -322,7 +361,7 @@ heresay.clickIcon = function(element, index) {
 
         var sub_page_id = heresay.findSubPageId(element);
 		
-		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 468px; width:100px; z-index: 15; height:26px;"; 
+		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 470px; width:100px; z-index: 15; height:26px;"; 
 
         //add the modal window
         jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"/platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right; z-index:20' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p>	<input type='button' value='close' id='close_button_overlay' style='"+close_button_style+"' /> <iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe_test.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:620px; width:560px; margin: -10px 20px 0px 20px; z-index:10' ></iframe> </div>");
