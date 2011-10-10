@@ -234,7 +234,7 @@ heresay.saveAddDiscussionLoction = function() {
 		
 	var url;
 	var data;
-	var no_specific_location = 0; 
+	var no_specific_location; 
 	var title = jQuery('#title').val();
 	var body = jQuery('#post_ifr').contents().find('body').html();
 	body = body.replace('<br _mce_bogus="1">', "");
@@ -247,8 +247,9 @@ heresay.saveAddDiscussionLoction = function() {
 	
 	else {
 		
-		if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
-	 	
+		if ($('#location_possible').attr('checked')) {no_specific_location = 0;}
+	 	else {no_specific_location = 1;}
+	
 		var save_marker_position = heresay.marker.getPosition();
 		var date = new Date();
 		url =  heresay.baseURL+"/api/write_comment.php?";
@@ -330,7 +331,7 @@ heresay.insertIcon = function(data, index) {
 		//handling the case where there is no specific location 
 		var location_name = data[0]['location_name'];
 		
-		if (data[0]['no_specific_location']) {
+		if (data[0]['no_specific_location'] == 1) {
 			location_name = "No specific location";
 		}
 		
