@@ -153,13 +153,14 @@ heresay.init = function () {
 			alert('You must enter a category');
 		}		
 		
-		var no_specific_location; 
-
-		if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
-		else {no_specific_location = 0;}
-
 		else {
-			 $("#header").html("<center><strong>Saving...</strong></center>");
+			
+			var no_specific_location; 
+
+			if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
+			else {no_specific_location = 0;}
+			
+			$("#header").html("<center><strong>Saving...</strong></center>");
 		
 			url = 'http://test.heresay.org.uk/api/write_comment.php?';
 			data = 'domain_name='+domain_name; 
