@@ -64,7 +64,7 @@ heresay.init = function () {
 			$('#location_name').val(heresay.location_name); 
 			$('#type').val(heresay.type);
 			
-			if (heresay.no_specific_location = 1) {
+			if (heresay.no_specific_location == 1) {
 				$('#location_possible').attr('checked', 'checked');
 				$('#location_data').hide();
 				$('#map_canvas').hide();	
@@ -136,11 +136,13 @@ heresay.init = function () {
 		if ($('#location_possible').prop('checked')) {
 			$('#location_data').hide();
 			$('#map_canvas').hide();			
+			heresay.map.checkResize(); 	
 		}
 		
 		else {
 			$('#location_data').show();
-			$('#map_canvas').show();			
+			$('#map_canvas').show();
+			heresay.map.checkResize(); 			
 		}
 	});
 
