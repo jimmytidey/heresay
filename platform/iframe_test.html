@@ -132,6 +132,17 @@ heresay.init = function () {
 	  $('#heresay_more').slideToggle('slow');
 	});
 
+	$('#location_possible').change(function() {
+		if ($('#location_possible').attr('checked') =='checked') {
+			$('#location_data').hide();
+			$('#map_canvas').hide();			
+		}
+		
+		else {
+			$('#location_data').show();
+			$('#map_canvas').show();			
+		}
+	});
 
   
 	$('#save_button').click(function() {
