@@ -87,7 +87,7 @@
 						
 						var my_marker = new Marker(myPoint);
 						
-						var text ="<strong><a target='_top' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
+						var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
 						text += val.body.substring(0,150); 
 						text += "...";
 						my_marker.setInfoBubble(text);		

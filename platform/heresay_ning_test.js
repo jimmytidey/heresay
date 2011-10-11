@@ -353,7 +353,7 @@ heresay.clickIcon = function(element, index) {
     if ((jQuery('#garden_fence_modal').length > 0) == false)
     {
 
-        var title = escape(jQuery("h1").html());
+        var title = escape(jQuery(".tb h1").html());
         var bodytext = escape(jQuery('.discussion').eq(index).html());
 
         var domain = escape(document.domain);
