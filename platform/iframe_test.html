@@ -133,7 +133,7 @@ heresay.init = function () {
 	});
 
 	$('#location_possible').click(function() {
-		if ($('#location_possible').attr('checked') =='checked') {
+		if ($('#location_possible').prop('checked')) {
 			$('#location_data').hide();
 			$('#map_canvas').hide();			
 		}
