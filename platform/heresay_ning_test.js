@@ -54,7 +54,7 @@ heresay.addDiscussionLoction = function() {
 
 	heresay.locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
 	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
-		"<p><label for='location_possible'>This post is about a specific location</lable>"+
+		"<p><label for='location_possible'>This post is about a specific location</label>"+
 		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
 		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 		"<input type='text' id='location_name' />";
