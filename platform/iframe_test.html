@@ -157,11 +157,11 @@ heresay.init = function () {
 		var home_url = heresay.gup('home_url');	
 		var thread_date = heresay.gup('thread_date');	
 
-		if (location_name=="" || location_name=="null") {
+		if ((location_name=="" || location_name=="null") && $('#location_possible').prop('checked') == false) {
 			alert('You must enter a location name');
 		}
 		
-		else if (type=="" || type=="null" || type=='select') {
+		else if ((type=="" || type=="null" || type=='select') && $('#location_possible').prop('checked') == false) {
 			alert('You must enter a category');
 		}		
 		
