@@ -46,10 +46,10 @@
 					heresay.lng = -0.1262362;
 				}
 
-				var myPoint = new LatLonPoint(heresay.lat, heresay.lng);
+				myPoint = new LatLonPoint(heresay.lat, heresay.lng);
 
 				// set zoom 
-				heresay.zoom = gup('zoom');
+				heresay.zoom = parseInt(gup('zoom'));
 				
 				if (heresay.zoom === undefined || heresay.zoom === '') {
 					heresay.zoom = 13;
