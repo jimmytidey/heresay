@@ -52,14 +52,15 @@ heresay.addDiscussionLoction = function() {
 	
 	heresay.location_touch = 0; 
 	var locationHTML = "<span style='position:relative; top:22px'>Location:</span>"+
-	"<div style='position:relative; left:120px; margin-bottom:20px'><p><label for='location_possible'>This post is about a specific location</lable>"+
-	"<input type='checkbox' checked='checked' id='location_possible'></p>"+
-	"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
-	"<input type='text' id='location_name'>";
+	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
+		"<p><label for='location_possible'>This post is about a specific location</lable>"+
+		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
+		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
+		"<input type='text' id='location_name'>";
 		
-	var mapHtml = '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div></div>';
+	var mapHtml = '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
-	var selectHtml = "<label for='id' >Categories:</label><select id='type' style='margin-left:40px'>";
+	var selectHtml = "<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
 	selectHtml += "<option value='select'>-select category-</option>";
 	selectHtml += "<option value='Environment'>Environment</option>";
 	selectHtml += "<option value='Crime'>Crime</option>";
@@ -68,7 +69,7 @@ heresay.addDiscussionLoction = function() {
 	selectHtml += "<option value='Travel'>Travel</option>";
 	selectHtml += "<option value='Local Knowlege'>Local Knowledge</option>";
 	selectHtml += "<option value='No Category'>No Category</option>";
-	selectHtml += "</select>";
+	selectHtml += "</select></div>";
 	
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(locationHTML+mapHtml+selectHtml); 
