@@ -51,12 +51,12 @@ heresay.init = function() {
 heresay.addDiscussionLoction = function() {
 	
 	heresay.location_touch = 0; 
-	var locationHTML = "<span style='position:relative; top:22px'>Location:</span>"+
+	var locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
 	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
 		"<p><label for='location_possible'>This post is about a specific location</lable>"+
 		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
 		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
-		"<input type='text' id='location_name'>";
+		"<input type='text' id='location_name' />";
 		
 	var mapHtml = '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
