@@ -143,6 +143,9 @@ heresay.init = function () {
 			$('#map_canvas').show();
 			
 			//kludge to redraw the map 
+			google.maps.event.addListener(heresay.map, "idle", function(){
+				google.maps.event.trigger(heresay.map, 'resize'); 
+			});
 			heresay.map.setZoom( heresay.map.getZoom() - 1);
 			heresay.map.setZoom( heresay.map.getZoom() + 1);
 		}
