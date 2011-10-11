@@ -57,26 +57,32 @@ heresay.init = function () {
 			heresay.lat = data['0']['lat'];
 			heresay.lng = data['0']['lng'];
 			heresay.location_name = data['0']['location_name'];
+			heresay.no_specific_location = data['0']['no_specific_location'];
 			heresay.type = data['0']['type'];
+			
+			//add any preexisting data in 
 			$('#location_name').val(heresay.location_name); 
-			$('#type').val(heresay.type); 		
+			$('#type').val(heresay.type);
+			
+			if (heresay.no_specific_location = 1) {
+				$('#location_possible').attr('checked', 'checked');
+				$('#location_data').hide();
+				$('#map_canvas').hide();	
+			}
+
 		}
 		
 		else {
 			//use the default center passed in the URL 
-
-			
 	  		center = heresay.gup('center'); 
 
 			if (center != undefined) {
-				
 				heresay.center = center.split(',');
-				
 				heresay.lat = heresay.center[0]; 
 				heresay.lng = heresay.center[1];		
 			}
 
-			else {
+			else { //incase center is not defined
 				heresay.lat = '51.456708'
 				heresay.lng = '-0.101163'				
 			}			
@@ -109,23 +115,18 @@ heresay.init = function () {
 		  	if (heresay.location_touch == 0)  {
 		  		var save_marker_position = heresay.marker.getPosition();	
 			  	jQuery.getJSON('http://api.geonames.org/findNearbyPlaceNameJSON?lat='+save_marker_position.lat()+'&lng='+save_marker_position.lng()+'&username=jimmytidey', 
-					function(data) { 
-											 
+					function(data) { 				 
 						heresay.autosuggest = eval(data);
-						
 						$('#location_name').val(heresay.autosuggest.geonames[0]['name']);
-				});	
-		  	}
-		  }	  
+					});	
+		  		}
+		  	}	  
   		});
-
-	
 	});
 	
 	$('#heresay_more_btn').click(function() {
 	  $('#heresay_more').slideToggle('slow');
 	});
-	
 
 	$('#more_close').click(function() {
 	  $('#heresay_more').slideToggle('slow');
@@ -226,21 +227,24 @@ body, p, input, label {
 	<div id="map_canvas" style="width:500px; height:325px; left:30px"></div>
 
 	<div style='margin-top:10px; margin-left:30px'>
-	
-		<label for='location_name'>Location name </label>
 		
-		<input type='text' id='location_name' style='width:200px'>
+		<div id='location_data'>
+			<label for='location_name'>Location name </label>
+			<input type='text' id='location_name' style='width:200px'>
 		
-		<select id='type' style='position:relative; left: 10px; top: 0px;'>
-			<option value='select'>-select category-</option>
-			<option value='Environment'>Environment</option>
-			<option value='Crime'>Crime</option>
-			<option value='Animals and Nature'>Animals and nature</option>
-			<option value='Events'>Events</option>
-			<option value='Travel'>Travel</option>
-			<option value='Local Knowlege'>Local Knowledge</option>
-			<option value='No Category'></option> 
-		</select>
+		
+			<select id='type' style='position:relative; left: 10px; top: 0px;'>
+				<option value='select'>-select category-</option>
+				<option value='Environment'>Environment</option>
+				<option value='Crime'>Crime</option>
+				<option value='Animals and Nature'>Animals and nature</option>
+				<option value='Events'>Events</option>
+				<option value='Travel'>Travel</option>
+				<option value='Local Knowlege'>Local Knowledge</option>
+				<option value='No Category'></option> 
+			</select>
+		
+		</div>
 		
 		<div style='width:350px; postion:relative; margin:10px auto 0px auto;'>
 			<label for='location_possible'>If location is not relevant to this discussion, tick this box </label><input type='checkbox' id='location_possible'></p>
