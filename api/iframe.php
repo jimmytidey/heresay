@@ -82,20 +82,22 @@
 					var results = eval(data); 
 				
 					$.each(results, function(key, val) {
+						
+						if (val.no_specific_location == '0') {
 					
-						var myPoint = new LatLonPoint(val.lat, val.lng);
+							var myPoint = new LatLonPoint(val.lat, val.lng);
 						
-						var my_marker = new Marker(myPoint);
+							var my_marker = new Marker(myPoint);
 						
-						var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
-						text += val.body.substring(0,150); 
-						text += "...";
-						my_marker.setInfoBubble(text);		
+							var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
+							text += val.body.substring(0,150); 
+							text += "...";
+							my_marker.setInfoBubble(text);		
 						
-						my_marker.setLabel(val.title);
+							my_marker.setLabel(val.title);
 
-						heresay.mapstraction.addMarker(my_marker);	
-				
+							heresay.mapstraction.addMarker(my_marker);	
+						}
 					});
 				});
 		

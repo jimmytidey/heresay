@@ -317,7 +317,7 @@ heresay.insertIcon = function(data, index) {
 
     var icon_style = 'float:right; cursor:pointer; ';
 
-    var icon_text_style = 'margin-left:78px; margin-top:-23px; font-size:12px;';
+    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 
     if (index == 0) {icon_style += 'top:-0px;';}
 
