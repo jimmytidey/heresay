@@ -135,14 +135,16 @@ heresay.init = function () {
 	$('#location_possible').click(function() {
 		if ($('#location_possible').prop('checked')) {
 			$('#location_data').hide();
-			$('#map_canvas').hide();			
-			heresay.map.checkResize(); 	
+			$('#map_canvas').hide();				
 		}
 		
 		else {
 			$('#location_data').show();
 			$('#map_canvas').show();
-			heresay.map.checkResize(); 			
+			
+			//kludge to redraw the map 
+			heresay.map.setZoom( heresay.map.getZoom() - 1);
+			heresay.map.setZoom( heresay.map.getZoom() + 1);
 		}
 	});
 
@@ -171,7 +173,7 @@ heresay.init = function () {
 			
 			var no_specific_location; 
 
-			if (!($('#location_possible').attr('checked'))) {no_specific_location = 1;}
+			if ($('#location_possible').prop('checked')) {no_specific_location = 1;}
 			else {no_specific_location = 0;}
 			
 			$("#header").html("<center><strong>Saving...</strong></center>");
@@ -188,6 +190,8 @@ heresay.init = function () {
 			data += '&body='+body_text;
 			data += '&title='+title;
 			data += '&no_specific_location='+no_specific_location;
+
+			
 
 			$.ajax({
 			   type: "GET",
