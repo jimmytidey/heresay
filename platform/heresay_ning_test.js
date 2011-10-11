@@ -51,7 +51,8 @@ heresay.init = function() {
 heresay.addDiscussionLoction = function() {
 	
 	heresay.location_touch = 0; 
-	var locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
+
+	heresay.locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
 	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
 		"<p><label for='location_possible'>This post is about a specific location</lable>"+
 		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
@@ -72,7 +73,7 @@ heresay.addDiscussionLoction = function() {
 	selectHtml += "</select></div>";
 	
 	//add the map canvas element 
-	jQuery('#xj_post_dd').after(locationHTML+mapHtml+selectHtml); 
+	jQuery('#xj_post_dd').after(heresay.locationHTML+mapHtml+selectHtml); 
 
 	//hide / show the map depending on the status of the check box 
 	jQuery('#location_possible').change(function() {
