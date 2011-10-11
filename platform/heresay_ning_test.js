@@ -52,7 +52,7 @@ heresay.addDiscussionLoction = function() {
 	
 	heresay.location_touch = 0; 
 	var locationHTML = "<span style='position:relative; top:22px'>Location:</span>"+
-	"<div style='margin-left:120px; margin-bottom:20px'><p><label for='location_possible'>This post is about a specific location</lable>"+
+	"<div style='position:relative; left:120px; margin-bottom:20px'><p><label for='location_possible'>This post is about a specific location</lable>"+
 	"<input type='checkbox' checked='checked' id='location_possible'></p>"+
 	"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 	"<input type='text' id='location_name'>";
@@ -277,8 +277,8 @@ heresay.saveAddDiscussionLoction = function() {
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
 heresay.addIndexMap = function() {
-	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=14" id="forum_iframe" scrolling="no" frameborder="no" >';
-	jQuery('.categories').before(mapHtml);	
+	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=15" id="forum_iframe" scrolling="no" frameborder="no" >';
+	jQuery('.categories').before(mapHtml);
 }
 
 //********************************* THESE FUNCTIONS FOR ADDING LOCATIONS TO AFTER CREATION 	
