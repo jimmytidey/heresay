@@ -1,6 +1,6 @@
 <? include('../header.php'); ?>
 	
-	<h1>Turn Heresay on and off</h1> 
+	<h1>Turn Heresay on and off for harringayonline.com</h1> 
 	
 	<form id='form' style='border:none;'>
 		<fieldset class="nolegend" id="heresayButtons" style='border:none;' >
@@ -36,7 +36,7 @@
 			
 			else {setCookie('heresay_harringay', 'no');}
 			
-			alert(getCookie('heresay_harringay'));
+			alert('Saved');
 		});
 	
 		function getCookie(c_name)
