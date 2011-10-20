@@ -456,6 +456,9 @@ heresay.getUrlVars = function() {
 
 $(document).ready(function() {
 	 
+	jQuery('body').append('<iframe style="width:0px; height:0px;" id="status" src="http://test.heresay.org.uk/switch/status.php" ></iframe>"');
+	
+	
 	//init if the cookie has been set 
 	if (heresay.getCookie('heresay_harringay') === 'yes') {
 		heresay.init();
