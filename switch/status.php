@@ -1,45 +1,14 @@
-<? include('../header.php'); ?>
-	
+<?
+header('Cache-Control: no-cache, must-revalidate');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Content-type: application/json');
 
-		<h1 id='status'></status>
+$jsonArray = array('a' => 'b') 
 
-	
-	<script type="text/javascript">
-		
-		//ajust the style of this page 
-		
-		$('#container').css('padding-left', '30px'); 
-		$('#container').css('height', '1000px'); 		
-		
-		var yes_state ='';
-		var no_state ='';
-	
-		if (getCookie('heresay_harringay') == 'yes') {
-			$('#status').html('yes');
-		}
-		else {
-			$('#status').html('no');			
-		}
-	
-		
-		
-		function getCookie(c_name)
-		{
-			var i,x,y,ARRcookies=document.cookie.split(";");
-			for (i=0;i<ARRcookies.length;i++)
-			{
-			  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-			  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-			  x=x.replace(/^\s+|\s+$/g,"");
-			  if (x==c_name)
-			    {
-			    	return unescape(y);
-			    }
-			}
-		}
+$jsonData = json_encode();
+ 
+echo $_GET['callback'] . '(' . $jsonData . ');';
 
 
 
-	</script>
-	
-<?	include('../footer.php'); ?>
+?>
