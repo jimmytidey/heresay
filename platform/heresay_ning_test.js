@@ -457,16 +457,12 @@ heresay.getUrlVars = function() {
 $(document).ready(function() {
 	 
 	jQuery.getJSON('http://localhost:8888/heresay/switch/status.php?callback=?', function(data) {
-	  	alert("success");
-		heresay.temp_data = eval(data);
+		var jsonObject = eval(data);
+		if (jsonObject['status'] == 'yes') {
+			heresay.init();
+		}	
 	});
-	
-	
-	//init if the cookie has been set 
-	if (heresay.getCookie('heresay_harringay') === 'yes') {
-		heresay.init();
-	}
-		
+
 });
 
 
