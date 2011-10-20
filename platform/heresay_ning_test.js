@@ -456,16 +456,50 @@ heresay.getUrlVars = function() {
 
 $(document).ready(function() {
 	 
-	if (getCookie('heresay_harringay') != "") {
+	//init if the cookie has been set 
+	if (heresay.getCookie('heresay_harringay') !== undefined) {
 		heresay.init();
 	}
-
+	
+	else {
+		heresay.setCookie('heresay_harringay', 'no');
+		alert('no cookie');
+	}
+	
+	//put a control in for adding a cookie 
+	if (location.pathname === "/forum/manage/") {
+		heresay.addCookieSettings();
+	}
+	
 	
 });
 
+heresay.addCookieSettings = function () {
+	
+	var yes_state ='';
+	var no_state ='';
+	
+	if (heresay.getCookie('heresay_harringay') == 'yes') {yes_state ='checked="checked"';}
+	
+	else {no_state ='checked="checked"';}
+	
+	html = '<fieldset class="nolegend" id="heresayButtons" >';
+	html += '<h3>Heresay Mapping Plugin </h3>';
+	html += '<ul class="nobullets">';
+	html += '<li><label><input id="heresayOn" type="radio" class="radio" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
+	html += '<li><label><input id="heresayOff" type="radio" class="radio" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
+	html += '</ul>';
+	html += '</fieldset>';
+
+	jQuery('.xg_module_body').eq(1).prepend(html);
+	
+	jQuery('#heresayButtons').change(function(){
+		
+	}); 
+}
 
 
-function getCookie(c_name)
+heresay.getCookie = function (c_name)
 {
 var i,x,y,ARRcookies=document.cookie.split(";");
 for (i=0;i<ARRcookies.length;i++)
@@ -478,6 +512,15 @@ for (i=0;i<ARRcookies.length;i++)
     return unescape(y);
     }
   }
+}
+
+heresay.setCookie(c_name,value)
+{
+	var exdate=new Date();
+	var exdays =='600'; 
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
 }
 
 
