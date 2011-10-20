@@ -25,7 +25,6 @@
 			
 		//init if the cookie has been set 
 		if (getCookie('heresay_harringay') === undefined) {
-			alert('setting a cookie because - none found');
 			setCookie('heresay_harringay', 'no');
 		}		
 		
