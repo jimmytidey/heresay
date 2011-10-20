@@ -50,7 +50,7 @@
 		function setCookie(c_name,value)
 		{
 			var exdate=new Date();
-			var exdays =='600'; 
+			var exdays ='600'; 
 			exdate.setDate(exdate.getDate() + exdays);
 			var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
 			document.cookie=c_name + "=" + c_value;
