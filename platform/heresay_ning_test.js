@@ -457,8 +457,8 @@ heresay.getUrlVars = function() {
 $(document).ready(function() {
 	 
 	jQuery.getJSON('http://localhost:8888/heresay/switch/status.php?callback=?', function(data) {
-		var jsonObject = eval(data);
-		if (jsonObject['status'] == 'yes') {
+		heresay.jsonObject = eval(data);
+		if (heresay.jsonObject['status'] == 'yes') {
 			heresay.init();
 		}	
 	});
