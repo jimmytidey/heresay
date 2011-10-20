@@ -14,18 +14,14 @@
 		var yes_state ='';
 		var no_state ='';
 	
-		if (heresay.getCookie('heresay_harringay') == 'yes') {yes_state ='checked="checked"';}
+		if (getCookie('heresay_harringay') == 'yes') {yes_state ='checked="checked"';}
 	
 		else {no_state ='checked="checked"';}
 			
 		//init if the cookie has been set 
-		if (getCookie('heresay_harringay') !== undefined) {
-			
-		}
-	
-		else {
+		if (getCookie('heresay_harringay') === undefined) {
+			alert('setting a cookie because - none found');
 			setCookie('heresay_harringay', 'no');
-			alert('no cookie');
 		}		
 		
 		jQuery('#heresayButtons').change(function(){
