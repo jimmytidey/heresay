@@ -2,10 +2,10 @@
 	
 	<h1>Turn Heresay on and off</h1> 
 	
-	<form id='form'>
-		<fieldset class="nolegend" id="heresayButtons" >
-			<input type="radio" name="state" value="On"> On<br>
-			<input type="radio" name="state" value="Off"> Off<br>
+	<form id='form' style='border:none;'>
+		<fieldset class="nolegend" id="heresayButtons" style='border:none;' >
+			<input type="radio" name="state" value="On" id='On' > On<br>
+			<input type="radio" name="state" value="Off" id='Off' > Off<br>
 		</fieldset>
 	</form>	
 	
@@ -14,9 +14,9 @@
 		var yes_state ='';
 		var no_state ='';
 	
-		if (getCookie('heresay_harringay') == 'yes') {yes_state ='checked="checked"';}
+		if (getCookie('heresay_harringay') == 'yes') {$('#On').attr('checked','checked');}
 	
-		else {no_state ='checked="checked"';}
+		else {$('#Off').attr('checked','checked');}
 			
 		//init if the cookie has been set 
 		if (getCookie('heresay_harringay') === undefined) {
@@ -25,7 +25,13 @@
 		}		
 		
 		jQuery('#heresayButtons').change(function(){
-			alert('change');
+			if ($('#heresayButtons').val() == 'On') {
+				setCookie('heresay_harringay', 'yes');
+			}
+			
+			else {setCookie('heresay_harringay', 'no');}
+			
+			alert(getCookie('heresay_harringay'));
 		});
 	
 		function getCookie(c_name)
