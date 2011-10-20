@@ -11,6 +11,11 @@
 	
 	<script type="text/javascript">
 		
+		//ajust the style of this page 
+		
+		$('#container').css('padding-left', '30px'); 
+		$('#container').css('height', '1000px'); 		
+		
 		var yes_state ='';
 		var no_state ='';
 	
