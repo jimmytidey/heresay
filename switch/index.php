@@ -25,7 +25,7 @@
 		}		
 		
 		jQuery('#heresayButtons').change(function(){
-			if ($('#heresayButtons').val() == 'On') {
+			if ($('input:radio[name=state]:checked').val() == 'On') {
 				setCookie('heresay_harringay', 'yes');
 			}
 			
