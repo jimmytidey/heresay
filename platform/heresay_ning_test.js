@@ -459,7 +459,9 @@ heresay.getUrlVars = function() {
 }
 
 $(document).ready(function() {
-	 
+	
+	alert(heresay.jsonObject['status']);
+	
 	jQuery.getJSON(heresay.baseURL+'/switch/status.php?callback=?', function(data) {
 		heresay.jsonObject = eval(data);
 		if (heresay.jsonObject['status'] == 'yes') {
