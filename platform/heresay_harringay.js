@@ -283,7 +283,7 @@ heresay.saveAddDiscussionLoction = function() {
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
 heresay.addIndexMap = function() {
-	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=15" id="forum_iframe" scrolling="no" frameborder="no" >';
+	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=13" id="forum_iframe" scrolling="no" frameborder="no" >';
 	jQuery('.categories').before(mapHtml);
 }
 
