@@ -459,22 +459,49 @@ heresay.getUrlVars = function() {
 }
 
 $(document).ready(function() {
-	
-	alert('not cached');
-	
-	
-	
-	jQuery.getJSON(heresay.baseURL+'/switch/status.php?callback=?', function(data) {
-		heresay.jsonObject = eval(data);
-		
-		alert(heresay.jsonObject['status']);
-		
-		if (heresay.jsonObject['status'] == 'yes') {
-			heresay.init();
-		}	
-	});
+
+	//init if the cookie has been set
+	if (heresay.getCookie('heresay_harringay') === 'yes') {
+		heresay.init();
+	}
+
+	else {
+		heresay.setCookie('heresay_harringay', 'no');
+		alert('cookie set to no');
+	}
+
+	//put a control in for adding a cookie
+	if (jQuery('.xg_sprite-setting').length > 0) {
+		alert('page where settings will go');
+		heresay.addCookieSettings();
+	}
+
 
 });
+
+heresay.addCookieSettings = function () {
+
+	var yes_state ='';
+	var no_state ='';
+
+	if (heresay.getCookie('heresay_harringay') == 'yes') {yes_state ='checked="checked"';}
+
+	else {no_state ='checked="checked"';}
+
+		html = '<fieldset class="nolegend" id="heresayButtons" >';
+		html += '<h3>Heresay Mapping Plugin </h3>';
+		html += '<ul class="nobullets">';
+		html += '<li><label><input id="heresayOn" type="radio" class="radio" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
+		html += '<li><label><input id="heresayOff" type="radio" class="radio" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
+		html += '</ul>';
+		html += '</fieldset>';
+
+		jQuery('.xg_module_body').eq(1).prepend(html);
+
+		jQuery('#heresayButtons').change(function(){
+
+	});
+}
 
 
 heresay.getCookie = function (c_name)
@@ -492,5 +519,12 @@ for (i=0;i<ARRcookies.length;i++)
   }
 }
 
-
+heresay.setCookie(c_name,value)
+{
+var exdate=new Date();
+var exdays =='600';
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+document.cookie=c_name + "=" + c_value;
+}
 
