@@ -499,10 +499,10 @@ heresay.addCookieSettings = function () {
 
 	jQuery('.heresaybtn').change(function(){
 		if ($('input:radio[name=heresaySetting]:checked').val() == 'On') {
-			setCookie('heresay_harringay', 'yes');
+			heresay.setCookie('heresay_harringay', 'yes');
 		}
 
-		else {setCookie('heresay_harringay', 'no');}
+		else {heresay.setCookie('heresay_harringay', 'no');}
 
 		alert('Saved');		 
 	});
