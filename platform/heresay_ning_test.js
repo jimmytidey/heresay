@@ -460,6 +460,8 @@ heresay.getUrlVars = function() {
 
 $(document).ready(function() {
 	
+	alert('not cached');
+	
 	alert(heresay.jsonObject['status']);
 	
 	jQuery.getJSON(heresay.baseURL+'/switch/status.php?callback=?', function(data) {
