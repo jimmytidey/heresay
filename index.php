@@ -37,6 +37,8 @@ if (is_array($distinct_thread_results)) {
 
 ?>
 
+<a href='' name='about' ></a>
+
 <h1>What is Heresay?</h1>
 
 <p>Finding out what's being said about your area online can be difficult. Heresay gathers geographically specific conversations together and puts them on a map to make them easier to find.</p>
