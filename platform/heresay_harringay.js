@@ -7,7 +7,7 @@ heresay.validation = new Object();
 heresay.baseURL = 'http://test.heresay.org.uk'; 
 
 //this is the location the pop up map centres on by default 
-heresay.homeCoords = '51.577629, -0.091721';
+heresay.homeCoords = '51.577629,-0.091721';
 heresay.lat = 51.577629;
 heresay.lng = -0.091721;
 
