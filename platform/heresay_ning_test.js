@@ -63,14 +63,17 @@ heresay.addDiscussionLoction = function() {
 	mapHtml += '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
 	var selectHtml = "<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
+	
 	selectHtml += "<option value='select'>-select category-</option>";
-	selectHtml += "<option value='Environment'>Environment</option>";
+	selectHtml += "<option value='Local shops and cafes'>Local shops and cafes</option>";
 	selectHtml += "<option value='Crime'>Crime</option>";
-	selectHtml += "<option value='Animals and Nature'>Animals and nature</option>";
+	selectHtml += "<option value='Planning'>Planning</option>";
+	selectHtml += "<option value='Local Policy'>Council / public policy</option>";
 	selectHtml += "<option value='Events'>Events</option>";
 	selectHtml += "<option value='Travel'>Travel</option>";
-	selectHtml += "<option value='Local Knowlege'>Local Knowledge</option>";
+	selectHtml += "<option value='Item or service'>Item or service</option>";
 	selectHtml += "<option value='No Category'>No Category</option>";
+
 	selectHtml += "</select></div>";
 	
 	//add the map canvas element 

@@ -24,7 +24,7 @@
 		else {$('#Off').attr('checked','checked');}
 			
 		//init if the cookie has been set 
-		if (getCookie('heresay_harringay') === undefined) {
+		if (getCookie('heresay_harringay') === undefined) {	
 			setCookie('heresay_harringay', 'no');
 		}		
 		
