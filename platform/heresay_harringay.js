@@ -248,7 +248,7 @@ heresay.saveAddDiscussionLoction = function() {
 	if (title == "") {alert("You must enter a title for this discussion");}
 	else if (body == "") {alert("You must add some text to this discussion");}
 	
-	if (!($('#location_possible').attr('checked'))) { 
+	if ($('#location_possible').val() === 'true') { 
 		if (jQuery('#location_name').val() == "") {alert("You must name the location, or uncheck the 'This post is about a specific location' box.");}
 		if (jQuery('#location_status').attr('class') == "cross") {alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
 	}
