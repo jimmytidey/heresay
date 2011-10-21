@@ -475,8 +475,8 @@ jQuery(document).ready(function() {
 	var path_array;
 	path_array = location.pathname.split('/')
 
-	//&& path_array[1] === "profile"
-	if (jQuery('.xg_sprite-setting').length > 0 ) {
+
+	if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
 		heresay.addCookieSettings();
 	}
 
