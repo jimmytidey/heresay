@@ -462,10 +462,13 @@ $(document).ready(function() {
 	
 	alert('not cached');
 	
-	alert(heresay.jsonObject['status']);
+	
 	
 	jQuery.getJSON(heresay.baseURL+'/switch/status.php?callback=?', function(data) {
 		heresay.jsonObject = eval(data);
+		
+		alert(heresay.jsonObject['status']);
+		
 		if (heresay.jsonObject['status'] == 'yes') {
 			heresay.init();
 		}	
