@@ -466,6 +466,7 @@ $(document).ready(function() {
 	}
 
 	if (heresay.getCookie('heresay_harringay') === undefined) {
+		alert('resetting cookie')
 		heresay.setCookie('heresay_harringay', 'no');
 	}
 
