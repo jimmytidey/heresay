@@ -470,8 +470,12 @@ $(document).ready(function() {
 	}
 
 	//put a control in for adding a cookie
-	if (jQuery('.xg_sprite-setting').length > 0) {
-		alert('page where settings will go');
+	
+	var path_array;
+	path_array = location.pathname.split('/')
+
+	
+	if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
 		heresay.addCookieSettings();
 	}
 
