@@ -509,7 +509,7 @@ heresay.getCookie = function (c_name)
 var i,x,y,ARRcookies=document.cookie.split(";");
 for (i=0;i<ARRcookies.length;i++)
 {
-  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+  x=ARRcookies[i].substr(0,ARRcookies[i].indexOfOf("="));
   y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
   x=x.replace(/^\s+|\s+$/g,"");
   if (x==c_name)
@@ -522,7 +522,7 @@ for (i=0;i<ARRcookies.length;i++)
 heresay.setCookie(c_name,value)
 {
 var exdate=new Date();
-var exdays =='600';
+var exdays = '600';
 exdate.setDate(exdate.getDate() + exdays);
 var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
 document.cookie=c_name + "=" + c_value;
