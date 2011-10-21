@@ -500,7 +500,7 @@ heresay.addCookieSettings = function () {
 
 		jQuery('#heresayButtons').change(function(){
 
-	});
+		});
 }
 
 
@@ -519,12 +519,12 @@ for (i=0;i<ARRcookies.length;i++)
   }
 }
 
-heresay.setCookie(c_name,value)
+heresay.setCookie = function (c_name,value)
 {
-var exdate=new Date();
-var exdays = '600';
-exdate.setDate(exdate.getDate() + exdays);
-var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-document.cookie=c_name + "=" + c_value;
+	var exdate=new Date();
+	var exdays = '600';
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
 }
 
