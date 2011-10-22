@@ -81,6 +81,7 @@ heresay.addDiscussionLoction = function() {
 
 	//hide / show the map depending on the status of the check box 
 	jQuery('#location_possible').change(function() {
+		alert('click detected');
 		jQuery('#toggle_content').toggle(); 
 		jQuery('.geo_hide').toggle();		
 	});
@@ -123,8 +124,8 @@ heresay.drawValidation = function() {
 	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p>'; 
 	validationHTML +="<ul id='progress_indicator' ><li><img id='title_status' class='validation_status'  >Give your post a title (required)</li>";
 	validationHTML +="<li><img id='body_status' class='validation_status'  >Explain what your post is about (required)</li>";
-	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  >Indicate a location on map</li>";
-	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  />Indicate a location on map</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  />Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
 	validationHTML +="<li><img id='category_status' class='validation_status'  >Choose a category</li>";
 	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'child care' or 'police')</li>";		
 	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete' style='position:relative; top:0px; right:21s0px;'>0%</span></li></div>";
