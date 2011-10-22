@@ -81,8 +81,8 @@ heresay.addDiscussionLoction = function() {
 
 	//hide / show the map depending on the status of the check box 
 	jQuery('#location_possible').change(function() {
-		jQuery('#toggle_content').slideToggle(); 
-		jQuery('.geo_hide').slideToggle();		
+		jQuery('#toggle_content').toggle(); 
+		jQuery('.geo_hide').toggle();		
 	});
 	
 	//load the map into it's div 
