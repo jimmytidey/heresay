@@ -55,7 +55,7 @@ heresay.addDiscussionLoction = function() {
 	heresay.locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
 	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
 		"<p><label for='location_possible'>This post is about a specific location</label>"+
-		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
+		"<input type='checkbox' checked='checked' id='location_possible' /></p>"+
 		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 		"<input type='text' id='location_name' />";
 	
@@ -114,7 +114,7 @@ heresay.addDiscussionLoction = function() {
 	heresay.drawValidation();
 	
 	//hide or show the map depending on the status of the check box 
-	jQuery('#location_possible').change(function() {
+	jQuery('#location_possible').click(function() {
 		alert('click detected');
 		jQuery('#toggle_content').toggle(); 
 		jQuery('.geo_hide').toggle();		
