@@ -1,15 +1,10 @@
-<?
+<? include('header.php'); ?>
 
-	include('header.php'); 
+<img src='images/logo_small.png' id='logo' />
 
-?>
-
-
-
-
-<iframe src="http://test.heresay.org.uk/api/iframe.php?center=51.4609323,-0.1160239&zoom=15" id="iframe" scrolling="no" frameborder="no" align="center">
-</iframe>
-
+<div id='map_container'>
+	<? include('index_map.php'); ?>
+</div>
 
 <div id='container'>
 
@@ -59,11 +54,4 @@ if (is_array($distinct_thread_results)) {
 </div >
 
 
-<?
-
-	include('footer.php'); 
-
-?>
-
-
-
+<? include('footer.php'); ?>

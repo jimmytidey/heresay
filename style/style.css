@@ -1,9 +1,8 @@
 
 body, html {
-	background-color:#daf5f5;
 	margin:0px;
 	padding:0px;
-	
+
 }
 
 h1,p,span {
@@ -11,6 +10,32 @@ h1,p,span {
              "Helvetica Neue",
              Arial,
              sans-serif;
+}
+
+#logo {
+	position:absolute;
+	top:30px;
+	left:50%;
+	margin-left:-400px;
+	z-index:10;
+}
+
+#mapstraction {
+	width: 96%;
+	height: 450px;
+	z-index:1;
+	border:1px solid black;
+	margin:0px auto 0px auto;
+}
+
+#map_container {
+	padding-top:10px;
+	position:relative;	
+	margin:0px auto 0px auto;
+	width:100%;
+	background-image: url(../images/index_background.png);
+	background-repeat:repeat-x;	
+	height:550px;
 }
 
 #container {
@@ -24,10 +49,7 @@ h1,p,span {
 	padding:20px;
 }
 
-#iframe {
-	width: 100%;
-	height: 500px;
-}
+
 
 a {
 	color:black;
