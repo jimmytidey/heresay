@@ -79,12 +79,7 @@ heresay.addDiscussionLoction = function() {
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(heresay.locationHTML+mapHtml+selectHtml); 
 
-	//hide / show the map depending on the status of the check box 
-	jQuery('#location_possible').change(function() {
-		alert('click detected');
-		jQuery('#toggle_content').toggle(); 
-		jQuery('.geo_hide').toggle();		
-	});
+
 	
 	//load the map into it's div 
     var myOptions = {
@@ -117,6 +112,13 @@ heresay.addDiscussionLoction = function() {
 	
 	//keep monitoring the validation status
 	heresay.drawValidation();
+	
+	//hide or show the map depending on the status of the check box 
+	jQuery('#location_possible').change(function() {
+		alert('click detected');
+		jQuery('#toggle_content').toggle(); 
+		jQuery('.geo_hide').toggle();		
+	});
 
 }
 
