@@ -255,13 +255,11 @@ heresay.saveAddDiscussionLoction = function() {
 		alert("You must name the location, or uncheck the 'This post is about a specific location' box.");
 	}
 	
-	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_status').attr('class') === "cross") {
+	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_status').attr('class') === "tick") {
 		alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");
 	}
 	
 	else {
-		
-		alert('decided to save');
 		
 		if ($('#location_possible').attr('checked')) {no_specific_location = 0;}
 	 	else {no_specific_location = 1;}
