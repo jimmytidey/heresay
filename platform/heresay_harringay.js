@@ -256,7 +256,7 @@ heresay.saveAddDiscussionLoction = function() {
 	}
 	
 	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_status').attr('class') === "cross") {
-		alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
+		alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");
 	}
 	
 	else {
