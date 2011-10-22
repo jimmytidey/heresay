@@ -111,7 +111,7 @@ heresay.addDiscussionLoction = function() {
 		
 	//make the submit button save to our database 
 	jQuery('#heresay_submit').click(function(){
-		heresay.saveAddDiscussionLoction(); 
+		//heresay.saveAddDiscussionLoction(); 
 	});
 	
 	//keep monitoring the validation status
