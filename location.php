@@ -4,6 +4,11 @@
 
 	include('header.php'); 
 
+?>
+
+<div id='container'>
+<?
+
 $loction_name = mysql_real_escape_string(urldecode($_GET['location_name']));
 $adminName3= mysql_real_escape_string(urldecode($_GET['adminName3']));
 
@@ -62,7 +67,10 @@ else { // find all locations with matchign place names
 
 }
 
+?>
 
+</div>
+<?
 
 
 	include('footer.php'); 

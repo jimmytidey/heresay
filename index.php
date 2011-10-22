@@ -5,10 +5,13 @@
 ?>
 
 
-<img src='images/iframe_box.jpg' id='iframe_box' /> 
 
-<iframe src="api/iframe.php?center=51.577629,-0.091721&zoom=12" id="iframe" scrolling="no" frameborder="no" align="center">
+
+<iframe src="http://test.heresay.org.uk/api/iframe.php?center=51.4609323,-0.1160239&zoom=15" id="iframe" scrolling="no" frameborder="no" align="center">
 </iframe>
+
+
+<div id='container'>
 
 <h1>Recent Posts</h1> 
 
@@ -52,6 +55,9 @@ if (is_array($distinct_thread_results)) {
 <h1>Get in touch</h1>
 
 <p>hello@heresay.org.uk</p> 
+
+</div >
+
 
 <?
 
