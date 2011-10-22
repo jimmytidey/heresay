@@ -105,13 +105,13 @@ heresay.addDiscussionLoction = function() {
 	//Stop the form from submitting when the user clicks the add button
 	//for some reason you cannot change the type of an element once it is in the DOM 
 	jQuery('input[value="Add Discussion"]').remove(); 
-	jQuery('.xj_preview_button').before('<div id="heresay_submit" ><p>Add</p></div>');
+	jQuery('.xj_preview_button').before('<input type="button" class="button" id="heresay_submit" value="Add Discussion" />');
 	
 	jQuery('#heresay_submit').unbind('click');
 		
 	//make the submit button save to our database 
 	jQuery('#heresay_submit').click(function(){
-		//heresay.saveAddDiscussionLoction(); 
+		heresay.saveAddDiscussionLoction(); 
 	});
 	
 	//keep monitoring the validation status
@@ -247,15 +247,21 @@ heresay.saveAddDiscussionLoction = function() {
 	var body = jQuery('#post_ifr').contents().find('body').html();
 	body = body.replace('<br _mce_bogus="1">', "");
 	
-	if (title == "") {alert("You must enter a title for this discussion");}
-	else if (body == "") {alert("You must add some text to this discussion");}
+	if (title === "") {alert("You must enter a title for this discussion");}
 	
-	if ($('#location_possible').val() === 'true') { 
-		if (jQuery('#location_name').val() == "") {alert("You must name the location, or uncheck the 'This post is about a specific location' box.");}
-		if (jQuery('#location_status').attr('class') == "cross") {alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
+	else if (body === "") {alert("You must add some text to this discussion");}
+	
+	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_name').val() === "") { 
+		alert("You must name the location, or uncheck the 'This post is about a specific location' box.");
+	}
+	
+	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_status').attr('class') === "cross") {
+		alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
 	}
 	
 	else {
+		
+		alert('decided to save');
 		
 		if ($('#location_possible').attr('checked')) {no_specific_location = 0;}
 	 	else {no_specific_location = 1;}
@@ -274,7 +280,6 @@ heresay.saveAddDiscussionLoction = function() {
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;
-	
 	
 		//have to do this as a jsonp request 	
 		jQuery.getJSON(url+data+"&callback=?", function(data) {
