@@ -105,8 +105,9 @@ heresay.addDiscussionLoction = function() {
 	//Stop the form from submitting when the user clicks the add button
 	//for some reason you cannot change the type of an element once it is in the DOM 
 	jQuery('input[value="Add Discussion"]').remove(); 
-	jQuery('.xj_preview_button').before('<input type="button" value="Add" id="heresay_submit" >&nbsp;');
-		
+	jQuery('.xj_preview_button').before('<div id="heresay_submit" ><p>Add</p></div>');
+	
+	jQuery('#heresay_submit').unbind('click');
 		
 	//make the submit button save to our database 
 	jQuery('#heresay_submit').click(function(){
