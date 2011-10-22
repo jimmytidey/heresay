@@ -115,7 +115,6 @@ heresay.addDiscussionLoction = function() {
 	
 	//hide or show the map depending on the status of the check box 
 	jQuery('#location_possible').click(function() {
-		alert('click detected');
 		jQuery('#toggle_content').toggle(); 
 		jQuery('.geo_hide').toggle();		
 	});
@@ -476,7 +475,6 @@ jQuery(document).ready(function() {
 	}
 
 	if (heresay.getCookie('heresay_harringay') === undefined) {
-		alert('resetting cookie')
 		heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
 	}
 
@@ -515,11 +513,13 @@ heresay.addCookieSettings = function () {
 	jQuery('.heresaybtn').change(function(){
 		if ($('input:radio[name=heresaySetting]:checked').val() == 'On') {
 			heresay.setCookie('heresay_harringay', 'yes', 30, '/', '', '');
+			alert('Heresay is now turned on');	
 		}
 
-		else {heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '');}
-
-		alert('Saved');		 
+		else {
+			heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '');
+			alert('Heresay is switched off');	
+		}	 
 	});
 }
 
