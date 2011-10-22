@@ -251,12 +251,12 @@ heresay.saveAddDiscussionLoction = function() {
 	
 	else if (body === "") {alert("You must add some text to this discussion");}
 	
-	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_name').val() === "") { 
+	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_name').val() === "") { 
 		alert("You must name the location, or uncheck the 'This post is about a specific location' box.");
 	}
 	
-	else if (jQuery('#location_possible').val() === 'true' && jQuery('#location_status').attr('class') === "tick") {
-		alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");
+	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_status').attr('class') !== "tick") {
+		alert("You indicate the location on the map, or uncheck the 'This post is about a specific location' box.");
 	}
 	
 	else {
