@@ -484,7 +484,7 @@ jQuery(document).ready(function() {
 
 		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 		
-		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+data+"&callback=?", function(data) {
+		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
 			alert(data);
 			heresay.setCookie('heresay_harringay', null, 30, '/', '', '' );	
 		});			
