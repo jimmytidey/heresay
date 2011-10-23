@@ -43,7 +43,7 @@ if (!empty($thread_id)) {// just write a single thread out
 
 	?>
 	
-	<h1><a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>"><? echo $thread_result[0]['title']; ?></a></h1>
+	<h1><a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>"><? echo stripslashes($thread_result[0]['title']); ?></a></h1>
 	
 	<p><? echo stripslashes($thread_result[0]['body']); ?></p>
 	
