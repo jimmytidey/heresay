@@ -45,7 +45,7 @@ if (!empty($thread_id)) {// just write a single thread out
 	
 	<h1><a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>"><? echo $thread_result[0]['title']; ?></a></h1>
 	
-	<p><? echo $thread_result[0]['body']; ?></p>
+	<p><? echo stripslashes($thread_result[0]['body']); ?></p>
 	
 	<p><em><? echo date("F j, Y, g:i a", $time ); ?></em> | <a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>">View &raquo;</a></p>
 	
