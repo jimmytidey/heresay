@@ -26,7 +26,7 @@ if (is_array($distinct_thread_results)) {
 		
 		?>
 		
-		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']);   ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo $thread_result[0]['title']; ?></a></p>
+		<p><a target='_blank' href="<? echo urlencode($thread_result[0]['location_name']); ?>/<? echo urlencode($thread_result[0]['title']);   ?>/<? echo urlencode($thread_result[0]['thread_id']); ?>"><? echo stripslashes($thread_result[0]['title']); ?></a></p>
 		
 		<?
 	}
