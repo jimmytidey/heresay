@@ -4,7 +4,7 @@ heresay = new Object();
 heresay.validation = new Object();
 
 //the api url
-heresay.baseURL = 'http://heresay.org.uk'; 
+heresay.baseURL = 'http://test.heresay.org.uk'; 
 
 //this is the location the pop up map centres on by default 
 heresay.homeCoords = '51.577629,-0.091721';
@@ -479,14 +479,14 @@ jQuery(document).ready(function() {
 	//first, check, is there any cookie data that needs to go in the db? 	
 	var cookie_write_data = heresay.getCookie('heresay_data')
 	
-	if (cookie_write_data !== null) {
+	if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
  		alert(cookie_write_data);
 
 		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 		
 		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
 			alert(data);
-			heresay.setCookie('heresay_harringay', null, 30, '/', '', '' );	
+			heresay.setCookie('heresay_harringay', 'no_write', 30, '/', '', '' );	
 		});			
 			
 	
@@ -614,3 +614,10 @@ heresay.setCookie = function (name, value, expires, path, domain, secure )
 }
 
 
+// this deletes the cookie when called
+heresay.deleteCookie = function (name, path, domain) {
+if ( Get_Cookie( name ) ) document.cookie = name + "=" +
+( ( path ) ? ";path=" + path : "") +
+( ( domain ) ? ";domain=" + domain : "" ) +
+";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+}
