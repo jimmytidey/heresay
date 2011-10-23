@@ -52,6 +52,20 @@ h1,p,span {
 	background-repeat:repeat-y;
 }
 
+#location_container {
+	position:absolute;
+	top:0px;
+	width: 780px; 
+	left:50%; 
+	margin-left:-420px;
+	background-image:url(../images/content_background.png); 
+	background-repeat:no-repeat;
+	z-index:1;
+	padding:30px 30px;
+	background-repeat:repeat-y;
+	height:100%;
+}
+
 
 a {
 	color:black;
