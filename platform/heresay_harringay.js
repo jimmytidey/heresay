@@ -499,9 +499,9 @@ heresay.addCookieSettings = function () {
 	else {no_state ='checked="checked"';}
 
 	var html = '<fieldset class="nolegend" id="heresayButtons" >';
-	html += '<h3>Heresay Mapping Plugin </h3>';
+	html += '<div class="xg_module_head" >Heresay Mapping Plugin </h3>';
 	html += '<ul class="nobullets">';
-	html += '<li><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
+	html += '<li style="margin-bottom:3px;"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
 	html += '<li><label><input id="heresayOff" type="radio" class="radio heresaybtn" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
 	html += '</ul>';
 	html += '</fieldset>';

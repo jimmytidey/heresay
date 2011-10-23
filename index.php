@@ -39,6 +39,8 @@ if (is_array($distinct_thread_results)) {
 
 <h1>What is Heresay?</h1>
 
+<p>Please note that Heresay is in beta at the moment. If you have any problems you can let me know at jimmytidey@gmail.com. </p>
+
 <p>Finding out what's being said about your area online can be difficult. Heresay gathers geographically specific conversations together and puts them on a map to make them easier to find.</p>
 
 <p>The Heresay icon is integrated into forums and blogs, and allows users to drop a pin on a map to identify the location that page is specific too. Once the conversation has been given a location we can put it on our central map.</p> 
