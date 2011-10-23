@@ -16,7 +16,7 @@ h1,p,span {
 	position:absolute;
 	top:30px;
 	left:50%;
-	margin-left:-400px;
+	margin-left:-385px;
 	z-index:10;
 }
 
@@ -42,13 +42,14 @@ h1,p,span {
 #container {
 	position:absolute;
 	top:470px;
-	width: 800px; 
+	width: 780px; 
 	left:50%; 
 	margin-left:-400px;
 	background-image:url(../images/content_background.png); 
 	background-repeat:no-repeat;
-	padding:20px;
 	z-index:1;
+	padding:30px 30px;
+	background-repeat:repeat-y;
 }
 
 

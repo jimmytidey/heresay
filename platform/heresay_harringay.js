@@ -158,7 +158,13 @@ heresay.validation.update = function() {
 	
 	//can't detect clicks inside the iFrame
 	setInterval( function() {
+		//if it's a forum post 
 		var bodyText = jQuery('#post_ifr').contents().find('body').html();
+		//if it's an blog post
+		if (bodyText === null) {bodyText = jQuery('#post_body_ifr').contents().find('body').html();}
+		//if it's an event
+		if (bodyText === null) {bodyText = jQuery('#description_ifr').contents().find('body').html();}
+		
 		if (bodyText !== '<br _mce_bogus="1">' && bodyText !== '' ){heresay.validation.showTick('#body_status');}
 		else {heresay.validation.showCross('#body_status');}
 		heresay.validation.progressBarDraw(); 	
