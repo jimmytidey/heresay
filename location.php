@@ -11,9 +11,7 @@
 
 $loction_name = mysql_real_escape_string(urldecode($_GET['location_name']));
 $adminName3= mysql_real_escape_string(urldecode($_GET['adminName3']));
-
 $title = mysql_real_escape_string(urldecode($_GET['title']));
-
 $thread_id = mysql_real_escape_string(urldecode($_GET['thread_id']));
 
 
@@ -51,7 +49,7 @@ else { // find all locations with matchign place names
 			
 			?>
 			
-			<h1><a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>"><? echo $thread_result[0]['title']; ?></a></h1>
+			<h1><a target='_blank' href="http://<? echo $thread_result[0]['domain_name']; ?>/<? echo $thread_result[0]['path']; ?>"><? echo stripslashes($thread_result[0]['title']); ?></a></h1>
 	
 			<p><? echo $thread_result[0]['body']; ?></p>
 		
