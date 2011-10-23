@@ -45,12 +45,8 @@
 				myPoint = new LatLonPoint(heresay.lat, heresay.lng);
 
 				// set zoom 
-				heresay.zoom = 14;
-				
-				if (heresay.zoom === undefined || heresay.zoom === '') {
-					heresay.zoom = 13;
-				}
-															
+				heresay.zoom = 13;
+										
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
 				
@@ -61,7 +57,7 @@
 				});
 							
 				//Do ajax request for points 	
-				var base_url = "find_threads.php?"; 
+				var base_url = "api/find_threads.php?"; 
 				
 				var lat = gup('lat');
 				var lng = gup('lng');
