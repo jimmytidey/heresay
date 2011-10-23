@@ -331,30 +331,32 @@ heresay.processPost = function(index, element) {
 
 //adds the map icon
 heresay.insertIcon = function(data, index) {
-
-    var html_element;
-    var icon_style = 'float:right; cursor:pointer; ';
-    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
-
-    if (index == 0) {icon_style += 'top:-0px;';}
-    else {icon_style += 'top:0px;';}
 	
-	// test to see if post has been located 
-    if (data == 'no results found') {
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
-    }
+	if (index===0 ) {
+	    var html_element;
+	    var icon_style = 'float:right; cursor:pointer; ';
+	    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 
-    else {
-		//handling the case where there is no specific location 
-		var location_name = data[0]['location_name'];
-		if (data[0]['no_specific_location'] == 1) {location_name = "No specific location";}
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
-    }
+	    if (index == 0) {icon_style += 'top:-0px;';}
+	    else {icon_style += 'top:0px;';}
+	
+		// test to see if post has been located 
+	    if (data == 'no results found') {
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
+	    }
 
-    // attach a click handler to each of the buttons
-    jQuery('.byline').eq(index).children('.heresay_icon').click(function() {
-        heresay.clickIcon(this, index);
-    });
+	    else {
+			//handling the case where there is no specific location 
+			var location_name = data[0]['location_name'];
+			if (data[0]['no_specific_location'] == 1) {location_name = "No specific location";}
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
+	    }
+
+	    // attach a click handler to each of the buttons
+	    jQuery('.byline').eq(index).children('.heresay_icon').click(function() {
+	        heresay.clickIcon(this, index);
+	    });
+	}
 }
 
 //opens the modal window
