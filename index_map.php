@@ -97,7 +97,7 @@
 		
 		var int=self.setInterval("heresay.rndBubble()",4000);
 		
-		heresay.rndBubble() = function() {
+		heresay.rndBubble = function() {
 			var numberOfMarkers = heresay.mapstraction.markers.length; 
 			
 			var randomnumber=Math.floor(Math.random()*numberOfMarkers)
