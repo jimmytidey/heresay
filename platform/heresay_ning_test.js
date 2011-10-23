@@ -289,6 +289,8 @@ heresay.saveAddDiscussionLoction = function() {
 		
 		// instead of saving this on the fly, submit it a cookie which can save on the next page load 
 		heresay.setCookie('heresay_data', data, 30, '/', '', '' );
+		window.onbeforeunload ='';
+	 	jQuery('#add_topic_form').submit();
 		 
 		/* 
 		//have to do this as a jsonp request 	
@@ -475,7 +477,7 @@ jQuery(document).ready(function() {
 	
 	//first, check, is there any cookie data? 
 	if (heresay.getCookie('heresay_data') !== null) {
-		alert(heresay.getCookie('heresay_data'));
+		alert(heresay.getCookie('heresay_data'));	
 	}
 	
 	
