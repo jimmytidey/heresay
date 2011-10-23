@@ -36,16 +36,16 @@
 					heresay.lat = heresay.center[0]; 
 					heresay.lng = heresay.center[1];		
 				}
-				
+
 				else {
-					heresay.lat = 51.5001524;
-					heresay.lng = -0.1262362;
+					heresay.lat = 51.548470058664954;
+					heresay.lng = -0.0556182861328125;
 				}
 
 				myPoint = new LatLonPoint(heresay.lat, heresay.lng);
 
 				// set zoom 
-				heresay.zoom = 13;
+				heresay.zoom = 11;
 										
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
