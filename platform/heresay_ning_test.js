@@ -274,7 +274,7 @@ heresay.saveAddDiscussionLoction = function() {
 	
 		var save_marker_position = heresay.marker.getPosition();
 		var date = new Date();
-		url =  heresay.baseURL+"/api/write_comment.php?";
+	
 		data = 'domain_name='+document.domain; 
 		//data += '&path=/forum/topics/'+jQuery('#url').val(); ;
 		data += '&sub_page_id=0';
@@ -294,6 +294,7 @@ heresay.saveAddDiscussionLoction = function() {
 		 
 		/* 
 		//have to do this as a jsonp request 	
+			url =  heresay.baseURL+"/api/write_comment.php?";
 		jQuery.getJSON(url+data+"&callback=?", function(data) {
 		   	//bet this doesn't work cross browser 
 			window.onbeforeunload ='';
@@ -474,10 +475,21 @@ heresay.getUrlVars = function() {
 }
 
 jQuery(document).ready(function() {
+
+	//first, check, is there any cookie data that needs to go in the db? 	
+	var cookie_write_data = heresay.getCookie('heresay_data')
 	
-	//first, check, is there any cookie data? 
-	if (heresay.getCookie('heresay_data') !== null) {
-		alert(heresay.getCookie('heresay_data'));	
+	if (cookie_write_data !== null) {
+ 		alert(cookie_write_data);
+
+		cookie_write_data = cookie_write_data+"&path="+window.location.pathname; 
+		
+		jQuery.getJSON(url+data+"&callback=?", function(data) {
+			alert(data);
+			heresay.setCookie('heresay_harringay', null, 30, '/', '', '' );	
+		});			
+			
+	
 	}
 	
 	
