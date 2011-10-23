@@ -49,7 +49,7 @@ if (is_array($distinct_thread_results)) {
 
 <h1>Get in touch</h1>
 
-<p>hello@heresay.org.uk</p> 
+<p>jimmytidey@gmail.co.uk</p> 
 
 </div >
 

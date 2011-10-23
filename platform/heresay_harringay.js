@@ -333,13 +333,10 @@ heresay.processPost = function(index, element) {
 heresay.insertIcon = function(data, index) {
 
     var html_element;
-
     var icon_style = 'float:right; cursor:pointer; ';
-
     var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 
     if (index == 0) {icon_style += 'top:-0px;';}
-
     else {icon_style += 'top:0px;';}
 	
 	// test to see if post has been located 
@@ -348,14 +345,9 @@ heresay.insertIcon = function(data, index) {
     }
 
     else {
-		
 		//handling the case where there is no specific location 
 		var location_name = data[0]['location_name'];
-		
-		if (data[0]['no_specific_location'] == 1) {
-			location_name = "No specific location";
-		}
-		
+		if (data[0]['no_specific_location'] == 1) {location_name = "No specific location";}
         jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
     }
 
@@ -373,16 +365,14 @@ heresay.clickIcon = function(element, index) {
     {
 
         var title = escape(jQuery(".tb h1").html());
-        var bodytext = escape(jQuery('.discussion').eq(index).html());
+		var bodytext = escape(jQuery('.xg_user_generated').eq(index).html());
 
         var domain = escape(document.domain);
         var thread_date = jQuery('.navigation li a').eq(5).html().replace('on').split('at');
         thread_date = escape(thread_date[0]);
 
         var homeurl = location.pathname;
-
         var sub_page_id = heresay.findSubPageId(element);
-		
 		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 470px; width:100px; z-index: 15; height:26px;"; 
 
         //add the modal window
