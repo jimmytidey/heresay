@@ -4,12 +4,12 @@ heresay = new Object();
 heresay.validation = new Object();
 
 //the api url
-heresay.baseURL = 'http://test.heresay.org.uk'; 
+heresay.baseURL = 'http://heresay.org.uk'; 
 
 //this is the location the pop up map centres on by default 
-heresay.homeCoords = '51.4609323,-0.1160239';
-heresay.lat = 51.4609323;
-heresay.lng = -0.1160239;
+heresay.homeCoords = '51.577629,-0.091721';
+heresay.lat = 51.577629;
+heresay.lng = -0.091721;
 
 
 //init function triggers icon adding
@@ -55,14 +55,14 @@ heresay.addDiscussionLoction = function() {
 	heresay.locationHTML = "<p style='position:relative; top:22px'>Location:</p>"+
 	"<div style='position:relative; left:120px; margin-bottom:20px'>" +
 		"<p><label for='location_possible'>This post is about a specific location</label>"+
-		"<input type='checkbox' checked='checked' id='location_possible'></p>"+
+		"<input type='checkbox' checked='checked' id='location_possible' /></p>"+
 		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
 		"<input type='text' id='location_name' />";
 	
-	var mapHtml = '<p>Now drag the red marker to the location you want to refer to</p>' 	
+	var mapHtml = '<br/> <p>Now drag the red marker to the location you want to refer to</p>' 	
 	mapHtml += '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
-	var selectHtml = "<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
+	var selectHtml = "<br/><label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
 	
 	selectHtml += "<option value='select'>-select category-</option>";
 	selectHtml += "<option value='Local shops and cafes'>Local shops and cafes</option>";
@@ -79,11 +79,7 @@ heresay.addDiscussionLoction = function() {
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(heresay.locationHTML+mapHtml+selectHtml); 
 
-	//hide / show the map depending on the status of the check box 
-	jQuery('#location_possible').change(function() {
-		jQuery('#toggle_content').slideToggle(); 
-		jQuery('.geo_hide').slideToggle();		
-	});
+
 	
 	//load the map into it's div 
     var myOptions = {
@@ -104,16 +100,24 @@ heresay.addDiscussionLoction = function() {
 	
 	//Stop the form from submitting when the user clicks the add button
 	//for some reason you cannot change the type of an element once it is in the DOM 
-	jQuery('input[value="Add Discussion"]').after('<input type="button" value="Add discussion" class="button action-primary">');
 	jQuery('input[value="Add Discussion"]').remove(); 
+	jQuery('.xj_preview_button').before('<input type="button" class="button" id="heresay_submit" value="Add Discussion" />');
 	
+	jQuery('#heresay_submit').unbind('click');
+		
 	//make the submit button save to our database 
-	jQuery('input[value="Add discussion"]').click(function(){
+	jQuery('#heresay_submit').click(function(){
 		heresay.saveAddDiscussionLoction(); 
 	});
 	
 	//keep monitoring the validation status
 	heresay.drawValidation();
+	
+	//hide or show the map depending on the status of the check box 
+	jQuery('#location_possible').click(function() {
+		jQuery('#toggle_content').toggle(); 
+		jQuery('.geo_hide').toggle();		
+	});
 
 }
 
@@ -121,8 +125,8 @@ heresay.drawValidation = function() {
 	var validationHTML = '<div id="heresay_validation" style ="margin-left:120px; font-size:14px"><p><strong>Before you add.</strong> The more information you provide the more feedback you are likely to get.</p>'; 
 	validationHTML +="<ul id='progress_indicator' ><li><img id='title_status' class='validation_status'  >Give your post a title (required)</li>";
 	validationHTML +="<li><img id='body_status' class='validation_status'  >Explain what your post is about (required)</li>";
-	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  >Indicate a location on map</li>";
-	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  >Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_status' class='validation_status'  />Indicate a location on map</li>";
+	validationHTML +="<li class='geo_hide'><img id='location_name_status' class='validation_status'  />Name the location (eg. 'Red Lion Pub', 'Church Street', 'Fountain in the park')</li>";
 	validationHTML +="<li><img id='category_status' class='validation_status'  >Choose a category</li>";
 	validationHTML +="<li><img id='tag_status' class='validation_status'  >Tag the post (eg 'child care' or 'police')</li>";		
 	validationHTML +="</ul><div id='progress_bar' style='width:200px; height:20px; border: 1px solid black' ><div id='progress_bar_fill' style='background-color:red; width:0px; height:20px'></div></div><span id='percent_complete' style='position:relative; top:0px; right:21s0px;'>0%</span></li></div>";
@@ -154,7 +158,13 @@ heresay.validation.update = function() {
 	
 	//can't detect clicks inside the iFrame
 	setInterval( function() {
+		//if it's a forum post 
 		var bodyText = jQuery('#post_ifr').contents().find('body').html();
+		//if it's an blog post
+		if (bodyText === null) {bodyText = jQuery('#post_body_ifr').contents().find('body').html();}
+		//if it's an event
+		if (bodyText === null) {bodyText = jQuery('#description_ifr').contents().find('body').html();}
+		
 		if (bodyText !== '<br _mce_bogus="1">' && bodyText !== '' ){heresay.validation.showTick('#body_status');}
 		else {heresay.validation.showCross('#body_status');}
 		heresay.validation.progressBarDraw(); 	
@@ -245,11 +255,17 @@ heresay.saveAddDiscussionLoction = function() {
 	var body = jQuery('#post_ifr').contents().find('body').html();
 	body = body.replace('<br _mce_bogus="1">', "");
 	
-	if (title == "") {alert("You must enter a title for this discussion");}
-	else if (body == "") {alert("You must add some text to this discussion");}
-	else if (jQuery('#location_name').val() == "") {alert("You must name the location, or uncheck the 'This post is about a specific location' box.");}
-	else if (jQuery('#location_status').attr('class') == "cross") {alert("You indicate the location on the map,  or uncheck the 'This post is about a specific location' box.");}
-
+	if (title === "") {alert("You must enter a title for this discussion");}
+	
+	else if (body === "") {alert("You must add some text to this discussion");}
+	
+	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_name').val() === "") { 
+		alert("You must name the location, or uncheck the 'This post is about a specific location' box.");
+	}
+	
+	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_status').attr('class') !== "tick") {
+		alert("You indicate the location on the map, or uncheck the 'This post is about a specific location' box.");
+	}
 	
 	else {
 		
@@ -260,30 +276,35 @@ heresay.saveAddDiscussionLoction = function() {
 		var date = new Date();
 		url =  heresay.baseURL+"/api/write_comment.php?";
 		data = 'domain_name='+document.domain; 
-		data += '&path=/forum/topics/'+jQuery('#url').val(); ;
+		//data += '&path=/forum/topics/'+jQuery('#url').val(); ;
 		data += '&sub_page_id=0';
 		data += '&lat='+save_marker_position.lat(); 
 		data += '&lng='+save_marker_position.lng();
 		data += '&location_name='+ jQuery('#location_name').val();
 		data += '&thread_date='+ parseInt(date.getTime()/1000);
-		data += '&type=test';
+		data += '&type='+jQuery('#type').val();
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;
-	
-	
+		
+		// instead of saving this on the fly, submit it a cookie which can save on the next page load 
+		heresay.setCookie('heresay_data', data, 30, '/', '', '' );
+		 
+		/* 
 		//have to do this as a jsonp request 	
 		jQuery.getJSON(url+data+"&callback=?", function(data) {
 		   	//bet this doesn't work cross browser 
 			window.onbeforeunload ='';
 		 	jQuery('#add_topic_form').submit();
 		});
+		*/
+		
 	}
 }
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
 heresay.addIndexMap = function() {
-	var mapHtml = '<iframe style="width:735px; height:320px" src="http://test.heresay.org.uk/api/iframe.php?center='+heresay.homeCoords+'&zoom=15" id="forum_iframe" scrolling="no" frameborder="no" >';
+	var mapHtml = '<iframe style="width:735px; height:320px" src="'+heresay.baseURL+'/api/iframe.php?center='+heresay.homeCoords+'&zoom=13&domain_name='+window.location.hostname+'" id="forum_iframe" scrolling="no" frameborder="no" >';
 	jQuery('.categories').before(mapHtml);
 }
 
@@ -316,38 +337,32 @@ heresay.processPost = function(index, element) {
 
 //adds the map icon
 heresay.insertIcon = function(data, index) {
-
-    var html_element;
-
-    var icon_style = 'float:right; cursor:pointer; ';
-
-    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
-
-    if (index == 0) {icon_style += 'top:-0px;';}
-
-    else {icon_style += 'top:0px;';}
 	
-	// test to see if post has been located 
-    if (data == 'no results found') {
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
-    }
+	if (index===0 ) {
+	    var html_element;
+	    var icon_style = 'float:right; cursor:pointer; ';
+	    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 
-    else {
-		
-		//handling the case where there is no specific location 
-		var location_name = data[0]['location_name'];
-		
-		if (data[0]['no_specific_location'] == 1) {
-			location_name = "No specific location";
-		}
-		
-        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
-    }
+	    if (index == 0) {icon_style += 'top:-0px;';}
+	    else {icon_style += 'top:0px;';}
+	
+		// test to see if post has been located 
+	    if (data == 'no results found') {
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "'>Locate This Comment</p></div>");
+	    }
 
-    // attach a click handler to each of the buttons
-    jQuery('.byline').eq(index).children('.heresay_icon').click(function() {
-        heresay.clickIcon(this, index);
-    });
+	    else {
+			//handling the case where there is no specific location 
+			var location_name = data[0]['location_name'];
+			if (data[0]['no_specific_location'] == 1) {location_name = "No specific location";}
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
+	    }
+
+	    // attach a click handler to each of the buttons
+	    jQuery('.byline').eq(index).children('.heresay_icon').click(function() {
+	        heresay.clickIcon(this, index);
+	    });
+	}
 }
 
 //opens the modal window
@@ -358,20 +373,18 @@ heresay.clickIcon = function(element, index) {
     {
 
         var title = escape(jQuery(".tb h1").html());
-        var bodytext = escape(jQuery('.discussion').eq(index).html());
+		var bodytext = escape(jQuery('.xg_user_generated').eq(index).html());
 
         var domain = escape(document.domain);
         var thread_date = jQuery('.navigation li a').eq(5).html().replace('on').split('at');
         thread_date = escape(thread_date[0]);
 
         var homeurl = location.pathname;
-
         var sub_page_id = heresay.findSubPageId(element);
-		
 		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 470px; width:100px; z-index: 15; height:26px;"; 
 
         //add the modal window
-        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"/platform/images/modal_background.png);background-repeat:none'><p><a id='garden_fence_close' style='float:right; z-index:20' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p>	<input type='button' value='close' id='close_button_overlay' style='"+close_button_style+"' /> <iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe_test.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:485px; width:530px; margin: -10px 20px 0px 20px; z-index:10' ></iframe> </div>");
+        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"/platform/images/modal_background.png);background-repeat:none; z-index:5;'><p><a id='garden_fence_close' style='float:right; z-index:20' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p>	<iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:485px; width:530px; margin: -10px 20px 0px 20px; z-index:10' ></iframe><input type='button' value='close' id='close_button_overlay' style='"+close_button_style+"' />  </div>");
 		
 		$('#close_button_overlay').click(function() {
 			heresay.closeModal();
@@ -395,7 +408,7 @@ heresay.clickIcon = function(element, index) {
 
 heresay.closeModal = function() {
 	jQuery('#garden_fence_modal').remove();
-    heresay.init();
+    heresay.init(); 
 }
 
 heresay.findSubPageId = function(element) {
@@ -459,14 +472,19 @@ heresay.getUrlVars = function() {
 }
 
 jQuery(document).ready(function() {
-
+	
+	//first, check, is there any cookie data? 
+	if (heresay.getCookie('heresay_data') !== null) {
+		alert(heresay.getCookie('heresay_data'));
+	}
+	
+	
 	//init if the cookie has been set
 	if (heresay.getCookie('heresay_harringay') === 'yes') {
 		heresay.init();
 	}
 
 	if (heresay.getCookie('heresay_harringay') === undefined) {
-		alert('resetting cookie')
 		heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
 	}
 
@@ -493,23 +511,25 @@ heresay.addCookieSettings = function () {
 	else {no_state ='checked="checked"';}
 
 	var html = '<fieldset class="nolegend" id="heresayButtons" >';
-	html += '<h3>Heresay Mapping Plugin </h3>';
-	html += '<ul class="nobullets">';
-	html += '<li><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
+	html += '</div><div class="xg_module_head" >Heresay Mapping Plugin </div>';
+	html += '<div class="xg_module_body"><ul class="nobullets">';
+	html += '<li style="margin-bottom:3px"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
 	html += '<li><label><input id="heresayOff" type="radio" class="radio heresaybtn" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
 	html += '</ul>';
-	html += '</fieldset>';
+	html += '</fieldset></div>';
 
 	jQuery('.xg_sprite-setting').after(html); 
 
 	jQuery('.heresaybtn').change(function(){
 		if ($('input:radio[name=heresaySetting]:checked').val() == 'On') {
 			heresay.setCookie('heresay_harringay', 'yes', 30, '/', '', '');
+			alert('Heresay is now turned on');	
 		}
 
-		else {heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '');}
-
-		alert('Saved');		 
+		else {
+			heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '');
+			alert('Heresay is switched off');	
+		}	 
 	});
 }
 
