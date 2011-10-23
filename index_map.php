@@ -92,6 +92,17 @@
 						}
 					});
 				});
+				
+		//randomly open bubbles every few seconds 
+		
+		var int=self.setInterval("heresay.rndBubble()",4000);
+		
+		heresay.rndBubble() = function() {
+			var numberOfMarkers = heresay.mapstraction.markers.length; 
+			
+			var randomnumber=Math.floor(Math.random()*numberOfMarkers)
+			heresay.mapstraction.markers[randomnumber].openBubble();
+		}		
 		
 		});
  		
