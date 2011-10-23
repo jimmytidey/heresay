@@ -482,9 +482,9 @@ jQuery(document).ready(function() {
 	if (cookie_write_data !== null) {
  		alert(cookie_write_data);
 
-		cookie_write_data = cookie_write_data+"&path="+window.location.pathname; 
+		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 		
-		jQuery.getJSON(url+data+"&callback=?", function(data) {
+		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+data+"&callback=?", function(data) {
 			alert(data);
 			heresay.setCookie('heresay_harringay', null, 30, '/', '', '' );	
 		});			
