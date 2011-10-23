@@ -24,7 +24,7 @@ include('db_functions.php');
 	
 
 
-<div id='container'>
+<div id='location_container'>
 <?
 
 $loction_name = mysql_real_escape_string(urldecode($_GET['location_name']));
