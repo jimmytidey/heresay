@@ -499,12 +499,12 @@ heresay.addCookieSettings = function () {
 	else {no_state ='checked="checked"';}
 
 	var html = '<fieldset class="nolegend" id="heresayButtons" >';
-	html += '<div class="xg_module_head" >Heresay Mapping Plugin </div>';
-	html += '<ul class="nobullets">';
+	html += '</div><div class="xg_module_head" >Heresay Mapping Plugin </div>';
+	html += '<div class="xg_module_body"><ul class="nobullets">';
 	html += '<li style="margin-bottom:3px"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
 	html += '<li><label><input id="heresayOff" type="radio" class="radio heresaybtn" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
 	html += '</ul>';
-	html += '</fieldset>';
+	html += '</fieldset></div>';
 
 	jQuery('.xg_sprite-setting').after(html); 
 
