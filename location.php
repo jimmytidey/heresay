@@ -16,7 +16,7 @@ include('db_functions.php');
 <script type="text/javascript">
 </script>
 
-<link rel=StyleSheet href="style/style.css" type="text/css" media='screen' />
+<link rel=StyleSheet href="/style/style.css" type="text/css" media='screen' />
 
 <head>
 
