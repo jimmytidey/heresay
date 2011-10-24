@@ -33,10 +33,9 @@
 
 						heresay.lat = gup('lat');
 						heresay.lng = gup('lng');
-						heresay.title = gup('title');
-						heresay.type = gup('type');
-						heresay.domain_name = gup('domain_name');
-						heresay.category = gup('category');
+						heresay.title = encode(gup('title'));
+						heresay.domain_name = encode(gup('domain_name'));
+						heresay.category = encode(gup('category'));
 
 						// create a lat/lon for center 
 						var center = gup('center');
