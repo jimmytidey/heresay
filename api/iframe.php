@@ -33,9 +33,9 @@
 
 						heresay.lat = gup('lat');
 						heresay.lng = gup('lng');
-						heresay.title = escape(gup('title'));
-						heresay.domain_name = escape(gup('domain_name'));
-						heresay.category = escape(gup('category'));
+						heresay.title = unescape(gup('title'));
+						heresay.domain_name = unescape(gup('domain_name'));
+						heresay.category = unescape(gup('category'));
 
 						// create a lat/lon for center 
 						var center = gup('center');
@@ -77,7 +77,7 @@
 						//Do ajax request for points 	
 						var base_url = "find_threads.php?"; 
 
-						var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+heresay.title+"&type="+heresay.category+"&domain_name="+heresay.domain_name;
+						var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+escape(heresay.title)+"&type="+escape(heresay.category)+"&domain_name="+escape(heresay.domain_name);
 
 						var url = base_url+query; 
 
