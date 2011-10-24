@@ -24,119 +24,138 @@
 			return results[1];
 		}     
 		
-		$(document).ready(function() {
-	
-				heresay = new Object(); 
-				
-				// initialise the map with your choice of API
-				heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
-				
-				heresay.lat = gup('lat');
-				heresay.lng = gup('lng');
-				heresay.title = gup('title');
-				heresay.type = gup('type');
-				heresay.domain_name = gup('domain_name');
-				heresay.category = gup('category');
+		heresay = new Object();
 		
-				// create a lat/lon for center 
-				var center = gup('center');
-				
-				if (center != undefined && center != '') {
-					heresay.center = center.split(',');
-					heresay.lat = heresay.center[0]; 
-					heresay.lng = heresay.center[1];		
-				}
-				
-				else {
-					heresay.lat = 51.5001524;
-					heresay.lng = -0.1262362;
-				}
+					heresay.drawMap = function() {
 
-				myPoint = new LatLonPoint(heresay.lat, heresay.lng);
+						// initialise the map with your choice of API
+						heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
 
-				// set zoom 
-				heresay.zoom = parseInt(gup('zoom'));
-				
-				if (heresay.zoom === undefined || heresay.zoom === '') {
-					heresay.zoom = 13;
-				}
-															
-				// display the map centered on a latitude and longitude (Google zoom levels)
-				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
-				
-				heresay.mapstraction.addControls({
-					pan: true, 
-					zoom: 'small',
-					map_type: true 
-				});
-				
-				heresay.addPoints = function() { 
-					
-					heresay.mapstraction.removeAllMarkers();
-							
-					//Do ajax request for points 	
-					var base_url = "find_threads.php?"; 
-				
-					var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+heresay.title+"&type="+heresay.category+"&domain_name="+heresay.domain_name;
-				
-					var url = base_url+query; 
-								
-					$.getJSON(url, function(data) {
-					
-						var results = eval(data); 
-				
-						$.each(results, function(key, val) {
-						
-							if (val.no_specific_location == '0') {
-					
-								var myPoint = new LatLonPoint(val.lat, val.lng);
-						
-								var my_marker = new Marker(myPoint);
-						
-								var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
-								text += val.body.substring(0,150); 
-								text += "...";
-								my_marker.setInfoBubble(text);		
-						
-								my_marker.setLabel(val.title);
+						heresay.lat = gup('lat');
+						heresay.lng = gup('lng');
+						heresay.title = gup('title');
+						heresay.type = gup('type');
+						heresay.domain_name = gup('domain_name');
+						heresay.category = gup('category');
 
-								heresay.mapstraction.addMarker(my_marker);	
-							}
+						// create a lat/lon for center 
+						var center = gup('center');
+
+						if (center != undefined && center != '') {
+							heresay.center = center.split(',');
+							heresay.lat = heresay.center[0]; 
+							heresay.lng = heresay.center[1];		
+						}
+
+						else {
+							heresay.lat = 51.5001524;
+							heresay.lng = -0.1262362;
+						}
+
+						myPoint = new LatLonPoint(heresay.lat, heresay.lng);
+
+						// set zoom 
+						heresay.zoom = parseInt(gup('zoom'));
+
+						if (heresay.zoom === undefined || heresay.zoom === '') {
+							heresay.zoom = 13;
+						}
+
+						// display the map centered on a latitude and longitude (Google zoom levels)
+						heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
+
+						heresay.mapstraction.addControls({
+							pan: true, 
+							zoom: 'small',
+							map_type: true 
 						});
-					});
-				}	
-				
-				
-				heresay.categoryFilter= function() {
-					var domain_name = gup('domain_name');
-					var base_url = "get_categories.php?";
-					var query = "domain_name="+domain_name;
-					var url = base_url+query;
-					
-					$.getJSON(url, function(data) {
-							
-						heresay.results = eval(data); 
-						var selected; 
+					}	
 
-						$.each(heresay.results, function(key, val) {
+					heresay.addPoints = function() { 
+
+						heresay.mapstraction.removeAllMarkers();
+
+						//Do ajax request for points 	
+						var base_url = "find_threads.php?"; 
+
+						var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+heresay.title+"&type="+heresay.category+"&domain_name="+heresay.domain_name;
+
+						var url = base_url+query; 
+
+						$.getJSON(url, function(data) {
+
+							var results = eval(data); 
+
+							$.each(results, function(key, val) {
+
+								if (val.no_specific_location == '0') {
+
+									var myPoint = new LatLonPoint(val.lat, val.lng);
+
+									var my_marker = new Marker(myPoint);
+
+									var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
+									
+									if (val.body !== null) {
+										
+										if (val.body.length > 150) { 
+											text += val.body.substring(0,150); 
+											text += "...";
+										}	
+										
+										my_marker.setInfoBubble(text);											
+									}
 							
-							
-							if (heresay.catetory === val.type) {selected ="selected='selected'";}
-							else {selected ='';}
-							
-							$('#filter').append('<option '+selected+' name="'+val.type+'" >'+val.type+'</option>');
-						}); 
+									my_marker.setLabel(val.title);
+
+									heresay.mapstraction.addMarker(my_marker);	
+								}
+							});
+						});
+					}	
+
+
+					heresay.categoryFilter= function() {
 						
-						$('#filter').change(function() {
-								heresay.category = $('#filter').val();
-								heresay.addPoints(); 
-						}); 
-						
-					});
-				} 
-				
-				heresay.categoryFilter()
+						var base_url = "get_categories.php?";
+						var query = "domain_name="+heresay.domain_name;
+						var url = base_url+query;
+
+						$.getJSON(url, function(data) {
+
+							heresay.results = eval(data); 
+							var selected; 
+
+							$.each(heresay.results, function(key, val) {
+
+
+								if (heresay.catetory === val.type) {selected ="selected='selected'";}
+								else {selected ='';}
+
+								$('#filter').append('<option '+selected+' name="'+val.type+'" >'+val.type+'</option>');
+							}); 
+
+							$('#filter').change(function() {
+									heresay.category = $('#filter').val();
+									if (heresay.category === "all_categories") {
+										heresay.category = '';
+									}	
+									heresay.addPoints(); 
+							}); 
+
+						});
+					}		
+		
+		$(document).ready(function() {
+				heresay.drawMap(); 
 				heresay.addPoints()
+				
+				if (heresay.domain_name !== null && heresay.domain_name !== '' ) {
+					heresay.categoryFilter()
+				}
+				else {
+					$("#category_filter").hide();
+				}
 		});
  		
 	</script>
@@ -182,7 +201,7 @@
 	<div id='category_filter'>
 		<p>Filter by category</p>
 		<select id='filter' name='filter'>
-		
+			<option value='all_categories'>All Categories</option>
 		</select>
 	</div>
 	

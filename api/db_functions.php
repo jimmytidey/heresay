@@ -29,6 +29,4 @@ function unstrip_array($array){
     }
 return $array;
 }
-
-
 ?>
