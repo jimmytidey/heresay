@@ -87,7 +87,7 @@
 
 							$.each(results, function(key, val) {
 
-								if (val.no_specific_location == '0') {
+								if (val.no_specific_location === '0') {
 
 									var myPoint = new LatLonPoint(val.lat, val.lng);
 
@@ -100,9 +100,11 @@
 										if (val.body.length > 150) { 
 											text += val.body.substring(0,150); 
 											text += "...";
-										}						
+										}	
+										else {
+											text += val.body;
+										}					
 									}
-									else {text='';}
 									
 									my_marker.setInfoBubble(text);
 									
