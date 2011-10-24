@@ -282,7 +282,7 @@ heresay.saveAddDiscussionLoction = function() {
 		data += '&lng='+save_marker_position.lng();
 		data += '&location_name='+ jQuery('#location_name').val();
 		data += '&thread_date='+ parseInt(date.getTime()/1000);
-		data += '&type='+jQuery('#category').val();
+		data += '&type='+$("#category option:selected").text();
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;
