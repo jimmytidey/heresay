@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Mapstraction -  demo</title>
+    <title>Heresay</title>
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
 
@@ -30,7 +30,13 @@
 				
 				// initialise the map with your choice of API
 				heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
-			
+				
+				heresay.lat = gup('lat');
+				heresay.lng = gup('lng');
+				heresay.title = gup('title');
+				heresay.type = gup('type');
+				heresay.domain_name = gup('domain_name');
+				heresay.category = gup('category');
 		
 				// create a lat/lon for center 
 				var center = gup('center');
@@ -63,44 +69,71 @@
 					zoom: 'small',
 					map_type: true 
 				});
+				
+				heresay.addPoints = function() { 
 							
-				//Do ajax request for points 	
-				var base_url = "find_threads.php?"; 
+					//Do ajax request for points 	
+					var base_url = "find_threads.php?"; 
+			
 				
-				var lat = gup('lat');
-				var lng = gup('lng');
-				var title = gup('title');
-				var type = gup('type');
-				var domain_name = gup('domain_name');
+					var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+heresay.title+"&type="+heresay.category+"&domain_name="+heresay.domain_name;
 				
-				var query = "lat="+lat+"&lng="+lng+"&title="+title+"&type="+type+"&domain_name="+domain_name;
-				
-				var url = base_url+query; 
+					var url = base_url+query; 
 								
-				$.getJSON(url, function(data) {
+					$.getJSON(url, function(data) {
 					
-					var results = eval(data); 
+						var results = eval(data); 
 				
-					$.each(results, function(key, val) {
+						$.each(results, function(key, val) {
 						
-						if (val.no_specific_location == '0') {
+							if (val.no_specific_location == '0') {
 					
-							var myPoint = new LatLonPoint(val.lat, val.lng);
+								var myPoint = new LatLonPoint(val.lat, val.lng);
 						
-							var my_marker = new Marker(myPoint);
+								var my_marker = new Marker(myPoint);
 						
-							var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
-							text += val.body.substring(0,150); 
-							text += "...";
-							my_marker.setInfoBubble(text);		
+								var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
+								text += val.body.substring(0,150); 
+								text += "...";
+								my_marker.setInfoBubble(text);		
 						
-							my_marker.setLabel(val.title);
+								my_marker.setLabel(val.title);
 
-							heresay.mapstraction.addMarker(my_marker);	
-						}
+								heresay.mapstraction.addMarker(my_marker);	
+							}
+						});
 					});
-				});
-		
+				}	
+				
+				heresay.categoryFilter= function() {
+					var domain_name = gup('domain_name');
+					var base_url = "get_categories.php?";
+					var query = "domain_name="+domain_name;
+					var url = base_url+query;
+					
+					$.getJSON(url, function(data) {
+							
+						heresay.results = eval(data); 
+						var selected; 
+
+						$.each(heresay.results, function(key, val) {
+							
+							
+							if (heresay.catetory === val.type) {selected ="selected='selected'";}
+							else {selected ='';}
+							
+							$('#filter').append('<option '+selected+' name="'+val.type+'" >'+val.type+'</option>');
+						}); 
+						
+						$('#filter').change(function() {
+								heresay.category = $('#filter').val();
+								heresay.addPoints(); 
+						}); 
+						
+					});
+				} 
+				
+				heresay.categoryFilter()
 		});
  		
 	</script>
@@ -109,17 +142,47 @@
 	
 	<style type="text/css">
 		
-		body,html {margin:0px; border:0px; height:100%;}
+		body,html {
+			margin:0px; 
+			border:0px; 
+			height:100%;
+			font:arial;
+		}
+		
+		p, select {margin:0px; padding:0x; display:inline; font-family:helvetica,arial;}
 		
 		#mapstraction {
 			height: 100%;
 			width: 100%;
+			z-index:1;
 		}
+		
+		#category_filter {
+			padding:2px;
+			position:absolute;
+			top:5px;
+			right:5px;
+			background-color:white;
+			width:300px;
+			height:22px;
+			z-index:200;
+		}
+		
+		#filter {
+			width:150px;
+		}
+		
     </style> 
 </head>
 <body>
 
-
+	<div id='category_filter'>
+		<p>Filter by category</p>
+		<select id='filter' name='filter'>
+		
+		</select>
+	</div>
+	
 	<div id="mapstraction" style="position:relative;  height: 100%; width: 100% "></div>
 
 
