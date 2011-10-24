@@ -532,7 +532,7 @@ heresay.addCookieSettings = function () {
 	html += '</ul>';
 	html += '</fieldset></div>';
 
-	jQuery('.xg_module_body .account-links').after(html); 
+	jQuery('.xg_module_account').after(html); 
 
 	jQuery('.heresaybtn').change(function(){
 		if ($('input:radio[name=heresaySetting]:checked').val() == 'On') {
