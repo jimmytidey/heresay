@@ -100,11 +100,12 @@
 										if (val.body.length > 150) { 
 											text += val.body.substring(0,150); 
 											text += "...";
-										}	
-										
-										my_marker.setInfoBubble(text);											
+										}						
 									}
-							
+									else {text='';}
+									
+									my_marker.setInfoBubble(text);
+									
 									my_marker.setLabel(val.title);
 
 									heresay.mapstraction.addMarker(my_marker);	
