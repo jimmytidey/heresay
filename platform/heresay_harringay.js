@@ -134,6 +134,10 @@ heresay.drawValidation = function() {
 	jQuery('.buttongroup').before(validationHTML);
 	jQuery('.validation_tick').hide();
 	
+	//so that validation makes sense, need to add a null category to the select drop down 
+	jQuery('#category').prepend('<option val="default">---Select ---</option>');
+	jQuery('#category').val('default');
+	
 	//update the validation as soon as anyone hits the page
 	heresay.validation.showCross('.validation_status');
 	jQuery('li img').css('margin-right', '10px');
@@ -527,7 +531,7 @@ heresay.addCookieSettings = function () {
 	var html = '<fieldset class="nolegend" id="heresayButtons" >';
 	html += '<div class="xg_module_head" >Heresay Mapping Plugin </div>';
 	html += '<div class="xg_module_body"><ul class="nobullets">';
-	html += '<li style="margin-bottom:3px"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
+	html += '<li style="margin-bottom:6px"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
 	html += '<li><label><input id="heresayOff" type="radio" class="radio heresaybtn" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
 	html += '</ul>';
 	html += '</fieldset></div>';

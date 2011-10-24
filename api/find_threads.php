@@ -78,7 +78,7 @@ if (!empty($thread_query_array)) { // make the query from the array
 	$distinct_thread_query .=" WHERE ". implode(' && ', $thread_query_array);
 }
 
-$distinct_thread_query .=" LIMIT 100"; 
+$distinct_thread_query .=" LIMIT 50"; 
 
 
 $distinct_thread_results = db_q($distinct_thread_query);
