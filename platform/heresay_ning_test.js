@@ -481,7 +481,6 @@ jQuery(document).ready(function() {
 	var cookie_write_data = heresay.getCookie('heresay_data')
 	
 	if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
- 		alert(cookie_write_data);
 
 		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 		
