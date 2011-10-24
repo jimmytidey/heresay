@@ -71,10 +71,11 @@
 				});
 				
 				heresay.addPoints = function() { 
+					
+					heresay.mapstraction.removeAllMarkers();
 							
 					//Do ajax request for points 	
 					var base_url = "find_threads.php?"; 
-			
 				
 					var query = "lat="+heresay.lat+"&lng="+heresay.lng+"&title="+heresay.title+"&type="+heresay.category+"&domain_name="+heresay.domain_name;
 				
@@ -105,6 +106,7 @@
 					});
 				}	
 				
+				
 				heresay.categoryFilter= function() {
 					var domain_name = gup('domain_name');
 					var base_url = "get_categories.php?";
@@ -134,6 +136,7 @@
 				} 
 				
 				heresay.categoryFilter()
+				heresay.addPoints()
 		});
  		
 	</script>
