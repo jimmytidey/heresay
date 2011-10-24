@@ -4,7 +4,7 @@ heresay = new Object();
 heresay.validation = new Object();
 
 //the api url
-heresay.baseURL = 'http://test.heresay.org.uk'; 
+heresay.baseURL = 'http://test.heresay.org.uk'; // don't forget that the iframe location needs to change 
 
 //this is the location the pop up map centres on by default 
 heresay.homeCoords = '51.577629,-0.091721';
@@ -486,33 +486,33 @@ jQuery(document).ready(function() {
 		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 		
 		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
-			alert(data);
-			heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );	
+			heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
+			heresay.init();	
 		});			
 			
 	
 	}
 	
+	else {
+		//init if the cookie has been set
+		if (heresay.getCookie('heresay_harringay') === 'yes') {
+			heresay.init();
+		}
+
+		if (heresay.getCookie('heresay_harringay') === undefined) {
+			heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
+		}
+
+		//put a control in for adding a cookie
 	
-	//init if the cookie has been set
-	if (heresay.getCookie('heresay_harringay') === 'yes') {
-		heresay.init();
+		var path_array;
+		path_array = location.pathname.split('/')
+
+
+		if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
+			heresay.addCookieSettings();
+		}
 	}
-
-	if (heresay.getCookie('heresay_harringay') === undefined) {
-		heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
-	}
-
-	//put a control in for adding a cookie
-	
-	var path_array;
-	path_array = location.pathname.split('/')
-
-
-	if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
-		heresay.addCookieSettings();
-	}
-
 
 });
 
