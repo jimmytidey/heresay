@@ -251,9 +251,9 @@ heresay.saveAddDiscussionLoction = function() {
 	var url;
 	var data;
 	var no_specific_location; 
-	var title = jQuery('#title').val();
+	var title = escape(jQuery('#title').val());
 	var body = jQuery('#post_ifr').contents().find('body').html();
-	body = body.replace('<br _mce_bogus="1">', "");
+	body = escape(body.replace('<br _mce_bogus="1">', ""));
 	
 	if (title === "") {alert("You must enter a title for this discussion");}
 	
@@ -282,7 +282,7 @@ heresay.saveAddDiscussionLoction = function() {
 		data += '&lng='+save_marker_position.lng();
 		data += '&location_name='+ jQuery('#location_name').val();
 		data += '&thread_date='+ parseInt(date.getTime()/1000);
-		data += '&type='+$("#category option:selected").text();
+		data += '&type='+escape($("#category option:selected").text());
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;
