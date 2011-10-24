@@ -19,6 +19,16 @@ function db_q($query)
 }
 
 
+function unstrip_array($array){
+    foreach($array as &$val){
+        if(is_array($val)){
+            $val = unstrip_array($val);
+        }else{
+            $val = stripslashes($val);
+        }
+    }
+return $array;
+}
 
 
 ?>
