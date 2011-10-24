@@ -62,7 +62,7 @@ heresay.addDiscussionLoction = function() {
 	var mapHtml = '<br/> <p>Now drag the red marker to the location you want to refer to</p>' 	
 	mapHtml += '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
-	var selectHtml = "<br/><label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
+	var selectHtml = "<br/><!--<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
 	
 	selectHtml += "<option value='select'>-select category-</option>";
 	selectHtml += "<option value='Local shops and cafes'>Local shops and cafes</option>";
@@ -74,7 +74,7 @@ heresay.addDiscussionLoction = function() {
 	selectHtml += "<option value='Item or service'>Item or service</option>";
 	selectHtml += "<option value='No Category'>No Category</option>";
 
-	selectHtml += "</select></div>";
+	selectHtml += "</select>--></div>";
 	
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(heresay.locationHTML+mapHtml+selectHtml); 
@@ -183,9 +183,9 @@ heresay.validation.update = function() {
 		heresay.validation.progressBarDraw();		
 	});
 
-	$("#type").change(function() {
+	$("#category").change(function() {
 		
-		var category = jQuery('#type').val();
+		var category = jQuery('#category').val();
 		
 		if (category !== 'select') {heresay.validation.showTick('#category_status');}
 		else {heresay.validation.showCross('#category_status');}
@@ -282,7 +282,7 @@ heresay.saveAddDiscussionLoction = function() {
 		data += '&lng='+save_marker_position.lng();
 		data += '&location_name='+ jQuery('#location_name').val();
 		data += '&thread_date='+ parseInt(date.getTime()/1000);
-		data += '&type='+jQuery('#type').val();
+		data += '&type='+jQuery('#category').val();
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;

@@ -4,7 +4,7 @@ heresay = new Object();
 heresay.validation = new Object();
 
 //the api url
-heresay.baseURL = 'http://heresay.org.uk'; 
+heresay.baseURL = 'http://heresay.org.uk'; // don't forget that the iframe location needs to change 
 
 //this is the location the pop up map centres on by default 
 heresay.homeCoords = '51.577629,-0.091721';
@@ -62,7 +62,7 @@ heresay.addDiscussionLoction = function() {
 	var mapHtml = '<br/> <p>Now drag the red marker to the location you want to refer to</p>' 	
 	mapHtml += '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
 	
-	var selectHtml = "<br/><label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
+	var selectHtml = "<br/><!--<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
 	
 	selectHtml += "<option value='select'>-select category-</option>";
 	selectHtml += "<option value='Local shops and cafes'>Local shops and cafes</option>";
@@ -74,7 +74,7 @@ heresay.addDiscussionLoction = function() {
 	selectHtml += "<option value='Item or service'>Item or service</option>";
 	selectHtml += "<option value='No Category'>No Category</option>";
 
-	selectHtml += "</select></div>";
+	selectHtml += "</select>--></div>";
 	
 	//add the map canvas element 
 	jQuery('#xj_post_dd').after(heresay.locationHTML+mapHtml+selectHtml); 
@@ -183,9 +183,9 @@ heresay.validation.update = function() {
 		heresay.validation.progressBarDraw();		
 	});
 
-	$("#type").change(function() {
+	$("#category").change(function() {
 		
-		var category = jQuery('#type').val();
+		var category = jQuery('#category').val();
 		
 		if (category !== 'select') {heresay.validation.showTick('#category_status');}
 		else {heresay.validation.showCross('#category_status');}
@@ -274,25 +274,34 @@ heresay.saveAddDiscussionLoction = function() {
 	
 		var save_marker_position = heresay.marker.getPosition();
 		var date = new Date();
-		url =  heresay.baseURL+"/api/write_comment.php?";
+	
 		data = 'domain_name='+document.domain; 
-		data += '&path=/forum/topics/'+jQuery('#url').val(); ;
+		//data += '&path=/forum/topics/'+jQuery('#url').val(); ;
 		data += '&sub_page_id=0';
 		data += '&lat='+save_marker_position.lat(); 
 		data += '&lng='+save_marker_position.lng();
 		data += '&location_name='+ jQuery('#location_name').val();
 		data += '&thread_date='+ parseInt(date.getTime()/1000);
-		data += '&type='+jQuery('#type').val();
+		data += '&type='+jQuery('#category').val();
 		data += '&body='+body;
 		data += '&title='+title;
 		data += '&no_specific_location='+no_specific_location;
-	
+		
+		// instead of saving this on the fly, submit it a cookie which can save on the next page load 
+		heresay.setCookie('heresay_data', data, 30, '/', '', '' );
+		window.onbeforeunload ='';
+	 	jQuery('#add_topic_form').submit();
+		 
+		/* 
 		//have to do this as a jsonp request 	
+			url =  heresay.baseURL+"/api/write_comment.php?";
 		jQuery.getJSON(url+data+"&callback=?", function(data) {
 		   	//bet this doesn't work cross browser 
 			window.onbeforeunload ='';
 		 	jQuery('#add_topic_form').submit();
 		});
+		*/
+		
 	}
 }
 
@@ -332,6 +341,7 @@ heresay.processPost = function(index, element) {
 //adds the map icon
 heresay.insertIcon = function(data, index) {
 	
+	//hack to put this against the first topic only
 	if (index===0 ) {
 	    var html_element;
 	    var icon_style = 'float:right; cursor:pointer; ';
@@ -402,7 +412,7 @@ heresay.clickIcon = function(element, index) {
 
 heresay.closeModal = function() {
 	jQuery('#garden_fence_modal').remove();
-    heresay.init();
+    heresay.init(); 
 }
 
 heresay.findSubPageId = function(element) {
@@ -467,25 +477,41 @@ heresay.getUrlVars = function() {
 
 jQuery(document).ready(function() {
 
-	//init if the cookie has been set
-	if (heresay.getCookie('heresay_harringay') === 'yes') {
-		heresay.init();
-	}
-
-	if (heresay.getCookie('heresay_harringay') === undefined) {
-		heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
-	}
-
-	//put a control in for adding a cookie
+	//first, check, is there any cookie data that needs to go in the db? 	
+	var cookie_write_data = heresay.getCookie('heresay_data')
 	
-	var path_array;
-	path_array = location.pathname.split('/')
+	if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
 
-
-	if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
-		heresay.addCookieSettings();
+		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
+		
+		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
+			heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
+			heresay.init();	
+		});			
+			
+	
 	}
+	
+	else {
+		//init if the cookie has been set
+		if (heresay.getCookie('heresay_harringay') === 'yes') {
+			heresay.init();
+		}
 
+		if (heresay.getCookie('heresay_harringay') === undefined) {
+			heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
+		}
+
+		//put a control in for adding a cookie
+	
+		var path_array;
+		path_array = location.pathname.split('/')
+
+
+		if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
+			heresay.addCookieSettings();
+		}
+	}
 
 });
 
@@ -588,3 +614,10 @@ heresay.setCookie = function (name, value, expires, path, domain, secure )
 }
 
 
+// this deletes the cookie when called
+heresay.deleteCookie = function (name, path, domain) {
+if ( Get_Cookie( name ) ) document.cookie = name + "=" +
+( ( path ) ? ";path=" + path : "") +
+( ( domain ) ? ";domain=" + domain : "" ) +
+";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+}
