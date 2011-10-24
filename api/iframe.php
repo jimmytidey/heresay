@@ -130,11 +130,11 @@
 
 							$.each(heresay.results, function(key, val) {
 
-
-								if (heresay.catetory === val.type) {selected ="selected='selected'";}
-								else {selected ='';}
-
-								$('#filter').append('<option '+selected+' name="'+val.type+'" >'+val.type+'</option>');
+								if (val.type !== 'none') {
+									if (heresay.catetory === val.type) {selected ="selected='selected'";}
+									else {selected ='';}
+									$('#filter').append('<option '+selected+' name="'+val.type+'" >'+val.type+'</option>');
+								}
 							}); 
 
 							$('#filter').change(function() {
