@@ -391,7 +391,7 @@ heresay.clickIcon = function(element, index) {
         var homeurl = location.pathname;
 		
 		//this to work out what the category of the post is 
-		var category =; 
+		var category; 
 		var category_link;
 		category = jQuery('.byline a').eq(3).html()
 		category_link = jQuery('.byline a').eq(3).attr('href');
