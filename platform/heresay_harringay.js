@@ -355,15 +355,18 @@ heresay.insertIcon = function(data, index) {
 	    else {icon_style += 'top:0px;';}
 	
 		// test to see if post has been located 
-	    if (data == 'no results found') {
+	    if (data === 'no results found') {
 	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_button.png' class='garden_fence_icon' /></div>");
 	    }
+	
+		else if (data[0]['location_name'] === "No specific location") {
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/no_specific_button.png' class='garden_fence_icon' /></div>");			
+		}
 
 	    else {
 			//handling the case where there is no specific location 
-			var location_name = data[0]['location_name'];
-			if (data[0]['no_specific_location'] == 1) {location_name = "No specific location";}
-	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.jpg' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
+
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.png' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
 	    }
 
 	    // attach a click handler to each of the buttons
