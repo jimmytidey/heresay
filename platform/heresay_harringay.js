@@ -521,7 +521,6 @@ jQuery(document).ready(function() {
 		else {
 			//init if the cookie has been set
 			if (heresay.getCookie('heresay_harringay') === 'yes') {
-				alert('init');
 				heresay.init();
 			}
 
