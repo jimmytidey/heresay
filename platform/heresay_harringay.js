@@ -513,13 +513,7 @@ jQuery(document).ready(function() {
 			jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
 				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
 				heresay.init();
-			})
-			.error(function() { 
-				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
-				heresay.init();			
 			});
-			
-	
 		}
 	
 		else {
