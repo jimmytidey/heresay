@@ -521,6 +521,7 @@ jQuery(document).ready(function() {
 		else {
 			//init if the cookie has been set
 			if (heresay.getCookie('heresay_harringay') === 'yes') {
+				alert('init');
 				heresay.init();
 			}
 
@@ -533,7 +534,6 @@ jQuery(document).ready(function() {
 			var path_array;
 			path_array = location.pathname.split('/')
 
-
 			if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
 				heresay.addCookieSettings();
 			}
@@ -543,7 +543,7 @@ jQuery(document).ready(function() {
 });
 
 heresay.addCookieSettings = function () {
-
+	
 	var yes_state ='';
 	var no_state ='';
 
