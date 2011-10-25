@@ -182,18 +182,27 @@
 		}
 		
 		#category_filter {
-			padding:2px;
-			position:absolute;
-			top:5px;
-			right:5px;
-			background-color:white;
-			width:300px;
-			height:22px;
-			z-index:200;
+		    background-color: white;
+		    border: 1px solid black;
+		    font-size: 13px;
+		    height: 17px;
+		    padding: 2px;
+		    position: absolute;
+		    right: 5px;
+		    top: 5px;
+		    width: 293px;
+		    z-index: 200;
 		}
 		
+		#category_filter p {
+		    position: relative;
+		    top: 1px;
+			margin-left:2px;
+		}			
+		
 		#filter {
-			width:150px;
+			width:180px;
+			margin-left:5px;
 		}
 		
     </style> 
