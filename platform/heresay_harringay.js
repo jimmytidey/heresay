@@ -499,7 +499,7 @@ heresay.getUrlVars = function() {
 jQuery(document).ready(function() {
 	
 	//exclude old IE 
-	var version = heresay.getInternetExplorerVersion(); 
+	var version = heresay.getInternetExplorerVersion();
 	
 	if (version == -1 || version >= 8) { 
 		
@@ -541,7 +541,7 @@ jQuery(document).ready(function() {
 
 });
 
-heresay.addCookieSettings = function () {
+heresay.addCookieSettings = function() {
 	
 	var yes_state ='';
 	var no_state ='';
@@ -556,7 +556,7 @@ heresay.addCookieSettings = function () {
 	html += '<li style="margin-bottom:6px"><label><input id="heresayOn" type="radio" class="radio heresaybtn" name="heresaySetting" value="On" '+yes_state+' />On</label></li>';
 	html += '<li><label><input id="heresayOff" type="radio" class="radio heresaybtn" name="heresaySetting" value="Off" '+no_state+' />Off</label></li>';
 	html += '</ul>';
-	html += '</fieldset></div>';
+	html += '</fieldset>';
 
 	jQuery('#xg_module_account').after(html); 
 
@@ -574,7 +574,7 @@ heresay.addCookieSettings = function () {
 }
 
 
-heresay.getCookie = function ( check_name ) {
+heresay.getCookie = function( check_name ) {
 	// first we'll split this cookie up into name/value pairs
 	// note: document.cookie only returns name=value, not the other components
 	var a_all_cookies = document.cookie.split( ';' );
@@ -614,7 +614,7 @@ heresay.getCookie = function ( check_name ) {
 	}
 }
 	
-heresay.setCookie = function (name, value, expires, path, domain, secure )
+heresay.setCookie = function(name, value, expires, path, domain, secure )
 {
 	// set time, it's in milliseconds
 	var today = new Date();
