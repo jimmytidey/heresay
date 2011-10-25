@@ -504,7 +504,7 @@ jQuery(document).ready(function() {
 	if (version == -1 || version >= 8) { 
 		
 		//first, check, is there any cookie data that needs to go in the db? 	
-		var cookie_write_data = heresay.getCookie('heresay_data')
+		var cookie_write_data = heresay.getCookie('heresay_data');
 	
 		if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
 
@@ -513,7 +513,7 @@ jQuery(document).ready(function() {
 			jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
 				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
 				heresay.init();
-			});
+			}).error(function() { alert("error"); });
 		}
 	
 		else {
