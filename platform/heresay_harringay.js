@@ -501,7 +501,7 @@ jQuery(document).ready(function() {
 	//exclude old IE 
 	var version = heresay.getInternetExplorerVersion(); 
 	
-	if (version === -1 || version >= 8) { 
+	if (version == -1 || version >= 8) { 
 		
 		//first, check, is there any cookie data that needs to go in the db? 	
 		var cookie_write_data = heresay.getCookie('heresay_data')
