@@ -521,8 +521,7 @@ jQuery(document).ready(function() {
 					heresay.init();
 				},
 		     	error:function (xhr, ajaxOptions, thrownError){
-	            	alert(xhr.status);
-	            	alert(thrownError);
+					heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
 		        }    
 			});
 		}
