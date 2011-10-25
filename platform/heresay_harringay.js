@@ -364,9 +364,7 @@ heresay.insertIcon = function(data, index) {
 		}
 
 	    else {
-			//handling the case where there is no specific location 
-
-	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.png' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + location_name + "</p></div>");
+	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "'  ><img src='"+heresay.baseURL+"/platform/images/heresay_location_button.png' class='garden_fence_icon' /><p style='" + icon_text_style + "' >" + data[0]['location_name'] + "</p></div>");
 	    }
 
 	    // attach a click handler to each of the buttons
