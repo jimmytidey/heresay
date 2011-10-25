@@ -348,7 +348,7 @@ heresay.insertIcon = function(data, index) {
 	//hack to put this against the first topic only
 	if (index===0 ) {
 	    var html_element;
-	    var icon_style = 'float:right; cursor:pointer; ';
+	    var icon_style = 'float:right; cursor:pointer; margin-left:3px; ';
 	    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 
 	    if (index == 0) {icon_style += 'top:-0px;';}
@@ -359,7 +359,7 @@ heresay.insertIcon = function(data, index) {
 	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_button.png' class='garden_fence_icon' /></div>");
 	    }
 	
-		else if (data[0]['location_name'] === "No specific location") {
+		else if (data[0]['no_specific_location'] === "1") {
 	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/no_specific_button.png' class='garden_fence_icon' /></div>");			
 		}
 
