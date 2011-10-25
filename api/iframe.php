@@ -29,7 +29,7 @@
 					heresay.drawMap = function() {
 
 						// initialise the map with your choice of API
-						heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
+						heresay.mapstraction = new Mapstraction('mapstraction','google');
 
 						heresay.lat = gup('lat');
 						heresay.lng = gup('lng');
@@ -93,18 +93,20 @@
 
 									var my_marker = new Marker(myPoint);
 
-									var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
+									var text ="<div style='height:110px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+val.title+"</a></strong><br/>";
 									
 									if (val.body !== null) {
 										
-										if (val.body.length > 150) { 
-											text += val.body.substring(0,150); 
+										if (val.body.length > 120) { 
+											text += val.body.substring(0,120); 
 											text += "...";
 										}	
 										else {
 											text += val.body;
 										}					
 									}
+									
+									text += '</div>';
 									
 									my_marker.setInfoBubble(text);
 									
