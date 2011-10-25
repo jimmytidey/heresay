@@ -24,7 +24,7 @@ $location_name  = mysql_real_escape_string($_GET['location_name']);
 $thread_date 	= mysql_real_escape_string(strtotime(urldecode($_GET['thread_date']))); 
 $title 			= mysql_real_escape_string($_GET['title']);
 $body 			= mysql_real_escape_string($_GET['body']); 
-$type 			= mysql_real_escape_string($_GET['type']); 
+$type 			= mysql_real_escape_string(htmlspecialchars_decode($_GET['type'])); 
 $sub_page_id	= mysql_real_escape_string($_GET['sub_page_id']);
 $no_specific_location	= mysql_real_escape_string($_GET['no_specific_location']); 
 

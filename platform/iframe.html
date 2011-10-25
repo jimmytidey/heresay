@@ -46,6 +46,7 @@ heresay.init = function () {
 	var domain_name = heresay.gup('domain');
 	var home_url = heresay.gup('home_url');
 	var sub_page_id = heresay.gup('sub_page_id');
+	var type = heresay.gup('type');
 
 	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
@@ -193,6 +194,7 @@ heresay.init = function () {
 			data += '&type=none'; 
 			data += '&body='+body_text;
 			data += '&title='+title;
+			data += '&type='+type;
 			data += '&no_specific_location='+no_specific_location;
 
 			

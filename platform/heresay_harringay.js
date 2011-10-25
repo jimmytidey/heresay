@@ -191,7 +191,7 @@ heresay.validation.update = function() {
 		
 		var category = jQuery('#category').val();
 		
-		if (category !== 'select') {heresay.validation.showTick('#category_status');}
+		if (category !== '---Select ---') {heresay.validation.showTick('#category_status');}
 		else {heresay.validation.showCross('#category_status');}
 		
 		/*
@@ -389,11 +389,27 @@ heresay.clickIcon = function(element, index) {
         thread_date = escape(thread_date[0]);
 
         var homeurl = location.pathname;
+		
+		//this to work out what the category of the post is 
+		var category =; 
+		var category_link;
+		category = jQuery('.byline a').eq(3).html()
+		category_link = jQuery('.byline a').eq(3).attr('href');
+		if (category_link != undefined) {
+		    category_link = category_link.split('/'); 
+		    if (jQuery.inArray('category', category_link > -1)) {
+		        category = category.replace('&amp;', '&'); 
+		    }
+		}
+		
+		if (category === null) {category ='';}
+		
+
         var sub_page_id = heresay.findSubPageId(element);
 		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 462px; width:100px; z-index: 15; height:26px;"; 
 
         //add the modal window
-        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"/platform/images/modal_background.png);background-repeat:none; z-index:5;'><p><a id='garden_fence_close' style='float:right; z-index:20' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p>	<iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id + "&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:485px; width:530px; margin: -10px 20px 0px 20px; z-index:10' ></iframe><input type='button' value='close' id='close_button_overlay' style='"+close_button_style+"' />  </div>");
+        jQuery('body').append("<div id='garden_fence_modal' style='background-image: url("+heresay.baseURL+"/platform/images/modal_background.png);background-repeat:none; z-index:5;'><p><a id='garden_fence_close' style='float:right; z-index:20' href='#'><img src='"+heresay.baseURL+"/platform/images/cross.png' style='margin-right:20px; margin-top:20px; ' /> </a></p>	<iframe id='map_iframe' src='"+heresay.baseURL+"/platform/iframe.html?title=" + title + "&body_text=" + bodytext + "&home_url=" + homeurl + "&domain=" + domain + "&thread_date=" + thread_date + "&sub_page_id=" + sub_page_id +"&type"+category+"&center="+heresay.homeCoords+"' frameborder='0' scrolling='vertical' style='height:485px; width:530px; margin: -10px 20px 0px 20px; z-index:10' ></iframe><input type='button' value='close' id='close_button_overlay' style='"+close_button_style+"' />  </div>");
 		
 		$('#close_button_overlay').click(function() {
 			heresay.closeModal();
@@ -481,42 +497,48 @@ heresay.getUrlVars = function() {
 }
 
 jQuery(document).ready(function() {
-
-	//first, check, is there any cookie data that needs to go in the db? 	
-	var cookie_write_data = heresay.getCookie('heresay_data')
 	
-	if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
-
-		cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
+	//exclude old IE 
+	var version = heresay.getInternetExplorerVersion(); 
+	
+	if (version === -1 || version >= 8) { 
 		
-		jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
-			heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
-			heresay.init();	
-		});			
+		//first, check, is there any cookie data that needs to go in the db? 	
+		var cookie_write_data = heresay.getCookie('heresay_data')
+	
+		if (cookie_write_data !== null && cookie_write_data !== 'no_write') {
+
+			cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
+		
+			jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
+				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
+				heresay.init();	
+			});			
 			
 	
-	}
+		}
 	
-	else {
-		//init if the cookie has been set
-		if (heresay.getCookie('heresay_harringay') === 'yes') {
-			heresay.init();
-		}
+		else {
+			//init if the cookie has been set
+			if (heresay.getCookie('heresay_harringay') === 'yes') {
+				heresay.init();
+			}
 
-		if (heresay.getCookie('heresay_harringay') === undefined) {
-			heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
-		}
+			if (heresay.getCookie('heresay_harringay') === undefined) {
+				heresay.setCookie('heresay_harringay', 'no', 30, '/', '', '' );
+			}
 
-		//put a control in for adding a cookie
+			//put a control in for adding a cookie
 	
-		var path_array;
-		path_array = location.pathname.split('/')
+			var path_array;
+			path_array = location.pathname.split('/')
 
 
-		if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
-			heresay.addCookieSettings();
+			if (jQuery('.xg_sprite-setting').length > 0 && path_array[1] === "profile") {
+				heresay.addCookieSettings();
+			}
 		}
-	}
+	}	
 
 });
 
@@ -626,3 +648,32 @@ if ( Get_Cookie( name ) ) document.cookie = name + "=" +
 ( ( domain ) ? ";domain=" + domain : "" ) +
 ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
 }
+
+
+heresay.getInternetExplorerVersion = function ()
+// Returns the version of Internet Explorer or a -1
+// (indicating the use of another browser).
+{
+  var rv = -1; // Return value assumes failure.
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
+}
+
+
+heresay.escapeHtml = function(unsafe) {
+    return unsafe
+        .replace("&", "&")
+        .replace("<", "<")
+        .replace(">", ">")
+        .replace("\"", """)
+        .replace("'", "'");
+}
+
+
+
