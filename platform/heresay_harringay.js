@@ -512,10 +512,19 @@ jQuery(document).ready(function() {
 			
 			console.log(cookie_write_data);
 			
-			jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
-				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
-				heresay.init();
-			}).error(function() { alert("error"); });
+			jQuery.ajax({
+				type: "GET",
+				url: heresay.baseURL+ "/api/write_comment.php?",
+				data:+cookie_write_data+"&callback=?",
+				success:function(response){
+					heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
+					heresay.init();
+				},
+		     	error:function (xhr, ajaxOptions, thrownError){
+	            	alert(xhr.status);
+	            	alert(thrownError);
+		        }    
+			});
 		}
 	
 		else {
