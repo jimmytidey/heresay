@@ -666,14 +666,5 @@ heresay.getInternetExplorerVersion = function ()
 }
 
 
-heresay.escapeHtml = function(unsafe) {
-    return unsafe
-        .replace("&", "&")
-        .replace("<", "<")
-        .replace(">", ">")
-        .replace("\"", """)
-        .replace("'", "'");
-}
-
 
 
