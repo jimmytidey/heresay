@@ -510,8 +510,6 @@ jQuery(document).ready(function() {
 
 			cookie_write_data = cookie_write_data+"&path="+window.location.pathname;
 			
-			console.log()
-			
 			jQuery.getJSON(heresay.baseURL+"/api/write_comment.php?"+cookie_write_data+"&callback=?", function(data) {
 				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '' );
 				heresay.init();
@@ -522,7 +520,7 @@ jQuery(document).ready(function() {
 			
 		
 		}
-	
+		//no data needs writing 
 		else {
 			//init if the cookie has been set
 			if (heresay.getCookie('heresay_harringay') === 'yes') {
@@ -534,7 +532,6 @@ jQuery(document).ready(function() {
 			}
 
 			//put a control in for adding a cookie
-	
 			var path_array;
 			path_array = location.pathname.split('/')
 
