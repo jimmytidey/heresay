@@ -81,9 +81,21 @@
 						
 							var my_marker = new Marker(myPoint);
 						
-							var text ="<div style='height:110px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+unescape(val.title)+"</a></strong></div>";
-							text += unescape(val.body).substring(0,150); 
-							text += "...";
+							var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+unescape(val.title)+"</a></strong>";
+
+							if (val.body !== null) {
+								
+								if (val.body.length > 120) { 
+									text += val.body.substring(0,120); 
+									text += "...";
+								}	
+								else {
+									text += val.body;
+								}					
+							}
+							
+							text += '</div>';						
+							
 							my_marker.setInfoBubble(text);		
 						
 							my_marker.setLabel(val.title);
@@ -107,7 +119,7 @@
 		});
 		
 		$('#mapstraction').click(function() {
-			heresay.interval.clearInterval(); 
+			clearInterval(heresay.interval); 
 		}); 
  		
 	</script>
