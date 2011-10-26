@@ -81,7 +81,7 @@
 						
 							var my_marker = new Marker(myPoint);
 						
-							var text ="<strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+unescape(val.title)+"</a></strong><br/>";
+							var text ="<div style='height:110px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+unescape(val.title)+"</a></strong></div>";
 							text += unescape(val.body).substring(0,150); 
 							text += "...";
 							my_marker.setInfoBubble(text);		
@@ -95,7 +95,7 @@
 				
 		//randomly open bubbles every few seconds 
 		
-		var int=self.setInterval("heresay.rndBubble()",4000);
+		heresay.interval=self.setInterval("heresay.rndBubble()",4000);
 		
 		heresay.rndBubble = function() {
 			var numberOfMarkers = heresay.mapstraction.markers.length; 
@@ -105,6 +105,10 @@
 		}		
 		
 		});
+		
+		$('#mapstraction').click(function() {
+			heresay.interval.clearInterval(); 
+		}); 
  		
 	</script>
 	
