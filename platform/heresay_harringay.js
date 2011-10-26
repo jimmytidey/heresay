@@ -519,8 +519,9 @@ jQuery(document).ready(function() {
 		}
 		//no data needs writing 
 		else {
-			//init if the cookie has been set
-			if (heresay.getCookie('heresay_harringay') === 'yes') {
+			
+			//init if the cookie has been set and if this is not a blog post preview 
+			if (heresay.getCookie('heresay_harringay') === 'yes' && window.location.pathname !== '/profiles/blog/create') {
 				heresay.init();
 			}
 
