@@ -114,13 +114,15 @@
 			
 			var randomnumber=Math.floor(Math.random()*numberOfMarkers)
 			heresay.mapstraction.markers[randomnumber].openBubble();
-		}		
-		
-		});
+		}
 		
 		$('#mapstraction').click(function() {
 			clearInterval(heresay.interval); 
-		}); 
+		});		
+		
+});
+		
+
  		
 	</script>
 	
