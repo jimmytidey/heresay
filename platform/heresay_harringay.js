@@ -354,7 +354,7 @@ heresay.insertIcon = function(data, index) {
 	    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
 	
 		// test to see if post has been located 
-	    if (data === 'no results found') {
+	    if (data[0] === 'no results found') {
 	        jQuery('.byline').eq(index).prepend("<div class='heresay_icon' style='" + icon_style + "' ><img src='"+heresay.baseURL+"/platform/images/heresay_button.png' class='garden_fence_icon' /></div>");
 	    }
 	
