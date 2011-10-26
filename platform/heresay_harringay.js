@@ -139,7 +139,7 @@ heresay.drawValidation = function() {
 	jQuery('.validation_tick').hide();
 	
 	//so that validation makes sense, need to add a null category to the select drop down 
-	if (jQuery('#category').length > 0 ) { 
+	if (jQuery('#category').attr('type') !== 'hidden' ) { 
 		jQuery('#category').prepend('<option val="default">---Select ---</option>');
 		jQuery('#category').val('default');
 	}	
