@@ -327,7 +327,7 @@ heresay.processPost = function(index, element) {
 	var query_url;
 	
     //only add the locate button to posts and replies, but not replies to replies and further down
-	if (jQuery(element).parent().hasClass('i0') || jQuery(element).parent().parent().hasClass('xg_headline')) {
+	//if (jQuery(element).parent().hasClass('i0') || jQuery(element).parent().parent().hasClass('xg_headline')) {
 			
         if (jQuery(element).hasClass("navigation")) {heresay.sub_page_id = 0;}
 
@@ -342,7 +342,7 @@ heresay.processPost = function(index, element) {
         function(data) {
             heresay.insertIcon(data, index);
         });
-    }	
+    //}	
 };
 
 //adds the map icon
@@ -352,9 +352,6 @@ heresay.insertIcon = function(data, index) {
 	if (index === 0 ) {
 	    var icon_style = 'float:right; cursor:pointer; margin-left:3px; ';
 	    var icon_text_style = 'margin-left:72px; margin-top:-22px; font-size:12px;';
-
-	    if (index === 0) {icon_style += 'top:-0px;';}
-	    else {icon_style += 'top:0px;';}
 	
 		// test to see if post has been located 
 	    if (data === 'no results found') {
@@ -394,17 +391,24 @@ heresay.clickIcon = function(element, index) {
 		
 		//this to work out what the category of the post is 
 		var category; 
-		var category_link;
-		category = jQuery('.byline a').eq(3).html();
-		category_link = jQuery('.byline a').eq(3).attr('href');
-		if (category_link !== undefined) {
-		    category_link = category_link.split('/'); 
-		    if (jQuery.inArray('category', category_link > -1)) {
-		        category = escape(category.replace('&amp;', '&')); 
-		    }
+		var location_array = window.location.pathname.split('/'); 
+		if (location_array[1] === 'events') {category = 'Events'}
+		if (location_array[2] === 'events') {category = 'blog'}
+		
+		//this to extract the category from the post  
+		else { 
+			var category_link;
+			category = jQuery('.byline a').eq(3).html();
+			category_link = jQuery('.byline a').eq(3).attr('href');
+			if (category_link !== undefined) {
+			    category_link = category_link.split('/'); 
+			    if (jQuery.inArray('category', category_link > -1)) {
+			        category = escape(category.replace('&amp;', '&')); 
+			    }
+			}
 		}
 		
-		if (category === null) {category ='';}
+		if (category === null) {category ='none';}
 		
 
         var sub_page_id = heresay.findSubPageId(element);
