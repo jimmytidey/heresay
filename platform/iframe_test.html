@@ -47,7 +47,8 @@ heresay.init = function () {
 	var home_url = heresay.gup('home_url');
 	var sub_page_id = heresay.gup('sub_page_id');
 
-	jQuery.getJSON("http://test.heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
+
+	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
 		        
 		var location_name = '';
@@ -163,7 +164,8 @@ heresay.init = function () {
 		var domain_name = heresay.gup('domain');
 		var home_url = heresay.gup('home_url');	
 		var thread_date = heresay.gup('thread_date');	
-
+		var type = heresay.gup('type');
+		
 		if ((location_name=="" || location_name=="null") && $('#location_possible').prop('checked') == false) {
 			alert('You must enter a location name');
 		}
@@ -189,9 +191,11 @@ heresay.init = function () {
 			data += '&lng='+save_marker_position.lng();
 			data += '&location_name='+ location_name;
 			data += '&thread_date='+ thread_date;
-			data += '&type='+ type;
+			//data += '&type='+ type;
+			data += '&type=none'; 
 			data += '&body='+body_text;
 			data += '&title='+title;
+			data += '&type='+type;
 			data += '&no_specific_location='+no_specific_location;
 
 			
@@ -243,7 +247,7 @@ body, p, input, label {
 			<label for='location_name'>Location name </label>
 			<input type='text' id='location_name' style='width:200px'>
 		
-		
+			<!--
 			<select id='type' style='position:relative; left: 10px; top: 0px;'>
 				<option value='select'>-select category-</option>
 				<option value='Local shops and cafes'>Local shops and cafes</option>
@@ -255,7 +259,7 @@ body, p, input, label {
 				<option value='Item or service'>Item or service</option>
 				<option value='No Category'>No Category</option> 
 			</select>
-		
+			-->
 		</div>
 		
 		<div style='width:350px; postion:relative; margin:10px auto 0px auto;'>
