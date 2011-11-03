@@ -36,7 +36,9 @@ $thread_id = mysql_real_escape_string(urldecode($_GET['thread_id']));
 if (!empty($thread_id)) {// just write a single thread out 
 
 	$thread_query = "SELECT * FROM heresay_updates WHERE thread_id='$thread_id' ORDER BY time_stamp DESC LIMIT 1"; 
-
+	
+	echo $thread_query; 
+	
 	$thread_result = db_q($thread_query); 
 	 
 	$time = $thread_result[0]['thread_date'];
