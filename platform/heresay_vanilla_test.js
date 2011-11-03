@@ -47,14 +47,13 @@ heresay.addDiscussionLoction = function () {
 	
 	heresay.location_touch = 0; 
 
-	var locationHTML = ""+
-		"<div>"+
-		"<label for='location_possible'>This post is about a specific location</label>"+
+	var locationHTML = "<div style='margin:10px'>"+
+		"<label for='location_possible' margin-bottom:5px;>This post is about a specific location</label>"+
 		"<input type='checkbox' checked='checked' id='location_possible' />"+
 		"<div id='toggle_content'><label for='location_name'>How would you refer to this location?</label>"+
-		"<input type='text' id='location_name' />"+
+		"<input type='text' id='location_name' style='margin-left:5px;'/>"+
 		'<br/><p>Now drag the red marker to the location you want to refer to</p>'+
-		'<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div>'+
+		'<div id="map_canvas" style="width:700px; height:325px; margin-top:20px"></div>'+
 		'</div>';
 	
 	//add the map canvas element 
@@ -77,13 +76,7 @@ heresay.addDiscussionLoction = function () {
 		position: marker_position
 	});
 	
-	//Stop the form from submitting when the user clicks the add button
-	//for some reason you cannot change the type of an element once it is in the DOM 
-	jQuery('input[value="Add Discussion"]').remove(); 
-	jQuery('.xj_preview_button').before('<input type="button" class="button" id="heresay_submit" value="Add Discussion" />');
-	
-	jQuery('#heresay_submit').unbind('click');
-		
+
 	//make the submit button save to our database 
 	jQuery('#Form_PostDiscussion').click(function(){
 		heresay.saveAddDiscussionLoction(); 
@@ -98,64 +91,39 @@ heresay.addDiscussionLoction = function () {
 };
 
 
-
-
 heresay.saveAddDiscussionLoction = function() {
-		
 	var data;
 	var no_specific_location; 
 	var title = escape(jQuery('#Form_Name').val());
 	var body = jQuery('#Form_Body').val();
-
 	
-	if (title === "") {alert("You must enter a title for this discussion");}
-	
-	else if (body === "") {alert("You must add some text to this discussion");}
-	
-	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_name').val() === "") { 
-		alert("You must name the location, or uncheck the 'This post is about a specific location' box.");
-	}
-	
-	else if (jQuery('#location_possible').attr('checked') && jQuery('#location_status').attr('class') !== "tick") {
-		alert("You indicate the location on the map, or uncheck the 'This post is about a specific location' box.");
+	if (!jQuery('#location_possible').attr('checked')) { 
+		no_specific_location = 1; 
 	}
 	
 	else {
-		
-		if (jQuery('#location_possible').attr('checked')) {no_specific_location = 0;}
-		else {no_specific_location = 1;}
-	
-		var save_marker_position = heresay.marker.getPosition();
-		var date = new Date();
-	
-		data = 'domain_name='+document.domain; 
-		//data += '&path=/forum/topics/'+jQuery('#url').val(); ;
-		data += '&sub_page_id=0';
-		data += '&lat='+save_marker_position.lat(); 
-		data += '&lng='+save_marker_position.lng();
-		data += '&location_name='+ jQuery('#location_name').val();
-		data += '&thread_date='+ parseInt(date.getTime()/1000, 10);
-		data += '&type='+escape(jQuery("#category option:selected").text());
-		data += '&body='+body;
-		data += '&title='+title;
-		data += '&no_specific_location='+no_specific_location;
-		
-		// instead of saving this on the fly, submit it a cookie which can save on the next page load 
-		heresay.setCookie('heresay_data', data, 30, '/', '', '' );
-		window.onbeforeunload ='';
-		jQuery('#add_topic_form').submit();
-		 
-		/*
-		//have to do this as a jsonp request
-			url =  heresay.baseURL+"/api/write_comment.php?";
-			jQuery.getJSON(url+data+"&callback=?", function(data) {
-			//bet this doesn't work cross browser 
-			window.onbeforeunload ='';
-			jQuery('#add_topic_form').submit();
-		});
-		*/
-		
+		no_specific_location = 0; 	
 	}
+
+	var save_marker_position = heresay.marker.getPosition();
+	var date = new Date();
+
+	data = 'domain_name='+document.domain; 
+	//data += '&path=/forum/topics/'+jQuery('#url').val(); ;
+	data += '&sub_page_id=0';
+	data += '&lat='+save_marker_position.lat(); 
+	data += '&lng='+save_marker_position.lng();
+	data += '&location_name='+ jQuery('#location_name').val();
+	data += '&thread_date='+ parseInt(date.getTime()/1000, 10);
+	data += '&type='+escape(jQuery("#Form_CategoryID option:selected").text());
+	data += '&body='+body;
+	data += '&title='+title;
+	data += '&no_specific_location='+no_specific_location;
+	
+	// instead of saving this on the fly, submit it a cookie which can save on the next page load 
+	heresay.setCookie('heresay_data', data, 30, '/', '', '' );
+	window.onbeforeunload ='';
+	jQuery('#add_topic_form').submit();
 };
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
@@ -188,9 +156,7 @@ heresay.processPost = function(index, element) {
 
 //adds the map icon
 heresay.insertIcon = function(data, index) {
-	
-
-	
+		
 	//hack to put this against the first topic only
 	if (index === 0 ) {
 	    var icon_style = 'float:right; cursor:pointer; margin-left:10px; margin-top:6px ';
@@ -237,7 +203,7 @@ heresay.clickIcon = function(element, index) {
 
 		if (category === null) {category ='none';}
 
-        var sub_page_id = '0'
+        var sub_page_id = '0';
 
 		var close_button_style = "font-size: 16px; left: 328px; position: absolute; top: 462px; width:100px; z-index: 15; height:26px;"; 
 

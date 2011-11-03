@@ -48,7 +48,7 @@ heresay.init = function () {
 	var sub_page_id = heresay.gup('sub_page_id');
 
 
-	jQuery.getJSON("http://heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
+	jQuery.getJSON("http://test.heresay.org.uk/api/find_threads.php?domain_name="+domain_name+"&sub_page_id="+sub_page_id+"&path="+home_url+"&callback=?", 
 	function(data) {
 		        
 		var location_name = '';
@@ -246,27 +246,13 @@ body, p, input, label {
 		<div id='location_data'>
 			<label for='location_name'>Location name </label>
 			<input type='text' id='location_name' style='width:200px'>
-		
-			<!--
-			<select id='type' style='position:relative; left: 10px; top: 0px;'>
-				<option value='select'>-select category-</option>
-				<option value='Local shops and cafes'>Local shops and cafes</option>
-				<option value='Crime'>Crime</option>
-				<option value='Planning'>Planning</option>
-				<option value='Local Policy'>Council / public policy</option>
-				<option value='Events'>Events</option>
-				<option value='Travel'>Travel</option>
-				<option value='Item or service'>Item or service</option>
-				<option value='No Category'>No Category</option> 
-			</select>
-			-->
 		</div>
 		
 		<div style='width:350px; postion:relative; margin:10px auto 0px auto;'>
 			<label for='location_possible'>If location is not relevant to this discussion, tick this box </label><input type='checkbox' id='location_possible'></p>
 		</div>
 		
-		<input type='button' value='save' id='save_button' style='position:absolute; font-size:16px; top:437px; width:100px; left:195px; height:26px; margin-left:0px'  /> 
+		<input type='button' value='save' id='save_button' style='position:absolute; font-size:16px; top:428px; width:100px; left:168px; height:26px; margin-left:0px'  /> 
 		
 	</div>
   
