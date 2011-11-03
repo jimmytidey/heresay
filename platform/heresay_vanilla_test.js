@@ -14,7 +14,10 @@ heresay.lng = -0.112888;
 
 //init function triggers icon adding
 heresay.init = function () {
-
+	
+	//put a link in the right hand column
+	heresay.addPanelLink(); 
+	
 	//this for forum posts 
 	if (jQuery('.DiscussionTabs').length > 0) {
 		
@@ -131,6 +134,20 @@ heresay.addIndexMap = function() {
 	var mapHtml = '<iframe style="width:735px; height:320px" src="'+heresay.baseURL+'/api/iframe.php?center='+heresay.homeCoords+'&zoom=13&domain_name='+window.location.hostname+'" id="forum_iframe" scrolling="no" frameborder="no" >';
 	jQuery('#heresay_map').html(mapHtml);
 };
+
+
+//********************************* THIS FOR ADDING A LINK TO THE RIGHT HAND COLUMN 
+
+heresay.addPanelLink = function() {
+	var html = '<div class="category"><div id="inner">'+
+	'<div id="image"><a href="plugin/page/test"><img border="0" src="heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
+	'<div id="text"><h1><a href="http://www.stroudgreen.org/directory">In the area</a></h1>'+
+	'<p>Check out local pubs, shops &amp; restaurants</p>'+
+	'<a class="more" href="/plugin/page/test">Find out more</a>'+
+	'</div></div>' 
+
+	jQuery('#Panel').prepend(html); 
+}
 
 //********************************* THESE FUNCTIONS FOR ADDING LOCATIONS TO AFTER CREATION
 
