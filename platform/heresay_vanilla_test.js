@@ -131,7 +131,7 @@ heresay.saveAddDiscussionLoction = function() {
 
 //********************************* THIS FOR ADDING AN IFRAME MAP TO A USEFUL PAGE 
 heresay.addIndexMap = function() {
-	var mapHtml = '<iframe style="width:735px; height:320px" src="'+heresay.baseURL+'/api/iframe.php?center='+heresay.homeCoords+'&zoom=13&domain_name='+window.location.hostname+'" id="forum_iframe" scrolling="no" frameborder="no" >';
+	var mapHtml = '<iframe style="width:680px; height:520px" src="'+heresay.baseURL+'/api/iframe.php?center='+heresay.homeCoords+'&zoom=13&domain_name='+window.location.hostname+'" id="forum_iframe" scrolling="no" frameborder="no" >';
 	jQuery('#heresay_map').html(mapHtml);
 };
 
@@ -139,14 +139,16 @@ heresay.addIndexMap = function() {
 //********************************* THIS FOR ADDING A LINK TO THE RIGHT HAND COLUMN 
 
 heresay.addPanelLink = function() {
-	var html = '<div class="category"><div id="inner">'+
-	'<div id="image"><a href="plugin/page/test"><img border="0" src="http://heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
-	'<div id="text"><h1><a href="http://www.stroudgreen.org/directory">In the area</a></h1>'+
-	'<p>Check out local pubs, shops &amp; restaurants</p>'+
-	'<a class="more" href="/plugin/page/test">Find out more</a>'+
-	'</div></div>' 
+	//only display on non-heresay pages 
+	if (jQuery('#heresay_map').length === 0) {   
+		var html = '<div class="category"><div id="inner">'+
+		'<div id="image" style="width:90px; float:left;"><a href="plugin/page/heresay"><img border="0" src="http://heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
+		'<div id="text" style="width:143px; float:right;"><h1><a href="plugin/page/heresay">Heresay</a></h1>'+
+		'<p>View discussions by location</p>'+
+		'</div></div><br style="clear:both; margin-bottom:10px;" />'; 
 
-	jQuery('#Panel').prepend(html); 
+		jQuery('#Panel').prepend(html); 
+	}
 }
 
 //********************************* THESE FUNCTIONS FOR ADDING LOCATIONS TO AFTER CREATION
