@@ -140,7 +140,7 @@ heresay.addIndexMap = function() {
 
 heresay.addPanelLink = function() {
 	var html = '<div class="category"><div id="inner">'+
-	'<div id="image"><a href="plugin/page/test"><img border="0" src="heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
+	'<div id="image"><a href="plugin/page/test"><img border="0" src="http://heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
 	'<div id="text"><h1><a href="http://www.stroudgreen.org/directory">In the area</a></h1>'+
 	'<p>Check out local pubs, shops &amp; restaurants</p>'+
 	'<a class="more" href="/plugin/page/test">Find out more</a>'+
