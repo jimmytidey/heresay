@@ -140,10 +140,10 @@ heresay.addIndexMap = function() {
 
 heresay.addPanelLink = function() {
 	//only display on non-heresay pages 
-	if (jQuery('#heresay_map').length === 0) {   
-		var html = '<div class="category"><div id="inner">'+
-		'<div id="image" style="width:90px; float:left;"><a href="plugin/page/heresay"><img border="0" src="http://heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
-		'<div id="text" style="width:143px; float:right;"><h1><a href="plugin/page/heresay">Heresay</a></h1>'+
+	if (jQuery('#heresay_map').length === 0 && jQuery('#heresay_link').length) {   
+		var html = '<div id="heresay_link" class="category"><div id="inner">'+
+		'<div id="image" style="width:90px; float:left;"><a href="/forum/plugin/page/heresay"><img border="0" src="http://heresay.org.uk/platform/images/vanilla_logo.png"></a></div>'+
+		'<div id="text" style="width:143px; float:right;"><h1><a href="/forum/plugin/page/heresay">Heresay</a></h1>'+
 		'<p>View discussions by location</p>'+
 		'</div></div><br style="clear:both; margin-bottom:10px;" />'; 
 
