@@ -508,10 +508,10 @@ jQuery(document).ready(function() {
 
 			cookie_write_data += "&path="+window.location.pathname;
 
-			jQuery.getJSON(heresay.baseURL + "/api/write_comment.php?" + cookie_write_data + "&callback=?", function () {
+			jQuery.getJSON(heresay.baseURL + "/api/write_comment.php?" + cookie_write_data + "&callback=?", function() {
 				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '');
 				heresay.init();
-			}).error(function () {
+			}).error(function() {
 				heresay.setCookie('heresay_data', 'no_write', 30, '/', '', '');
 				heresay.init();
 			});
