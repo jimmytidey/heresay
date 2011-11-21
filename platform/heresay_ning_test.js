@@ -60,7 +60,7 @@ heresay.addDiscussionLoction = function() {
 		"<input type='text' id='location_name' />";
 	
 	var mapHtml = '<br/> <p>Now drag the red marker to the location you want to refer to</p>' 	
-	mapHtml += '<div id="map_canvas" style="width:610px; height:325px; margin-top:20px"></div></div>';
+	mapHtml += '<div id="map_canvas" style="width:610px; height:300px; margin-top:20px"></div></div>';
 	
 	var selectHtml = "<br/><!--<label for='type' >Categories:</label><select id='type' style='margin-left:40px'>";
 	

@@ -392,8 +392,8 @@ heresay.clickIcon = function(element, index) {
 		//this to work out what the category of the post is 
 		var category; 
 		var location_array = window.location.pathname.split('/'); 
-		if (location_array[1] === 'events') {category = 'Events'}
-		if (location_array[2] === 'events') {category = 'blog'}
+		if (location_array[1] === 'events') {category = 'Events';}
+		if (location_array[2] === 'events') {category = 'blog';}
 		
 		//this to extract the category from the post  
 		else { 
