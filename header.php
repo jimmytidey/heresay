@@ -5,9 +5,11 @@ include('db_functions.php');
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
 
+<html>
+
+<head>
+<meta charset="utf-8">
 <title>Heresay</title>
 
 

@@ -57,51 +57,41 @@
 				});
 							
 				//Do ajax request for points 	
-				var base_url = "api/find_threads.php?"; 
+				var base_url = "api/recent_threads.php?"; 
 				
-				var lat = gup('lat');
-				var lng = gup('lng');
-				var title = gup('title');
-				var type = gup('type');
-				var domain_name = gup('domain_name');
-				
-				var query = "lat="+lat+"&lng="+lng+"&title="+title+"&type="+type+"&domain_name="+domain_name;
-				
-				var url = base_url+query; 
-								
-				$.getJSON(url, function(data) {
+									
+				$.getJSON(base_url, function(data) {
 					
 					var results = eval(data); 
-				
+					
 					$.each(results, function(key, val) {
 						
-						if (val.no_specific_location == '0') {
+						var myPoint = new LatLonPoint(val.lat, val.lng);
+						console.log(myPoint);
 					
-							var myPoint = new LatLonPoint(val.lat, val.lng);
-						
-							var my_marker = new Marker(myPoint);
-						
-							var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='http://"+val.domain_name+val.path+"'>"+unescape(val.title)+"</a></strong>";
+						var my_marker = new Marker(myPoint);
+					
+						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='"+val.link+"'>"+unescape(val.title)+"</a></strong>";
 
-							if (val.body !== null) {
-								
-								if (val.body.length > 120) { 
-									text += val.body.substring(0,120); 
-									text += "...";
-								}	
-								else {
-									text += val.body;
-								}					
-							}
+						if (val.body !== null) {
 							
-							text += '</div>';						
-							
-							my_marker.setInfoBubble(text);		
-						
-							my_marker.setLabel(val.title);
-
-							heresay.mapstraction.addMarker(my_marker);	
+							if (val.description.length > 120) { 
+								text += val.description.substring(0,120); 
+								text += "...";
+							}	
+							else {
+								text += val.description;
+							}					
 						}
+						
+						text += '</div>';						
+						
+						my_marker.setInfoBubble(text);		
+					
+						my_marker.setLabel(val.title);
+
+						heresay.mapstraction.addMarker(my_marker);	
+						
 					});
 				});
 				
