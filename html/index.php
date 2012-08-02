@@ -22,7 +22,7 @@ heresay.rndBubble = function() {
 </script>
 
 <h1>What is Heresay?</h1>
-<p>It's a map that aggregates what people are saying on local forums.</p>
+<p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
 <p>At the moment the forums are:</p>
 <ul>
     <li><a href='http://harringayonline.com'>harringayonline.com</a></li>
@@ -33,7 +33,9 @@ heresay.rndBubble = function() {
     <li><a href='http://urban75.com'>urban75.com</a></li>
     <li><a href='http://se5forum.org'>se5forum.org</a></li>
     <li><a href='http://london-se1.co.uk'>london-se1.co.uk</a></li>
-    <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li>                
+    <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li> 
+    <li><a href=' http://meracouk.blogspot.co.uk/'>Mile End Residents Association</a></li>  
+                
 </ul>
  
 <p>I would like to add others - please let me know if there is a forum you would like adding.</p>
