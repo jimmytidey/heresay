@@ -38,11 +38,11 @@ heresay.rndBubble = function() {
  
 <p>I would like to add others - please let me know if there is a forum you would like adding.</p>
         
-<p><strong>JSON feed:</strong> api/recent_threads.php</p>
+<p><strong>JSON feed:</strong> http://heresay.org.uk/api/recent_threads.php</p>
 <p>[RSS coming soon...]</p>
 
 <p><strong>Iframe embed:</strong></p>
-<p>&lt;iframe src=&quot;http://heresayorg.uk/iframe.php?zoom=11&amp;center=51.548470058664954,-0.0556182861328125&quot; width=&quot;300&quot; height=&quot;300&quot; frameBorder=&quot;0&quot; scrolling=&quot;no&quot;&gt;Browser not compatible. &lt;/iframe &gt;</p>
+<p>&lt;iframe src=&quot;http://heresay.org.uk/iframe.php?zoom=11&amp;center=51.548470058664954,-0.0556182861328125&quot; width=&quot;300&quot; height=&quot;300&quot; frameBorder=&quot;0&quot; scrolling=&quot;no&quot;&gt;Browser not compatible. &lt;/iframe &gt;</p>
 
 <h1>Get in touch</h1>
 
