@@ -5,11 +5,15 @@ body, html {
 
 }
 
-h1,p,span {
+h1,p,span, li {
 	font-family: Helvetica,
              "Helvetica Neue",
              Arial,
              sans-serif;
+}
+
+p, li { 
+	font-size:12px;
 }
 
 #logo {

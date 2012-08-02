@@ -38,14 +38,23 @@
 				}
 
 				else {
-					heresay.lat = 51.548470058664954;
+					heresay.lat = 51.51066556016948;
 					heresay.lng = -0.0556182861328125;
 				}
 
 				myPoint = new LatLonPoint(heresay.lat, heresay.lng);
 
 				// set zoom 
-				heresay.zoom = 11;
+				var zoom = gup('zoom');
+				console.log(zoom);
+				
+				if (zoom === undefined || zoom == '') {
+		             zoom=12;
+				}
+                
+                console.log(zoom);
+                
+				heresay.zoom = parseInt(zoom);
 										
 				// display the map centered on a latitude and longitude (Google zoom levels)
 				heresay.mapstraction.setCenterAndZoom(myPoint, heresay.zoom);
@@ -67,8 +76,7 @@
 					$.each(results, function(key, val) {
 						
 						var myPoint = new LatLonPoint(val.lat, val.lng);
-						console.log(myPoint);
-					
+				
 						var my_marker = new Marker(myPoint);
 					
 						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_parent' href='"+val.link+"'>"+unescape(val.title)+"</a></strong>";
@@ -95,16 +103,7 @@
 					});
 				});
 				
-		//randomly open bubbles every few seconds 
-		
-		heresay.interval=self.setInterval("heresay.rndBubble()",4000);
-		
-		heresay.rndBubble = function() {
-			var numberOfMarkers = heresay.mapstraction.markers.length; 
-			
-			var randomnumber=Math.floor(Math.random()*numberOfMarkers)
-			heresay.mapstraction.markers[randomnumber].openBubble();
-		}
+
 		
 		$('#mapstraction').click(function() {
 			clearInterval(heresay.interval); 
