@@ -131,7 +131,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var lat = position.lat();
                             var lng = position.lng(); 
                             var link = escape($('#no_location_link_<?=$i ?>').val());
-                               
+                            console.log(link);
                             $.get("save.php?lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
@@ -142,7 +142,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var lat = position.lat();
                             var lng = position.lng(); 
                             var link = escape($('#no_location_link_<?=$i ?>').val());
-
+                            console.log(link);
                             $.get("save.php?lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
