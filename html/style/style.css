@@ -78,3 +78,7 @@ a {
 label {width:100px; float:left;}
 
 #results, #search_results {border:1px solid black; padding:5px; margin-top:20px;}
+
+.bubble_date { 
+	font-size:11px;
+}

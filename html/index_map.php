@@ -79,11 +79,15 @@
 				
 						var my_marker = new Marker(myPoint);
 					    
-					    var milli = parseInt(val.pubdate)+1000; 
+					    var milli = parseInt(val.pubdate)*1000;
+					    console.log(milli);
 					    var date = new Date(milli);
-					   
+					    console.log(date);
+					    var day = date.getDate();
+					    var month = date.getMonth() + 1;
+					    var year = date.getFullYear();
 					    
-						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> (<em> "+ date.format("m/dd/yy"); +" </em>)";
+						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> <br /> <em class='bubble_date'> "+ day + '/' +month +"/"+year +" </em>";
 
 						if (val.body !== null) {
 							
