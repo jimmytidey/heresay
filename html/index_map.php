@@ -78,8 +78,12 @@
 						var myPoint = new LatLonPoint(val.lat, val.lng);
 				
 						var my_marker = new Marker(myPoint);
-					
-						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> (<em> "+ date("F j", unescape(val.pubdate)) +" </em>)";
+					    
+					    var milli = parseInt(val.pubdate)+1000; 
+					    var date = new Date(milli);
+					   
+					    
+						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> (<em> "+ date.format("m/dd/yy"); +" </em>)";
 
 						if (val.body !== null) {
 							
