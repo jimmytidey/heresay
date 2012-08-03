@@ -79,7 +79,7 @@
 				
 						var my_marker = new Marker(myPoint);
 					
-						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong>";
+						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> (<em> "+ date("F j", unescape(val.pubdate)) +" </em>)";
 
 						if (val.body !== null) {
 							
