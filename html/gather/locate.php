@@ -130,7 +130,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var link = $('#no_location_link_<?=$i ?>').val();
+                            var link = escape($('#no_location_link_<?=$i ?>').val());
                                
                             $.get("save.php?lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
@@ -141,7 +141,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var link = $('#no_location_link_<?=$i ?>').val();
+                            var link = escape($('#no_location_link_<?=$i ?>').val());
 
                             $.get("save.php?lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
@@ -152,7 +152,7 @@ $location_results     = mysql_fetch_all($location_resource);
                         //save if there is no location 
                         $('#no_location_<?=$i ?>').click(function() { 
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
-                                var link = $("#no_location_link_<?=$i ?>").val();
+                                var link = escape($("#no_location_link_<?=$i ?>").val());
                                 $.get('save.php?lat=--&lng=--&link='+link, function(html) { 
                                     console.log(html);
                                 });
