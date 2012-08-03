@@ -89,7 +89,7 @@
 					    
 						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> <br /> <em class='bubble_date'> "+ day + '/' +month +"/"+year +" </em><br/>";
 
-						if (val.body != null) {
+						if (val.body != "") {
 							
 							if (val.description.length > 120) { 
 								text += val.description.substring(0,120); 
