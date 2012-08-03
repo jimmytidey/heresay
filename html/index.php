@@ -8,18 +8,7 @@
 
 <div id='container'>
 
-<script>
-//randomly open bubbles every few seconds 
 
-heresay.interval=self.setInterval("heresay.rndBubble()",4000);
-
-heresay.rndBubble = function() {
-	var numberOfMarkers = heresay.mapstraction.markers.length; 
-	
-	var randomnumber=Math.floor(Math.random()*numberOfMarkers)
-	heresay.mapstraction.markers[randomnumber].openBubble();
-}
-</script>
 
 <h1>What is Heresay?</h1>
 <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
