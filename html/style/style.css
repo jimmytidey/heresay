@@ -26,7 +26,7 @@ p, li {
 
 #mapstraction {
 	width: 97%;
-	height: 450px;
+	height: 550px;
 	z-index:10;
 	border:1px solid black;
 	margin:0px auto 0px auto;
@@ -39,7 +39,7 @@ p, li {
 	width:100%;
 	background-image: url(../images/index_background.png);
 	background-repeat:repeat-x;	
-	height:550px;
+	height:650px;
 	z-index:5;
 }
 
