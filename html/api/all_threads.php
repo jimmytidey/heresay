@@ -6,7 +6,7 @@ $callback 		= @mysql_real_escape_string(urldecode($_GET['callback'])); //for JSO
 $debug 			= @mysql_real_escape_string(urldecode($_GET['debug']));
 
 
-$query =  "SELECT * FROM manual_updates WHERE lat!='--' && lat!='' ";
+$query =  "SELECT * FROM manual_updates";
 
 $search_result = db_q($query);
 

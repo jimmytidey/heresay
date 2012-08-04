@@ -49,7 +49,7 @@
 				console.log(zoom);
 				
 				if (zoom === undefined || zoom == '') {
-		             zoom=12;
+		             zoom=11;
 				}
                 
                 console.log(zoom);
@@ -78,6 +78,29 @@
 						var myPoint = new LatLonPoint(val.lat, val.lng);
 				
 						var my_marker = new Marker(myPoint);
+						if (val.category == 'events') { 
+						    console.log('events');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/009900/');
+						}
+						if (val.category == 'crime') {
+						    console.log('crime');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/999900/');
+						}
+						if (val.category == 'transport') { 
+						    console.log('transport');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/009999/');
+						}					
+						if (val.category == 'council') { 
+						    console.log('council');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/990000/');
+						}						
+						if (val.category == 'other') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/000099/');
+						}						
+						
+						
 					    
 					    var milli = parseInt(val.pubdate)*1000;
 					    
@@ -89,7 +112,6 @@
 					    
 						var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> <br /> <em class='bubble_date'> "+ day + '/' +month +"/"+year +" </em><br/>";
                         
-                        console.log(val.description);
 						
 						if (val.description != undefined) {
 							
@@ -108,25 +130,28 @@
 						my_marker.setInfoBubble(text);		
 					
 						my_marker.setLabel(val.title);
-
+                       
 						heresay.mapstraction.addMarker(my_marker);	
 						
 					});
 				});
 		
-        heresay.interval=self.setInterval("heresay.rndBubble()",4000);
+            heresay.interval=self.setInterval("heresay.rndBubble()",12000);
 
-        heresay.rndBubble = function() {
-        	var numberOfMarkers = heresay.mapstraction.markers.length; 
+            heresay.rndBubble = function() {
+            	var numberOfMarkers = heresay.mapstraction.markers.length; 
 
-        	var randomnumber=Math.floor(Math.random()*numberOfMarkers)
-        	heresay.mapstraction.markers[randomnumber].openBubble();
-        }		
+            	var randomnumber=Math.floor(Math.random()*numberOfMarkers)
+            	heresay.mapstraction.markers[randomnumber].openBubble();
+            }		
+
+
 
 		
-		$('#mapstraction').click(function() {
-			clearInterval(heresay.interval); 
-		});		
+    		$('#mapstraction').click(function() {
+    		   
+    			clearInterval(heresay.interval); 
+    		});		
 		
 });
 		

@@ -2,7 +2,7 @@
 include('../db_info.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat='' LIMIT 10"; 
+$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' LIMIT 10"; 
 $resource   = mysql_query($query);
 $results    = mysql_fetch_all($resource);
 
@@ -86,14 +86,14 @@ $location_results     = mysql_fetch_all($location_resource);
                             ?>
 
                         var myOptions = {
-                         zoom: <?=$zoom ?>,
-                         center: new google.maps.LatLng(<?=$lat ?>, <?=$lng ?>),
+                         zoom: 12,
+                         center: new google.maps.LatLng(<?=$result['lat'] ?>, <?=$result['lng'] ?>),
                          mapTypeId: google.maps.MapTypeId.ROADMAP
                         };
                         
                         var link = "<? echo $result['link']; ?>";
                         var map_<?=$i?> = new google.maps.Map(document.getElementById('map_canvas_<?=$i ?>'), myOptions);
-                        var myLatlng = new google.maps.LatLng(<?=$lat ?>, <?=$lng ?>);
+                        var myLatlng = new google.maps.LatLng(<?=$result['lat'] ?>, <?=$result['lng'] ?>);
                         var marker_<?=$i?> = new google.maps.Marker({
                             position: myLatlng, 
                             map: map_<?=$i?>,
@@ -186,6 +186,7 @@ $location_results     = mysql_fetch_all($location_resource);
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
                         <select id='category_<?=$i ?>'>
+                            <option value='events'>--</option>
                             <option value='events'>Events</option>
                             <option value='crime'>Crime</option>
                             <option value='transport'>Transport</option>
