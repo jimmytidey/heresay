@@ -122,7 +122,6 @@ $location_results     = mysql_fetch_all($location_resource);
                             var point = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
                             marker_<?=$i?>.setPosition(point);
                             
-                            console.log(point);
                         });
                                                      
 
@@ -156,7 +155,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
                                 var link = escape($("#no_location_link_<?=$i ?>").val());
                                 var category = escape($('#category_<?=$i ?>').val());
-                                $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
+                                $.get("save.php?category="+category+"&lat=--&lng=--&link='+link, function(html) {
                                     console.log(html);
                                 });
                             }                          
