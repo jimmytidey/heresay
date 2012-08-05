@@ -6,14 +6,15 @@ function db_q($query)
 	$result = mysql_query($query) or die(mysql_error());
 	
 	if ($result) {
-	
 		$i = 0; 
 		while($row=@mysql_fetch_array($result))
-		{
+		{   
 			$data[$i]=$row;
 			$i++;
-		} 
-
+		}
+		if (empty($data)) { 
+		    $data= "";
+		}
 		return($data);
 	}
 }

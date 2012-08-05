@@ -22,7 +22,57 @@ p, li {
 	left:50%;
 	margin-left:-385px;
 	z-index:10;
+	border:1px solid black;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	height:180px;
+	background-color:#daf5f5;
+	overflow:hidden;
 }
+
+#logo label {
+	width:200px;
+	padding-left:10px;
+}
+
+#time_filter { 
+	margin-left:10px;
+	width:220px;
+}
+
+#filter_button {
+	margin-top:10px;
+	margin-left:50px;
+	width:140px;
+	height:30px;
+}
+
+.filter { 
+	cursor:pointer;
+}
+
+#filter_controls { 
+	position:absolute;
+	top:180px;
+}
+
+.filter_category { 
+	width:250px;
+}
+
+#arrow { 
+    left: 111px;
+    position: absolute;
+    top: 155px;
+}
+
+#filter { 
+    left: 104px;
+    position: absolute;
+    text-decoration: underline;
+    top: 135px;
+} 
 
 #mapstraction {
 	width: 97%;

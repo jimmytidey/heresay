@@ -1,10 +1,86 @@
 <? include('header.php'); ?>
 
-<img src='images/logo_small.png' id='logo' />
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOoFM_kDNJVs_SzvkytQRKBSpgYF3iu7PXc-1iPSD4CpffT2eCRRzD14PFyag3JY4SakJE5_wVYpLxw&sensor=false" type="text/javascript"></script>
+<script type="text/javascript" src="api/js/mapstraction.js"></script>
+<script src='scripts/index.js'></script>
+<script src='scripts/index_map.js'></script>
 
+<script>
+    $(document).ready(function() { 
+        heresay.init(51.5073346, -0.1276831, 12, "", "last_week")
+    }); 
+</script>
 <div id='map_container'>
-	<? include('index_map.php'); ?>
+    <div id="mapstraction" ></div>
 </div>
+
+<div id='logo'>
+    <img  src='images/logo_small.png' />
+    <span id='filter' class='filter' >Filter</span>
+    <img src='images/down.png' id='arrow' class='filter' />
+    
+    <div id='filter_controls'>
+        
+        <div class='filter_category'>
+            <label for='events'>Events</label>
+            <input type='checkbox' value='events' name='events' />
+        </div>
+        
+        <div class='filter_category'>
+            <label for='buy_sell'>For sale</label>
+            <input type='checkbox' value='buy_sell' name='buy_sell' />    
+        </div>
+        
+         <div class='filter_category'>
+            <label for='animals'>Animals and Wildlife</label>
+            <input type='checkbox' value='animals' name='animals' />
+        </div>
+
+         <div class='filter_category'>
+            <label for='local'>Local knowledge</label>
+            <input type='checkbox' value='local' name='local' />
+        </div>       
+
+         <div class='filter_category'>
+            <label for='animals'>Sport</label>
+            <input type='checkbox' value='sport' name='sport' />
+        </div>                
+
+         <div class='filter_category'>
+            <label for='crime'>Crime</label>
+            <input type='checkbox' value='crime' name='crime' />
+        </div>
+
+         <div class='filter_category'>
+            <label for='transport'>Transport</label>
+            <input type='checkbox' value='transport' name='transport' />
+        </div>   
+        
+         <div class='filter_category'>
+            <label for='animals'>Music</label>
+            <input type='checkbox' value='music' name='music' />
+        </div>
+        
+         <div class='filter_category'>
+            <label for='food'>Food</label>
+            <input type='checkbox' value='food' name='food' />
+        </div> 
+        
+         <div class='filter_category'>
+            <label for='council'>Pubic space</label>
+            <input type='checkbox' value='council' name='council' />
+        </div>                            
+        
+        <select id='time_filter'>
+            <option value='today'>Today</option>
+            <option value='last_week'>Last Week</div>
+            <option value='last_week'>Last Month</div>
+        <select>
+            
+        <input type='button' value='Filter' id='filter_button' />
+    </div>
+</div>
+
 
 <div id='container'>
 
