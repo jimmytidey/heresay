@@ -109,29 +109,29 @@
 						if (val.category == 'animals') { 
 						    console.log('other');
 						     console.log(val.title);
-						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/333300/');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/e7d56d/');
 						}											
 
 						if (val.category == 'local') { 
 						    console.log('other');
 						     console.log(val.title);
-						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/003333/');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/303e95/');
 						}	
 						
 						if (val.category == 'sport') { 
 						    console.log('other');
 						     console.log(val.title);
-						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/003300/');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/df6899/');
 						}								
 						if (val.category == 'music') { 
 						    console.log('other');
 						     console.log(val.title);
-						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/330000/');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/5cb59f/');
 						}
 						if (val.category == 'food') { 
 						    console.log('other');
 						     console.log(val.title);
-						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/330033/');
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/aaa54f/');
 						}
 
     
