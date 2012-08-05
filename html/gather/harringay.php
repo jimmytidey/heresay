@@ -2,8 +2,8 @@
 
 
 include('../db_info.php');
-include_once('simplepie/autoloader.php');
-include_once('simplepie/idn/idna_convert.class.php');
+include_once('../simplepie/autoloader.php');
+include_once('../simplepie/idn/idna_convert.class.php');
 
 
 $sites[0]['url']    = 'http://www.harringayonline.com/forum/topic/list?feed=yes&amp;xn_auth=no&amp;sort=mostRecent';
