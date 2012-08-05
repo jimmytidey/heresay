@@ -2,7 +2,7 @@
 include('../db_info.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' && LIMIT 10"; 
+$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' LIMIT 10"; 
 $resource   = mysql_query($query);
 $results    = mysql_fetch_all($resource);
 
