@@ -98,10 +98,43 @@
 						    console.log('other');
 						     console.log(val.title);
 						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/000099/');
-						}						
+						}	
+
+						if (val.category == 'buy_sell') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/990099/');
+						}											
+			
+						if (val.category == 'animals') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/333300/');
+						}											
+
+						if (val.category == 'local') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/003333/');
+						}	
 						
-						
-					    
+						if (val.category == 'sport') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/003300/');
+						}								
+						if (val.category == 'music') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/330000/');
+						}
+						if (val.category == 'food') { 
+						    console.log('other');
+						     console.log(val.title);
+						    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/330033/');
+						}
+
+    
 					    var milli = parseInt(val.pubdate)*1000;
 					    
 					    var date = new Date(milli);
