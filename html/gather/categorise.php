@@ -130,7 +130,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var link = $('#no_location_link_<?=$i ?>').val();
+                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             var category = escape($('#category_<?=$i ?>').val());
                             console.log(link);
                             $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 

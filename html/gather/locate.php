@@ -129,7 +129,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var link = $('#no_location_link_<?=$i ?>').val();
+                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             var category = escape($('#category_<?=$i ?>').val());
                             console.log(link);
                             $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
@@ -142,7 +142,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             var lat = position.lat();
                             var lng = position.lng(); 
                             var category = escape($('#category_<?=$i ?>').val());
-                            var link = escape($('#no_location_link_<?=$i ?>').val());
+                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             console.log(link);
                             $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
                                 console.log(html);
@@ -153,7 +153,7 @@ $location_results     = mysql_fetch_all($location_resource);
                         //save if there is no location 
                         $('#no_location_<?=$i ?>').click(function() { 
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
-                                var link = escape($("#no_location_link_<?=$i ?>").val());
+                                var link = encodeURIComponent($("#no_location_link_<?=$i ?>").val());
                                 var category = escape($('#category_<?=$i ?>').val());
                                 $.get("save.php?category="+category+"&lat=--&lng=--&link="+link, function(html) {
                                     console.log(html);
@@ -185,11 +185,18 @@ $location_results     = mysql_fetch_all($location_resource);
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
                         <select id='category_<?=$i ?>'>
+                            <option value='--'>--</option>
                             <option value='events'>Events</option>
+                            <option value='buy_sell'>Buy or sell</option>
+                            <option value='animals'>Pets and wildlife</option>
+                            <option value='local'>Local knowledge</option>
+                            <option value='sport'>Sport</option>                            
                             <option value='crime'>Crime</option>
                             <option value='transport'>Transport</option>
+                            <option value='music'>Music</option>
+                            <option value='food'>Food</option>
                             <option value='council'>Council and planning</option>
-                            <option value='other'>Other</option>                                                                                    
+                            <option value='other'>Other</option>                                                                                  
                         </select>
                     </p>
                     
