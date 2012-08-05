@@ -186,13 +186,15 @@ $location_results     = mysql_fetch_all($location_resource);
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
                         <select id='category_<?=$i ?>'>
-                            <option value='events'>--</option>
+                            <option value='--'>--</option>
                             <option value='events'>Events</option>
-                            <option value='events'>Pets and wildlife</option>
-                            <option value='events'>Local knowledge</option>
-                            <option value='events'>Sport</option>                            
+                            <option value='animals'>Pets and wildlife</option>
+                            <option value='local'>Local knowledge</option>
+                            <option value='sport'>Sport</option>                            
                             <option value='crime'>Crime</option>
                             <option value='transport'>Transport</option>
+                            <option value='music'>Music</option>
+                            <option value='food'>Food</option>
                             <option value='council'>Council and planning</option>
                             <option value='other'>Other</option>                                                                                    
                         </select>
