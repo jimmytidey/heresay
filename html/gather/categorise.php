@@ -2,7 +2,7 @@
 include('../db_info.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' LIMIT 10"; 
+$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' && site='chiswick' LIMIT 10"; 
 $resource   = mysql_query($query);
 $results    = mysql_fetch_all($resource);
 
@@ -138,14 +138,17 @@ $location_results     = mysql_fetch_all($location_resource);
                             });
                         });
                         
-                        $('#save_<?=$i ?>').click(function() {                         
+                        $('#save_<?=$i ?>').click(function() {
+                                             
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var category = escape($('#category_<?=$i ?>').val());
-                            var link = escape($('#no_location_link_<?=$i ?>').val());
+                            var category = $('#category_<?=$i ?>').val();
+                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             console.log(link);
-                            $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
+                            var url = "save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link; 
+                            console.log(url);
+                            $.get(url, function(html) {
                                 console.log(html);
                             });
                         });
@@ -154,8 +157,8 @@ $location_results     = mysql_fetch_all($location_resource);
                         //save if there is no location 
                         $('#no_location_<?=$i ?>').click(function() { 
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
-                                var link = escape($("#no_location_link_<?=$i ?>").val());
-                                var category = escape($('#category_<?=$i ?>').val());
+                                var link = encodeURI($("#no_location_link_<?=$i ?>").val());
+                                var category = encodeURI($('#category_<?=$i ?>').val());
                                 $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
                                     console.log(html);
                                 });
