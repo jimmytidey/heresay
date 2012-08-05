@@ -188,6 +188,7 @@ $location_results     = mysql_fetch_all($location_resource);
                         <select id='category_<?=$i ?>'>
                             <option value='--'>--</option>
                             <option value='events'>Events</option>
+                            <option value='buy_sell'>Buy or sell</option>
                             <option value='animals'>Pets and wildlife</option>
                             <option value='local'>Local knowledge</option>
                             <option value='sport'>Sport</option>                            
