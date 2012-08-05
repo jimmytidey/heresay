@@ -90,16 +90,28 @@
 <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
 <p>At the moment the forums are:</p>
 <ul>
+    <li><a href='http://www.beckenhamtown.us'>Beckenhamtown</a></li>
+    <li><a href='http://bowesandbounds.org'>Bowes and Bounds</a></li>
+    <li><a href='http://www.chiswickw4.com'>Chiswick</a></li>
+    
+    <li><a href='http://dalstonpeople.co.uk'>dalstonpeople.co.uk</a></li>
+    
+    <li><a href='http://www.ealingtoday.co.uk'>Ealing</a></li>
+    <li><a href='http://www.eastdulwichforum.co.uk'>East Dulwich Forum</a></li>
+    
     <li><a href='http://harringayonline.com'>harringayonline.com</a></li>
     <li><a href='http://hernehillforum.org.uk'>hernehillforum.org.uk</a></li>
-    <li><a href='http://thebrixtonforum.co.uk'>thebrixtonforum.co.uk</a></li>
-    <li><a href='http://bowesandbounds.org'>bowesandbounds.org</a></li>
-    <li><a href='http://dalstonpeople.co.uk'>dalstonpeople.co.uk</a></li>
-    <li><a href='http://urban75.com'>urban75.com</a></li>
-    <li><a href='http://se5forum.org'>se5forum.org</a></li>
+    <li><a href='http://kingscrossenvironment.com'>Kings Cross</a></li>   
+    <li><a href='http://meracouk.blogspot.co.uk/'>Mile End Residents Association</a></li> 
+    <li><a href='http://www.putneysw15.com/'>Putney</a></li> 
     <li><a href='http://london-se1.co.uk'>london-se1.co.uk</a></li>
-    <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li> 
-    <li><a href=' http://meracouk.blogspot.co.uk/'>Mile End Residents Association</a></li>  
+    <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li>
+    <li><a href='http://thebrixtonforum.co.uk'>thebrixtonforum.co.uk</a></li>
+    <li><a href='http://urban75.com'>urban75.com</a></li>
+    
+  
+   
+    
                 
 </ul>
  
