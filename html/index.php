@@ -7,7 +7,26 @@
 
 <script>
     $(document).ready(function() { 
-        heresay.init(51.5073346, -0.1276831, 12, "", "last_week")
+        
+        var recency = gup('recency'); 
+        if(recency !='today') { 
+            recency = "last_week";
+        }
+
+        
+        heresay.init(51.5073346, -0.1276831, 12, "", recency);
+        
+    	function gup(name)
+    	{
+    	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    	  var regexS = "[\\?&]"+name+"=([^&#]*)";
+    	  var regex = new RegExp( regexS );
+    	  var results = regex.exec( window.location.href );
+    	  if( results == null )
+    		return "";
+    	  else
+    		return results[1];
+    	}        
     }); 
 </script>
 <div id='map_container'>
