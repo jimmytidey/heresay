@@ -50,6 +50,10 @@ $location_results     = mysql_fetch_all($location_resource);
 	            height:220px;
 	            overflow:auto;
 	        }
+	        
+	        .category_select { 
+	            float:right;
+	        }
 	    
 	    </style>
 	    
@@ -131,8 +135,9 @@ $location_results     = mysql_fetch_all($location_resource);
                             var lng = position.lng(); 
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             var category = escape($('#category_<?=$i ?>').val());
+                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
                             console.log(link);
-                            $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -141,10 +146,11 @@ $location_results     = mysql_fetch_all($location_resource);
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var category = escape($('#category_<?=$i ?>').val());
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
+                            var category = escape($('#category_<?=$i ?>').val());
+                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
                             console.log(link);
-                            $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
+                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -184,9 +190,10 @@ $location_results     = mysql_fetch_all($location_resource);
                         <label for='no_location_<?=$i ?>'>This post has no location</label>
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
-                        <select id='category_<?=$i ?>'>
+                        <select id='category_<?=$i ?>' class='category_select' >
                             <option value='--'>--</option>
                             <option value='events'>Events</option>
+                            <option value='art'>Art &amp Culture</option>
                             <option value='buy_sell'>Buy or sell</option>
                             <option value='animals'>Pets and wildlife</option>
                             <option value='local'>Local knowledge</option>
@@ -196,8 +203,31 @@ $location_results     = mysql_fetch_all($location_resource);
                             <option value='music'>Music</option>
                             <option value='food'>Food</option>
                             <option value='council'>Council and planning</option>
+                            <option value='charity'>Charity</option>
+                            <option value='kids'>Kids</option>
+                            <option value='public_space'>Public space</option>                            
                             <option value='other'>Other</option>                                                                                  
                         </select>
+    
+                        <select id='category_<?=$i ?>_b' class='category_select' >
+                            <option value='--'>--</option>
+                            <option value='events'>Events</option>
+                            <option value='art'>Art &amp Culture</option>
+                            <option value='buy_sell'>Buy or sell</option>
+                            <option value='animals'>Pets and wildlife</option>
+                            <option value='local'>Local knowledge</option>
+                            <option value='sport'>Sport</option>                            
+                            <option value='crime'>Crime</option>
+                            <option value='transport'>Transport</option>
+                            <option value='music'>Music</option>
+                            <option value=' '>Food</option>
+                            <option value='council'>Council and planning</option>
+                            <option value='charity'>Charity</option>
+                            <option value='kids'>Kids</option>
+                            <option value='public_space'>Public space</option>                            
+                            <option value='other'>Other</option>                                                                                  
+                        </select>                    
+                        
                     </p>
                     
                     <p>Search <input type='text' id='search_<?=$i ?>' class='search'  /> <input type='button' value='save' id='save_<?=$i ?>' > </p>  

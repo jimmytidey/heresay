@@ -2,18 +2,36 @@
 include('include.php');
 
 
-$sites[0]['url']    = 'http://www.hackneyhear.com/blog/';
-$sites[0]['name']   = 'http://www.hackneyhear.com/blog/';
+$sites[0]['url']    = 'http://www.hackneyhear.com/blog/feed';
+$sites[0]['name']   = 'http://www.hackneyhear.com/blog';
 
-$sites[1]['url']    = 'http://thegallerycafe.blogspot.co.uk/';
-$sites[1]['name']   = 'http://thegallerycafe.blogspot.co.uk/';
+$sites[1]['url']    = 'http://thegallerycafe.blogspot.com/feeds/posts/default?alt=rss';
+$sites[1]['name']   = 'http://thegallerycafe.blogspot.co.uk';
 
-$sites[2]['url']    = 'http://clapham-omnibus.blogspot.co.uk/';
-$sites[2]['name']   = 'http://clapham-omnibus.blogspot.co.uk/';
-
+$sites[2]['url']    = 'http://clapham-omnibus.blogspot.com/feeds/posts/default?alt=rss';
+$sites[2]['name']   = 'http://clapham-omnibus.blogspot.co.uk';
 
 $sites[3]['url']    = 'http://www.creativeclerkenwell.com/feed/';
-$sites[3]['name']   = 'http://www.creativeclerkenwell.com/';
+$sites[3]['name']   = 'http://www.creativeclerkenwell.com';
+
+$sites[4]['url']    = 'http://www.creativeclerkenwell.com/feed/';
+$sites[4]['name']   = 'http://www.creativeclerkenwell.com';
+
+$sites[5]['url']    = 'http://www.westealingneighbours.org.uk/WEN-blog/feed/';
+$sites[5]['name']   = 'http://www.westealingneighbours.org.uk';
+
+$sites[6]['url']    = 'http://www.duchessofhackney.com/feed/';
+$sites[6]['name']   = 'http://www.duchessofhackney.com';
+
+$sites[7]['url']    = 'http://davehill.typepad.com/claptonian/rss.xml';
+$sites[7]['name']   = 'http://davehill.typepad.com/claptonian';
+
+$sites[8]['url']    = 'http://swishjunction.wordpress.com/feed/';
+$sites[8]['name']   = 'http://swishjunction.wordpress.com';
+
+
+
+
 
 
 
