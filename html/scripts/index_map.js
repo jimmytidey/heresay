@@ -30,9 +30,10 @@ heresay.init = function(lat, lng, zoom, categories, recency) {
 		var results = eval(data); 
 	
 		$.each(results, function(key, val) {
-		
+			
 			var myPoint = new LatLonPoint(val.lat, val.lng);
-
+			
+			
 			var my_marker = new Marker(myPoint);
 			if (val.category == 'events') { 
 			    

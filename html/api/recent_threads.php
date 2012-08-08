@@ -44,8 +44,7 @@ $query .=' ORDER BY pubdate';
 
 
 $search_result = db_q($query);
-$search_result[] = $query; 
-$search_result['length'] = count($query);
+
 
 if (empty($search_result)) { 
     $search_result['error'] = 'no results';
