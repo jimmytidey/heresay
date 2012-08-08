@@ -2,8 +2,8 @@
 
 
 include('../db_info.php');
-include_once('simplepie/autoloader.php');
-include_once('simplepie/idn/idna_convert.class.php');
+include_once('../simplepie/autoloader.php');
+include_once('../simplepie/idn/idna_convert.class.php');
 
 
 $sites[0]['url']    = 'http://thebrixtonforum.co.uk/feed.php?0,type=rss';
