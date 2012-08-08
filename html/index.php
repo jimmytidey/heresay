@@ -9,12 +9,23 @@
     $(document).ready(function() { 
         
         var recency = gup('recency'); 
+        var id = gup('id'); 
+        var lat = gup('lat'); 
+        var lng = gup('lng'); 
+        
         if(recency !='today') { 
             recency = "last_week";
         }
+        
+        if(!isNumber(lat)) { 
+            lat = 51.5073346;
+        }  
+        if(!isNumber(lng)) { 
+            lng = -0.1276831;
+        }              
 
         
-        heresay.init(51.5073346, -0.1276831, 12, "", recency);
+        heresay.init(lat, lng, 12, "", recency);
         
     	function gup(name)
     	{
@@ -26,7 +37,12 @@
     		return "";
     	  else
     		return results[1];
-    	}        
+    	}     
+    	
+    	function isNumber(n) {
+          return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+           
     }); 
 </script>
 <div id='map_container'>

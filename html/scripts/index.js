@@ -2,6 +2,7 @@
 $(document).ready(function() { 
 	
 	filter ={};
+	
 	$('.filter').click(function(){ 
 		var height = parseInt($('#logo').css('height')); 
 		console.log(height);

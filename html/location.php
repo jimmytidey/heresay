@@ -1,41 +1,25 @@
 <?
-// MOD REWRITE !!!
+
 include('db_functions.php'); 
 
+include('header.php');
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>Heresay</title>
-
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-
-<script type="text/javascript">
-</script>
-
-<link rel=StyleSheet href="/style/style.css" type="text/css" media='screen' />
-
-<head>
-
-<body>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOoFM_kDNJVs_SzvkytQRKBSpgYF3iu7PXc-1iPSD4CpffT2eCRRzD14PFyag3JY4SakJE5_wVYpLxw&sensor=false" type="text/javascript"></script>
+<script type="text/javascript" src="api/js/mapstraction.js"></script>
+<script src='scripts/index.js'></script>
+<script src='scripts/index_map.js'></script>
 	
 
 
 <div id='location_container'>
-<?
 
-$loction_name = mysql_real_escape_string(urldecode($_GET['location_name']));
-$adminName3= mysql_real_escape_string(urldecode($_GET['adminName3']));
-$title = mysql_real_escape_string(urldecode($_GET['title']));
+
 $thread_id = mysql_real_escape_string(urldecode($_GET['thread_id']));
 
 
 if (!empty($thread_id)) {// just write a single thread out 
 
-	$thread_query = "SELECT * FROM heresay_updates WHERE thread_id='$thread_id' ORDER BY time_stamp DESC LIMIT 1"; 
+	$thread_query = "SELECT * FROM manual_updates WHERE id='$thread_id' "; 
 	
 	$thread_result = db_q($thread_query); 
 	 
