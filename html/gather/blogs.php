@@ -36,7 +36,9 @@ $sites[8]['name']   = 'http://swishjunction.wordpress.com';
 
 
 foreach($sites as $site) { 
-    
+        
+    echo "<h1>". $site['name'] ."</h1>";
+        
     $feed = new SimplePie();
 	$feed->set_feed_url($site['url']);
 	$feed->enable_cache(false);
@@ -48,9 +50,12 @@ foreach($sites as $site) {
 
     		$item = $feed->get_item($x);
 
+            echo "<p>". $item->get_title() . "</h1>";
             //test for uniqueness 
             $query = "SELECT * FROM manual_updates WHERE link = '".$item->get_permalink()."'";
             $result = mysql_fetch_array(mysql_query($query)); 
+            
+            
 
             if (empty($result)) { 
 

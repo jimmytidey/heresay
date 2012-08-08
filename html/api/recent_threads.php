@@ -10,16 +10,18 @@ $recency 		= @mysql_real_escape_string(urldecode($_GET['recency']));
 
 $query =  "SELECT * FROM manual_updates WHERE lat!='--' && lat!='' ";
 
-if($recency=='today') { 
-    $date = time()-(60*60*24*1);
-}
+if (!empty($recency)) {
+    if($recency=='today') { 
+        $date = time()-(60*60*24);
+    }
 
-if($recency=='this_week') { 
-    $date = time()-(60*60*24*7);    
-}
+    if($recency=='this_week') { 
+        $date = time()-(60*60*24*7);    
+    }
 
-if($recency=='this_month') { 
-    $date = time()-(60*60*24*30);    
+    if($recency=='this_month') { 
+        $date = time()-(60*60*24*30);    
+    }
 }
 
 if(isset($date)) { 
@@ -38,8 +40,12 @@ if (!empty($category)) {
     $query .=")";
 }
 
+$query .=' ORDER BY pubdate'; 
+
 
 $search_result = db_q($query);
+$search_result[] = $query; 
+$search_result['length'] = count($query);
 
 if (empty($search_result)) { 
     $search_result['error'] = 'no results';
