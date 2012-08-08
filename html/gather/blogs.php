@@ -11,7 +11,7 @@ $sites[1]['name']   = 'http://thegallerycafe.blogspot.co.uk';
 $sites[2]['url']    = 'http://clapham-omnibus.blogspot.com/feeds/posts/default?alt=rss';
 $sites[2]['name']   = 'http://clapham-omnibus.blogspot.co.uk';
 
-$sites[3]['url']    = 'http://www.creativeclerkenwell.com/feed/rss/';
+$sites[3]['url']    = 'http://www.creativeclerkenwell.com/feed/atom/';
 $sites[3]['name']   = 'http://www.creativeclerkenwell.com';
 
 
