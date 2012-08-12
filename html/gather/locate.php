@@ -190,43 +190,29 @@ $location_results    = mysql_fetch_all($location_resource);
                         <label for='no_location_<?=$i ?>'>This post has no location</label>
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
-                        <select id='category_<?=$i ?>' class='category_select' >
-                            <option value='--'>--</option>
-                            <option value='events'>Events</option>
-                            <option value='art'>Art &amp Culture</option>
-                            <option value='buy_sell'>Buy or sell</option>
-                            <option value='animals'>Pets and wildlife</option>
-                            <option value='local'>Local knowledge</option>
-                            <option value='sport'>Sport</option>                            
-                            <option value='crime'>Crime</option>
-                            <option value='transport'>Transport</option>
-                            <option value='music'>Music</option>
-                            <option value='food'>Food</option>
-                            <option value='council'>Council and planning</option>
-                            <option value='charity'>Charity</option>
-                            <option value='kids'>Kids</option>
-                            <option value='public_space'>Public space</option>                            
-                            <option value='other'>Other</option>                                                                                  
-                        </select>
-    
-                        <select id='category_<?=$i ?>_b' class='category_select' >
-                            <option value='--'>--</option>
-                            <option value='events'>Events</option>
-                            <option value='art'>Art &amp Culture</option>
-                            <option value='buy_sell'>Buy or sell</option>
-                            <option value='animals'>Pets and wildlife</option>
-                            <option value='local'>Local knowledge</option>
-                            <option value='sport'>Sport</option>                            
-                            <option value='crime'>Crime</option>
-                            <option value='transport'>Transport</option>
-                            <option value='music'>Music</option>
-                            <option value=' '>Food</option>
-                            <option value='council'>Council and planning</option>
-                            <option value='charity'>Charity</option>
-                            <option value='kids'>Kids</option>
-                            <option value='public_space'>Public space</option>                            
-                            <option value='other'>Other</option>                                                                                  
-                        </select>                    
+                                    <select id='category_<?=$i ?>'>
+                                        <option value='--'>--</option>
+                                        <option value='crime_emergencies'>Crime and emergencies</option>
+                                        <option value='publicspace_transport'>Public realm</option>
+                                        <option value='local_knowlege'>Announce</option>            
+                                        <option value='community_events'>Community events</option>
+
+                                    </select>
+
+                                    <select id='category_<?=$i ?>_b'>
+                                        <option value='--'>--</option>
+                                        <option value='forsale_giveaway'>Buy Sell</option>
+                                        <option value='charity'>Charity</option>                            
+                                        <option value='pets_nature'>Pets and nature</option>   
+                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                                        <option value='art'>Art / music / culture</option>
+                                        <option value='sport'>Sport</option>                          
+                                        <option value='food_drink'>Food and Drink</option>
+                                        <option value='lost'>Lost</option>
+                                        <option value='transport'>Transport</option>
+                                        <option value='council'>Council business</option> 
+                                        <option value='kids'>Kids</option>                                                                         
+                                    </select>                
                         
                     </p>
                     
