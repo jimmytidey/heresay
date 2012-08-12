@@ -7,40 +7,49 @@ $debug 			= @mysql_real_escape_string(urldecode($_GET['debug']));
 
 $category 		= @mysql_real_escape_string(urldecode($_GET['category']));
 $recency 		= @mysql_real_escape_string(urldecode($_GET['recency']));
+$id 	    	= @mysql_real_escape_string(urldecode($_GET['id']));
 
 $query =  "SELECT * FROM manual_updates WHERE lat!='--' && lat!='' ";
 
-if (!empty($recency)) {
-    if($recency=='today') { 
-        $date = time()-(60*60*24);
+if (!empty($id)) { 
+     $query .= " && id = $id ";
+    
+}
+
+else {
+    if (!empty($recency)) {
+        if($recency=='today') { 
+            $date = time()-(60*60*24);
+        }
+
+        if($recency=='this_week') { 
+            $date = time()-(60*60*24*7);    
+        }
+
+        if($recency=='this_month') { 
+            $date = time()-(60*60*24*30);    
+        }
     }
 
-    if($recency=='this_week') { 
-        $date = time()-(60*60*24*7);    
+    if(isset($date)) { 
+        $query .= " && pubdate > $date ";
     }
 
-    if($recency=='this_month') { 
-        $date = time()-(60*60*24*30);    
+    if (!empty($category)) {
+        $query .="&& (";
+        $categories = explode(',', $category);
+        $query_array = array();
+        foreach ($categories as $category) { 
+            $query_array[] = " secondary_category='$category'"; 
+        }
+
+        $query .= implode(" || ", $query_array);
+        $query .=")";
     }
 }
 
-if(isset($date)) { 
-    $query .= " && pubdate > $date ";
-}
 
-if (!empty($category)) {
-    $query .="&& (";
-    $categories = explode(',', $category);
-    $query_array = array();
-    foreach ($categories as $category) { 
-        $query_array[] = " category='$category'"; 
-    }
-
-    $query .= implode(" || ", $query_array);
-    $query .=")";
-}
-
-$query .=' ORDER BY pubdate'; 
+$query .=' ORDER BY pubdate LIMIT 80'; 
 
 
 $search_result = db_q($query);

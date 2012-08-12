@@ -12,20 +12,26 @@
         var id = gup('id'); 
         var lat = gup('lat'); 
         var lng = gup('lng'); 
-        
-        if(recency !='today') { 
-            recency = "last_week";
-        }
-        
+        var id = gup('id'); 
+
         if(!isNumber(lat)) { 
             lat = 51.5073346;
         }  
         if(!isNumber(lng)) { 
             lng = -0.1276831;
-        }              
-
+        }        
         
-        heresay.init(lat, lng, 12, "", recency);
+        if (id) { 
+            heresay.init(lat, lng, 12, "", '', id);
+        }  
+        
+        else { 
+            if(recency !='today') { 
+                recency = "last_week";
+            }  
+             heresay.init(lat, lng, 12, "", recency, '');
+        }
+       
         
     	function gup(name)
     	{
@@ -56,61 +62,47 @@
     
     <div id='filter_controls'>
         
-        <div class='filter_category'>
-            <label for='events'>Events</label>
-            <input type='checkbox' value='events' name='events' />
-        </div>
-        
-        <div class='filter_category'>
-            <label for='buy_sell'>For sale</label>
-            <input type='checkbox' value='buy_sell' name='buy_sell' />    
-        </div>
+         <div class='filter_category'>
+            <label for='council'>Shared space, council matters</label>
+            <input type='checkbox' value='transport' name='transport' />
+        </div>        
         
          <div class='filter_category'>
-            <label for='transport'>transport</label>
+            <label for='transport'>Transport</label>
             <input type='checkbox' value='transport' name='transport' />
         </div>
+        
 
          <div class='filter_category'>
-            <label for='food_drink'>food_drink</label>
+            <label for='food_drink'>Food and Drink</label>
             <input type='checkbox' value='food_drink' name='food_drink' />
         </div>       
 
          <div class='filter_category'>
-            <label for='art'>art</label>
+            <label for='art'>Art, Music, Culture</label>
             <input type='checkbox' value='art' name='art' />
         </div>                
 
          <div class='filter_category'>
-            <label for='art'>art</label>
-            <input type='checkbox' value='art' name='art' />
-        </div>
-
-         <div class='filter_category'>
-            <label for='shops_restaurants'>shops_restaurants</label>
+            <label for='shops_restaurants'>Shops, restaurants, bars</label>
             <input type='checkbox' value='shops_restaurants' name='shops_restaurants' />
         </div>   
         
          <div class='filter_category'>
-            <label for='pets_nature'>pets_nature</label>
+            <label for='pets_nature'>Pets and nature</label>
             <input type='checkbox' value='pets_nature' name='pets_nature' />
         </div>
-        
-         <div class='filter_category'>
-            <label for='charity'>charity</label>
-            <input type='checkbox' value='charity' name='charity' />
-        </div> 
-        
+
          <div class='filter_category'>
             <label for='forsale_giveaway'>Buy Sell</label>
             <input type='checkbox' value='forsale_giveaway' name='forsale_giveaway' />
-        </div>                            
+        </div>
+          
+         <div class='filter_category'>
+            <label for='charity'>Charity</label>
+            <input type='checkbox' value='charity' name='charity' />
+        </div>                                  
                 
-
-        <option value='transport'>Transport</option>
-        <option value='council'>Council business</option> 
-        <option value='kids'>Kids</option>
-        
         <select id='time_filter'>
             <option value='today'>Today</option>
             <option value='last_week'>Last Week</div>

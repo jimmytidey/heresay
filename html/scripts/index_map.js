@@ -1,29 +1,39 @@
 heresay = new Object(); 
 
-heresay.init = function(lat, lng, zoom, categories, recency) { 
-
-	// initialise the map with your choice of API
-	heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
-	myPoint = new LatLonPoint(lat, lng);
-	console.log('ssd'+zoom);
-	// display the map centered on a latitude and longitude (Google zoom levels)
-	heresay.mapstraction.setCenterAndZoom(myPoint, parseInt(zoom));
-	heresay.mapstraction.addControls({
-		pan: true, 
-		zoom: 'small',
-		map_type: true 
-	});
+heresay.init = function(lat, lng, zoom, categories, recency , id) { 
 			
 	//Do ajax request for points 	
 	var base_url = "api/recent_threads.php?"; 
 	
-	if (categories != '') { 
-		base_url += "category="+categories; 
+	if (id) { 
+		base_url += "id="+id; 
 	}
 	
-	if (recency != '') { 
-		base_url += "&recency="+recency;
+	else {
+	
+		if (categories != '') { 
+			base_url += "category="+categories; 
+		}
+	
+		if (recency != '') { 
+			base_url += "&recency="+recency;
+		}
+	}	
+	
+	// initialise the map with your choice of API
+	heresay.mapstraction = new Mapstraction('mapstraction','openstreetmap');
+
+	heresay.mapstraction.addControls({
+		pan: true, 
+		zoom: 'small',
+		map_type: true 
+	});	
+	
+	if (!id) { 
+		center = new LatLonPoint(lat, lng);
+		heresay.mapstraction.setCenterAndZoom(center, parseInt(zoom));
 	}
+	
 	
 	$.getJSON(base_url, function(data) {
 	
@@ -33,6 +43,10 @@ heresay.init = function(lat, lng, zoom, categories, recency) {
 			
 			var myPoint = new LatLonPoint(val.lat, val.lng);
 			
+			if (id !='') {
+				heresay.center_lat = val.lat;
+				heresay.center_lng = val.lng;
+			}
 			
 			var my_marker = new Marker(myPoint);
 			if (val.category == 'events') { 
@@ -109,7 +123,20 @@ heresay.init = function(lat, lng, zoom, categories, recency) {
 	
 			my_marker.setLabel(val.title);
        
-			heresay.mapstraction.addMarker(my_marker);	
+			heresay.mapstraction.addMarker(my_marker);
+			if (id !='') {
+				console.log(my_marker);
+				my_marker.openBubble();
+			}
 		});	
+		
+		if (id) { 
+			console.log('YES single points case');
+			center = new LatLonPoint(heresay.center_lat , heresay.center_lng);
+			heresay.mapstraction.setCenterAndZoom(center, parseInt(zoom));
+		}
+
+		// display the map centered on a latitude and longitude (Google zoom levels)
+
 	});
 };	

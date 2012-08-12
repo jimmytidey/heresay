@@ -5,7 +5,7 @@ body, html {
 
 }
 
-h1,p,span, li {
+h1,p,span, li,a  {
 	font-family: Helvetica,
              "Helvetica Neue",
              Arial,
@@ -73,6 +73,13 @@ p, li {
     text-decoration: underline;
     top: 135px;
 } 
+
+#location_home { 
+	left: 70px;
+    position: absolute;
+    text-decoration: underline;
+    top: 135px;
+}
 
 #mapstraction {
 	width: 97%;

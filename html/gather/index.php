@@ -7,19 +7,6 @@
 
 
 	<title>Gather Index</title>
-<!--
-
-Culture / Hobbies / Food 
-Shops / Restaurants
-Crime / emergencies 
-Public space & transport  
-Pets / Nature 
-Sport 
-For Sale / services offered 
-
--->
-
-
 
 
 </head> 

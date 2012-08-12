@@ -49,7 +49,7 @@
         	     zoom=11;
         	}    	    
     	    console.log(zoom);
-    	    heresay.init(lat, lng, zoom, '', '');
+    	    heresay.init(lat, lng, zoom, '', '', '');
         });
 
     	function gup(name)
