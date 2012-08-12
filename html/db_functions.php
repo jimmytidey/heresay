@@ -1,5 +1,5 @@
 <? 
-include('../db_info.php');
+include('db_info.php');
 
 function db_q($query)  
 {
