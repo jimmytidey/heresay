@@ -3,7 +3,7 @@
 include('include.php');
 
 $sites[0]['url']    = 'http://southeastcentral.co.uk/forums/-/index.rss';
-$sites[0]['name']   = 'southeastcentral';
+$sites[0]['name']   = 'southeastcentral.co.uk';
 
 
 /*

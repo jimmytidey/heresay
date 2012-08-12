@@ -2,19 +2,11 @@
 
 include('include.php');
 
+//this needs changes to reflect the length of the threads... 
+
 $sites[0]['url']    = 'http://www.urban75.net/forums/forums/london-and-the-south-east.48/index.rss';
-$sites[0]['name']   = 'urban75';
+$sites[0]['name']   = 'urban75.net';
 
-
-
-
-/*
-$feeds[1]['url']    = 'https://www.ictu.nl/rss.xml';
-$feeds[1]['none']   = '';
-
-$feeds[2]['url']    = 'https://www.ictu.nl/rss.xml';
-$feeds[2]['none']   = '';
-*/
     
 foreach($sites as $site) { 
     

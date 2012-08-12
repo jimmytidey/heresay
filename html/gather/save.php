@@ -12,7 +12,7 @@ echo '=-'.$link.'--
 
 ';
 
-$query = "UPDATE manual_updates SET lat='$lat', lng='$lng', category='$category', secondary_category='$secondary_category' WHERE link='$link'";
+$query = "UPDATE manual_updates SET lat='$lat', lng='$lng', category='$category', secondary_category='$secondary_category', done='1' WHERE link='$link'";
 echo $query; 
 
 mysql_query ($query);

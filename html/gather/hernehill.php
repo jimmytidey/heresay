@@ -6,7 +6,7 @@ include_once('../simplepie/autoloader.php');
 include_once('../simplepie/idn/idna_convert.class.php');
 
 $sites[0]['url']    = 'http://feeds.feedburner.com/hernehillforum';
-$sites[0]['name']   = 'hernehillforum';
+$sites[0]['name']   = 'hernehillforum.org.uk';
 
 /*
 $feeds[1]['url']    = 'https://www.ictu.nl/rss.xml';

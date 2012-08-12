@@ -1,6 +1,6 @@
 <?
 
-include ('db_functions.php');
+include ('../db_functions.php');
 
 $callback 		= @mysql_real_escape_string(urldecode($_GET['callback'])); //for JSONP
 $debug 			= @mysql_real_escape_string(urldecode($_GET['debug']));

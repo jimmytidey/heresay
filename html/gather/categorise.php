@@ -1,14 +1,12 @@
 <?
-include('../db_info.php');
+include('../db_functions.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category='' LIMIT 10"; 
-$resource   = mysql_query($query);
-$results    = mysql_fetch_all($resource);
+$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && done!='1' LIMIT 10"; 
+$results    = db_q($query);
 
 $location_query      = "SELECT * FROM manual_locations"; 
-$location_resource   = mysql_query($location_query);
-$location_results     = mysql_fetch_all($location_resource);
+$location_results     = db_q($location_query);
 
 ?>
 
@@ -54,7 +52,7 @@ $location_results     = mysql_fetch_all($location_resource);
 	    </style>
 	    
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="../scripts/jquery-1.7.1.min.js"></script>
 		</head>
 	
 	<body>
@@ -64,7 +62,7 @@ $location_results     = mysql_fetch_all($location_resource);
 
                 <script type="text/javascript">
                     function initialize() {
-                        
+                            
                         <?
                         $i = 0;
                         foreach($results as $result) {
@@ -72,6 +70,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             foreach($location_results as $location_result) { 
                                 if ($location_result['name'] == $result['site']) { 
                                     $lat = $location_result['lat'];
+                                    
                                     $lng = $location_result['lng'];
                                     $zoom = $location_result['zoom'];
                                 }
@@ -84,7 +83,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             }
                             
                             ?>
-
+                                console.log(<?=$result['lat'] ?>);
                         var myOptions = {
                          zoom: 12,
                          center: new google.maps.LatLng(<?=$result['lat'] ?>, <?=$result['lng'] ?>),
@@ -132,26 +131,26 @@ $location_results     = mysql_fetch_all($location_resource);
                             var lng = position.lng(); 
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
                             var category = escape($('#category_<?=$i ?>').val());
+                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
                             console.log(link);
-                            $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
                         
-                        $('#save_<?=$i ?>').click(function() {
-                                             
+                        $('#save_<?=$i ?>').click(function() {                         
                             var position = marker_<?=$i?>.getPosition();
                             var lat = position.lat();
                             var lng = position.lng(); 
-                            var category = $('#category_<?=$i ?>').val();
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
+                            var category = escape($('#category_<?=$i ?>').val());
+                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
                             console.log(link);
-                            var url = "save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link; 
-                            console.log(url);
-                            $.get(url, function(html) {
+                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
+ 
                         
                         
                         //save if there is no location 
@@ -159,7 +158,7 @@ $location_results     = mysql_fetch_all($location_resource);
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
                                 var link = encodeURI($("#no_location_link_<?=$i ?>").val());
                                 var category = encodeURI($('#category_<?=$i ?>').val());
-                                $.get("save.php?category="+category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) {
+                                $.get("save.php?category="+category+"&lat=--&lng=--&link="+link, function(html) {
                                     console.log(html);
                                 });
                             }                          
@@ -188,20 +187,30 @@ $location_results     = mysql_fetch_all($location_resource);
                         <label for='no_location_<?=$i ?>'>This post has no location</label>
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
+                        <br/>
                         <select id='category_<?=$i ?>'>
                             <option value='--'>--</option>
-                            <option value='events'>Events</option>
-                            <option value='buy_sell'>Buy or sell</option>
-                            <option value='animals'>Pets and wildlife</option>
-                            <option value='local'>Local knowledge</option>
-                            <option value='sport'>Sport</option>                            
-                            <option value='crime'>Crime</option>
-                            <option value='transport'>Transport</option>
-                            <option value='music'>Music</option>
-                            <option value='food'>Food</option>
-                            <option value='council'>Council and planning</option>
-                            <option value='other'>Other</option>                                                                                    
+                            <option value='crime_emergencies'>Crime and emergencies</option>
+                            <option value='publicspace_transport'>Public realm</option>
+                            <option value='local_knowlege'>Announce</option>            
+                            <option value='community_events'>Community events</option>
+                                                                         
                         </select>
+                        
+                        <select id='category_<?=$i ?>_b'>
+                            <option value='--'>--</option>
+                            <option value='forsale_giveaway'>Buy Sell</option>
+                            <option value='charity'>Charity</option>                            
+                            <option value='pets_nature'>Pets and nature</option>   
+                            <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                            <option value='art'>Art / music / culture</option>
+                            <option value='sport'>Sport</option>                          
+                            <option value='food_drink'>Food and Drink</option>
+                            <option value='lost'>Lost</option>
+                            <option value='transport'>Transport</option>
+                            <option value='council'>Council business</option> 
+                            <option value='kids'>Kids</option>                                                                         
+                        </select>                        
                     </p>
                     
                     <p>Search <input type='text' id='search_<?=$i ?>' class='search'  /> <input type='button' value='save' id='save_<?=$i ?>' > </p>  

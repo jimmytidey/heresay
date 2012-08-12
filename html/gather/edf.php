@@ -11,13 +11,11 @@ include('include.php');
 $rss_url = 'http://www.eastdulwichforum.co.uk/forum/read.php';
 
 $sites[0]['url']    = 'http://www.eastdulwichforum.co.uk/forum/rss.php?5';
-$sites[0]['name']   = 'edf';
+$sites[0]['name']   = 'eastdulwichforum.co.uk';
 
 
 $sites[1]['url']    = 'http://www.eastdulwichforum.co.uk/forum/rss.php?6';
-$sites[1]['name']   = 'edf';
-
-
+$sites[1]['name']   = 'eastdulwichforum.co.uk';
 
 
 foreach($sites as $site) { 
@@ -44,7 +42,7 @@ foreach($sites as $site) {
         $shit_html = file_get_contents($original_post_url); 
 
         //get title 
-        $less_shit_html = explode('<div class=" PhorumReadBodySubject">', $shit_html);
+        $less_shit_html = explode('<div class=" PhorumReadBodyTextodySubject">', $shit_html);
         $title = explode('</div>', $less_shit_html[1]); 
         $title = strip_tags($title[0]);        
         
@@ -87,10 +85,6 @@ foreach($sites as $site) {
         
     }
 }
-
-
-
-?>
 
 
 

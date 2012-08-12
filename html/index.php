@@ -67,44 +67,49 @@
         </div>
         
          <div class='filter_category'>
-            <label for='animals'>Animals and Wildlife</label>
-            <input type='checkbox' value='animals' name='animals' />
+            <label for='transport'>transport</label>
+            <input type='checkbox' value='transport' name='transport' />
         </div>
 
          <div class='filter_category'>
-            <label for='local'>Local knowledge</label>
-            <input type='checkbox' value='local' name='local' />
+            <label for='food_drink'>food_drink</label>
+            <input type='checkbox' value='food_drink' name='food_drink' />
         </div>       
 
          <div class='filter_category'>
-            <label for='animals'>Sport</label>
-            <input type='checkbox' value='sport' name='sport' />
+            <label for='art'>art</label>
+            <input type='checkbox' value='art' name='art' />
         </div>                
 
          <div class='filter_category'>
-            <label for='crime'>Crime</label>
-            <input type='checkbox' value='crime' name='crime' />
+            <label for='art'>art</label>
+            <input type='checkbox' value='art' name='art' />
         </div>
 
          <div class='filter_category'>
-            <label for='transport'>Transport</label>
-            <input type='checkbox' value='transport' name='transport' />
+            <label for='shops_restaurants'>shops_restaurants</label>
+            <input type='checkbox' value='shops_restaurants' name='shops_restaurants' />
         </div>   
         
          <div class='filter_category'>
-            <label for='animals'>Music</label>
-            <input type='checkbox' value='music' name='music' />
+            <label for='pets_nature'>pets_nature</label>
+            <input type='checkbox' value='pets_nature' name='pets_nature' />
         </div>
         
          <div class='filter_category'>
-            <label for='food'>Food</label>
-            <input type='checkbox' value='food' name='food' />
+            <label for='charity'>charity</label>
+            <input type='checkbox' value='charity' name='charity' />
         </div> 
         
          <div class='filter_category'>
-            <label for='council'>Pubic space</label>
-            <input type='checkbox' value='council' name='council' />
+            <label for='forsale_giveaway'>Buy Sell</label>
+            <input type='checkbox' value='forsale_giveaway' name='forsale_giveaway' />
         </div>                            
+                
+
+        <option value='transport'>Transport</option>
+        <option value='council'>Council business</option> 
+        <option value='kids'>Kids</option>
         
         <select id='time_filter'>
             <option value='today'>Today</option>

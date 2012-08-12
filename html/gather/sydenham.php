@@ -4,7 +4,7 @@ include('include.php');
 $read_url = 'http://sydenham.org.uk/forum/viewtopic.php?t=';
 
 $sites[0]['url']    = 'http://sydenham.org.uk/forum/feed.php';
-$sites[0]['name']   = 'sydenham';
+$sites[0]['name']   = 'sydenham.org.uk';
 
 
 

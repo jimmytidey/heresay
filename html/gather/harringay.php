@@ -7,7 +7,7 @@ include_once('../simplepie/idn/idna_convert.class.php');
 
 
 $sites[0]['url']    = 'http://www.harringayonline.com/forum/topic/list?feed=yes&amp;xn_auth=no&amp;sort=mostRecent';
-$sites[0]['name']   = 'harringayonline';
+$sites[0]['name']   = 'harringayonline.com';
 
 
 

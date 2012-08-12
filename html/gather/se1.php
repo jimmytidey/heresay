@@ -4,11 +4,11 @@ include('include.php');
 $read_url = 'http://www.london-se1.co.uk/forum/read/';
 
 $sites[0]['url']    = 'http://www.london-se1.co.uk/forum/rss/1';
-$sites[0]['name']   = 'se1';
+$sites[0]['name']   = 'london-se1.co.uk';
 
 
 $sites[1]['url']    = 'http://www.london-se1.co.uk/forum/rss/4';
-$sites[1]['name']   = 'se1';
+$sites[1]['name']   = 'london-se1.co.uk';
 
 
 

@@ -8,7 +8,7 @@ $results    = mysql_fetch_all($resource);
 
 $location_query      = "SELECT * FROM manual_locations"; 
 $location_resource   = mysql_query($location_query);
-$location_results     = mysql_fetch_all($location_resource);
+$location_results    = mysql_fetch_all($location_resource);
 
 ?>
 
