@@ -1,14 +1,12 @@
 <?
-include('../db_info.php');
+include('../db_functions.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat='' LIMIT 10"; 
-$resource   = mysql_query($query);
-$results    = mysql_fetch_all($resource);
+$query      = "SELECT * FROM manual_updates WHERE lat='' LIMIT 10";
+$results    = db_q($query);
 
-$location_query      = "SELECT * FROM manual_locations"; 
-$location_resource   = mysql_query($location_query);
-$location_results    = mysql_fetch_all($location_resource);
+$location_query      = "SELECT * FROM manual_locations";
+$location_results    = db_q($location_query);
 
 ?>
 
@@ -134,10 +132,12 @@ $location_results    = mysql_fetch_all($location_resource);
                             var lat = position.lat();
                             var lng = position.lng(); 
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
-                            var category = escape($('#category_<?=$i ?>').val());
-                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
+                            var category_1 = escape($('#category_<?=$i ?>_1').val());
+                            var category_2 = escape($('#category_<?=$i ?>_2').val());
+                            var category_3 = escape($('#category_<?=$i ?>_3').val());
+                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
                             console.log(link);
-                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -147,10 +147,12 @@ $location_results    = mysql_fetch_all($location_resource);
                             var lat = position.lat();
                             var lng = position.lng(); 
                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
-                            var category = escape($('#category_<?=$i ?>').val());
-                            var secondary_category = escape($('#category_<?=$i ?>_b').val());
+                            var category_1 = escape($('#category_<?=$i ?>_1').val());
+                            var category_2 = escape($('#category_<?=$i ?>_2').val());
+                            var category_3 = escape($('#category_<?=$i ?>_3').val());
+                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
                             console.log(link);
-                            $.get("save.php?category="+category+"&secondary_category="+ secondary_category+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -190,16 +192,8 @@ $location_results    = mysql_fetch_all($location_resource);
                         <label for='no_location_<?=$i ?>'>This post has no location</label>
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
-                                    <select id='category_<?=$i ?>'>
-                                        <option value='--'>--</option>
-                                        <option value='crime_emergencies'>Crime and emergencies</option>
-                                        <option value='publicspace_transport'>Public realm</option>
-                                        <option value='local_knowlege'>Announce</option>            
-                                        <option value='community_events'>Community events</option>
 
-                                    </select>
-
-                                    <select id='category_<?=$i ?>_b'>
+                                    <select id='category_<?=$i ?>_1'>
                                         <option value='--'>--</option>
                                         <option value='forsale_giveaway'>Buy Sell</option>
                                         <option value='charity'>Charity</option>                            
@@ -212,7 +206,53 @@ $location_results    = mysql_fetch_all($location_resource);
                                         <option value='transport'>Transport</option>
                                         <option value='council'>Council business</option> 
                                         <option value='kids'>Kids</option>                                                                         
-                                    </select>                
+                                    </select>
+
+                                    <select id='category_<?=$i ?>_2'>
+                                        <option value='--'>--</option>
+                                        <option value='forsale_giveaway'>Buy Sell</option>
+                                        <option value='charity'>Charity</option>                            
+                                        <option value='pets_nature'>Pets and nature</option>   
+                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                                        <option value='art'>Art / music / culture</option>
+                                        <option value='sport'>Sport</option>                          
+                                        <option value='food_drink'>Food and Drink</option>
+                                        <option value='lost'>Lost</option>
+                                        <option value='transport'>Transport</option>
+                                        <option value='council'>Council business</option> 
+                                        <option value='kids'>Kids</option>                                                                         
+                                    </select>  
+
+                                    <select id='category_<?=$i ?>_3'>
+                                        <option value='--'>--</option>
+                                        <option value='forsale_giveaway'>Buy Sell</option>
+                                        <option value='charity'>Charity</option>                            
+                                        <option value='pets_nature'>Pets and nature</option>   
+                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                                        <option value='art'>Art / music / culture</option>
+                                        <option value='sport'>Sport</option>                          
+                                        <option value='food_drink'>Food and Drink</option>
+                                        <option value='lost'>Lost</option>
+                                        <option value='transport'>Transport</option>
+                                        <option value='council'>Council business</option> 
+                                        <option value='kids'>Kids</option>                                                                         
+                                    </select>
+                                    
+                                    <select id='category_<?=$i ?>_4'>
+                                        <option value='--'>--</option>
+                                        <option value='forsale_giveaway'>Buy Sell</option>
+                                        <option value='charity'>Charity</option>                            
+                                        <option value='pets_nature'>Pets and nature</option>   
+                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                                        <option value='art'>Art / music / culture</option>
+                                        <option value='sport'>Sport</option>                          
+                                        <option value='food_drink'>Food and Drink</option>
+                                        <option value='lost'>Lost</option>
+                                        <option value='transport'>Transport</option>
+                                        <option value='council'>Council business</option> 
+                                        <option value='kids'>Kids</option>                                                                         
+                                    </select>                                                                        
+                                                  
                         
                     </p>
                     

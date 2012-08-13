@@ -5,7 +5,9 @@ include ('../db_functions.php');
 $callback 		= @mysql_real_escape_string(urldecode($_GET['callback'])); //for JSONP
 $debug 			= @mysql_real_escape_string(urldecode($_GET['debug']));
 
-$category 		= @mysql_real_escape_string(urldecode($_GET['category']));
+$category 		= @mysql_real_escape_string(urldecode($_GET['category_1']));
+
+
 $recency 		= @mysql_real_escape_string(urldecode($_GET['recency']));
 $id 	    	= @mysql_real_escape_string(urldecode($_GET['id']));
 
@@ -40,7 +42,7 @@ else {
         $categories = explode(',', $category);
         $query_array = array();
         foreach ($categories as $category) { 
-            $query_array[] = " secondary_category='$category'"; 
+            $query_array[] = " category_1='$category' || category_2='$category' || category_3='$category' || category_4='$category' "; 
         }
 
         $query .= implode(" || ", $query_array);
