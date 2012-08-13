@@ -195,6 +195,7 @@ $location_results     = db_q($location_query);
                  
                         <select id='category_<?=$i ?>_1'>
                             <option value='--'>--</option>
+                            <option value='Local_knowledge'>Local knowledge</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='publicspace'>Public space</option>
                             <option value='charity'>Charity</option>                            
@@ -211,6 +212,7 @@ $location_results     = db_q($location_query);
 
                         <select id='category_<?=$i ?>_2'>
                             <option value='--'>--</option>
+                            <option value='Local_knowledge'>Local knowledge</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
@@ -226,6 +228,7 @@ $location_results     = db_q($location_query);
 
                         <select id='category_<?=$i ?>_3'>
                             <option value='--'>--</option>
+                            <option value='Local_knowledge'>Local knowledge</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
@@ -241,6 +244,7 @@ $location_results     = db_q($location_query);
                         
                         <select id='category_<?=$i ?>_4'>
                             <option value='--'>--</option>
+                            <option value='Local_knowledge'>Local knowledge</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
