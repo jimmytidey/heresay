@@ -27,7 +27,7 @@ foreach($sites as $site) {
 	$feed->handle_content_type();
 	
 	$max = $feed->get_item_quantity();
-	for ($x = 0; $x < $max; $x++)  {
+	for ($x = 0; $x < 5; $x++)  {
 		
 		$item = $feed->get_item($x);
 	    
@@ -42,9 +42,11 @@ foreach($sites as $site) {
         $shit_html = file_get_contents($original_post_url); 
 
         //get title 
-        $less_shit_html = explode('<div class=" PhorumReadBodyTextodySubject">', $shit_html);
+        $less_shit_html = explode('<div class=" PhorumReadBodySubject">', $shit_html);
         $title = explode('</div>', $less_shit_html[1]); 
-        $title = strip_tags($title[0]);        
+        $title = strip_tags($title[0]);
+        
+        echo $title;
         
         //get description
         $less_shit_html = explode('<div class="PhorumReadBodyText">', $shit_html);
