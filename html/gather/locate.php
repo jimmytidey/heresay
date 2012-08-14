@@ -185,6 +185,13 @@ $location_results    = db_q($location_query);
                 ?>
                 <div class='item'>
                     <div id='map_canvas_<?=$i ?>' class='map' ></div>
+                    <?
+                    if (empty( $result['title'] )) { 
+                            $result['title'] = "NO TITLE";  
+                        }
+                    
+                    
+                    ?>
                     <h3><a href='<?echo $result['link'] ?>' target='_blank' ><?echo $result['title'] ?></a></h3>
                     <p class='description'><?echo strip_tags(htmlspecialchars_decode ($result['description'])) ?> </p>
                     <p class='site'>Site: <?echo strip_tags(htmlspecialchars_decode ($result['site'])) ?> </p>
