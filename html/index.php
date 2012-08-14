@@ -65,7 +65,12 @@
          <div class='filter_category'>
             <label for='council'>Shared space, council matters</label>
             <input type='checkbox' value='transport' name='transport' />
-        </div>        
+        </div>  
+        
+         <div class='filter_category'>
+            <label for='local_knowledge'>Local knowledge</label>
+            <input type='checkbox' value='transport' name='transport' />
+        </div>              
         
          <div class='filter_category'>
             <label for='transport'>Transport</label>
