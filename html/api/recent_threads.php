@@ -51,7 +51,7 @@ else {
 }
 
 
-$query .=' ORDER BY pubdate LIMIT 300'; 
+$query .=' ORDER BY pubdate LIMIT 3000'; 
 
 
 $search_result = db_q($query);
