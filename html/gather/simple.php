@@ -76,6 +76,32 @@ $sites[24]['name']   = 'bowesandbounds.org';
 $sites[25]['url']    = 'http://www.shepherdsbushw12.com/rss.xml';
 $sites[25]['name']   = 'www.shepherdsbushw12.com';
 
+$sites[26]['url']    = 'http://www.westhampsteadlife.com/feeds/posts/default?alt=rss';
+$sites[26]['name']   = 'westhampsteadlife.com';
+
+$sites[27]['url']    = 'http://www.mayfair.org.uk/feed';
+$sites[27]['name']   = 'mayfair.org.uk';
+
+$sites[28]['url']    = 'http://www.batterseapeople.co.uk/stories.rss';
+$sites[28]['name']   = 'batterseapeople.co.uk';
+
+$sites[29]['url']    = 'http://www.batterseapeople.co.uk/stories.rss';
+$sites[29]['name']   = 'batterseapeople.co.uk';
+
+$sites[30]['url']    = 'http://www.sohopeople.co.uk/stories.rss';
+$sites[30]['name']   = 'sohopeople.co.uk';
+
+$sites[31]['url']    = 'http://www.pimlicopeople.co.uk/stories.rss';
+$sites[31]['name']   = 'pimlicopeople.co.uk';
+
+$sites[32]['url']    = 'http://www.pimlicopeople.co.uk/stories.rss';
+$sites[32]['name']   = 'pimlicopeople.co.uk';
+
+$sites[33]['url']    = 'http://news.fitzrovia.org.uk/feed/';
+$sites[33]['name']   = 'fitzrovia.org.uk';
+
+
+
 
 
     
