@@ -98,6 +98,28 @@ $sites[33]['name']   = 'fitzrovia.org.uk';
 $sites[34]['url']    = 'http://www.se5forum.org/forum/index.php?type=rss;action=.xml';
 $sites[34]['name']   = 'se5forum.org';
 
+$sites[35]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/1-vn-restaurant-reviews/';
+$sites[35]['name']   = 'virtualnorwood.com';
+
+$sites[36]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/4-vn-local-jobs/';
+$sites[36]['name']   = 'virtualnorwood.com';
+
+$sites[36]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/2-vn-pub-and-bar-reviews/';
+$sites[36]['name']   = 'virtualnorwood.com';
+
+$sites[37]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/7-recommendations/';
+$sites[37]['name']   = 'virtualnorwood.com';
+
+$sites[38]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/9-history/';
+$sites[38]['name']   = 'virtualnorwood.com';
+
+
+$sites[39]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/10-news-and-local/';
+$sites[39]['name']   = 'virtualnorwood.com';
+
+
+
+
 
 
 
