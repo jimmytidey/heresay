@@ -111,7 +111,7 @@
         <select id='time_filter'>
             <option value='today'>Today</option>
             <option value='last_week'>Last Week</div>
-            <option value='last_week'>Last Month</div>
+            <option value='last_month'>Last Month</div>
         <select>
             
         <input type='button' value='Filter' id='filter_button' />
