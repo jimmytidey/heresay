@@ -85,8 +85,6 @@ $sites[27]['name']   = 'mayfair.org.uk';
 $sites[28]['url']    = 'http://www.batterseapeople.co.uk/stories.rss';
 $sites[28]['name']   = 'batterseapeople.co.uk';
 
-$sites[29]['url']    = 'http://www.batterseapeople.co.uk/stories.rss';
-$sites[29]['name']   = 'batterseapeople.co.uk';
 
 $sites[30]['url']    = 'http://www.sohopeople.co.uk/stories.rss';
 $sites[30]['name']   = 'sohopeople.co.uk';
@@ -94,11 +92,12 @@ $sites[30]['name']   = 'sohopeople.co.uk';
 $sites[31]['url']    = 'http://www.pimlicopeople.co.uk/stories.rss';
 $sites[31]['name']   = 'pimlicopeople.co.uk';
 
-$sites[32]['url']    = 'http://www.pimlicopeople.co.uk/stories.rss';
-$sites[32]['name']   = 'pimlicopeople.co.uk';
-
 $sites[33]['url']    = 'http://news.fitzrovia.org.uk/feed/';
 $sites[33]['name']   = 'fitzrovia.org.uk';
+
+$sites[34]['url']    = 'http://www.se5forum.org/forum/index.php?type=rss;action=.xml';
+$sites[34]['name']   = 'se5forum.org';
+
 
 
 
