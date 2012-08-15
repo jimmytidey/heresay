@@ -5,7 +5,7 @@ include ('../db_functions.php');
 $callback 		= @mysql_real_escape_string(urldecode($_GET['callback'])); //for JSONP
 $debug 			= @mysql_real_escape_string(urldecode($_GET['debug']));
 
-$category 		= @mysql_real_escape_string(urldecode($_GET['category_1']));
+$category 		= @mysql_real_escape_string(urldecode($_GET['category']));
 
 
 $recency 		= @mysql_real_escape_string(urldecode($_GET['recency']));
@@ -61,7 +61,7 @@ if (empty($search_result)) {
     $search_result['error'] = 'no results';
 }
 
-$search_result['query']= $query;
+echo $query;
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-type: application/json');
