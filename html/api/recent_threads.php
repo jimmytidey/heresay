@@ -60,8 +60,6 @@ $search_result = db_q($query);
 if (empty($search_result)) { 
     $search_result['error'] = 'no results';
 }
-
-echo $query;
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-type: application/json');
