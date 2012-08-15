@@ -162,7 +162,7 @@
 
 <h1>Get in touch</h1>
 
-<p>jimmytidey@gmail.co.uk</p> 
+<p>jimmytidey@gmail.com</p> 
 
 </div >
 
