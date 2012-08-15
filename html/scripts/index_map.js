@@ -102,7 +102,7 @@ heresay.init = function(lat, lng, zoom, categories, recency , id) {
 		    var month = date.getMonth() + 1;
 		    var year = date.getFullYear();
 	    
-			var text ="<div style='height:110px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> <br /> <em class='bubble_date'> "+ day + '/' +month +"/"+year +" </em><br/>";
+			var text ="<div style='height:210px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='"+val.link+"'>"+unescape(val.title)+"</a></strong> <br /> <em class='bubble_date'> "+ day + '/' +month +"/"+year +" </em><br/>";
         
 		
 			if (val.description != undefined) {
