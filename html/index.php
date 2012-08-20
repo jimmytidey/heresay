@@ -12,7 +12,8 @@
         var id = gup('id'); 
         var lat = gup('lat'); 
         var lng = gup('lng'); 
-        var id = gup('id'); 
+        var id = gup('id');
+        var category = gup('category'); 
 
         if(!isNumber(lat)) { 
             lat = 51.5073346;
@@ -22,14 +23,14 @@
         }        
         
         if (id) { 
-            heresay.init(lat, lng, 12, "", '', id);
+            heresay.init(lat, lng, 12, category, '', id);
         }  
         
         else { 
             if(recency !='today') { 
                 recency = "last_week";
             }  
-             heresay.init(lat, lng, 12, "", recency, '');
+             heresay.init(lat, lng, 12, category, recency, '');
         }
        
         
