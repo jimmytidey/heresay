@@ -2,7 +2,7 @@
 include('../db_functions.php');
 
 
-$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && done!='1' LIMIT 10"; 
+$query      = "SELECT * FROM manual_updates WHERE lat!='' && lat!='--' && category_1='--' LIMIT 10"; 
 $results    = db_q($query);
 
 $location_query      = "SELECT * FROM manual_locations"; 
@@ -125,48 +125,38 @@ $location_results     = db_q($location_query);
                         });
                                                      
 
-                        google.maps.event.addListener(marker_<?=$i?>, 'dragend', function() {
-                            var position = marker_<?=$i?>.getPosition();
-                            var lat = position.lat();
-                            var lng = position.lng(); 
-                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
-                            var category_1 = escape($('#category_<?=$i ?>_1').val());
-                            var category_2 = escape($('#category_<?=$i ?>_2').val());
-                            var category_3 = escape($('#category_<?=$i ?>_3').val());
-                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
-                            console.log(link);
-                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
-                                console.log(html);
-                            });
-                        });
-
                         $('#save_<?=$i ?>').click(function() {                         
-                            var position = marker_<?=$i?>.getPosition();
-                            var lat = position.lat();
-                            var lng = position.lng(); 
-                            var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
-                            var category_1 = escape($('#category_<?=$i ?>_1').val());
-                            var category_2 = escape($('#category_<?=$i ?>_2').val());
-                            var category_3 = escape($('#category_<?=$i ?>_3').val());
-                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
-                            console.log(link);
-                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
-                                console.log(html);
-                            });
-                        });
+                             var position = marker_<?=$i?>.getPosition();
+                             var lat = position.lat();
+                             var lng = position.lng(); 
+                             var link = encodeURIComponent($('#no_location_link_<?=$i ?>').val());
+                             var category_1 = escape($('#category_<?=$i ?>_1').val());
+                             var category_2 = escape($('#category_<?=$i ?>_2').val());
+                             var category_3 = escape($('#category_<?=$i ?>_3').val());
+                             var category_4 = escape($('#category_<?=$i ?>_4').val());                            
+                             console.log(link);
+                             $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                                 console.log(html);
+                             });
+                         });
+
+
+                         //save if there is no location 
+                         $('#no_location_<?=$i ?>').click(function() { 
+                            
+                             if($('#no_location_<?=$i ?>').attr("checked") == 'checked') {
+                                 
+                                 var link = encodeURIComponent($("#no_location_link_<?=$i ?>").val());
+                                 var category = escape($('#category_<?=$i ?>').val());
+                                 $.get("save.php?category="+category+"&lat=--&lng=--&link="+link, function(html) {
+                                     console.log(html);
+                                 });
+                             }                          
+                         });
  
                         
                         
-                        //save if there is no location 
-                        $('#no_location_<?=$i ?>').click(function() { 
-                            if($('#no_location_<?=$i ?>').attr("checked")==true) {
-                                var link = encodeURI($("#no_location_link_<?=$i ?>").val());
-                                var category = encodeURI($('#category_<?=$i ?>').val());
-                                $.get("save.php?category="+category+"&lat=--&lng=--&link="+link, function(html) {
-                                    console.log(html);
-                                });
-                            }                          
-                        });
+
                         
                     
                       <?
@@ -196,8 +186,9 @@ $location_results     = db_q($location_query);
                         <select id='category_<?=$i ?>_1'>
                             <option value='--'>--</option>
                             <option value='Local_knowledge'>Local knowledge</option>
+                            <option value='crime_emergencies'>Crime and emergencies</option>
+                            <option value='community_events'>Community events</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
-                            <option value='publicspace'>Public space</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
                             <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
@@ -207,12 +198,14 @@ $location_results     = db_q($location_query);
                             <option value='lost'>Lost</option>
                             <option value='transport'>Transport</option>
                             <option value='council'>Council business</option> 
-                            <option value='kids'>Kids</option>                                                                         
+                            <option value='kids'>Kids</option>                                                                    
                         </select>
 
                         <select id='category_<?=$i ?>_2'>
                             <option value='--'>--</option>
                             <option value='Local_knowledge'>Local knowledge</option>
+                            <option value='crime_emergencies'>Crime and emergencies</option>
+                            <option value='community_events'>Community events</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
@@ -223,12 +216,14 @@ $location_results     = db_q($location_query);
                             <option value='lost'>Lost</option>
                             <option value='transport'>Transport</option>
                             <option value='council'>Council business</option> 
-                            <option value='kids'>Kids</option>                                                                         
+                            <option value='kids'>Kids</option>                                                                     
                         </select>  
 
                         <select id='category_<?=$i ?>_3'>
                             <option value='--'>--</option>
                             <option value='Local_knowledge'>Local knowledge</option>
+                            <option value='crime_emergencies'>Crime and emergencies</option>
+                            <option value='community_events'>Community events</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
@@ -239,12 +234,14 @@ $location_results     = db_q($location_query);
                             <option value='lost'>Lost</option>
                             <option value='transport'>Transport</option>
                             <option value='council'>Council business</option> 
-                            <option value='kids'>Kids</option>                                                                         
+                            <option value='kids'>Kids</option>                                                                       
                         </select>
                         
                         <select id='category_<?=$i ?>_4'>
                             <option value='--'>--</option>
                             <option value='Local_knowledge'>Local knowledge</option>
+                            <option value='crime_emergencies'>Crime and emergencies</option>
+                            <option value='community_events'>Community events</option>
                             <option value='forsale_giveaway'>Buy Sell</option>
                             <option value='charity'>Charity</option>                            
                             <option value='pets_nature'>Pets and nature</option>   
@@ -255,7 +252,7 @@ $location_results     = db_q($location_query);
                             <option value='lost'>Lost</option>
                             <option value='transport'>Transport</option>
                             <option value='council'>Council business</option> 
-                            <option value='kids'>Kids</option>                                                                         
+                            <option value='kids'>Kids</option>                                                                     
                         </select>
              
                     

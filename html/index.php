@@ -128,14 +128,20 @@
 <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
 <p>At the moment the forums are:</p>
 <ul>
+    <li><a href='http://www.hackneyhear.com/blog/feed'>hackneyhear.com</a></li>
+    <li><a href='http://thegallerycafe.blogspot.com/feeds/posts/default?alt=rss'>thegallerycafe.blogspot.co.uk</a></li>
+    <li><a href='http://clapham-omnibus.blogspot.com/feeds/posts/default?alt=rss'>clapham-omnibus.blogspot.co.uk</a></li>
+    <li><a href='http://www.creativeclerkenwell.com/feed/atom/'>creativeclerkenwell.com</a></li>
+    <li><a href='http://www.westealingneighbours.org.uk/WEN-blog/feed/'>westealingneighbours.org.uk</a></li>
+    <li><a href='http://www.duchessofhackney.com/feed/'>duchessofhackney.com</a></li>
+    
+    
     <li><a href='http://www.actonw3.com/'>Acton</a></li>
     <li><a href='http://www.beckenhamtown.us'>Beckenhamtown</a></li>
     <li><a href='http://bowesandbounds.org'>Bowes and Bounds</a></li>
      <li><a href='http://www.brentfordtw8.com'>Brentford</a></li>
     <li><a href='http://www.chiswickw4.com'>Chiswick</a></li>
-    
     <li><a href='http://dalstonpeople.co.uk'>dalstonpeople.co.uk</a></li>
-    
     <li><a href='http://www.ealingtoday.co.uk'>Ealing</a></li>
     <li><a href='http://www.eastdulwichforum.co.uk'>East Dulwich Forum</a></li>
     <li><a href='http://www.fulhamsw6.com'>Fullham</a></li>    

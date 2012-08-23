@@ -49,50 +49,61 @@ heresay.init = function(lat, lng, zoom, categories, recency , id) {
 			}
 			
 			var my_marker = new Marker(myPoint);
-			if (val.category_1 == 'Local_knowledge' || val.category_2 == 'Local_knowledge' || val.category_3 == 'Local_knowledge' || val.category_4 == 'Local_knowledge'  ) {
+			if (val.category_1 == 'local_knowledge' ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/009900/');
 			}
 
-			if (val.category_1 == 'crime_emergencies' || val.category_2 == 'crime_emergencies' || val.category_3 == 'crime_emergencies' || val.category_4 == 'crime_emergencies'  ) {			    
+			else if (val.category_1 == 'crime_emergencies' ) {			    
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/999900/');
 			}
 
-			if (val.category_1 == 'community_events' || val.category_2 == 'community_events' || val.category_3 == 'community_events' || val.category_4 == 'community_events'  ) {			    
+			else if (val.category_1 == 'community_events'   ) {			    
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/009999/');
-			}					
+			}	
 			
-			if (val.category_1 == 'coucil' || val.category_2 == 'coucil' || val.category_3 == 'coucil' || val.category_4 == 'coucil'  ) { 
+			else if (val.category_1 == 'shops_restaurants'   ) {			    
+			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/0099aa/');
+			}							
+			
+			else if (val.category_1 == 'publicspace' ) { 
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/990000/');
 			}				
 
-			if (val.category_1 == 'other' || val.category_2 == 'other' || val.category_3 == 'other' || val.category_4 == 'other'  ) {
+			else if (val.category_1 == 'transport'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/000099/');
 			}	
 
-			if (val.category_1 == 'buy_sell' || val.category_2 == 'buy_sell' || val.category_3 == 'buy_sell' || val.category_4 == 'buy_sell'  ) {
+			else if (val.category_1 == 'buy_sell'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/990099/');
 			}											
 
-			if (val.category_1 == 'animals' || val.category_2 == 'animals' || val.category_3 == 'animals' || val.category_4 == 'animals'  ) {
+			else if (val.category_1 == 'animals' || val.category_1 == 'pets_nature'   ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/e7d56d/');
 			}											
 
-			if (val.category_1 == 'local' || val.category_2 == 'local' || val.category_3 == 'local' || val.category_4 == 'local'  ) {
+			else if (val.category_1 == 'kids'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/303e95/');
 			}	
 
-			if (val.category_1 == 'sport' || val.category_2 == 'sport' || val.category_3 == 'sport' || val.category_4 == 'sport'  ) {		
+			else if (val.category_1 == 'sport'   ) {		
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/df6899/');
 			}		
 									
-			if (val.category_1 == 'music' || val.category_2 == 'music' || val.category_3 == 'music' || val.category_4 == 'music'  ) {		
+			else if (val.category_1 == 'art'   ) {		
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/5cb59f/');
 			}
 
-			if (val.category_1 == 'food' || val.category_2 == 'food' || val.category_3 == 'food' || val.category_4 == 'food'  ) {
+			else if (val.category_1 == 'food_drink'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/aaa54f/');
 			}
-
+			
+			else if (val.category_1 == 'charity'  ) {
+			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/aaa54f/');
+			}			
+			
+			else  { 
+				console.log("not found:" + val.category_1 + "--");
+			}
 
 		    var milli = parseInt(val.pubdate)*1000;
 	    
