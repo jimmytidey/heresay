@@ -29,19 +29,20 @@ $location_results    = db_q($location_query);
 	            border-bottom:1px solid black;
 	            border-top:1px solid black;
 	            float:left;
-	            height:440px ;
+	            height:490px ;
 	            margin-bottom:10px;
 	        }
 	        
 	        .map { 
 	            width:450px;
-	            height:420px;
+	            height:440px;
 	            float:left;
 	            margin-right:20px;
 	        }
 	        
 	        .search { 
-	            width:300px;
+	            width:400px;
+	            float:right;
 	        }
 	        
 	        .description { 
@@ -199,7 +200,9 @@ $location_results    = db_q($location_query);
                         <label for='no_location_<?=$i ?>'>This post has no location</label>
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
-
+                                    
+                                    <br/>
+                                    
                                     <select id='category_<?=$i ?>_1'>
                                         <option value='--'>--</option>
                                         <option value='Local_knowledge'>Local knowledge</option>
@@ -254,28 +257,12 @@ $location_results    = db_q($location_query);
                                         <option value='kids'>Kids</option>                                                                         
                                     </select>
                                     
-                                    <select id='category_<?=$i ?>_4'>
-                                        <option value='--'>--</option>
-                                        <option value='Local_knowledge'>Local knowledge</option>
-                                        <option value='crime_emergencies'>Crime and emergencies</option>
-                                        <option value='community_events'>Community events</option>
-                                        <option value='forsale_giveaway'>Buy Sell</option>
-                                        <option value='charity'>Charity</option>                            
-                                        <option value='pets_nature'>Pets and nature</option>   
-                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
-                                        <option value='art'>Art / music / culture</option>
-                                        <option value='sport'>Sport</option>                          
-                                        <option value='food_drink'>Food and Drink</option>
-                                        <option value='lost'>Lost</option>
-                                        <option value='transport'>Transport</option>
-                                        <option value='council'>Council business</option> 
-                                        <option value='kids'>Kids</option>                                                                         
-                                    </select>                                                                        
+                                                                                  
                                                   
                         
                     </p>
                     
-                    <p>Search <input type='text' id='search_<?=$i ?>' class='search'  /> <input type='button' value='save' id='save_<?=$i ?>' > </p>  
+                    <p class='search'>Search <input type='text' id='search_<?=$i ?>' class='search'  /> <input type='button' value='save' id='save_<?=$i ?>' > </p>  
                 </div>
                <?
                $i++;
