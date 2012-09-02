@@ -96,6 +96,10 @@ heresay.init = function(lat, lng, zoom, categories, recency , id) {
 			else if (val.category_1 == 'food_drink'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/aaa54f/');
 			}
+
+			else if (val.category_1 == 'council'  ) {
+			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/dda54f/');
+			}			
 			
 			else if (val.category_1 == 'charity'  ) {
 			    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/aaa54f/');
