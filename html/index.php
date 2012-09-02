@@ -27,10 +27,11 @@
         }  
         
         else { 
-            if(recency !='today') { 
-                recency = "this_week";
+            if(recency =='') { 
+                recency = "this_month";
             }  
-             heresay.init(lat, lng, 12, category, recency, '');
+            console.log(recency);
+            heresay.init(lat, lng, 12, category, recency, '');
         }
        
         
