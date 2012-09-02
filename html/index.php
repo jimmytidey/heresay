@@ -28,7 +28,7 @@
         
         else { 
             if(recency !='today') { 
-                recency = "last_week";
+                recency = "this_week";
             }  
              heresay.init(lat, lng, 12, category, recency, '');
         }
