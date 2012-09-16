@@ -85,6 +85,10 @@ $location_results    = db_q($location_query);
                                 $lng = -0.1276831;
                                 $zoom = 12;
                             }
+                            if (empty($zoom)){ 
+
+                                $zoom = 12;
+                            }
                             
                             ?>
 
@@ -205,7 +209,7 @@ $location_results    = db_q($location_query);
                                     
                                     <select id='category_<?=$i ?>_1'>
                                         <option value='--'>--</option>
-                                        <option value='Local_knowledge'>Local knowledge</option>
+                                        <option value='local_knowledge'>Local knowledge</option>
                                         <option value='crime_emergencies'>Crime and emergencies</option>
                                         <option value='community_events'>Community events</option>
                                         <option value='forsale_giveaway'>Buy Sell</option>
@@ -223,7 +227,7 @@ $location_results    = db_q($location_query);
 
                                     <select id='category_<?=$i ?>_2'>
                                         <option value='--'>--</option>
-                                        <option value='Local_knowledge'>Local knowledge</option>
+                                        <option value='local_knowledge'>Local knowledge</option>
                                         <option value='crime_emergencies'>Crime and emergencies</option>
                                         <option value='community_events'>Community events</option>
                                         <option value='forsale_giveaway'>Buy Sell</option>
@@ -241,7 +245,7 @@ $location_results    = db_q($location_query);
 
                                     <select id='category_<?=$i ?>_3'>
                                         <option value='--'>--</option>
-                                        <option value='Local_knowledge'>Local knowledge</option>
+                                        <option value='local_knowledge'>Local knowledge</option>
                                         <option value='crime_emergencies'>Crime and emergencies</option>
                                         <option value='community_events'>Community events</option>
                                         <option value='forsale_giveaway'>Buy Sell</option>

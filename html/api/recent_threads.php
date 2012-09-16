@@ -51,7 +51,7 @@ else {
 }
 
 
-$query .=' ORDER BY pubdate DESC LIMIT 1000'; 
+$query .=' ORDER BY pubdate DESC LIMIT 4000'; 
 
 $search_result = db_q($query);
 
@@ -60,9 +60,10 @@ $search_result = db_q($query);
 if (empty($search_result)) { 
     $search_result['error'] = 'no results';
 }
-
-$json = unstrip_array($search_result);
 $json['query'] = $query; 
+$json['count'] = count($search_result); 
+$json['data'] = unstrip_array($search_result);
+
 
 
 header('Cache-Control: no-cache, must-revalidate');

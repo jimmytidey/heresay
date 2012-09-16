@@ -113,9 +113,33 @@ $sites[37]['name']   = 'virtualnorwood.com';
 $sites[38]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/9-history/';
 $sites[38]['name']   = 'virtualnorwood.com';
 
-
 $sites[39]['url']    = 'http://www.virtualnorwood.com/forum/rss/forums/10-news-and-local/';
 $sites[39]['name']   = 'virtualnorwood.com';
+
+$sites[40]['url']    = 'http://www.brixtonblog.com/feed';
+$sites[40]['name']   = 'brixtonblog.com';
+
+
+
+$sites[41]['url']    = 'http://www.streathamaction.org.uk/rss.xml';
+$sites[41]['name']   = 'streathamaction.org.uk';
+
+
+$sites[42]['url']    = 'http://www.vauxhallcivicsociety.org.uk/feed/';
+$sites[42]['name']   = 'vauxhallcivicsociety.org.uk';
+
+
+
+$sites[43]['url']    = 'http://www.stockwellnews.com/feed/';
+$sites[43]['name']   = 'stockwellnews.com';
+
+$sites[44]['url']    = 'http://kenningtonnews.blogspot.co.uk/';
+$sites[44]['name']   = 'kenningtonnews.blogspot.co.uk';
+
+
+
+
+
 
 
 

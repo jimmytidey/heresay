@@ -59,6 +59,7 @@ p, li {
 
 .filter_category { 
 	width:250px;
+	margin-bottom:2px;
 }
 
 #arrow { 
@@ -72,7 +73,26 @@ p, li {
     position: absolute;
     text-decoration: underline;
     top: 135px;
+	
 } 
+
+
+#filter_council {background-color:#4575B4} 
+
+#filter_local  {background-color:#A50026} 
+
+#filter_crime  {background-color:#D73027} 
+
+#filter_art  {background-color:#5cb59f} 
+
+#filter_shops  {background-color:#FEE090} 
+
+#filter_animals  {background-color:#313695} 
+
+#filter_kids  {background-color:#74ADD1} 
+
+#filter_sport  {background-color:#df6899} 
+
 
 #location_home { 
 	left: 70px;

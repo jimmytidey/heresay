@@ -64,56 +64,50 @@
     
     <div id='filter_controls'>
         
-         <div class='filter_category'>
+         <div class='filter_category' id='filter_council' >
             <label for='council'>Shared space, council matters</label>
-            <input type='checkbox' value='transport' name='transport' />
+            <input type='checkbox' value='council' name='council' />
         </div>  
         
-         <div class='filter_category'>
+         <div class='filter_category' id='filter_local' >
             <label for='local_knowledge'>Local knowledge</label>
-            <input type='checkbox' value='transport' name='transport' />
+            <input type='checkbox' value='local_knowledge' name='local_knowledge' />
         </div>              
-        
-         <div class='filter_category'>
-            <label for='transport'>Transport</label>
-            <input type='checkbox' value='transport' name='transport' />
-        </div>
-        
 
-         <div class='filter_category'>
-            <label for='food_drink'>Food and Drink</label>
-            <input type='checkbox' value='food_drink' name='food_drink' />
-        </div>       
+         <div class='filter_category' id='filter_crime'>
+            <label for='art'>Crime</label>
+            <input type='checkbox' value='crime_emergencies' name='crime_emergencies' />
+        </div>        
 
-         <div class='filter_category'>
+         <div class='filter_category' id='filter_art'>
             <label for='art'>Art, Music, Culture</label>
             <input type='checkbox' value='art' name='art' />
         </div>                
 
-         <div class='filter_category'>
+         <div class='filter_category' id='filter_shops'>
             <label for='shops_restaurants'>Shops, restaurants, bars</label>
             <input type='checkbox' value='shops_restaurants' name='shops_restaurants' />
         </div>   
         
-         <div class='filter_category'>
-            <label for='pets_nature'>Pets and nature</label>
+         <div class='filter_category' id='filter_animals'>
+            <label for='pets_nature'>Animals and nature</label>
             <input type='checkbox' value='pets_nature' name='pets_nature' />
         </div>
 
-         <div class='filter_category'>
-            <label for='forsale_giveaway'>Buy Sell</label>
-            <input type='checkbox' value='forsale_giveaway' name='forsale_giveaway' />
+         <div class='filter_category' id='filter_kids'>
+            <label for='kids'>Kids / youth</label>
+            <input type='checkbox' value='kids' name='kids' />
         </div>
           
-         <div class='filter_category'>
-            <label for='charity'>Charity</label>
-            <input type='checkbox' value='charity' name='charity' />
+         <div class='filter_category' id='filter_sport'>
+            <label for='charity'>Sport</label>
+            <input type='checkbox' value='sport' name='sport' />
         </div>                                  
                 
         <select id='time_filter'>
             <option value='today'>Today</option>
-            <option value='last_week'>Last Week</div>
-            <option value='last_month'>Last Month</div>
+            <option value='this_week'>Last Week</div>
+            <option value='this_month'>Last Month</div>
         <select>
             
         <input type='button' value='Filter' id='filter_button' />
