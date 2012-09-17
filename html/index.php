@@ -28,7 +28,7 @@
         
         else { 
             if(recency =='') { 
-                recency = "this_week";
+                recency = "this_month";
             }  
             console.log(recency);
             heresay.init(lat, lng, 12, category, recency, '');
