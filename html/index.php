@@ -121,7 +121,7 @@
 
 <h1>What is Heresay?</h1>
 <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
-<p>At the moment the forums are:</p>
+<p>At the moment there are about 50 sites being mapped:</p>
 <ul>
     <li><a href='http://www.hackneyhear.com/blog/feed'>hackneyhear.com</a></li>
     <li><a href='http://thegallerycafe.blogspot.com/feeds/posts/default?alt=rss'>thegallerycafe.blogspot.co.uk</a></li>
@@ -151,7 +151,7 @@
     <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li>
     <li><a href='http://thebrixtonforum.co.uk'>thebrixtonforum.co.uk</a></li>
     <li><a href='http://urban75.com'>urban75.com</a></li>
- 	<li>... and more than I've had a chance to list... </li>
+ 	<li>... and more than I've had a chance to list...  </li>
            
 </ul>
  

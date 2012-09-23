@@ -136,9 +136,25 @@ $sites[43]['name']   = 'stockwellnews.com';
 $sites[44]['url']    = 'http://kenningtonnews.blogspot.co.uk/';
 $sites[44]['name']   = 'kenningtonnews.blogspot.co.uk';
 
+$sites[45]['url']    = 'http://newhamstory.com/forums/index.php?type=rss;action=.xml';
+$sites[45]['name']   = 'newhamstory.com';
+
+$sites[46]['url']    = 'http://feeds.feedburner.com/WhatsInWapping';
+$sites[46]['name']   = 'whatsinwapping.co.uk';
+
+$sites[47]['url']    = 'http://www.yeahhackney.com/activity/feed/';
+$sites[47]['name']   = 'yeahhackney.com';
 
 
 
+
+
+
+/*  NO RSS
+http://www.eastlondonforum.com/
+
+http://www.barbicantalk.com/forum/
+*/  
 
 
 
