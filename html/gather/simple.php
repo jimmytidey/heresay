@@ -145,6 +145,9 @@ $sites[46]['name']   = 'whatsinwapping.co.uk';
 $sites[47]['url']    = 'http://www.yeahhackney.com/activity/feed/';
 $sites[47]['name']   = 'yeahhackney.com';
 
+$sites[47]['url']    = 'http://www.kentishtowner.co.uk/feed/';
+$sites[47]['name']   = 'kentishtowner.co.uk';
+
 
 
 
