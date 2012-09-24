@@ -32,17 +32,19 @@ heresay.init = function (lat, lng, zoom, categories, recency, id) {
         heresay.mapstraction.setCenterAndZoom(center, parseInt(zoom));
     }
 
-
+	$('#map_container').append("<div id='loading-gif' style='width:100px; position:absolute; top:300px; z-index:100000; left:325px; text-align:center; height:100px;><img src='images/loading.gif' /> </div>") 
+	
     $.getJSON(base_url, function (data) {
-
+		
+		$('#loading-gif').remove();
+		
         var results = eval(data);
 
         $.each(results.data, function (key, val) {
 
 
             if (val.category_1 != '--' && val.category_1 != '') {
-                console.log("not found:" + val.category_1 + "--");
-
+              
                 var myPoint = new LatLonPoint(val.lat, val.lng);
 
                 if (id != '') {
@@ -88,12 +90,23 @@ heresay.init = function (lat, lng, zoom, categories, recency, id) {
 
                 var milli = parseInt(val.pubdate) * 1000;
                 var date = new Date(milli);
-
+				
+				var monthNames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
                 var day = date.getDate();
-                var month = date.getMonth() + 1;
+                var month = monthNames[date.getMonth()]
                 var year = date.getFullYear();
+				
+				
+				var tags; 
+				if (val.category_1 != '' && val.category_1 != '--' && typeof val.category_1 !== "undefined") {tags = val.category_1;} 
+				if (val.category_2 != '' && val.category_2 != '--' && typeof val.category_2 !== "undefined") {tags += ", " + val.category_2;} 
+				if (val.category_3 != '' && val.category_3 != '--' && typeof val.category_3 !== "undefined") {tags += ", " + val.category_3;} 
+				
 
-                var text = "<div style='height:210px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'><strong><a target='_blank' href='" + val.link + "'>" + unescape(val.title) + "</a></strong> <br /> <em class='bubble_date'> " + day + '/' + month + "/" + year + " </em><br/>";
+                var text = "<div style='height:210px!important; width:200px!important;overflow-x:hidden; overflow-y:auto;'>";
+				text += "<strong><a target='_blank' href='" + val.link + "'>" + unescape(val.title) + "</a></strong> <br />";
+				text += "<em class='bubble_date'> " + day + ' ' + month +" </em><br/>";
+				
 
                 if (val.description != undefined) {
 
@@ -105,6 +118,8 @@ heresay.init = function (lat, lng, zoom, categories, recency, id) {
                         text += val.description;
                     }
                 }
+				
+				text += "<span style='position:absolute; bottom:5px; width:210px; font-size:10px; left:2px'><strong>Tags: </strong>" +tags+ "  </span>";
 
                 text += '</div>';
 

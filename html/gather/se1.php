@@ -11,8 +11,6 @@ $sites[1]['url']    = 'http://www.london-se1.co.uk/forum/rss/4';
 $sites[1]['name']   = 'london-se1.co.uk';
 
 
-
-
 foreach($sites as $site) { 
     
     $feed = new SimplePie();
