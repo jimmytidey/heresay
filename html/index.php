@@ -108,6 +108,7 @@
             <option value='today'>Today</option>
             <option value='this_week'>Last Week</div>
             <option value='this_month'>Last Month</div>
+            <option value=''>All Time</div>    
         <select>
             
         <input type='button' value='Filter' id='filter_button' />
