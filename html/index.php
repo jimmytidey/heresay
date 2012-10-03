@@ -82,6 +82,11 @@
     <h1>A map for your forum or blog</h1>
 
     <p>If you'd like a map for your forum or blog, let me know and I can help you out.</p> 
+
+    <h1>Developer!</h1>
+    
+    <p><a href='developer.php'>Take a look at this page</a></p>
+
 </div >
 
 
