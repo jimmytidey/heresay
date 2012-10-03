@@ -1,6 +1,7 @@
 
 $(document).ready(function() { 
 	
+	heresay.init_from_url("#mapstraction");
 	var filter={};
 	
 	$('.filter').click(function(){ 
@@ -23,8 +24,7 @@ $(document).ready(function() {
 			        filter.category.push($(this).val());
 			    }
 			});
-			console.log(filter.category);
-			heresay.init(51.5073346, -0.1276831, 12, filter.category.join(","), recency)
+			heresay.draw_map(51.5073346, -0.1276831, 12, filter.category.join(","), recency)
 		});
 		
 	});
