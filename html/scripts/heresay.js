@@ -96,7 +96,7 @@ heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
                     my_marker.setIcon('http://www.googlemapsmarkers.com/v1/D73027/');
                 
 				} else if (val.category_1 == 'community_events') {
-                    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/F46D43/');
+                    my_marker.setIcon('http://www.googlemapsmarkers.com/v1/cfe69c/');
                 
 				} else if (val.category_1 == 'shops_restaurants') {
                     my_marker.setIcon('http://www.googlemapsmarkers.com/v1/FDAE61/');

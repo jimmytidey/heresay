@@ -30,7 +30,7 @@
         </div>      
         
          <div class='filter_category' id='filter_community_events'>
-            <label for='community_events'>Crime</label>
+            <label for='community_events'>Community Events</label>
             <input type='checkbox' value='community_events' name='community_events' />
         </div>          
 
