@@ -27,7 +27,12 @@
          <div class='filter_category' id='filter_crime'>
             <label for='crime_emergencies'>Crime</label>
             <input type='checkbox' value='crime_emergencies' name='crime_emergencies' />
-        </div>        
+        </div>      
+        
+         <div class='filter_category' id='filter_community_events'>
+            <label for='community_events'>Crime</label>
+            <input type='checkbox' value='community_events' name='community_events' />
+        </div>          
 
          <div class='filter_category' id='filter_art'>
             <label for='art'>Art, Music, Culture</label>
