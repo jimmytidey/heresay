@@ -1,58 +1,8 @@
 <? include('header.php'); ?>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOoFM_kDNJVs_SzvkytQRKBSpgYF3iu7PXc-1iPSD4CpffT2eCRRzD14PFyag3JY4SakJE5_wVYpLxw&sensor=false" type="text/javascript"></script>
-<script type="text/javascript" src="api/js/mapstraction.js"></script>
+
 <script src='scripts/index.js'></script>
-<script src='scripts/index_map.js'></script>
 
-<script>
-    $(document).ready(function() { 
-        
-        var recency = gup('recency'); 
-        var id = gup('id'); 
-        var lat = gup('lat'); 
-        var lng = gup('lng'); 
-        var id = gup('id');
-        var category = gup('category'); 
-
-        if(!isNumber(lat)) { 
-            lat = 51.5073346;
-        }  
-        if(!isNumber(lng)) { 
-            lng = -0.1276831;
-        }        
-        
-        if (id) { 
-            heresay.init(lat, lng, 12, category, '', id);
-        }  
-        
-        else { 
-            if(recency =='') { 
-                recency = "this_month";
-            }  
-            console.log(recency);
-            heresay.init(lat, lng, 12, category, recency, '');
-        }
-       
-        
-    	function gup(name)
-    	{
-    	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    	  var regexS = "[\\?&]"+name+"=([^&#]*)";
-    	  var regex = new RegExp( regexS );
-    	  var results = regex.exec( window.location.href );
-    	  if( results == null )
-    		return "";
-    	  else
-    		return results[1];
-    	}     
-    	
-    	function isNumber(n) {
-          return !isNaN(parseFloat(n)) && isFinite(n);
-        }
-           
-    }); 
-</script>
 <div id='map_container'>
     <div id="mapstraction" ></div>
 </div>
@@ -108,7 +58,7 @@
             <option value='today'>Today</option>
             <option value='this_week'>Last Week</div>
             <option value='this_month'>Last Month</div>
-            <option value=''>All Time</div>    
+          
         <select>
             
         <input type='button' value='Filter' id='filter_button' />
@@ -118,56 +68,16 @@
 
 <div id='container'>
 
+    <h1>What is Heresay?</h1>
+    <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
 
+    <p>Heresay aims to help these conversations reach a wider audience, to contribute to vigorous local politics and healthy communities.</p> 
 
-<h1>What is Heresay?</h1>
-<p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
-<p>At the moment there are about 50 sites being mapped:</p>
-<ul>
-    <li><a href='http://www.hackneyhear.com/blog/feed'>hackneyhear.com</a></li>
-    <li><a href='http://thegallerycafe.blogspot.com/feeds/posts/default?alt=rss'>thegallerycafe.blogspot.co.uk</a></li>
-    <li><a href='http://clapham-omnibus.blogspot.com/feeds/posts/default?alt=rss'>clapham-omnibus.blogspot.co.uk</a></li>
-    <li><a href='http://www.creativeclerkenwell.com/feed/atom/'>creativeclerkenwell.com</a></li>
-    <li><a href='http://www.westealingneighbours.org.uk/WEN-blog/feed/'>westealingneighbours.org.uk</a></li>
-    <li><a href='http://www.duchessofhackney.com/feed/'>duchessofhackney.com</a></li>
-    
-    
-    <li><a href='http://www.actonw3.com/'>Acton</a></li>
-    <li><a href='http://www.beckenhamtown.us'>Beckenhamtown</a></li>
-    <li><a href='http://bowesandbounds.org'>Bowes and Bounds</a></li>
-     <li><a href='http://www.brentfordtw8.com'>Brentford</a></li>
-    <li><a href='http://www.chiswickw4.com'>Chiswick</a></li>
-    <li><a href='http://dalstonpeople.co.uk'>dalstonpeople.co.uk</a></li>
-    <li><a href='http://www.ealingtoday.co.uk'>Ealing</a></li>
-    <li><a href='http://www.eastdulwichforum.co.uk'>East Dulwich Forum</a></li>
-    <li><a href='http://www.fulhamsw6.com'>Fullham</a></li>    
-    <li><a href='http://www.hammersmithtoday.co.uk'>Hammersmith</a></li>
-    <li><a href='http://harringayonline.com'>harringayonline.com</a></li>
-    <li><a href='http://hernehillforum.org.uk'>hernehillforum.org.uk</a></li>
-    <li><a href='http://kingscrossenvironment.com'>Kings Cross</a></li>   
-    <li><a href='http://meracouk.blogspot.co.uk/'>Mile End Residents Association</a></li> 
-    <li><a href='http://www.putneysw15.com/'>Putney</a></li> 
-    <li><a href='http://london-se1.co.uk'>london-se1.co.uk</a></li>
-    <li><a href='http://www.shepherdsbushw12.com'>Shepherds Bush</a></li>
-    <li><a href='http://www.southeastcentral.co.uk'>southeastcentral.co.uk</a></li>
-    <li><a href='http://thebrixtonforum.co.uk'>thebrixtonforum.co.uk</a></li>
-    <li><a href='http://urban75.com'>urban75.com</a></li>
- 	<li>... and more than I've had a chance to list...  </li>
-           
-</ul>
- 
-<p>I would like to add others - please let me know if there is a forum you would like adding.</p>
-        
-<p><strong>JSON feed:</strong> http://heresay.org.uk/api/recent_threads.php</p>
-<p>[RSS coming soon...]</p>
+    <p>At the moment there are about 70 sites being mapped - if you think yours isn't <a href='mailto:jimmytidey@gmail.com'>email me</a>.</p>
 
-<p><strong>Iframe embed:</strong></p>
-<p>&lt;iframe src=&quot;http://heresay.org.uk/iframe.php?zoom=11&amp;center=51.548470058664954,-0.0556182861328125&quot; width=&quot;300&quot; height=&quot;300&quot; frameBorder=&quot;0&quot; scrolling=&quot;no&quot;&gt;Browser not compatible. &lt;/iframe &gt;</p>
+    <h1>A map for your forum or blog</h1>
 
-<h1>Get in touch</h1>
-
-<p>jimmytidey@gmail.com</p> 
-
+    <p>If you'd like a map for your forum or blog, let me know and I can help you out.</p> 
 </div >
 
 
