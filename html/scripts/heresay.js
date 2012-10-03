@@ -31,7 +31,7 @@ heresay.init_from_url = function (div_id) {
 }
 
 heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
-
+	
     //Do ajax request for points 	
     var base_url = "http://heresay.org.uk/api/recent_threads.php?";
 
@@ -164,7 +164,7 @@ heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
                 }
 				else { 
 				 	if (key == 0) { 
-						my_marker.openBubble();
+						//my_marker.openBubble();
 					} 	
 				}
 
