@@ -79,9 +79,9 @@
 
     <p>At the moment there are about 70 sites being mapped - if you think yours isn't <a href='mailto:jimmytidey@gmail.com'>email me</a>.</p>
 
-    <h1>A map for your forum or blog</h1>
+    <h1>A map for your forum or blog?</h1>
 
-    <p>If you'd like a map for your forum or blog, let me know and I can help you out.</p> 
+    <p>I'd love to get this map out to the community by having people embed it on their forum or blog. If you are interested,  <a href='mailto:jimmytidey@gmail.com'>contact me</a>. </p> 
 
     <h1>Developer!</h1>
     
