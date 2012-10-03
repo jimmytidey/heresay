@@ -5,7 +5,7 @@ heresay.init_from_url = function (div_id) {
     var id = gup('id'); 
     var lat = gup('lat'); 
     var lng = gup('lng'); 
-    var id = gup('id');
+    var zoom = gup('zoom');
     var category = gup('category'); 
     
     //center the page 
@@ -14,11 +14,15 @@ heresay.init_from_url = function (div_id) {
     }  
     if(!isNumber(lng)) { 
         lng = -0.1276831;
-    }        
+    } 
+
+    if(!isNumber(zoom)) { 
+        zoom = 12;
+    }       
     
     //if this page has a specific id, we can stop here
     if (id) { 
-        heresay.draw_map(lat, lng, 12, category, '', id,div_id);
+        heresay.draw_map(lat, lng, zoom, category, '', id,div_id);
     }  
     
     //otherwise get recency from the URL 
@@ -26,7 +30,7 @@ heresay.init_from_url = function (div_id) {
         if(recency =='') { 
             recency = "this_month";
         }  
-        heresay.draw_map(lat, lng, 12, category, recency, '',div_id);
+        heresay.draw_map(lat, lng, zoom, category, recency, '',div_id);
     }		
 }
 
