@@ -66,7 +66,7 @@ heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
         heresay.mapstraction.setCenterAndZoom(center, parseInt(zoom));
     }
 
-	$(div_id).append("<div id='loading-gif' style='width:100px; position:absolute; top:300px; z-index:100000; left:325px; text-align:center; height:100px;><img src='images/loading.gif' /> </div>") 
+	$(div_id).after("<div id='loading-gif' style='width:100px; position:absolute; top:200px; z-index:100000; left:50%; margin-left:-110px; text-align:center; height:100px;'><img src='images/loading.gif' /> </div>") 
 	
     $.getJSON(base_url, function (data) {
 		

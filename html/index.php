@@ -25,7 +25,7 @@
         </div>              
 
          <div class='filter_category' id='filter_crime'>
-            <label for='art'>Crime</label>
+            <label for='crime_emergencies'>Crime</label>
             <input type='checkbox' value='crime_emergencies' name='crime_emergencies' />
         </div>        
 
