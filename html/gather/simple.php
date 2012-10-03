@@ -128,8 +128,6 @@ $sites[41]['name']   = 'streathamaction.org.uk';
 $sites[42]['url']    = 'http://www.vauxhallcivicsociety.org.uk/feed/';
 $sites[42]['name']   = 'vauxhallcivicsociety.org.uk';
 
-
-
 $sites[43]['url']    = 'http://www.stockwellnews.com/feed/';
 $sites[43]['name']   = 'stockwellnews.com';
 
@@ -147,6 +145,58 @@ $sites[47]['name']   = 'yeahhackney.com';
 
 $sites[48]['url']    = 'http://www.kentishtowner.co.uk/feed/';
 $sites[48]['name']   = 'kentishtowner.co.uk';
+
+$sites[49]['url']    = 'http://lambethcouncilleader.wordpress.com/feed/';
+$sites[49]['name']   = 'lambethcouncilleader.wordpress.com';
+
+$sites[50]['url']    = 'http://lambethnews.wordpress.com/feed/';
+$sites[50]['name']   = 'lambethnews.wordpress.com';
+
+$sites[51]['url']    = 'http://www.southwark.gov.uk/rss/news';
+$sites[51]['name']   = 'southwark.gov.uk';
+
+$sites[52]['url']    = 'http://hfconwatch.blogspot.com/feeds/posts/default';
+$sites[52]['name']   = 'hfconwatch.blogspot.com';
+
+
+$sites[53]['url']    = 'http://www.islington.gov.uk/_layouts/feed.aspx?xsl=1&web=%2Fislington%2Fnews%2Devents%2Fnews%2Dreleases&page=67a19b59-cb3d-489d-9816-f4f0018bcc98&wp=09463c3a-2348-499a-993b-2ce26cfcd6bc&pageurl=%2Fislington%2Fnews%2Devents%2Fnews%2Dreleases%2FPages%2Fdefault%2Easpx';
+$sites[53]['name']   = 'islington.gov.uk';
+
+$sites[54]['url']    = 'http://www.westminster.gov.uk/home/rss/';
+$sites[54]['name']   = 'westminster.gov.uk';
+
+$sites[55]['url']    = 'www.newham.gov.uk/NewhamGov/NewsRss.aspx?';
+$sites[55]['name']   = 'newhamnettles.blogspot.co.uk';
+
+$sites[56]['url']    = 'http://www.wandsworth.gov.uk/rss/news/';
+$sites[56]['name']   = 'wandsworth.gov.uk';
+
+//THERE ARE MORE OF THESE 
+$sites[57]['url']    = 'http://www.towerhamlets.gov.uk/feeds/councilNewsRssFeed.aspx';
+$sites[57]['name']   = 'towerhamlets.gov.uk/feeds/councilNewsRssFeed';
+
+$sites[58]['url']    = 'http://www.towerhamlets.gov.uk/feeds/JobsRssFeed.aspx';
+$sites[58]['name']   = 'towerhamlets.gov.uk/feeds/JobsRssFeed.aspx';
+
+$sites[59]['url']    = 'http://www.towerhamlets.gov.uk/feeds/eelRssFeed.aspx';
+$sites[59]['name']   = 'towerhamlets.gov.uk/feeds/eelRssFeed.aspx';
+
+$sites[60]['url']    = 'http://www.towerhamlets.gov.uk/feeds/parksRssFeed.aspx';
+$sites[60]['name']   = 'towerhamlets.gov.uk/feeds/parksRssFeed.aspx';
+
+
+//THERE ARE MORE OF THESE 
+$sites[61]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-children-young-people?format=xml';
+$sites[61]['name']   = 'feedburner.com/hackney-whats-on-children-young-people';
+
+$sites[62]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-noticeboard';
+$sites[62]['name']   = 'feeds.feedburner.com/hackney-whats-on-noticeboard';
+
+
+
+
+
+
 
 
 
