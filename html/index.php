@@ -60,10 +60,9 @@
         </div>                                  
                 
         <select id='time_filter'>
+            <option value='this_month'>Last Month</option>
+            <option value='this_week'>Last Week</option>
             <option value='today'>Today</option>
-            <option value='this_week'>Last Week</div>
-            <option value='this_month'>Last Month</div>
-          
         <select>
             
         <input type='button' value='Filter' id='filter_button' />

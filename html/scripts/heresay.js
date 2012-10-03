@@ -167,7 +167,7 @@ heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
                 heresay.mapstraction.addMarker(my_marker);
                 if (id != '') {
                     console.log(my_marker);
-                    my_marker.openBubble();
+                    //my_marker.openBubble();
                 }
 				else { 
 				 	if (key == 0) { 
