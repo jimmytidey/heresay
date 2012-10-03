@@ -32,9 +32,8 @@ heresay.init_from_url = function (div_id) {
 
 heresay.draw_map = function (lat, lng, zoom, categories, recency, id, div_id) {
 
-		
     //Do ajax request for points 	
-    var base_url = "api/recent_threads.php?";
+    var base_url = "http://heresay.org.uk/api/recent_threads.php?";
 
     if (id) {
         base_url += "id=" + id;
