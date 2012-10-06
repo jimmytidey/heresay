@@ -1,6 +1,6 @@
 <? include('header.php'); ?>
 
-<div id='container' style='top:0px; height:1400px'>
+<div id='container'>
     <h1>Developer Things</h1>
     <h2>JSON Feed</h2>
     <p>You can access data (up to one month old) from this URL: http://heresay.org.uk/api/recent_threads.php using a GET request</p>

@@ -28,6 +28,6 @@ function unstrip_array($array){
             $val = stripslashes($val);
         }
     }
-return $array;
+    return $array;
 }
 ?>

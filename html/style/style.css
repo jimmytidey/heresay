@@ -125,15 +125,20 @@ p, li {
 
 #container {
 	position:absolute;
-	top:530px;
+	
 	width: 780px; 
 	left:50%; 
 	margin-left:-400px;
-	background-image:url(../images/content_background.png); 
+	background-image:url(/images/content_background.png); 
 	background-repeat:no-repeat;
 	z-index:1;
 	padding:30px 30px;
 	background-repeat:repeat-y;
+	min-height:1000px;
+}
+
+#index #container { 
+	top:530px;
 }
 
 #location_container {
@@ -142,7 +147,7 @@ p, li {
 	width: 780px; 
 	left:50%; 
 	margin-left:-420px;
-	background-image:url(../images/content_background.png); 
+	background-image:url(/images/content_background.png); 
 	background-repeat:no-repeat;
 	z-index:1;
 	padding:30px 30px;
@@ -150,6 +155,14 @@ p, li {
 	height:100%;
 }
 
+.banner { 
+	width:100%;
+	text-align:left;
+	height:142px;
+	background-color:#e0f6f7;
+	padding:10px;
+	margin-left:-10px;
+}
 
 a {
 	color:black;
@@ -162,3 +175,5 @@ label {width:100px; float:left;}
 .bubble_date { 
 	font-size:11px;
 }
+
+
