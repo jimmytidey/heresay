@@ -55,7 +55,7 @@
         </div>
           
          <div class='filter_category' id='filter_sport'>
-            <label for='charity'>Sport</label>
+            <label for='sport'>Sport</label>
             <input type='checkbox' value='sport' name='sport' />
         </div>                                  
                 
@@ -76,9 +76,9 @@
     <p>It's a map that aggregates what people are saying on locally focused forums &amp; blogs.</p>
 
     <p>Heresay aims to help these conversations reach a wider audience, to contribute to vigorous local politics and healthy communities.</p> 
-
-    <p>At the moment there are about 70 sites being mapped - if you think yours isn't <a href='mailto:jimmytidey@gmail.com'>email me</a>.</p>
-
+    
+    <p>You can also view the information in <a href='list.php'>list format</a>.</p>
+    
     <h1>A map for your forum or blog?</h1>
 
     <p>I'd love to get this map out to the community by having people embed it on their forum or blog. If you are interested,  <a href='mailto:jimmytidey@gmail.com'>contact me</a>. </p> 
@@ -86,7 +86,21 @@
     <h1>Developer!</h1>
     
     <p><a href='developer.php'>Take a look at this page</a></p>
+   
+    <h1>Is my site listed?</h1>
+   
+    <p>At the moment there are about 50 sites being mapped - if you think yours isn't <a href='mailto:jimmytidey@gmail.com'>email me</a>.</p>
+   
+    <p>The full list is...</p>
+    <ol>
+    <?
+    $results = db_q("SELECT DISTINCT site FROM manual_updates");
 
+    foreach($results as $result) {
+        echo "<li>". $result[0] . "</li>";
+    }
+    ?>
+    </ol>
 </div >
 
 
