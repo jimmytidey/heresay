@@ -2,7 +2,7 @@
     ?>
     <div id='container' >
         <div class='banner'>
-            <img src='images/logo_small.png' />
+                <a href='/'><img src='/images/logo_small.png' /></a>
         </div>
         
         <p>Click on the locations below to find lists of local conversations</p>
