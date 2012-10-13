@@ -35,11 +35,27 @@ $sites[68]['name']   = 'queensparkforum.org';
 foreach($sites as $site) { 
     echo "<h1>".$site['url']."</h1>";
     
-    $feed = new SimplePie();
+     $feed = new SimplePie();
+    $feed->force_feed(true);
+     
 	$feed->set_feed_url($site['url']);
-	$feed->enable_cache(false);
-	echo($feed->init());
-	$feed->handle_content_type();
+
+    //enable caching
+    $feed->enable_cache(true);
+
+    //provide the caching folder
+    $feed->set_cache_location('cache');
+
+    //set the amount of seconds you want to cache the feed
+    $feed->set_cache_duration(1800);
+
+    //init the process
+    $feed->init();
+
+    //let simplepie handle the content type (atom, RSS...)
+    $feed->handle_content_type();
+    
+  
 	$max = $feed->get_item_quantity();
 	
 	echo "<h1>".$site['name'] . " - " . $max ."</h1>"; 
