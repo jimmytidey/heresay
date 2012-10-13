@@ -141,7 +141,7 @@ $location_results    = db_q($location_query);
                             var category_2 = escape($('#category_<?=$i ?>_2').val());
                             var category_3 = escape($('#category_<?=$i ?>_3').val());
                             var category_4 = escape($('#category_<?=$i ?>_4').val()); 
-                            var favourite  = escape($('#favourite_<?=$i ?>_4').val());                            
+                            var favourite  = escape($('#favourite_<?=$i ?>').val());                            
                             console.log(link);
                             $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link+"&favourite="+favourite, function(html) { 
                                 console.log(html);
@@ -157,7 +157,7 @@ $location_results    = db_q($location_query);
                             var category_2 = escape($('#category_<?=$i ?>_2').val());
                             var category_3 = escape($('#category_<?=$i ?>_3').val());
                             var category_4 = escape($('#category_<?=$i ?>_4').val());
-                            var favourite  = escape($('#favourite_<?=$i ?>_4').val());                            
+                            var favourite  = escape($('#favourite_<?=$i ?>').val());                            
                             console.log(link);
                             $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link+"&favourite="+favourite, function(html) { 
                                 console.log(html);
