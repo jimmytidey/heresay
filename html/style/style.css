@@ -62,13 +62,13 @@ p, li {
 }
 
 #arrow { 
-    left: 111px;
+    left: 89px;
     position: absolute;
     top: 155px;
 }
 
 #filter { 
-    left: 104px;
+    left: 81px;
     position: absolute;
     text-decoration: underline;
     top: 135px;
