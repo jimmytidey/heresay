@@ -20,18 +20,11 @@ $sites[40]['name']   = 'brixtonblog.com';
 $sites[42]['url']    = 'http://www.vauxhallcivicsociety.org.uk/feed/';
 $sites[42]['name']   = 'vauxhallcivicsociety.org.uk';
 
-$sites[65]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-children-young-people?format=xml';
-$sites[65]['name']   = 'feedburner.com/hackney-whats-on-children-young-people';
-
-$sites[66]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-noticeboard';
-$sites[66]['name']   = 'feeds.feedburner.com/hackney-whats-on-noticeboard';
-
-$sites[67]['url']    = 'http://www.transitionstreatham.org/';
+$sites[67]['url']    = 'http://www.transitionstreatham.org/feed/';
 $sites[67]['name']   = 'transitionstreatham.org';
 
 $sites[68]['url']    = 'http://www.wandsworthsw18.com/rss.xml';
 $sites[68]['name']   = 'wandsworthsw18.com';
-
 
 $sites[68]['url']    = 'http://www.queensparkforum.org/blog.php/feed/';
 $sites[68]['name']   = 'queensparkforum.org';
@@ -41,6 +34,7 @@ $sites[68]['name']   = 'queensparkforum.org';
     
 foreach($sites as $site) { 
     echo "<h1>".$site['url']."</h1>";
+    
     $feed = new SimplePie();
 	$feed->set_feed_url($site['url']);
 	$feed->enable_cache(false);
