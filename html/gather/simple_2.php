@@ -40,22 +40,23 @@ $sites[68]['name']   = 'queensparkforum.org';
 
     
 foreach($sites as $site) { 
-    
-    echo "<h1>".$site['name']."</h1>"; 
-    
+    echo "<h1>".$site['url']."</h1>"
     $feed = new SimplePie();
 	$feed->set_feed_url($site['url']);
 	$feed->enable_cache(false);
 	$feed->init();
 	$feed->handle_content_type();
-	
 	$max = $feed->get_item_quantity();
+	
+	echo "<h1>".$site['name'] . " - " . $max ."</h1>"; 
+	
 	for ($x = 0; $x < $max; $x++)  {
 		
 		$item = $feed->get_item($x);
 	    
 	    echo "<h3>".strip_tags($item->get_title()). "<em>" .$item->get_date() ."</em></h3>"; 
         echo "<p>". strip_tags($item->get_description()). "</p>";
+        
         //test for uniqueness 
         $query = "SELECT * FROM manual_updates WHERE link = '".$item->get_permalink()."'";
         echo $query; 
