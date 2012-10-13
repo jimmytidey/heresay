@@ -2,7 +2,7 @@
 include('include.php');
 
 
-$sites[3]['url']    = 'http://creativeclerkenwell.com/feed/rss/';
+$sites[3]['url']    = 'http://creativeclerkenwell.com/feed/rss/atom';
 $sites[3]['name']   = 'creativeclerkenwell.com';
 
 $sites[5]['url']    = 'http://westealingneighbours.org.uk/WEN-blog/feed/';
