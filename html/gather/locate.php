@@ -140,9 +140,10 @@ $location_results    = db_q($location_query);
                             var category_1 = escape($('#category_<?=$i ?>_1').val());
                             var category_2 = escape($('#category_<?=$i ?>_2').val());
                             var category_3 = escape($('#category_<?=$i ?>_3').val());
-                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
+                            var category_4 = escape($('#category_<?=$i ?>_4').val()); 
+                            var favourite  = escape($('#favourite_<?=$i ?>_4').val());                            
                             console.log(link);
-                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link+"&favourite"=favourite, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -155,9 +156,10 @@ $location_results    = db_q($location_query);
                             var category_1 = escape($('#category_<?=$i ?>_1').val());
                             var category_2 = escape($('#category_<?=$i ?>_2').val());
                             var category_3 = escape($('#category_<?=$i ?>_3').val());
-                            var category_4 = escape($('#category_<?=$i ?>_4').val());                            
+                            var category_4 = escape($('#category_<?=$i ?>_4').val());
+                            var favourite  = escape($('#favourite_<?=$i ?>_4').val());                            
                             console.log(link);
-                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link, function(html) { 
+                            $.get("save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link+"&favourite"=favourite, function(html) { 
                                 console.log(html);
                             });
                         });
@@ -168,6 +170,7 @@ $location_results    = db_q($location_query);
                             if($('#no_location_<?=$i ?>').attr("checked")==true) {
                                 var link = encodeURIComponent($("#no_location_link_<?=$i ?>").val());
                                 var category = escape($('#category_<?=$i ?>').val());
+                                
                                 $.get("save.php?category="+category+"&lat=--&lng=--&link="+link, function(html) {
                                     console.log(html);
                                 });
@@ -206,6 +209,7 @@ $location_results    = db_q($location_query);
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
                                     
                                     <br/>
+                                    <input type="checkbox" name="favourite" id='favourite_<?=$i ?>' value="1">Favourite<br>
                                     
                                     <select id='category_<?=$i ?>_1'>
                                         <option value='--'>--</option>
@@ -260,6 +264,7 @@ $location_results    = db_q($location_query);
                                         <option value='council'>Council business</option> 
                                         <option value='kids'>Kids</option>                                                                         
                                     </select>
+                                    
                                     
                                                                                   
                                                   
