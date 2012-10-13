@@ -2,31 +2,31 @@
 include('include.php');
 
 
-$sites[3]['url']    = 'http://www.creativeclerkenwell.com/feed/atom/';
+$sites[3]['url']    = 'http://creativeclerkenwell.com/feed/rss/';
 $sites[3]['name']   = 'creativeclerkenwell.com';
 
-$sites[5]['url']    = 'http://www.westealingneighbours.org.uk/WEN-blog/feed/';
+$sites[5]['url']    = 'http://westealingneighbours.org.uk/WEN-blog/feed/';
 $sites[5]['name']   = 'www.westealingneighbours.org.uk';
 
-$sites[6]['url']    = 'http://www.duchessofhackney.com/feed/';
+$sites[6]['url']    = 'http://duchessofhackney.com/feed/';
 $sites[6]['name']   = 'duchessofhackney.com';
 
 $sites[7]['url']    = 'http://davehill.typepad.com/claptonian/rss.xml';
 $sites[7]['name']   = 'davehill.typepad.com/claptonian';
 
-$sites[40]['url']    = 'http://www.brixtonblog.com/feed';
+$sites[40]['url']    = 'http://brixtonblog.com/feed';
 $sites[40]['name']   = 'brixtonblog.com';
 
-$sites[42]['url']    = 'http://www.vauxhallcivicsociety.org.uk/feed/';
+$sites[42]['url']    = 'http://vauxhallcivicsociety.org.uk/feed/';
 $sites[42]['name']   = 'vauxhallcivicsociety.org.uk';
 
-$sites[67]['url']    = 'http://www.transitionstreatham.org/feed/';
+$sites[67]['url']    = 'http://transitionstreatham.org/feed/';
 $sites[67]['name']   = 'transitionstreatham.org';
 
-$sites[68]['url']    = 'http://www.wandsworthsw18.com/rss.xml';
+$sites[68]['url']    = 'http://wandsworthsw18.com/rss.xml';
 $sites[68]['name']   = 'wandsworthsw18.com';
 
-$sites[68]['url']    = 'http://www.queensparkforum.org/blog.php/feed/';
+$sites[68]['url']    = 'http://queensparkforum.org/blog.php/feed/';
 $sites[68]['name']   = 'queensparkforum.org';
 
 
@@ -38,7 +38,7 @@ foreach($sites as $site) {
     $feed = new SimplePie();
 	$feed->set_feed_url($site['url']);
 	$feed->enable_cache(false);
-	$feed->init();
+	echo($feed->init());
 	$feed->handle_content_type();
 	$max = $feed->get_item_quantity();
 	
