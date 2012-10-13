@@ -40,7 +40,7 @@ $sites[68]['name']   = 'queensparkforum.org';
 
     
 foreach($sites as $site) { 
-    echo "<h1>".$site['url']."</h1>"
+    echo "<h1>".$site['url']."</h1>";
     $feed = new SimplePie();
 	$feed->set_feed_url($site['url']);
 	$feed->enable_cache(false);
