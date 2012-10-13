@@ -173,24 +173,53 @@ $sites[56]['name']   = 'wandsworth.gov.uk';
 
 //THERE ARE MORE OF THESE 
 $sites[57]['url']    = 'http://www.towerhamlets.gov.uk/feeds/councilNewsRssFeed.aspx';
-$sites[57]['name']   = 'towerhamlets.gov.uk/feeds/councilNewsRssFeed';
+$sites[57]['name']   = 'towerhamlets.gov.uk/feeds/';
 
 $sites[58]['url']    = 'http://www.towerhamlets.gov.uk/feeds/JobsRssFeed.aspx';
-$sites[58]['name']   = 'towerhamlets.gov.uk/feeds/JobsRssFeed.aspx';
+$sites[58]['name']   = 'towerhamlets.gov.uk';
 
 $sites[59]['url']    = 'http://www.towerhamlets.gov.uk/feeds/eelRssFeed.aspx';
-$sites[59]['name']   = 'towerhamlets.gov.uk/feeds/eelRssFeed.aspx';
+$sites[59]['name']   = 'towerhamlets.gov.uk';
 
 $sites[60]['url']    = 'http://www.towerhamlets.gov.uk/feeds/parksRssFeed.aspx';
-$sites[60]['name']   = 'towerhamlets.gov.uk/feeds/parksRssFeed.aspx';
+$sites[60]['name']   = 'towerhamlets.gov.uk';
+
+$sites[61]['url']    = 'http://www.towerhamlets.gov.uk/feeds/planninglicensingRssFeed.aspx';
+$sites[61]['name']   = 'towerhamlets.gov.uk';
+
+$sites[62]['url']    = 'http://www.towerhamlets.gov.uk/feeds/sportRssFeed.aspx';
+$sites[62]['name']   = 'towerhamlets.gov.uk';
+
+$sites[63]['url']    = 'http://www.towerhamlets.gov.uk/feeds/leisureRssFeed.aspx';
+$sites[63]['name']   = 'towerhamlets.gov.uk';
+
+$sites[64]['url']    = 'http://www.towerhamlets.gov.uk/feeds/leisureRssFeed.aspx';
+$sites[64]['name']   = 'towerhamlets.gov.uk';
+
+
+
 
 
 //THERE ARE MORE OF THESE 
-$sites[61]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-children-young-people?format=xml';
-$sites[61]['name']   = 'feedburner.com/hackney-whats-on-children-young-people';
+$sites[65]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-children-young-people?format=xml';
+$sites[65]['name']   = 'feedburner.com/hackney-whats-on-children-young-people';
 
-$sites[62]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-noticeboard';
-$sites[62]['name']   = 'feeds.feedburner.com/hackney-whats-on-noticeboard';
+$sites[66]['url']    = 'http://feeds.feedburner.com/hackney-whats-on-noticeboard';
+$sites[66]['name']   = 'feeds.feedburner.com/hackney-whats-on-noticeboard';
+
+$sites[67]['url']    = 'http://www.transitionstreatham.org/';
+$sites[67]['name']   = 'transitionstreatham.org';
+
+$sites[68]['url']    = 'http://www.wandsworthsw18.com/rss.xml';
+$sites[68]['name']   = 'wandsworthsw18.com';
+
+
+$sites[68]['url']    = 'http://www.queensparkforum.org/blog.php/feed/';
+$sites[68]['name']   = 'queensparkforum.org';
+
+
+
+
 
 
 
