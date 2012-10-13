@@ -76,7 +76,7 @@ $sites[24]['name']   = 'bowesandbounds.org';
 $sites[25]['url']    = 'http://www.shepherdsbushw12.com/rss.xml';
 $sites[25]['name']   = 'www.shepherdsbushw12.com';
 
-$sites[26]['url']    = 'http://www.westhampsteadlife.com/feeds/posts/default?alt=rss';
+$sites[26]['url']    = 'http://www.westhampsteadlife.com/feeds/posts/default?alt=atom';
 $sites[26]['name']   = 'westhampsteadlife.com';
 
 $sites[27]['url']    = 'http://www.mayfair.org.uk/feed';
