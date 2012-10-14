@@ -28,6 +28,11 @@ p, li {
 	height:180px;
 	background-color:#daf5f5;
 	overflow:hidden;
+	width:240px;
+}
+
+#logo img {
+	margin-left:20px;
 }
 
 #logo label {
@@ -68,7 +73,7 @@ p, li {
 }
 
 #filter { 
-    left: 81px;
+    left: 100px;
     position: absolute;
     text-decoration: underline;
     top: 135px;
