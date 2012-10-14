@@ -35,7 +35,7 @@ $sites[70]['name']   = 'littlelambeth.blogspot.com';
 $sites[71]['url']    = 'http://www.streathamguardian.co.uk/news/rss/';
 $sites[71]['name']   = 'streathamguardian.co.uk';
 
-$sites[72]['url']    = 'http://www.westbourneforum.org.uk/';
+$sites[72]['url']    = 'http://www.westbourneforum.org.uk/blog.php/?feed=rss2';
 $sites[72]['name']   = 'westbourneforum.org.uk';
 
 $sites[73]['url']    = 'http://www.peckhamforum.org.uk/feed/rss/';
