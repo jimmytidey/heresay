@@ -41,10 +41,8 @@ foreach($sites as $site) {
 	$feed->set_feed_url($site['url']);
 
     //enable caching
-    $feed->enable_cache(true);
+    $feed->enable_cache(false);
 
-    //provide the caching folder
-    $feed->set_cache_location('cache');
 
     //set the amount of seconds you want to cache the feed
     $feed->set_cache_duration(1800);
