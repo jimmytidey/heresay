@@ -26,11 +26,31 @@ $sites[67]['name']   = 'transitionstreatham.org';
 $sites[68]['url']    = 'http://wandsworthsw18.com/rss.xml';
 $sites[68]['name']   = 'wandsworthsw18.com';
 
-$sites[68]['url']    = 'http://queensparkforum.org/blog.php/feed/';
-$sites[68]['name']   = 'queensparkforum.org';
+$sites[69]['url']    = 'http://queensparkforum.org/blog.php/feed/';
+$sites[69]['name']   = 'queensparkforum.org';
 
-$sites[68]['url']    = 'http://littlelambeth.blogspot.com/feeds/posts/default?alt=rss';
-$sites[68]['name']   = 'littlelambeth.blogspot.com';
+$sites[70]['url']    = 'http://littlelambeth.blogspot.com/feeds/posts/default?alt=rss';
+$sites[70]['name']   = 'littlelambeth.blogspot.com';
+
+$sites[71]['url']    = 'http://www.streathamguardian.co.uk/news/rss/';
+$sites[71]['name']   = 'streathamguardian.co.uk';
+
+$sites[72]['url']    = 'http://www.westbourneforum.org.uk/';
+$sites[72]['name']   = 'westbourneforum.org.uk';
+
+$sites[73]['url']    = 'http://www.peckhamforum.org.uk/feed/rss/';
+$sites[73]['name']   = 'peckhamforum.org.uk';
+
+$sites[74]['url']    = 'http://www.gonag.org.uk/?feed=rss2';
+$sites[74]['name']   = 'gonag.org.uk';
+
+$sites[75]['url']    = 'http://www.kentishtowner.co.uk/feed/';
+$sites[75]['name']   = 'kentishtowner.co.uk';
+
+
+
+
+
 
 
 
