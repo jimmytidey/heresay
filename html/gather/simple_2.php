@@ -29,6 +29,10 @@ $sites[68]['name']   = 'wandsworthsw18.com';
 $sites[68]['url']    = 'http://queensparkforum.org/blog.php/feed/';
 $sites[68]['name']   = 'queensparkforum.org';
 
+$sites[68]['url']    = 'http://littlelambeth.blogspot.com/feeds/posts/default?alt=rss';
+$sites[68]['name']   = 'littlelambeth.blogspot.com';
+
+
 
 
     
