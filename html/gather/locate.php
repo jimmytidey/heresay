@@ -5,7 +5,7 @@ include('../db_functions.php');
 $query      = "SELECT * FROM manual_updates WHERE lat='' LIMIT 10";
 $results    = db_q($query);
 
-$location_query      = "SELECT * FROM manual_locations";
+$location_query      = "SELECT * FROM manual_locations ORDER BY ID desc";
 $location_results    = db_q($location_query);
 
 ?>
