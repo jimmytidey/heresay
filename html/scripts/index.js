@@ -26,7 +26,6 @@ $(document).ready(function() {
 			});
 			heresay.draw_map(51.5073346, -0.1276831, 12, filter.category.join(","), recency)
 		});
-		
 	});
 	
 	

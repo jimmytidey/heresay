@@ -100,7 +100,7 @@ $location_results    = db_q($location_query);
                         
                         var link = "<? echo $result['link']; ?>";
                         var map_<?=$i?> = new google.maps.Map(document.getElementById('map_canvas_<?=$i ?>'), myOptions);
-                        var myLatlng = new google.maps.LatLng(<?=$lat ?>, <?=$lng ?>);
+                        var myLatlng = new google.maps.LatLng(<?``);
                         var marker_<?=$i?> = new google.maps.Marker({
                             position: myLatlng, 
                             map: map_<?=$i?>,
@@ -197,8 +197,7 @@ $location_results    = db_q($location_query);
                     if (empty( $result['title'] )) { 
                             $result['title'] = "NO TITLE";  
                         }
-                    
-                    
+
                     ?>
                     <h3><a href='<?echo $result['link'] ?>' target='_blank' ><?echo $result['title'] ?></a></h3>
                     <p class='description'><?echo strip_tags(htmlspecialchars_decode ($result['description'])) ?> </p>
@@ -208,67 +207,23 @@ $location_results    = db_q($location_query);
                         <input name='no_location_<?=$i ?>' id='no_location_<?=$i ?>'  type='checkbox'/>
                         <input  id='no_location_link_<?=$i ?>'  type='hidden' value='<?echo $result['link'] ?>'/>
                                     
-                                    <br/>
-                                    <input type="checkbox" name="favourite" id='favourite_<?=$i ?>' value="1">Favourite<br>
-                                    
-                                    <select id='category_<?=$i ?>_1'>
-                                        <option value='--'>--</option>
-                                        <option value='local_knowledge'>Local knowledge</option>
-                                        <option value='crime_emergencies'>Crime and emergencies</option>
-                                        <option value='community_events'>Community events</option>
-                                        <option value='forsale_giveaway'>Buy Sell</option>
-                                        <option value='charity'>Charity</option>                            
-                                        <option value='pets_nature'>Pets and nature</option>   
-                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
-                                        <option value='art'>Art / music / culture</option>
-                                        <option value='sport'>Sport</option>                          
-                                        <option value='food_drink'>Food and Drink</option>
-                                        <option value='lost'>Lost</option>
-                                        <option value='transport'>Transport</option>
-                                        <option value='council'>Council business</option> 
-                                        <option value='kids'>Kids</option>                                                                         
-                                    </select>
+                        <br/>
+                        <input type="checkbox" name="favourite" id='favourite_<?=$i ?>' value="1">Favourite<br>
 
-                                    <select id='category_<?=$i ?>_2'>
-                                        <option value='--'>--</option>
-                                        <option value='local_knowledge'>Local knowledge</option>
-                                        <option value='crime_emergencies'>Crime and emergencies</option>
-                                        <option value='community_events'>Community events</option>
-                                        <option value='forsale_giveaway'>Buy Sell</option>
-                                        <option value='charity'>Charity</option>                            
-                                        <option value='pets_nature'>Pets and nature</option>   
-                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
-                                        <option value='art'>Art / music / culture</option>
-                                        <option value='sport'>Sport</option>                          
-                                        <option value='food_drink'>Food and Drink</option>
-                                        <option value='lost'>Lost</option>
-                                        <option value='transport'>Transport</option>
-                                        <option value='council'>Council business</option> 
-                                        <option value='kids'>Kids</option>                                                                         
-                                    </select>  
-
-                                    <select id='category_<?=$i ?>_3'>
-                                        <option value='--'>--</option>
-                                        <option value='local_knowledge'>Local knowledge</option>
-                                        <option value='crime_emergencies'>Crime and emergencies</option>
-                                        <option value='community_events'>Community events</option>
-                                        <option value='forsale_giveaway'>Buy Sell</option>
-                                        <option value='charity'>Charity</option>                            
-                                        <option value='pets_nature'>Pets and nature</option>   
-                                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
-                                        <option value='art'>Art / music / culture</option>
-                                        <option value='sport'>Sport</option>                          
-                                        <option value='food_drink'>Food and Drink</option>
-                                        <option value='lost'>Lost</option>
-                                        <option value='transport'>Transport</option>
-                                        <option value='council'>Council business</option> 
-                                        <option value='kids'>Kids</option>                                                                         
-                                    </select>
-                                    
-                                    
-                                                                                  
-                                                  
-                        
+                        <option value='local_knowledge'>Local knowledge</option>
+                        <option value='crime_emergencies'>Crime and emergencies</option>
+                        <option value='community_events'>Community events</option>
+                        <option value='forsale_giveaway'>Buy Sell</option>
+                        <option value='charity'>Charity</option>                            
+                        <option value='pets_nature'>Pets and nature</option>   
+                        <option value='shops_restaurants'>Shops / Restaurants / Bars</option>
+                        <option value='art'>Art / music / culture</option>
+                        <option value='sport'>Sport</option>                          
+                        <option value='food_drink'>Food and Drink</option>
+                        <option value='lost'>Lost</option>
+                        <option value='transport'>Transport</option>
+                        <option value='council'>Council business</option>
+                        <option value='kids'>Kids</option>
                     </p>
                     
                     <p class='search'>Search <input type='text' id='search_<?=$i ?>' class='search'  /> <input type='button' value='save' id='save_<?=$i ?>' > </p>  
