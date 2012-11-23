@@ -9,7 +9,7 @@
             <?
                 $results = $db->fetch('SELECT * from manual_updates WHERE favourite="1" ORDER BY ID  desc LIMIT 10');
                 foreach($results as $result) { 
-                    echo "<h3><a href='pages/" . $result['id'] . "'>" . $result['title'] . "</a></h3>";
+                    echo "<h3><a href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
                     
                     
                     echo "<p>" . $result['description'] . "</p>";

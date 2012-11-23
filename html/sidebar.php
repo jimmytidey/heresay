@@ -4,11 +4,11 @@
     
         </div>
         
-        <p>Filter by location</p> 
+        <h3>Filter by location</h3> 
         <input type='text' id='location_filter' />
         
         
-        <h2>Tags</h2>
+        <h3>Filter by tags</h3>
         <ul id='tag_filter'>
             <li><label for='local_knowledge'>Local Knowledge / history</label><input type='checkbox' id='local_knowledge'></li>
             <li><label for='crime_emergencies'>Crime / Emergency</label><input type='checkbox' id='crime_emergencies'></li>
@@ -29,8 +29,10 @@
             <li><label for='kids'>Kids</label><input type='checkbox' id='kids'></li>
             <!-- <li><label for='disabilities'>Local History</label><input type='checkbox' id='local_history'></li> -->
             
+        </ul>
+        
+        <input type='button' id='clear_filters' value='Remove filters'>               
     
-        </ul>                    
     </div>    
     
 </div>

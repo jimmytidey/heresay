@@ -1,8 +1,11 @@
         
-        <div id='footer' class='sixteen columns alpha omega'>
-            <p>About</p>
-            <p>Sources</p>
-            <p>About</p>              
+        <div id='footer' class='two-thirds column omega '>
+            <ul>
+                <li><a href='about.php'>About</a></li>
+                <li><a href='about.php#data-sources'>Data Sources</a></li>
+                <li><a href='about.php#contact'>Contact</a></li>
+                <li><a href='http://jimmytidey.co.uk'>Jimmy Tidey</a></li>
+            </ul>                  
         </div>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

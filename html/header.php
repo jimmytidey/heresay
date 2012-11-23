@@ -38,10 +38,13 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         
         <div class='container'>
             <div id='header'>
-                <div class='sixteen columns alpha omega'>
+                <div class='one-third column alpha'>
                     <h1>Heresay</h1>
 
-                    <p>What are people saying about where you live?</p>
+                    
+                </div>
+                <div class='two-thirds column omega'>
+                    <h2>Heresay gathers data from locally-focused forums and presents it in one geolocated, searchable place.</h2>
                 </div>
                 
             </div>

@@ -1,28 +1,52 @@
 heresay = {} ; 
 heresay.tagFilterState = [];
-heresay.locationFilterState;
+heresay.locationFilterLat='none';
+heresay.locationFilterLng='none';
+heresay.defaultLat = 51.5073346;
+heresay.defaultLng = -0.1276831;
+
 
 $(document).ready(function(){ 
 	heresay.renderFilterMap();
 	$('#tag_filter input').click(function(){
 		heresay.tagFilter();
 	});
+	
+	$('#clear_filters').click(function(){
+		heresay.clearFilter();
+	});
+	
+	if(getParameterByName('lat') != '') { 
+		heresay.locationFilterLat = getParameterByName('lat');
+	}
+
+	if(getParameterByName('lng') != '') { 
+		heresay.locationFilterLng = getParameterByName('lng');
+	}	
+	
+	if(getParameterByName('tags') != '') { 
+		heresay.tagFilterState = getParameterByName('tags').split(',');
+	}
+	
+	heresay.updateFilter();
+	
+	
 })
 
 heresay.renderFilterMap = function() { 
 	
-	var myLatlng = new google.maps.LatLng(51.5073346, -0.1276831);
+	var center = new google.maps.LatLng(heresay.defaultLat, heresay.defaultLng);
 		
 	var myOptions = {
 		zoom: 10,
-		center: myLatlng,
+		center: center,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
 	heresay.filterMap  = new google.maps.Map($("#filter_map")[0], myOptions);
 
 	heresay.filterMarker = new google.maps.Marker({
-	    position: myLatlng, 
+	    position: center, 
 	    map: heresay.filterMap,
 	    draggable:true,
 	    title:"move me about"
@@ -54,7 +78,8 @@ heresay.renderFilterMap = function() {
 heresay.locationFilter = function(latlng){ 
 	var lat = latlng.lat();
 	var lng = latlng.lng();
-	heresay.locationFilterState = "lat=" + lat + "&lng=" + lng;
+	heresay.locationFilterLat = lat;
+	heresay.locationFilterLng = lng;
 	heresay.updateFilter();
 }
 
@@ -70,20 +95,56 @@ heresay.tagFilter = function() {
 
 heresay.updateFilter = function() {
 	var tag_string = heresay.tagFilterState.join(',');
-	history.pushState(null, null, "?" + heresay.locationFilterState + "&tags=" + tag_string);
+	history.pushState(null, null, "?lat=" + heresay.locationFilterLat + "&lng=" + heresay.locationFilterLng + "&tags=" + tag_string);
 	
 	var lat = getParameterByName('lat');
-	var lng = getParameterByName('lng');	
-	$.get("/api/get_updates.php?lat=" + lat + "&lng=" + lng, function(data){
-		$('#results_title').html('Location updates');
+	var lng = getParameterByName('lng');
+	
+	$.get("/api/get_updates.php?lat=" + lat + "&lng=" + lng + "&tags=" + tag_string, function(data){
+		
+		if (heresay.locationFilterLat=='none' && heresay.locationFilterLng=='none' && tag_string =='') { 
+			$('#results_title').html('Selected updates');
+		}
+		else { 
+			$('#results_title').html('Filtered updates');
+		}
+		
 		$('#results_content').html('');
-		$.each(data, function(key,val) { 
+		$.each(data.results, function(key,val) { 
 			$('#results_content').append("<h3><a href='pages/" + val.id + "'>" + val.title + "</a></h3>");
 			$('#results_content').append("<p>" + val.description + "</p>");
-			var d_string =  timeConverter(val.pubdate);
-			$('#results_content').append("<p class='pubdate'>" + d_string + "</p>");
+			var tags_array = [];
+			if(val.category_1 != '' && val.category_1 != '--' && val.category_1 != 'undefined' && typeof val.category_1 != undefined) { 
+				tags_array.push(val.category_1);
+			}
+			if(val.category_2 != '' && val.category_2 != '--' && val.category_2 != 'undefined' && typeof val.category_2 != undefined) { 
+				tags_array.push(val.category_2);
+			}
+			if(val.category_3 != '' && val.category_3 != '--' && val.category_3 != 'undefined' && typeof val.category_3 != undefined) { 
+				tags_array.push(val.category_3);
+			}			
+			if(val.category_4 != '' && val.category_4 != '--' && val.category_4 != 'undefined' && typeof val.category_4 != undefined) { 
+				tags_array.push(val.category_4);
+			}						
+			var tags_string =  tags_array.join(', ');
+			$('#results_content').append("<p class='tags'>Tags: " + tags_string + "</p>");
+			
+			var date_string =  timeConverter(val.pubdate);
+			$('#results_content').append("<p class='pubdate'>" + date_string + "</p>");
 		});
-	});
+	});	
+}
+
+heresay.clearFilter = function () { 
+	var center = new google.maps.LatLng(heresay.defaultLat, heresay.defaultLng);
+	heresay.filterMap.setCenter(center);
+    heresay.filterMap.setZoom(10);
+ 	heresay.filterMarker.setPosition(center);
+	$("#tag_filter input:checkbox").attr('checked', false);
+	heresay.tagFilterState = [];
+	heresay.locationFilterLat='none';
+	heresay.locationFilterLng='none';
+	heresay.updateFilter();
 }
 
 
