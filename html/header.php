@@ -1,33 +1,48 @@
-<? 
-include("db_functions.php");
+<?
 
-//give the file an id of the current page name
-$id = explode(".", $_SERVER['PHP_SELF']);  
-$id = explode('/', $id[0]); 
-$number = count($id)-1; 
-$id = $id[$number];
+include('ini.php');
+@$url = explode("/",$_GET['url']);
+$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 ?>
-
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-<html>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<head>
-<meta charset="utf-8">
-<title>Heresay</title>
-    <meta name="google-site-verification" content="ZuChEhlvuI1zxLGX7PYcfhNkF9ypHBqI8cGChpHyOZU" />
-     
-     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOoFM_kDNJVs_SzvkytQRKBSpgYF3iu7PXc-1iPSD4CpffT2eCRRzD14PFyag3JY4SakJE5_wVYpLxw&sensor=false" type="text/javascript"></script>
-   
-   
-    <script type="text/javascript" src="scripts/mapstraction.js"></script>
-    <link rel=StyleSheet href="/style/style.css" type="text/css" media='screen' />
-    <script src='/scripts/heresay.js'></script>
-<head>
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        
+        <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        
+        <div id='masthead'></div>
+        
+        <div class='container'>
+            <div id='header'>
+                <div class='sixteen columns alpha omega'>
+                    <h1>Heresay</h1>
 
-<body id='<?=$id ?>' >
-	
-
+                    <p>What are people saying about where you live?</p>
+                </div>
+                
+            </div>
+            
