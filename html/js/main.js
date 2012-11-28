@@ -210,7 +210,7 @@ heresay.renderContent = function(results) {
 		
 		
 		var location_name = val.location_name; 
-		if (location_name != '' && location_name != 'undefined') {
+		if (location_name != '' && location_name != 'undefined' && typeof location_name != undefined) {
 			$('#results_content').append("<p class='location_name'>" + tags_string + "</p>");
 		}
 		
