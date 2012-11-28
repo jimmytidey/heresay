@@ -3,7 +3,13 @@
 <? include('sidebar.php') ?>
 
 <div class='two-thirds column omega inner_shaddow' id='content' >
-    <h2 id='results_title'>Selected Updates</h2>
+    
+    <div id='main_map'>
+        
+    </div>
+    
+    
+    <h2 id='results_title'>Recent Updates</h2>
     <div class='padder'>
         <div id='results_content'>
             <?
@@ -22,6 +28,12 @@
                         if(!empty($cat) && $cat != 'undefined') { 
                             $tags[] = $result['category_'.$i];
                         }
+                    }
+                    
+                    $location_name = $result['location_name'];
+                    
+                    if (!empty($location_name)) {
+                        echo "<p class='location_name'>" . $result['location_name'] . "</p>";
                     }
                     
                     $tags_string = implode(', ', $tags);

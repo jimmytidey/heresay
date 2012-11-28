@@ -9,10 +9,11 @@ $results = array();
 $lat    = @addslashes($_GET['lat']); 
 $lng    = @addslashes($_GET['lng']); 
 $tags   = @addslashes($_GET['tags']);
+$mode   = @addslashes($_GET['mode']);
 
 $tags = explode(',', $tags);
 
-if ($lat !='none' && $lng  !='none') { 
+if (is_numeric($lat) && is_numeric($lng)) { 
     $results['method'] = "Tags and location";
     $query = "SELECT *,
     SQRT(
@@ -42,10 +43,9 @@ if ($lat !='none' && $lng  !='none') {
 } 
 
 
-
 else if (!empty($tags[0])) { 
 
-    $results['method'] = "no location"; 
+    $results['method'] = "No location, just tags"; 
     $query = "SELECT *  FROM manual_updates ";
     
      $tag_q = array();
@@ -69,9 +69,14 @@ else if (!empty($tags[0])) {
      $query .= " ORDER BY pubdate LIMIT 50";
 }
 
-else { 
+else if ($mode == 'selected'){ 
     $results['method'] = "Favourites";
-    $query = "SELECT * from manual_updates WHERE favourite='1' ORDER BY pubdate DESC LIMIT 10";
+    $query = "SELECT * from manual_updates WHERE favourite='1' ORDER BY pubdate DESC LIMIT 20";
+}
+
+else if ($mode == 'recent'){ 
+    $results['method'] = "Recent";
+    $query = "SELECT * from manual_updates WHERE lat != '--' &&  lat != '' ORDER BY pubdate DESC LIMIT 100";
 }
 
 $results['query'] = $query;

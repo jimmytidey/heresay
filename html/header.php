@@ -35,6 +35,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <![endif]-->
         
         <div id='masthead'></div>
+        <!-- <div id='grey_strip'></div> -->
         
         <div class='container'>
             <div id='header'>

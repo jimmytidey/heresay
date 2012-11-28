@@ -95,17 +95,26 @@ textarea {
 
 body { 
 	background-image:url('../img/bkg_body.png');
-	background-repeat:repeat-x;
 	background-color:white;
 	
 }
 
 #masthead {
+	background-image:url('../img/bkg_masthead.png');
 	position:absolute;
 	height:150px;
 	width:100%;
 	background-color:#58838C;
 	top:0px;
+  	box-shadow: 0 0 14px 16px #CCCCCC;
+}
+
+#grey_strip { 	
+	position:absolute;
+	top:150px;
+	height:120px;
+	width:100%;
+	background-color:#ececec;	
 }
 
 h1 { 
@@ -153,7 +162,7 @@ h3 {
 	margin-top:30px;
 	margin-bottom:20px;	
 	background-color:#DAD7C7;
-	height:100px;
+	height:55px;
 	float:right;
 	margin-right:16px;
 }
@@ -202,12 +211,22 @@ h3 {
    Content
    ========================================================================== */
 
+
+#main_map { 
+	height: 300px;
+}
+
 .pubdate { 
 	border-bottom:1px solid black;
 }
 
 .tags { 
 	color:#CE1A53;
+}
+
+.tagstring { 
+	color:#CE1A53; 
+	font-size:12px;
 }
 
 #results_title {
@@ -225,7 +244,7 @@ h3 {
 }	
 
 #footer li { 
-	padding-right:50px;
+	padding-right:60px;
 	float:left;
 }
 
