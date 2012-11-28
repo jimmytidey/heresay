@@ -71,7 +71,7 @@ else if (!empty($tags[0])) {
 
 else { 
     $results['method'] = "Favourites";
-    $query = "SELECT * from manual_updates WHERE favourite='1' ORDER BY ID desc LIMIT 10";
+    $query = "SELECT * from manual_updates WHERE favourite='1' ORDER BY pubdate DESC LIMIT 10";
 }
 
 $results['query'] = $query;
