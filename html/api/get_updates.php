@@ -66,7 +66,7 @@ else if (!empty($tags[0])) {
          $query .= $where;
      }
 
-     $query .= " ORDER BY pubdate LIMIT 50";
+     $query .= " ORDER BY pubdate DESC LIMIT 50";
 }
 
 else if ($mode == 'selected'){ 

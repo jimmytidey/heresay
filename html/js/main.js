@@ -210,9 +210,13 @@ heresay.renderContent = function(results) {
 		
 		
 		var location_name = val.location_name; 
-		if (location_name != '' && location_name != 'undefined' && typeof location_name != undefined) {
-			$('#results_content').append("<p class='location_name'>" + tags_string + "</p>");
+		if (location_name != '' && location_name !== 'undefined' && typeof location_name != undefined) {
+			
+			location_name_array = location_name.split(',');
+			
+			$('#results_content').append("<p class='location_name'>" + location_name_array[1] +", "+ location_name_array[2] + ", "+ location_name_array[3] + "</p>");
 		}
+		
 		
 		var tags_string = heresay.tagString(val);
 		$('#results_content').append("<p class='tags'>Tags: " + tags_string + "</p>");
