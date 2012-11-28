@@ -7,7 +7,7 @@
     <div class='padder'>
         <div id='results_content'>
             <?
-                $results = $db->fetch('SELECT * from manual_updates WHERE favourite="1" ORDER BY ID  desc LIMIT 10');
+                $results = $db->fetch('SELECT * from manual_updates WHERE favourite="1" ORDER BY pubdate desc LIMIT 100');
                 foreach($results as $result) { 
                     echo "<h3><a href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
                     
