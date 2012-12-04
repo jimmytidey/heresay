@@ -9,7 +9,7 @@
     </div>
     
     
-    <h2 id='results_title'>Recent Updates</h2>
+    <h2 id='results_title'>Selected Updates</h2>
     <div class='padder'>
         <div id='results_content'>
             <?

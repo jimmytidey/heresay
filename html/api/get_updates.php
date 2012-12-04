@@ -76,7 +76,7 @@ else if ($mode == 'selected'){
 
 else if ($mode == 'recent'){ 
     $results['method'] = "Recent";
-    $query = "SELECT * from manual_updates WHERE lat != '--' &&  lat != '' ORDER BY pubdate DESC LIMIT 100";
+    $query = "SELECT * from manual_updates WHERE lat != '--' &&  lat != '' ORDER BY pubdate DESC LIMIT 400";
 }
 
 $results['query'] = $query;
