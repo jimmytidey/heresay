@@ -68,7 +68,7 @@ heresay.updateMainMap = function() {
 	}
 		
 	var myOptions = {
-		zoom: 12,
+		zoom: 10,
 		center: center,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
@@ -76,7 +76,7 @@ heresay.updateMainMap = function() {
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
 	
 	if (heresay.locationFilterLat != 'none') { 
-		heresay.mainMap.setZoom(13);
+		heresay.mainMap.setZoom(14);
 	}	
 	
 	else { 
