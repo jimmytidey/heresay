@@ -68,7 +68,7 @@ heresay.updateMainMap = function() {
 	}
 		
 	var myOptions = {
-		zoom: 10,
+		zoom: 12,
 		center: center,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
