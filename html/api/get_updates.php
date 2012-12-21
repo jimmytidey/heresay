@@ -39,7 +39,7 @@ if (is_numeric($lat) && is_numeric($lng)) {
         $query .= $where;
     }
     
-    $query .= " HAVING distance < 25 ORDER BY distance,pubdate LIMIT 50"; 
+    $query .= " HAVING distance < 25 ORDER BY distance,pubdate LIMIT 150"; 
 } 
 
 
