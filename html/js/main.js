@@ -76,7 +76,7 @@ heresay.updateMainMap = function() {
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
 	
 	if (heresay.locationFilterLat != 'none') { 
-		heresay.mainMap.setZoom(14);
+		heresay.mainMap.setZoom(15);
 	}	
 	
 	else { 
