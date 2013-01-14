@@ -16,11 +16,9 @@
                 $results = $db->fetch('SELECT * from manual_updates WHERE favourite="1" ORDER BY pubdate desc LIMIT 100');
                 foreach($results as $result) { 
                     echo "<h3><a href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
-                    
-                    
+                                    
                     echo "<p>" . $result['description'] . "</p>";
 
-                    
                     $tags = array(); 
                     
                     for($i=1; $i<5; $i++) { 

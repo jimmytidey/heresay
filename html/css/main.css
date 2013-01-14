@@ -235,6 +235,19 @@ h3 {
 	background-color:#DAD7C7;
 }
 
+.spinner_overlay { 
+	position:relative;
+	width:620px;
+	height:300px;
+	top:0px;
+	left:0px;
+}
+
+.spinner_overlay img{
+	margin-top:140px;
+	margin-left:200px;
+} 
+
 /* ==========================================================================
    Footer
    ========================================================================== */

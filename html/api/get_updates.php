@@ -12,6 +12,7 @@ $tags   = @addslashes($_GET['tags']);
 $mode   = @addslashes($_GET['mode']);
 
 $tags = explode(',', $tags);
+$time_limit = time() - 10000000; 
 
 if (is_numeric($lat) && is_numeric($lng)) { 
     $results['method'] = "Tags and location";
@@ -19,12 +20,13 @@ if (is_numeric($lat) && is_numeric($lng)) {
     SQRT(
         POW(69.1 * (lat - $lat), 2) +
         POW(69.1 * ($lng - lng) * COS(lat / 57.3), 2)) AS distance
-    FROM manual_updates";
+    FROM manual_updates ";
     
     $tag_q = array();
     
+     $query .= " WHERE pubdate > $time_limit ";
     if ($tags[0] != '') { 
-        $query .= " WHERE ";
+       
         foreach ($tags as $tag) {
             if ($tag != '') { 
                 $tag_query  = '';
@@ -36,10 +38,10 @@ if (is_numeric($lat) && is_numeric($lng)) {
             }                                       
         }
         $where = implode('||', $tag_q);
-        $query .= $where;
+        $query .= " && (" . $where .")";
     }
     
-    $query .= " HAVING distance < 25 ORDER BY distance,pubdate LIMIT 150"; 
+    $query .= "  HAVING distance < 25 ORDER BY distance,pubdate LIMIT 60"; 
 } 
 
 
@@ -76,7 +78,7 @@ else if ($mode == 'selected'){
 
 else if ($mode == 'recent'){ 
     $results['method'] = "Recent";
-    $query = "SELECT * from manual_updates WHERE lat != '--' &&  lat != '' ORDER BY pubdate DESC LIMIT 400";
+    $query = "SELECT * from manual_updates WHERE lat != '--' &&  lat != '' ORDER BY pubdate DESC LIMIT 100";
 }
 
 $results['query'] = $query;

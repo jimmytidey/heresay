@@ -255,7 +255,7 @@ heresay.updateFilter = function() {
 	var lng = heresay.locationFilterLng;
 	heresay.mode = 'filtered'
 	
-	history.pushState(null, null, "?lat=" + lat + "&lng=" + lng + "&tags=" + tag_string);
+	//history.pushState(null, null, "?lat=" + lat + "&lng=" + lng + "&tags=" + tag_string);
 	
 	$('#results_title').html('Filtered updates');
 
@@ -270,7 +270,7 @@ heresay.updateFilter = function() {
 
 
 heresay.clearFilter = function () { 		
-	history.pushState(null, null, "/");
+	//history.pushState(null, null, "/");
 	location.reload(true); 
 }
 
