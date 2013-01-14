@@ -45,7 +45,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
                     
                 </div>
                 <div class='two-thirds column omega'>
-                    <h2>Heresay gathers data from locally-focused forums and presents it in one geolocated, searchable place.</h2>
+                    <h2>Heresay gathers data from locally-focused comment from across the web and presents it in one geolocated, searchable place.</h2>
                 </div>
                 
             </div>
