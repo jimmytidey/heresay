@@ -1,4 +1,4 @@
-<div id='sidebar' class='one-third column alpha inner_shaddow'>
+<div id='sidebar' class='one-third column  inner_shaddow'>
     <div class='padder'>
         <div id='filter_map'>
     
