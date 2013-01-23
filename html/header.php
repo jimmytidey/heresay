@@ -23,9 +23,8 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <link rel="stylesheet" href="css/layout.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/main.css">
-        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.css"/>        
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-        
+        <script type="text/javascript" src="http://fast.fonts.com/jsapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.js"></script>      
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
        <body>
         <!--[if lt IE 7]>
@@ -44,7 +43,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
                     
                 </div>
                 <div class='two-thirds column omega'>
-                    <h2>Heresay gathers locally-focused comment from across the web and presents it in one ssearchable place.</h2>
+                    <h2>Heresay gathers locally-focused comment from across the web and presents it in one searchable place.</h2>
                 </div>
                 </div>
             </div>
