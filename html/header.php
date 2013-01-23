@@ -16,6 +16,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.css"/>        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -23,8 +24,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <link rel="stylesheet" href="css/layout.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/main.css">
-        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.css"/>        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-        
+ 
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <body>
