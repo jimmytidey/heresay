@@ -134,35 +134,6 @@ heresay.mainMapAddMarkers = function(results) {
 		contentString += window.timeConverter(val.pubdate) + "</div>";
 	
 
-		
-		var myOptions = {
-					 content: contentString
-					,disableAutoPan: false
-					,maxWidth: 0
-					,pixelOffset: new google.maps.Size(-120, 0)			
-					,zIndex: null
-					,boxStyle: { 
-					  backgroundColor: "white"
-					  ,width: "190px"
-					  ,border:'1px solid black'
-					  ,padding:'10px'
-					 }
-					,closeBoxMargin: "10px 2px 2px 2px"
-					,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-					,infoBoxClearance: new google.maps.Size(5, 5)
-					,isHidden: false
-					,pane: "floatPane"
-					,enableEventPropagation: false
-				};
-
-		heresay.mainMap.infoWindows[key] = new InfoBox(myOptions);
-	
-		heresay.mainMap.markers[key] = new google.maps.Marker({
-		    position: heresay.mainMap.points[key], 
-		    map: heresay.mainMap,
-		    draggable:true,
-		    title: val.title
-		});
 
 		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
 		
