@@ -105,18 +105,11 @@ body {
 	height:200px;
 	width:100%;
 	top:0px;
-  	
+  	z-index:10;
 	background-position:center center;
 	background-repeat:no-repeat;
 }
 
-#grey_strip { 	
-	position:absolute;
-	top:150px;
-	height:120px;
-	width:100%;
-	background-color:#ececec;	
-}
 
 h1 { 
     color: #A52222;
@@ -153,7 +146,12 @@ h3 {
 	margin-top:30px;
 	height:90px;
 	padding:10px;
+	z-index:10;
 }
+
+#header .container{
+	z-index:100;
+}	 
 
 #sidebar { 
 	background-color:white;
@@ -172,7 +170,7 @@ h3 {
 	background-color: white;
     margin-top: -140px;
     padding-top: 180px;
-    z-index: -4;
+    z-index: 1;
 	border-left:1px solid #ccc;
 	border-right:1px solid #ccc;
 	box-shadow: 1px 2px 3px #888888;

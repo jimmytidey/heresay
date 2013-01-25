@@ -34,19 +34,20 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <div id='masthead'></div>
         
         
-        
-            <div id='header'>
-                <div class='container'>
+    
+        <div id='header'>
+            <div class='container'>
                 <div class='one-third column alpha'>
                     <h1>Heresay</h1>
 
-                    
+                
                 </div>
                 <div class='two-thirds column omega'>
                     <h2>Heresay gathers locally-focused comment from across the web and presents it in one searchable place.</h2>
                 </div>
-                </div>
             </div>
-            <div class='container main_container'>
+        </div>
+        
+        <div class='container main_container'>
             
             

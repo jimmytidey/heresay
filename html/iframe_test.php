@@ -1,14 +1,16 @@
-        
+<? include('header.php') ?>
 
-        <div id='footer' class='two-thirds column omega '>
-            <ul>
-                <li><a href='about.php'>About</a></li>
-                <li><a href='about.php#data-sources'>Data Sources</a></li>
-                <li><a href='about.php#contact'>Contact</a></li>
-                <li><a href='http://jimmytidey.co.uk'>Jimmy Tidey</a></li>
-            </ul>                  
-        </div>
-        
+
+<div class='twelve columns omega inner_shaddow' id='content' >
+
+<h2>Iframe Code</h2>
+
+<iframe src="http://<?= $_SERVER['HTTP_HOST'] ?>/iframe.php?lat=51.58338209999999&lng=-0.09988529999998264&tags=" width="220" scrolling="no" height="300" frameBorder="0">Browser not compatible.</iframe>
+
+
+</div>
+
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

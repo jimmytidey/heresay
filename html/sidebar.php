@@ -1,12 +1,11 @@
 <div id='sidebar' class='one-third column  inner_shaddow'>
     <div class='padder'>
+        
         <div id='filter_map'>
-    
         </div>
         
         <h3>Filter by location</h3> 
         <input type='text' id='location_filter' />
-        
         
         <h3>Filter by tags</h3>
         <ul id='tag_filter'>
@@ -28,11 +27,8 @@
             <li><label for='council '>Council</label><input type='checkbox' id='council'></li>
             <li><label for='kids'>Kids</label><input type='checkbox' id='kids'></li>
             <!-- <li><label for='disabilities'>Local History</label><input type='checkbox' id='local_history'></li> -->
-            
         </ul>
         
-        <input type='button' id='clear_filters' value='Remove filters'>               
-    
+        <input type='button' id='clear_filters' value='Remove filters' />               
     </div>    
-    
 </div>
