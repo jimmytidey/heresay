@@ -52,9 +52,6 @@ $(document).ready(function(){
 		heresay.updateMainMap();
 	}
 	
-	//draw the maps 
-	heresay.renderFilterMap();
-	
 })
 
 
@@ -134,6 +131,35 @@ heresay.mainMapAddMarkers = function(results) {
 		contentString += window.timeConverter(val.pubdate) + "</div>";
 	
 
+		
+		var myOptions = {
+					 content: contentString
+					,disableAutoPan: false
+					,maxWidth: 0
+					,pixelOffset: new google.maps.Size(-120, 0)			
+					,zIndex: null
+					,boxStyle: { 
+					  backgroundColor: "white"
+					  ,width: "190px"
+					  ,border:'1px solid black'
+					  ,padding:'10px'
+					 }
+					,closeBoxMargin: "10px 2px 2px 2px"
+					,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+					,infoBoxClearance: new google.maps.Size(5, 5)
+					,isHidden: false
+					,pane: "floatPane"
+					,enableEventPropagation: false
+				};
+
+		heresay.mainMap.infoWindows[key] = new InfoBox(myOptions);
+	
+		heresay.mainMap.markers[key] = new google.maps.Marker({
+		    position: heresay.mainMap.points[key], 
+		    map: heresay.mainMap,
+		    draggable:true,
+		    title: val.title
+		});
 
 		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
 		
@@ -146,53 +172,6 @@ heresay.mainMapAddMarkers = function(results) {
 	});	
 }
 
-
-heresay.renderFilterMap = function() { 
-	
-	if ( heresay.locationFilterLat != 'none') { 
-		var center = new google.maps.LatLng(heresay.locationFilterLat, heresay.locationFilterLng);
-	}
-	else { 
-		var center = new google.maps.LatLng(heresay.defaultLat, heresay.defaultLng);
-	}
-	
-	var myOptions = {
-		zoom: 10,
-		center: center,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	
-	heresay.filterMap  = new google.maps.Map($("#filter_map")[0], myOptions);
-
-	heresay.filterMarker = new google.maps.Marker({
-	    position: center, 
-	    map: heresay.filterMap,
-	    draggable:true,
-	    title:"move me about"
-	});
-	
-    heresay.autocomplete = new google.maps.places.Autocomplete($("#location_filter")[0]);
-    heresay.autocomplete.bindTo('bounds', heresay.filterMap);
-
-    google.maps.event.addListener(heresay.autocomplete, 'place_changed', function() {
-		var place = this.getPlace();
-        if (place.geometry.viewport) {
-            heresay.filterMap.fitBounds(place.geometry.viewport);
-        } else {
-           	heresay.filterMap.setCenter(place.geometry.location);
-            heresay.filterMap.setZoom(12);  
-        }
-    
-        var point = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-        heresay.filterMarker.setPosition(point);
-		heresay.locationFilter(point);
-    });	
-
-	google.maps.event.addListener(heresay.filterMarker, 'dragend', function() { 
-		var latlng = this.getPosition();
-		heresay.locationFilter(latlng)
-	});
-}
 
 heresay.renderContent = function(results) {
 	
