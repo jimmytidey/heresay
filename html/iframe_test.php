@@ -68,7 +68,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         
         
         <!--[if lte IE 9]>
-             <script src="js/main_ie.js"></script>
+             
         <![endif]-->
         
         <!--[if !IE]> -->
