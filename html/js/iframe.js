@@ -159,6 +159,7 @@ heresay.mainMapAddMarkers = function(results) {
 		
 			$.each(heresay.mainMap.infoWindows, function(key, val) { 
 				val.close();
+				heresay.mainMap.markers[key].setIcon('/img/marker-red.png');
 			});
 			
 			heresay.mainMap.markers[key].setIcon('/img/marker-blue.png');
