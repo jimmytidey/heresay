@@ -42,7 +42,7 @@ $(document).ready(function(){
 	}
 	
 	if ((getParameterByName('lat') != '' && getParameterByName('lng') != '') || getParameterByName('tags') != '') {
-		console.log('filter detected');
+		
 		heresay.mode = "filtered";
 		heresay.updateFilter();
 	}
@@ -88,7 +88,7 @@ heresay.updateMainMap = function() {
 	heresay.mainMap.markers = [];
 	
 	if (heresay.mode == 'unfiltered') {
-		console.log('points ufil')
+
 		$.get("/api/get_updates.php?mode=selected", function(data){
 			heresay.mainMapAddMarkers(data.results);
 		});

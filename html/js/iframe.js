@@ -42,7 +42,7 @@ $(document).ready(function(){
 	}
 	
 	if ((getParameterByName('lat') != '' && getParameterByName('lng') != '') || getParameterByName('tags') != '') {
-		console.log('filter detected');
+		
 		heresay.mode = "filtered";
 		heresay.updateFilter();
 	}
@@ -71,7 +71,6 @@ heresay.updateMainMap = function() {
 		zoomControl: false,
 		streetViewControl: false,
 		mapTypeControl: false
-		
 	};
 	
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
@@ -89,7 +88,6 @@ heresay.updateMainMap = function() {
 	heresay.mainMap.markers = [];
 	
 	if (heresay.mode == 'unfiltered') {
-		console.log('points ufil')
 		$.get("/api/get_updates.php?mode=selected", function(data){
 			heresay.mainMapAddMarkers(data.results);
 		});
@@ -98,9 +96,7 @@ heresay.updateMainMap = function() {
 		});		
 	}
 	else {
-		console.log('points filtered');
 		heresay.mainMapAddMarkers(heresay.data.results);
-		
 	}	
 }
 
@@ -129,9 +125,7 @@ heresay.mainMapAddMarkers = function(results) {
 		var contentString = "<div class='infowindow'><a target='_blank' href='" + val.link + "'>"+ short_desc +"</a><br/>" 
 		
 		contentString += window.timeConverter(val.pubdate) + "</div>";
-	
 
-		
 		var myOptions = {
 					 content: contentString
 					,disableAutoPan: false
