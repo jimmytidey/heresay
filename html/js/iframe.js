@@ -154,12 +154,16 @@ heresay.mainMapAddMarkers = function(results) {
 		    draggable:true,
 		    title: val.title
 		});
+		
+		google.maps.event.addListener(heresay.mainMap.infoWindows[key] ,'closeclick',function(){
+			heresay.mainMap.markers[key].setIcon();
+		});
 
 		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
 		
 			$.each(heresay.mainMap.infoWindows, function(key, val) { 
 				val.close();
-				heresay.mainMap.markers[key].setIcon('/img/marker-red.png');
+				heresay.mainMap.markers[key].setIcon();
 			});
 			
 			heresay.mainMap.markers[key].setIcon('/img/marker-blue.png');
