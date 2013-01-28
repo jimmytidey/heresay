@@ -21,11 +21,11 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         
         <style>
             #main_map { 
-                width:200px;
-                height:200px;
+                width:100%;
+                height:100%;
             }
         
-            body, html {margin:0px; padding:0px; height:200px; width:200px;}
+            body, html {margin:0px; padding:0px; height:100%; width:100%;}
             
             #see_more { 
                 position:relative;
