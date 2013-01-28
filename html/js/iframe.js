@@ -228,8 +228,6 @@ heresay.updateFilter = function() {
 	var lng = heresay.locationFilterLng;
 	heresay.mode = 'filtered'
 	
-	history.pushState(null, null, "?lat=" + lat + "&lng=" + lng + "&tags=" + tag_string);
-	
 	$('#results_title').html('Filtered updates');
 
 	$.get("/api/get_updates.php?lat=" + lat + "&lng=" + lng + "&tags=" + tag_string , function(data){
