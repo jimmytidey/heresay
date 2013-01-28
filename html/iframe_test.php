@@ -23,7 +23,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <link rel="stylesheet" href="css/layout.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/main.css">
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
         <script type="text/javascript" src="http://fast.fonts.com/jsapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.js"></script>      
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
        <body>
@@ -57,7 +57,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
             <h2>Iframe Code</h2>
 
-            <iframe src="http://<?= $_SERVER['HTTP_HOST'] ?>/iframe.php?lat=51.58338209999999&lng=-0.09988529999998264&tags=" width="220" scrolling="no" height="300" frameBorder="0">Browser not compatible.</iframe>
+            <iframe src="http://<?= $_SERVER['HTTP_HOST'] ?>/iframe.php?lat=51.58338209999999&amp;lng=-0.09988529999998264&amp;tags=" width="220" scrolling="no" height="300" frameBorder="0">Browser not compatible.</iframe>
 
 
             </div>
