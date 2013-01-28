@@ -12,8 +12,8 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+  
+        <title>Heresay Widget</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -27,9 +27,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
         <script type="text/javascript" src="http://fast.fonts.com/jsapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.js"></script>      
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
        <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+
         
         <div id='masthead'></div>
         
