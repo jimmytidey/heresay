@@ -58,7 +58,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
             <script src="js/plugins.js"></script>
 
             <!--[if lte IE 9]>
-                 <script src="js/iframe_ie.js"></script>
+                 <script src="js/iframe.js"></script>
             <![endif]-->
 
             <!--[if !IE]> -->
