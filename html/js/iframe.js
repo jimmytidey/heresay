@@ -112,9 +112,9 @@ heresay.mainMapAddMarkers = function(results) {
 		heresay.mainMap.points[key] = new google.maps.LatLng(val.lat, val.lng);
 		
 		if (val.title != null) {
-			var short_desc = val.title.substring(0, 300); 
+			var short_desc = val.title.substring(0, 100); 
 	
-			if (short_desc.length > 199) { 
+			if (short_desc.length > 100) { 
 				short_desc += "...";
 			}
 		}	
@@ -134,7 +134,7 @@ heresay.mainMapAddMarkers = function(results) {
 					,zIndex: null
 					,boxStyle: { 
 					  backgroundColor: "white"
-					  ,width: "190px"
+					  ,width: "170px"
 					  ,border:'1px solid black'
 					  ,padding:'10px'
 					 }
