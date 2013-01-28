@@ -138,7 +138,7 @@ heresay.mainMapAddMarkers = function(results) {
 					  ,border:'1px solid black'
 					  ,padding:'10px'
 					 }
-					,closeBoxMargin: "10px 2px 2px 2px"
+					,closeBoxMargin: "2px 2px 2px 2px"
 					,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
 					,infoBoxClearance: new google.maps.Size(5, 5)
 					,isHidden: false
@@ -160,7 +160,8 @@ heresay.mainMapAddMarkers = function(results) {
 			$.each(heresay.mainMap.infoWindows, function(key, val) { 
 				val.close();
 			});
-		
+			
+			heresay.mainMap.markers[key].setIcon('/img/marker-blue.png');
 			heresay.mainMap.infoWindows[key].open(heresay.mainMap, heresay.mainMap.markers[key]);
 		});	
 	});	
