@@ -13,7 +13,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
     <head>
         <meta charset="utf-8">
        
-        <title>Heresay Widget</title>
+        <title>Heresay Widge</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -43,7 +43,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
                 width:180px;
             }
         </style>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
         <script type="text/javascript" src="http://fast.fonts.com/jsapi/3b8a8020-e2d5-4375-8d0a-fcf451d4b03a.js"></script>      
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
     <body>
