@@ -204,9 +204,11 @@ heresay.renderContent = function(results) {
 	
 	$('#results_content').html('');
 	$.each(results, function(key,val) { 
+		
+		var short_desc = val.description.split(".")[0]+".";
 
 		$('#results_content').append("<h3><a href='" + val.link + "'>" + val.title + "</a></h3>");
-		$('#results_content').append("<p>" + val.description + "</p>");
+		$('#results_content').append("<p>" + short_desc + "</p>");
 		
 		
 		var location_name = val.location_name; 
