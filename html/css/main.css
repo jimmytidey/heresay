@@ -170,6 +170,7 @@ h3 {
 	background-color: white;
     margin-top: -140px;
     padding-top: 180px;
+	padding-bottom:20px;
     z-index: 1;
 	border-left:1px solid #ccc;
 	border-right:1px solid #ccc;
@@ -292,6 +293,15 @@ h3 {
 #footer a { 
 	font-size:18px;
 }	
+
+
+/* ==========================================================================
+   iFrame Specific 
+   ========================================================================== */
+
+.iframe_test #content { 
+	padding:10px;
+}
 
 /* ==========================================================================
    Helper classes
