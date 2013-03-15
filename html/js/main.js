@@ -139,6 +139,7 @@ heresay.mainMapAddMarkers = function(results) {
 		    map: heresay.mainMap,
 		    draggable:true,
 		    title: val.title
+		    icon: '/img/marker.png'
 		});
 
 		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
