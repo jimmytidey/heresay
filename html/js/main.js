@@ -138,7 +138,7 @@ heresay.mainMapAddMarkers = function(results) {
 		    position: heresay.mainMap.points[key], 
 		    map: heresay.mainMap,
 		    draggable:true,
-		    title: val.title
+		    title: val.title,
 		    icon: '/img/marker.png'
 		});
 
