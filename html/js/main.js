@@ -175,7 +175,8 @@ heresay.renderFilterMap = function() {
 	    position: center, 
 	    map: heresay.filterMap,
 	    draggable:true,
-	    title:"move me about"
+	    title:"move me about",
+	    icon: '/img/marker.png'
 	});
 	
     heresay.autocomplete = new google.maps.places.Autocomplete($("#location_filter")[0]);
