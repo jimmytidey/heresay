@@ -15,6 +15,7 @@ $tags = explode(',', $tags);
 $time_limit = time() - 10000000; 
 
 if (is_numeric($lat) && is_numeric($lng)) { 
+    
     $results['method'] = "Tags and location";
     $query = "SELECT *,
     SQRT(
@@ -45,7 +46,7 @@ if (is_numeric($lat) && is_numeric($lng)) {
 } 
 
 
-else if (!empty($tags[0])) { 
+if (!empty($tags[0])) { 
 
     $results['method'] = "No location, just tags"; 
     $query = "SELECT *  FROM manual_updates ";

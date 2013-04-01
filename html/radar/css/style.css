@@ -1,0 +1,53 @@
+/* STRUCTURE */ 
+body { 
+    padding-top:0px;
+}
+
+header {
+    background-color:black;
+}
+
+h1 { 
+    color:white;
+}
+
+#filter_by_borough { 
+    margin-top:40px;
+}
+
+.listing { 
+    background:#eee;
+    padding:5px 10px;
+    margin-top:20px;
+}
+
+.listing .description { 
+    margin-bottom:20px;
+}
+
+.listing .site { 
+    margin-bottom:1px solid black;
+}
+
+.listing h3 a {
+    font-weight:normal;
+    
+}
+
+.listing h3 { 
+    margin-top:0px;
+    margin-bottom:0px;
+}     
+
+.pubdate { 
+    font-style:italic;
+    color:#008270;
+    margin-top:15px;
+}
+
+.tags { 
+    padding:5px;
+    background-color:white;
+    margin-right:10px;
+    border:1px solid black;
+}
