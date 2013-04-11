@@ -1,5 +1,5 @@
 <?
-include('ini.php');
+include('../ini.php');
 @$url = explode("/",$_GET['url']);
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 ?>
@@ -8,7 +8,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Heresay: Discovering local discussion</title>
+    <title>Bootstrap, from Twitter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -32,7 +32,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
     <header>
       <div class='container'>
           <div class='row'>
-              <h1 class='span12'>Heresay</h1>
+              <h1 class='span12'>Local Radar</h1>
           </div>
       </div>
     </header>

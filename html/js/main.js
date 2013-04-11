@@ -137,7 +137,7 @@ heresay.mainMapAddMarkers = function(results) {
 		heresay.mainMap.markers[key] = new google.maps.Marker({
 		    position: heresay.mainMap.points[key], 
 		    map: heresay.mainMap,
-		    draggable:true,
+		    draggable:false,
 		    title: val.title,
 		    icon: '/img/marker.png'
 		});
