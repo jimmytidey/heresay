@@ -12,7 +12,7 @@ $tags   = @addslashes($_GET['tags']);
 $mode   = @addslashes($_GET['mode']);
 
 $tags = explode(',', $tags);
-$time_limit = time() - 10000000; 
+$time_limit = time() - 10000000;
 
 if (is_numeric($lat) && is_numeric($lng)) { 
     

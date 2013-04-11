@@ -1,46 +1,66 @@
 <? include('header.php') ?>
+<? include('fragments/listing.php') ?>
 
-<? include('sidebar.php') ?>
-
-<div class='two-thirds column omega inner_shaddow' id='content' >
+<div class='container'>
     
-    <div id='main_map'>
+    <div class='row'>
         
-    </div>
-    
-    
-    <h2 id='results_title'>Selected Updates</h2>
-    <div class='padder'>
-        <div id='results_content'>
-            <?
-                $results = $db->fetch('SELECT * from manual_updates WHERE favourite="1" ORDER BY pubdate desc LIMIT 100');
-                foreach($results as $result) { 
-                    echo "<h3><a href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
-                                    
-                    echo "<p>" . $result['description'] . "</p>";
+        <div class='span4'>
+            
+            <div id='description'>
+                <p><em>Heresay finds conversations about local issues from blogs and forums.</em></p>
+                
+            </div>
+            
+            <div id='controls'>
+                <label for='filter_by_borough'>Borough</label>
+                <select id='filter_by_borough'>
+                    <option value=''><em> -- all boroughs -- </em></option>
+                    <option value='Lambeth'>Lambeth</option>
+                    <option value='Southwark'>Southwark</option>                
+                    <option value='Islington'>Islington</option>
+                    <option value='Hackney' >Hackney</option>
+                    <option value='Tower Hamlets' >Tower Hamlets</option>                                                
+                </select>
+            
+                <label for='tags'>Category</label>
+                <select id='tags'>
+                    <option value=''> -- all topics -- </option>
+                    <option value='crime_emergencies'>Crime</option>
+                    <option value='community_events'>Events</option>                
+                    <option value='kids,disabilities,elderly'>Demographics</option>
+                    <option value='restaurants_bars,art,sport,food_drink,jobs,parks'>Community</option>
+                    <option value='transport' >Transport</option>                                                
+                </select>
+            </div>
+            
+            <p class='btn' id='seach_btn' >Search</p>
+            
+      
+            
+        </div>
+        
+        
+        
+        <div class='span8' >
+            <div id='main_map'>
 
-                    $tags = array(); 
-                    
-                    for($i=1; $i<5; $i++) { 
-                        $cat = $result['category_'.$i];
-                        if(!empty($cat) && $cat != 'undefined') { 
-                            $tags[] = $result['category_'.$i];
-                        }
-                    }
-                    
-                    $location_name = $result['location_name'];
-                    
-                    if (!empty($location_name)) {
-                        echo "<p class='location_name'>" . $result['location_name'] . "</p>";
-                    }
-                    
-                    $tags_string = implode(', ', $tags);
-                    echo "<p class='tags'>Tags: " . $tags_string . "</p>";
-                    echo "<p class='pubdate'>" . date("F j, Y, g:i a", $result['pubdate']) . "</p>";
+            </div>
+            
+            <div id='listing_container'>
+            <h4 id='updates_header'>Selected Recent Updates</h4>
+            
+            
+            <?
+                $results = $db->fetch('SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
+                foreach($results as $result) { 
+                    show_listing($result);
                 }
             ?>
+            </div>
         </div>
     </div>    
+    
 </div>
 
 
