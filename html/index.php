@@ -16,6 +16,13 @@
                 <label for='filter_by_borough'>Borough</label>
                 <select id='filter_by_borough'>
                     <option value=''><em> -- all boroughs -- </em></option>
+                    <option value='City'>City</option>
+                    <option value='Westminster'>Westminster</option>
+                    <option value='Kensington and Chelsea'>Kensington and Chelsea</option>
+                    <option value='Hammersmith and Fulham'>Hammersmith and Fulham</option>
+                    <option value='Wandsworth'>Wandsworth</option>
+                    <option value='Camden'>Camden</option>
+                    <option value='Haringey'>Haringey</option>
                     <option value='Lambeth'>Lambeth</option>
                     <option value='Southwark'>Southwark</option>                
                     <option value='Islington'>Islington</option>

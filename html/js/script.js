@@ -8,6 +8,13 @@ heresay.borough ='Default';
 
 heresay.locations =  {
     Hackney: {lat:51.54420497912117, lng:-0.054214999999999236},
+    City: {lat: 51.528868434293244, lng:-0.10179429999993772},
+    Westminster: {lat:51.5123061975624, lng:-0.16359510000006594},
+    'Kensington and Chelsea': {lat:51.50379489352665, lng:-0.1893608000000313},
+    'Hammersmith and Fulham': {lat:51.498338052397315, lng:-0.21720075000007455},
+    'Wandsworth': {lat:51.45142395803735, lng:-0.1927382999999736},
+    Camden: {lat:51.5428253969205, lng:-0.15942554999992353}, 
+    'Haringey': {lat:51.577504834351345, lng: -0.09968294999998761},              
     'Tower Hamlets': {lat:51.51515452914685, lng:-0.034831199999985074},
     Southwark: {lat:51.490597908468544, lng:-0.08619304760736357},
     Islington: {lat:51.546506, lng:-0.105806},
