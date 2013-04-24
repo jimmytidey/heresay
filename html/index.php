@@ -10,7 +10,7 @@
             <div id='description'>
                 <p><em>Heresay finds conversations about local issues from blogs and forums.</em></p>
                 
-                <p><em class='alpha'>This is only a sample of the data Heresay gathers</em></p>
+                <p><em class='alpha'>Results represent a sample of the data Heresay gathers</em></p>
                 
             </div>
             
