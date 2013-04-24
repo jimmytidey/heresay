@@ -36,6 +36,11 @@ h1 {
     margin-top:20px;
 }
 
+.alpha {
+    color:red;
+    
+}
+
 .listing { 
     background:#eee;
     padding:5px 10px;
