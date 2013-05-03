@@ -4,15 +4,21 @@
 <div class='container'>
     
     <div class='row'>
+        <div class='span6 offset3'>
+            <br>
+            <p>Heresay is a tool for understanding communities.</p>
         
-        <div class='span4'>
+            <p>All over the web there are unstructured conversations about local issues: health, planning, crime. When the bins are collected, when the bins aren't collected.</p>
+        
+            <p>We convert it into structured data that organisations can easily use. We locate content by borough, ward and constituency, and tag according to topic.</p>
+        </div>
+    </div>
+    
+    <div class='row'>
+        
+        <div class='span3'>
             
-            <div id='description'>
-                <p><em>Heresay finds conversations about local issues from blogs and forums.</em></p>
-                
-                <p><em class='alpha'>Results represent a sample of the data Heresay gathers</em></p>
-                
-            </div>
+
             
             <div id='controls'>
                 <label for='filter_by_borough'>Borough</label>
@@ -44,7 +50,12 @@
             </div>
             
             <p class='btn' id='seach_btn' >Search</p>
-            
+            <div id='description'>
+               
+                
+                <p><em class='alpha'>Results represent a sample of the data Heresay gathers</em></p>
+                
+            </div>
       
             
         </div>
