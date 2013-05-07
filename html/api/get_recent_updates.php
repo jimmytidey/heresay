@@ -9,10 +9,11 @@ $tags    = @addslashes($_GET['tags']);
 $tags = explode(',', $tags);
 $results = array();
 
-$lat    = @addslashes($_GET['lat']); 
-$lng    = @addslashes($_GET['lng']); 
-$tags   = @addslashes($_GET['tags']);
-$mode   = @addslashes($_GET['mode']);
+$lat       = @addslashes($_GET['lat']); 
+$lng       = @addslashes($_GET['lng']); 
+$tags      = @addslashes($_GET['tags']);
+$mode      = @addslashes($_GET['mode']);
+$borough   = @addslashes($_GET['borough']);
 
 $tags = explode(',', $tags);
 
@@ -46,13 +47,17 @@ if(!empty($tags)) {
     }
 }
 
-if(empty($lat)) {
-    $query .= " && lat != '' ";
+if(!empty($borough)) { 
+    $query .= " && borough='" . $borough ."' ";
 }
+
+
  
 if(!empty($lat) && !empty($lng)) {
     $query .= "  HAVING distance < 2 " ;
 }
+
+
 
 $query .= "ORDER BY pubdate DESC LIMIT 60"; 
  
@@ -75,6 +80,7 @@ $tag_conversion_array = array(
     'shops'=> "Shops",
     'restaurants_bars'=> "Restaurants, bars & pubs",
     'shops_restaurants'=> "Restaurants, bars & pubs",
+    'buy_sell'=> "Buying and Selling",
     'food_drink' => "Food & Drink",
     'council'=> "Local Government",
     'transport' => "Transport",
@@ -90,6 +96,7 @@ foreach($results['results'] as $key=>$value) {
     
     for($i=1; $i<5; $i++) { 
         $cat = $value['category_'.$i];
+        
         if(!empty($cat) && $cat != 'undefined' && $cat !='--') { 
             $tags[] = $tag_conversion_array[$cat];
         }
