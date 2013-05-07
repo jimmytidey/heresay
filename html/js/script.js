@@ -7,18 +7,18 @@ heresay.locationFilterLng= 'none';
 heresay.borough ='Default';
 
 heresay.locations =  {
-    Hackney: {lat:51.54420497912117, lng:-0.054214999999999236},
-    City: {lat: 51.528868434293244, lng:-0.10179429999993772},
-    Westminster: {lat:51.5123061975624, lng:-0.16359510000006594},
-    'Kensington and Chelsea': {lat:51.50379489352665, lng:-0.1893608000000313},
-    'Hammersmith and Fulham': {lat:51.498338052397315, lng:-0.21720075000007455},
-    'Wandsworth': {lat:51.45142395803735, lng:-0.1927382999999736},
-    Camden: {lat:51.5428253969205, lng:-0.15942554999992353}, 
-    'Haringey': {lat:51.577504834351345, lng: -0.09968294999998761},              
+    'Hackney Borough Council': {lat:51.54420497912117, lng:-0.054214999999999236},
+    'City of London Corporation': {lat: 51.528868434293244, lng:-0.10179429999993772},
+    'Westminster City Council': {lat:51.5123061975624, lng:-0.16359510000006594},
+    'Kensington and Chelsea Borough Council': {lat:51.50379489352665, lng:-0.1893608000000313},
+    'Hammersmith and Fulham Borough Council': {lat:51.498338052397315, lng:-0.21720075000007455},
+    'Wandsworth Borough Council': {lat:51.45142395803735, lng:-0.1927382999999736},
+    'Camden Borough Council': {lat:51.5428253969205, lng:-0.15942554999992353}, 
+    'Haringey Borough Council': {lat:51.577504834351345, lng: -0.09968294999998761},              
     'Tower Hamlets': {lat:51.51515452914685, lng:-0.034831199999985074},
-    Southwark: {lat:51.490597908468544, lng:-0.08619304760736357},
-    Islington: {lat:51.546506, lng:-0.105806},
-    Lambeth: {lat:51.45967697948443, lng:-0.12342899999998735},
+    'Southwark Borough Council': {lat:51.490597908468544, lng:-0.08619304760736357},
+    'Islington Borough Council': {lat:51.546506, lng:-0.105806},
+    'Lambeth Borough Council': {lat:51.45967697948443, lng:-0.12342899999998735},
     Default: {lat:51.5073346, lng:-0.1276831}
 };
     
@@ -57,7 +57,7 @@ $(document).ready(function(){
            heresay.borough = search_val;
            var lat = heresay.locations[search_val].lat;
            var lng = heresay.locations[search_val].lng;
-           var url  = '/api/get_recent_updates.php?lat=' + lat + '&lng=' +  lng + '&tags=' + tags;
+           var url  = '/api/get_recent_updates.php?borough=' + heresay.borough + '&tags=' + tags;
        }       
        
        $.get(url, function(data){

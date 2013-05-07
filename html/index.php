@@ -24,18 +24,18 @@
                 <label for='filter_by_borough'>Borough</label>
                 <select id='filter_by_borough'>
                     <option value=''><em> -- all boroughs -- </em></option>
-                    <option value='City'>City</option>
-                    <option value='Westminster'>Westminster</option>
-                    <option value='Kensington and Chelsea'>Kensington and Chelsea</option>
-                    <option value='Hammersmith and Fulham'>Hammersmith and Fulham</option>
-                    <option value='Wandsworth'>Wandsworth</option>
-                    <option value='Camden'>Camden</option>
-                    <option value='Haringey'>Haringey</option>
-                    <option value='Lambeth'>Lambeth</option>
-                    <option value='Southwark'>Southwark</option>                
-                    <option value='Islington'>Islington</option>
-                    <option value='Hackney' >Hackney</option>
-                    <option value='Tower Hamlets' >Tower Hamlets</option>                                                
+                    <option value='City of London Corporation'>City</option>
+                    <option value='Westminster City Council'>Westminster</option>
+                    <option value='Kensington and Chelsea Borough Council'>Kensington and Chelsea</option>
+                    <option value='Hammersmith and Fulham Borough Council'>Hammersmith and Fulham</option>
+                    <option value='Wandsworth Borough Council'>Wandsworth</option>
+                    <option value='Camden Borough Council'>Camden</option>
+                    <option value='Haringey Borough Council'>Haringey</option>
+                    <option value='Lambeth Borough Council'>Lambeth</option>
+                    <option value='Southwark Borough Council'>Southwark</option>                
+                    <option value='Islington Borough Council'>Islington</option>
+                    <option value='Hackney Borough Council' >Hackney</option>
+                    <option value='Tower Hamlets Borough Council' >Tower Hamlets</option>                                                
                 </select>
             
                 <label for='tags'>Category</label>
