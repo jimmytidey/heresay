@@ -58,9 +58,10 @@ class dbClass {
             $description    = addslashes($description);
             $link           = addslashes($link);
             $date           = addslashes($date);           
+            $short_url      = getBitly($link);
              
-            $query = "INSERT INTO manual_updates (site, title, description, link, pubdate, md5) 
-            VALUES ('$site', '$title', '$description', '$link', '$date', '$md5')";
+            $query = "INSERT INTO manual_updates (site, title, description, link, pubdate, md5, short_url) 
+            VALUES ('$site', '$title', '$description', '$link', '$date', '$md5', '$short_url')";
             
             $this->query($query); 
         } 

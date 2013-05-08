@@ -59,7 +59,7 @@ if(!empty($lat) && !empty($lng)) {
 
 
 
-$query .= "ORDER BY pubdate DESC LIMIT 60"; 
+$query .= "ORDER BY pubdate DESC LIMIT 100"; 
  
 $results['query'] = $query;
 $results['results'] = $db->fetch($query);
