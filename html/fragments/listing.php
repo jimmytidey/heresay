@@ -54,7 +54,7 @@ function show_listing($result) {
         echo "<p class='ward'>Ward: <em>" . $result['ward'] . "</em>,";  
     }
     if (!empty($result['constituency'])) {
-        echo "Constituency: <em>" . $result['constituency']  . "</em> </p>";
+        echo " Constituency: <em>" . $result['constituency']  . "</em> </p>";
     }
 
     if (!empty($location_name)) {
