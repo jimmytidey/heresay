@@ -4,7 +4,6 @@
     $ward = @addslashes($_GET['ward']);
     $borough = @addslashes($_GET['borough']);
     $tags = @addslashes($_GET['tags']);
-    
 ?>
 
 
@@ -12,7 +11,9 @@
     
     <div class='row'>
         <div class='span8 '>
-            <br>
+           
+            <br/>
+            
             <p>Heresay is a tool for understanding communities.</p>
         
             <p>All over the web there are unstructured conversations about local issues: health, planning, crime. When the bins are collected, when the bins aren't collected.</p>
@@ -32,12 +33,10 @@
             
         
         <div class='span8' >
-            <div id='main_map'>
 
-            </div>
             
             <div id='listing_container'>
-            <h4 id='updates_header'>Selected Recent Updates</h4>
+            <h4 id='updates_header'>Selected updates from <?=$ward ?> ward</h4>
             
             
             <?  
@@ -60,6 +59,8 @@
         <div class='span3'>
             
             <div id='controls'>
+                
+                <!--
                 <label for='filter_by_borough'>Borough</label>
                 <select id='filter_by_borough'>
                     <option value=''> -- all boroughs -- </option>
@@ -77,7 +78,7 @@
                     <option value='Tower Hamlets Borough Council' >Tower Hamlets</option>                                                
                 </select>
                 
-                <!--
+                
                 <label for='tags'>Category</label>
                 <select id='tags'>
                     <option value=''> -- all topics -- </option>
@@ -88,7 +89,7 @@
                     <option value='transport' >Transport</option>                                                
                 </select>
                 
-                -->
+                
             </div>
         
             <p class='btn' id='seach_btn' >Search</p>
@@ -98,7 +99,7 @@
                 <p><em class='alpha'>Results represent a sample of the data Heresay gathers</em></p>
             
             </div>
-  
+            -->
         
         </div>
         
