@@ -62,7 +62,8 @@
                     <option value='Hackney Borough Council' >Hackney</option>
                     <option value='Tower Hamlets Borough Council' >Tower Hamlets</option>                                                
                 </select>
-        
+                
+                <!--
                 <label for='tags'>Category</label>
                 <select id='tags'>
                     <option value=''> -- all topics -- </option>
@@ -72,6 +73,8 @@
                     <option value='restaurants_bars,art,sport,food_drink,jobs,parks'>Community</option>
                     <option value='transport' >Transport</option>                                                
                 </select>
+                
+                -->
             </div>
         
             <p class='btn' id='seach_btn' >Search</p>
