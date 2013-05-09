@@ -74,6 +74,7 @@ $(document).ready(function(){
                 html += "<p class='site'><strong>" + val.site + "</strong></p>";
                 html += "<p class='description'>" + val.description + "</p>";
                 html += "<p class='location_name'>" + val.location_name + "</p>";
+                html += "<p class='ward'>Ward" + val.ward + "</p>";
                 
                 //html += "<span class='tags'>" + $tag + "</span>";
                 
