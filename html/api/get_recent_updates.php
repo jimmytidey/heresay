@@ -102,7 +102,9 @@ foreach($results['results'] as $key=>$value) {
         }
     }
     
-    $results['results'][$key]['tags'] = $tags;
+    $results['results'][$key]['tags'] = $tags; 
+    
+    $results['results'][$key]['human_date'] = date("F j, Y", $value['pubdate']);
 }
 
 
