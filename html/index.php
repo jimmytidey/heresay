@@ -4,7 +4,7 @@
 <div class='container'>
     
     <div class='row'>
-        <div class='span6 '>
+        <div class='span8 '>
             <br>
             <p>Heresay is a tool for understanding communities.</p>
         
@@ -12,7 +12,14 @@
         
             <p>We convert it into structured data that organisations can easily use. We locate content by borough, ward and constituency, and tag according to topic.</p>
         </div>
+        
+        <div class='span3'>
+            <h3 id='blog_link'><a href='http://heresay-blog.tumblr.com'>Read our blog &rarr;</a></h3>  
+        </div>    
+    
     </div>
+    
+    
     
     <div class='row'>
             

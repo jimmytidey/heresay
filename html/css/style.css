@@ -12,7 +12,9 @@ body {
 }
 
 header {
-    background-color:black;
+    background-color: black;
+    height: 76px;
+    opacity: 0.5;
 }
 
 h1 { 
