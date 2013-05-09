@@ -74,7 +74,12 @@ $(document).ready(function(){
                 html += "<p class='site'><strong>" + val.site + "</strong></p>";
                 html += "<p class='description'>" + val.description + "</p>";
                 html += "<p class='location_name'>" + val.location_name + "</p>";
-                html += "<p class='ward'>Ward: <em>" + val.ward + "</em>,  constituency <em>" + val.constituency  + "</em> </p>";
+                if (typeof val.ward !== 'undefined') {
+                    html += "<p class='ward'>Ward: <em>" + val.ward + "</em>,";  
+                }
+                if (typeof val.constituency !== 'undefined') {
+                    html += "Constituency: <em>" + val.constituency  + "</em> </p>";
+                }    
                 
                 //html += "<span class='tags'>" + $tag + "</span>";
                 

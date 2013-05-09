@@ -49,6 +49,13 @@ function show_listing($result) {
     }
 
     $location_name = $result['location_name'];
+    
+    if (!empty($result['ward'])) {
+        echo "<p class='ward'>Ward: <em>" . $result['ward'] . "</em>,";  
+    }
+    if (!empty($result['constituency'])) {
+        echo "Constituency: <em>" . $result['constituency']  . "</em> </p>";
+    }
 
     if (!empty($location_name)) {
         echo "<p class='location_name'>" . $result['location_name'] . "</p>";
