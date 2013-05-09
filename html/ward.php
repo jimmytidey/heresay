@@ -23,7 +23,7 @@
         
         <div class='span3'>
             <h3 id='blog_link'><a href='http://heresay-blog.tumblr.com'>Tumblr &rarr;</a></h3>  
-            <h3 id='blog_link'><a href='http://heresay-blog.tumblr.com'>&larr; Main site </a></h3>  
+            <h3 id='blog_link'><a href='http://heresay-blog.tumblr.com'>Main site &larr;</a></h3>  
         </div>    
     
     </div>
