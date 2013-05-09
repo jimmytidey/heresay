@@ -33,7 +33,7 @@ $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
     <header>
       <div class='container'>
           <div class='row'>
-              <h1 class='span12'>Heresay</h1>
+              <h1 class='span12'><a href='/'>Heresay</a></h1>
           </div>
       </div>
     </header>
