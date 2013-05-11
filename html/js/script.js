@@ -1,7 +1,6 @@
 heresay = {}; 
 heresay.tagFilterState = [];
 
-
 heresay.locationFilterLat= 'none';
 heresay.locationFilterLng= 'none';
 heresay.borough ='Default';
@@ -211,9 +210,6 @@ heresay.tagString = function(val) {
 	
 	return tags_string;
 }
-
-
-
 
 
 
