@@ -1,9 +1,7 @@
 /* STRUCTURE */ 
 
-img {
-    border: 0 none;
-    height: auto;
-    max-width: 100%;
+#main_map img {
+  max-width: none;
 }
 
 body { 

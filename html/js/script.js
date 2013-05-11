@@ -162,7 +162,7 @@ heresay.mainMapAddMarkers = function(results) {
         var date_string = myDate.format('M jS, Y');
 	    
 		var contentString = "<a target='_blank' href='" + val.link + "'>"+ short_desc +"</a><br/>" 
-		contentString += "<span class='tagstring'>" + heresay.tagString(val) + "</span><br/>"; 
+		contentString += "<span class='tagstring'>Tags: " + heresay.tagString(val) + "</span><br/>"; 
 		contentString += date_string;
 	
 		heresay.mainMap.infoWindows[key] = new google.maps.InfoWindow({
