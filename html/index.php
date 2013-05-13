@@ -19,7 +19,7 @@
         
             <p>We convert it into structured data that organisations can easily use. We locate content by borough, ward and constituency, and tag according to topic.</p>
         
-            <p>Say hello to us: jimmy@heresay.org.uk</p>
+            <p>Say hello to us: <a href='mailto:jimmy@heresay.org.uk'>jimmy@heresay.org.uk</a></p>
         </div>
         
         <div class='span3'>
