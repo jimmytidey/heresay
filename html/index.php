@@ -18,6 +18,8 @@
             <p>All over the web there are unstructured conversations about local issues: health, planning, crime. When the bins are collected, when the bins aren't collected.</p>
         
             <p>We convert it into structured data that organisations can easily use. We locate content by borough, ward and constituency, and tag according to topic.</p>
+        
+            <p>Say hello to us: jimmy@heresay.org.uk</p>
         </div>
         
         <div class='span3'>
