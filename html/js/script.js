@@ -44,7 +44,7 @@ $(document).ready(function(){
 	
 	var preset = getUrlVars(); 
 	if (typeof preset['borough'] !== 'undefined') { 
-	    heresay.search(preset['borough']);
+	    heresay.search(decodeURIComponent(preset['borough']));
 	}
 	
     $('#seach_btn').click(function(){ 
