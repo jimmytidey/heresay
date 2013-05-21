@@ -43,7 +43,7 @@ $(document).ready(function(){
 	
 	
 	var preset = getUrlVars(); 
-	if (preset['borough'] !== '') { 
+	if (typeof preset['borough'] !== 'undefined') { 
 	    heresay.search(preset['borough']);
 	}
 	
