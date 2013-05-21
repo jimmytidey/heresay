@@ -42,65 +42,74 @@ $(document).ready(function(){
 	});
 	
 	
+	var preset = getUrlVars(); 
+	if (preset['borough'] !== '') { 
+	    heresay.search(preset['borough']);
+	}
+	
     $('#seach_btn').click(function(){ 
         
        var search_val   =   $('#filter_by_borough').val();
-       var tags         =   $('#tags').val();
-
-       if (search_val == '') { 
-           heresay.borough = "Default";
-           var url  = '/api/get_recent_updates.php?tags=' + tags;
-       }
-       
-       else { 
-           heresay.borough = search_val;
-           var lat = heresay.locations[search_val].lat;
-           var lng = heresay.locations[search_val].lng;
-           var url  = '/api/get_recent_updates.php?borough=' + heresay.borough + '&tags=' + tags;
-       }       
-       
-       $.get(url, function(data){
-           $('#listing_container').html('');
-           
-           heresay.data = data;
-           heresay.updateMainMap();
-           
-           $.each(data['results'], function(key, val){
-               console.log(val);
-                var html = '';
-                html += "<div class='listing' >";
-                html += "<h3><a target='_blank' href='" + val.link + "'>" + val.title + "</a></h3>";
-                html += "<p class='site'><strong>" + val.site + "</strong></p>";
-                html += "<p class='description'>" + val.description + "</p>";
-                html += "<p class='location_name'>" + val.location_name + "</p>";
-                if (typeof val.ward !== 'undefined') {
-                    html += "<p class='ward'>Ward: <em>" + val.ward + "</em>,";  
-                }
-                if (typeof val.constituency !== 'undefined') {
-                    html += "Constituency: <em>" + val.constituency  + "</em> </p>";
-                }    
-                
-                //html += "<span class='tags'>" + $tag + "</span>";
-                
-                var myDate      = new Date(val.pubdate*1000);
-                var date_string = myDate.format('M jS, Y');       
-                
-                $.each(val.tags, function(key, val){
-                    html += '<span class="tags">' + val + '</span>';
-                    
-                });       
-                
-                html += "<p class='pubdate'>" + date_string  + "</p>";
-                html += "</div>";
-                
-
-                
-               $('#listing_container').append(html);
-           });
-       });
+       heresay.search(search_val);
     });
 });
 
+
+heresay.search = function(search_val) { 
+    var tags         =   $('#tags').val();
+
+    if (search_val == '') { 
+        heresay.borough = "Default";
+        var url  = '/api/get_recent_updates.php?tags=' + tags;
+    }
+    
+    else { 
+        heresay.borough = search_val;
+        var lat = heresay.locations[search_val].lat;
+        var lng = heresay.locations[search_val].lng;
+        var url  = '/api/get_recent_updates.php?borough=' + heresay.borough + '&tags=' + tags;
+    }       
+    
+    $.get(url, function(data){
+        $('#listing_container').html('');
+        
+        heresay.data = data;
+        heresay.updateMainMap();
+        
+        $.each(data['results'], function(key, val){
+            console.log(val);
+             var html = '';
+             html += "<div class='listing' >";
+             html += "<h3><a target='_blank' href='" + val.link + "'>" + val.title + "</a></h3>";
+             html += "<p class='site'><strong>" + val.site + "</strong></p>";
+             html += "<p class='description'>" + val.description + "</p>";
+             html += "<p class='location_name'>" + val.location_name + "</p>";
+             if (typeof val.ward !== 'undefined') {
+                 html += "<p class='ward'>Ward: <em>" + val.ward + "</em>,";  
+             }
+             if (typeof val.constituency !== 'undefined') {
+                 html += "Constituency: <em>" + val.constituency  + "</em> </p>";
+             }    
+             
+             //html += "<span class='tags'>" + $tag + "</span>";
+             
+             var myDate      = new Date(val.pubdate*1000);
+             var date_string = myDate.format('M jS, Y');       
+             
+             $.each(val.tags, function(key, val){
+                 html += '<span class="tags">' + val + '</span>';
+                 
+             });       
+             
+             html += "<p class='pubdate'>" + date_string  + "</p>";
+             html += "</div>";
+             
+
+             
+            $('#listing_container').append(html);
+        });
+    });    
+}
 
 heresay.updateMainMap = function() { 
 	var location = heresay.borough; 
@@ -213,7 +222,18 @@ heresay.tagString = function(val) {
 
 
 
-
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 
 

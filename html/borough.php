@@ -37,7 +37,7 @@
 
             
             <div id='listing_container'>
-            <h4 id='updates_header'>Selected updates from <?=$ward ?> ward</h4>
+            <h4 id='updates_header'>Selected updates from <?=$borough ?> </h4>
             
             
             <?  
