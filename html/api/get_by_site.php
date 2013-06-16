@@ -8,7 +8,7 @@ $results = array();
 
 $site    = @addslashes($_GET['site']); 
 
-$query = "SELECT * FROM manual_updates WHERE site= '$site' ORDER BY pubdate DESC ";
+$query = "SELECT * FROM manual_updates WHERE site= '$site' && lat !='' ORDER BY pubdate DESC  ";
 
 $results['query'] = $query;
 $results['results'] = $db->fetch($query);
