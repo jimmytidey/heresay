@@ -48,9 +48,15 @@ $(document).ready(function(){
 	}
 	
     $('#seach_btn').click(function(){ 
-        
+
        var search_val   =   $('#filter_by_borough').val();
        heresay.search(search_val);
+    });
+    
+    $('#user_seach_btn').click(function(){ 
+
+       var search_val   =   $('#user').val();
+       heresay.search_by_user(search_val);
     });
 });
 
@@ -68,8 +74,17 @@ heresay.search = function(search_val) {
         var lat = heresay.locations[search_val].lat;
         var lng = heresay.locations[search_val].lng;
         var url  = '/api/get_recent_updates.php?borough=' + heresay.borough + '&tags=' + tags;
+        
     }       
-    
+    heresay.renderData(url);
+}
+
+heresay.search_by_user = function(search_val) { 
+     var url  = '/api/get_by_user.php?user=' + search_val ; 
+    heresay.renderData(url);
+}
+
+heresay.renderData = function(url) { 
     $.get(url, function(data){
         $('#listing_container').html('');
         
@@ -77,7 +92,7 @@ heresay.search = function(search_val) {
         heresay.updateMainMap();
         
         $.each(data['results'], function(key, val){
-            console.log(val);
+          
              var html = '';
              html += "<div class='listing' >";
              html += "<h3><a target='_blank' href='" + val.link + "'>" + val.title + "</a></h3>";
