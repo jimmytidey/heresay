@@ -22,7 +22,18 @@
                 height: 23px;
                 margin-bottom: 10px;
                 margin-top: 20px;
+                width:200px;
             }
+            
+            span,p,h1,h2 { 
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+            }
+            
+            #instructions { 
+                margin-top:4px;
+                font-size:11px;
+            }
+            
         </style>
         
     </head>
@@ -35,6 +46,8 @@
         <select id='option_1' class='dropdown' data-id='1' ><option> -- select -- </option></select>
         <select id='option_2' class='dropdown' data-id='2' ><option> -- select -- </option></select>
         <select id='option_3' class='dropdown' data-id='3' ><option> -- select -- </option></select>
+        
+        <span id='instructions'>Missing a site? Let us know at jimmy@heresay.org.uk. <a href='/'>See more</a>.</span>
         
         <div id='map-canvas'></div>
 
@@ -421,3 +434,32 @@ sites =  [
 	}
 ]
 </script>
+
+    
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-33853115-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    </body>
+</html>
