@@ -79,3 +79,16 @@ h1 {
     margin-right:10px;
     border:1px solid black;
 }
+
+
+/* Site Locations */
+
+#site_locations #main_map { 
+    height:400px;
+}
+
+#site_locations #blog_link { 
+    float:right;
+}
+
+

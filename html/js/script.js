@@ -35,11 +35,19 @@ $(document).ready(function(){
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
 	
 
+	if ($('#site_locations').length === 1) { 
+	    $.get('/api/get_sites.php', function(data){
+    	    heresay.data = data;
+            heresay.updateMainMap();
+    	});
+	}
 	
-	$.get('/api/get_recent_favourites.php', function(data){
-	    heresay.data = data;
-        heresay.updateMainMap();
-	});
+	else { 
+    	$.get('/api/get_recent_favourites.php', function(data){
+    	    heresay.data = data;
+            heresay.updateMainMap();
+    	});
+    }	
 	
 	
 	var preset = getUrlVars(); 
@@ -170,23 +178,33 @@ heresay.mainMapAddMarkers = function(results) {
 	
 	$.each(results, function(key,val) { 	
 		heresay.mainMap.points[key] = new google.maps.LatLng(val.lat, val.lng);
-		
-		if (val.title != null) {
-			var short_desc = val.title.substring(0, 300); 
+		console.log(val);
+        
+        //if we have a site
+        if (typeof val.site_id !== 'undefined')  {
+            
+            var contentString = "<a target='_blank' href='" + val.url + "'>"+ val.site +"</a><br/>" 
+        } 
+        
+        //if we have an update
+        else { 
+    		if (val.title != null) {
+    			var short_desc = val.title.substring(0, 300); 
 	
-			if (short_desc.length > 199) { 
-				short_desc += "...";
-			}
-		}	
-		else { 
-			var short_desc = 'no title';
-		}
-	    var myDate      = new Date(val.pubdate*1000);
-        var date_string = myDate.format('M jS, Y');
+    			if (short_desc.length > 199) { 
+    				short_desc += "...";
+    			}
+    		}	
+    		else { 
+    			var short_desc = 'no title';
+    		}
+    	    var myDate      = new Date(val.pubdate*1000);
+            var date_string = myDate.format('M jS, Y');
 	    
-		var contentString = "<a target='_blank' href='" + val.link + "'>"+ short_desc +"</a><br/>" 
-		contentString += "<span class='tagstring'>Tags: " + heresay.tagString(val) + "</span><br/>"; 
-		contentString += date_string;
+    		var contentString = "<a target='_blank' href='" + val.link + "'>"+ short_desc +"</a><br/>" 
+    		contentString += "<span class='tagstring'>Tags: " + heresay.tagString(val) + "</span><br/>"; 
+    		contentString += date_string;
+    	}	
 	
 		heresay.mainMap.infoWindows[key] = new google.maps.InfoWindow({
 		    content: contentString,
