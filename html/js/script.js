@@ -20,7 +20,7 @@ heresay.locations =  {
     'Southwark Borough Council': {lat:51.490597908468544, lng:-0.08619304760736357},
     'Islington Borough Council': {lat:51.546506, lng:-0.105806},
     'Lambeth Borough Council': {lat:51.45967697948443, lng:-0.12342899999998735},
-    Default: {lat:51.5073346, lng:-0.1276831}
+    'Default' : {lat:51.5073346, lng:-0.1276831}
 };
     
 
@@ -38,6 +38,7 @@ $(document).ready(function(){
 	}
 	
 	else { 
+	    
     	$.get('/api/get_recent_favourites.php', function(data){
     	    heresay.data = data;
             heresay.updateMainMap();
@@ -140,6 +141,9 @@ heresay.updateMainMap = function() {
         if(gup('zoom')){
             zoom = parseInt(gup('zoom'));
         }
+        else {
+    	    var zoom = 10;
+    	}
 	}
 	else {
 	    var zoom = 13;
@@ -154,7 +158,7 @@ heresay.updateMainMap = function() {
 	};
 	
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
-	
+	console.log('running else');
 
 	heresay.mainMap.points = []; 
 	heresay.mainMap.infoWindows = []; 
@@ -177,7 +181,7 @@ heresay.mainMapAddMarkers = function(results) {
 	
 	$.each(results, function(key,val) { 	
 		heresay.mainMap.points[key] = new google.maps.LatLng(val.lat, val.lng);
-		console.log(val);
+	
         
         //if we have a site 
         if ($('#site_locations').length === 1)  {
