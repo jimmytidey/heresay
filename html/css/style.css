@@ -83,11 +83,11 @@ h1 {
 
 /* Site Locations */
 
-#site_locations #main_map { 
+#site_locations #main_map, #sites #main_map{ 
     height:400px;
 }
 
-#site_locations #blog_link { 
+#site_locations #blog_link, #sites #blog_link { 
     float:right;
 }
 
