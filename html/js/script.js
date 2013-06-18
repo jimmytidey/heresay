@@ -5,6 +5,8 @@ heresay.locationFilterLat= 'none';
 heresay.locationFilterLng= 'none';
 heresay.borough ='Default';
 
+
+
 heresay.locations =  {
     'Hackney Borough Council': {lat:51.54420497912117, lng:-0.054214999999999236},
     'City of London Corporation': {lat: 51.528868434293244, lng:-0.10179429999993772},
@@ -24,18 +26,11 @@ heresay.locations =  {
 
 $(document).ready(function(){
     
-    var center = new google.maps.LatLng(heresay.defaultLat, heresay.defaultLng);
-    
-    var myOptions = {
-		zoom: 10,
-		center: center,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
 	
-	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
+	heresay.mainMap  = new google.maps.Map($("#main_map")[0]);
 	
 
-	if ($('#site_locations').length === 1) { 
+	if ($('#site_locations').length === 1 || $('#sites').length === 1) { 
 	    $.get('/api/get_sites.php', function(data){
     	    heresay.data = data;
             heresay.updateMainMap();
@@ -49,11 +44,6 @@ $(document).ready(function(){
     	});
     }	
 	
-	
-	var preset = getUrlVars(); 
-	if (typeof preset['borough'] !== 'undefined') { 
-	    heresay.search(decodeURIComponent(preset['borough']));
-	}
 	
     $('#seach_btn').click(function(){ 
 
@@ -134,13 +124,22 @@ heresay.renderData = function(url) {
     });    
 }
 
-heresay.updateMainMap = function() { 
+heresay.updateMainMap = function() {
+     
 	var location = heresay.borough; 
 	
 	var lat = heresay.locations[location].lat;
     var lng = heresay.locations[location].lng;
+	
 	if (location == 'Default') {
-	    var zoom = 10;
+	    if(gup('lat') !== '' && gup('lng') !== '' ) { 
+            lat = gup('lat');
+            lng = gup('lng');
+        }
+
+        if(gup('zoom')){
+            zoom = parseInt(gup('zoom'));
+        }
 	}
 	else {
 	    var zoom = 13;
@@ -180,11 +179,16 @@ heresay.mainMapAddMarkers = function(results) {
 		heresay.mainMap.points[key] = new google.maps.LatLng(val.lat, val.lng);
 		console.log(val);
         
-        //if we have a site
-        if (typeof val.site_id !== 'undefined')  {
+        //if we have a site 
+        if ($('#site_locations').length === 1)  {
             
             var contentString = "<a target='_blank' href='" + val.url + "'>"+ val.site +"</a><br/>" 
         } 
+        
+        //if we have a 
+        else if($('#sites').length === 1) { 
+            var contentString = "";
+        }
         
         //if we have an update
         else { 
@@ -204,29 +208,31 @@ heresay.mainMapAddMarkers = function(results) {
     		var contentString = "<a target='_blank' href='" + val.link + "'>"+ short_desc +"</a><br/>" 
     		contentString += "<span class='tagstring'>Tags: " + heresay.tagString(val) + "</span><br/>"; 
     		contentString += date_string;
-    	}	
-	
-		heresay.mainMap.infoWindows[key] = new google.maps.InfoWindow({
-		    content: contentString,
-		    maxWidth: 400
-		});
-	
-		heresay.mainMap.markers[key] = new google.maps.Marker({
+    	}
+    	
+    	heresay.mainMap.markers[key] = new google.maps.Marker({
 		    position: heresay.mainMap.points[key], 
 		    map: heresay.mainMap,
 		    draggable:false,
 		    title: val.title,
 		    icon: '/img/marker.png'
-		});
-
-		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
-		
-			$.each(heresay.mainMap.infoWindows, function(key, val) { 
-				val.close();
-			});
-		
-			heresay.mainMap.infoWindows[key].open(heresay.mainMap, heresay.mainMap.markers[key]);
 		});	
+    		
+	    if($('#sites').length !== 1) { 
+    		heresay.mainMap.infoWindows[key] = new google.maps.InfoWindow({
+    		    content: contentString,
+    		    maxWidth: 400
+    		});
+    		
+    		google.maps.event.addListener(heresay.mainMap.markers[key], 'click', function() {
+		
+    			$.each(heresay.mainMap.infoWindows, function(key, val) { 
+    				val.close();
+    			});
+		
+    			heresay.mainMap.infoWindows[key].open(heresay.mainMap, heresay.mainMap.markers[key]);
+    		});	
+    	}	
 	});	
 }
 
@@ -255,19 +261,16 @@ heresay.tagString = function(val) {
 
 
 
-function getUrlVars()
-{
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
 
+
+function gup( name ){
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+    var regexS = "[\\?&]"+name+"=([^&#]*)";  
+    var regex = new RegExp( regexS );  
+    var results = regex.exec( window.location.href ); 
+    if( results == null )    return "";  
+    else    return results[1];
+}
 
 
 // Simulates PHP's date function
