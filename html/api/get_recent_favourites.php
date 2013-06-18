@@ -4,7 +4,7 @@ include('../ini.php');
 @$url = explode("/",$_GET['url']);
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
-$query = 'SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10';
+$query = 'SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 30';
 
 
 $results['query'] = $query;
