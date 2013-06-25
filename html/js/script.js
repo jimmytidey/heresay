@@ -26,10 +26,8 @@ heresay.locations =  {
 
 $(document).ready(function(){
     
-	
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0]);
 	
-
 	if ($('#site_locations').length === 1 || $('#sites').length === 1) { 
 	    $.get('/api/get_sites.php', function(data){
     	    heresay.data = data;
@@ -61,7 +59,7 @@ $(document).ready(function(){
 
 
 heresay.search = function(search_val) { 
-    var tags         =   $('#tags').val();
+    var tags   =   $('#tags').val();
 
     if (search_val == '') { 
         heresay.borough = "Default";
@@ -111,8 +109,9 @@ heresay.renderData = function(url) {
              var date_string = myDate.format('M jS, Y');       
              
              $.each(val.tags, function(key, val){
-                 html += '<span class="tags">' + val + '</span>';
-                 
+                 if(val !== '') {
+                     html += '<span class="tags">' + val + '</span>';
+                 }
              });       
              
              html += "<p class='pubdate'>" + date_string  + "</p>";
@@ -246,16 +245,16 @@ heresay.mainMapAddMarkers = function(results) {
 heresay.tagString = function(val) { 
 
 	var tags_array = [];
-	if(val.category_1 != '' && val.category_1 != '--' && val.category_1 != 'undefined' && typeof val.category_1 != undefined) { 
+	if(val.category_1 != ''  && val.category_1 != '--' && val.category_1 != 'undefined' && typeof val.category_1 != undefined) { 
 		tags_array.push(val.category_1);
 	}
-	if(val.category_2 != '' && val.category_2 != '--' && val.category_2 != 'undefined' && typeof val.category_2 != undefined) { 
+	if(val.category_2 != ''  && val.category_2 != '--' && val.category_2 != 'undefined' && typeof val.category_2 != undefined) { 
 		tags_array.push(val.category_2);
 	}
-	if(val.category_3 != '' && val.category_3 != '--' && val.category_3 != 'undefined' && typeof val.category_3 != undefined) { 
+	if(val.category_3 != ''  && val.category_3 != '--' && val.category_3 != 'undefined' && typeof val.category_3 != undefined) { 
 		tags_array.push(val.category_3);
 	}			
-	if(val.category_4 != '' && val.category_4 != '--' && val.category_4 != 'undefined' && typeof val.category_4 != undefined) { 
+	if(val.category_4 != ''  && val.category_4 != '--' && val.category_4 != 'undefined' && typeof val.category_4 != undefined) { 
 		tags_array.push(val.category_4);
 	}						
 	var tags_string =  tags_array.join(', ');	

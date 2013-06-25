@@ -20,7 +20,7 @@ span,p,h1,h2 {
     font-size:11px;
     float:right;
     font-size:16px;
-    margin-right:20px;
+    margin-right:9px;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
 }
 
 #header { 
-    margin-left:10px;
+    margin-left:5px;
 }
 
 #filter_type { 
@@ -43,7 +43,7 @@ body {
 }
 
 #title { 
-    margin-left:20px;
+    margin-left:14px;
 }
 
 
