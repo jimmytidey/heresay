@@ -53,7 +53,7 @@ heresay.getOptions = function() {
     var url; 
     
     if(heresay.mode === 'sites') { 
-        url = 'api/list_sites.php';
+        url = '/api/list_sites.php';
         
         $.get(url, function(data){
             $.each(data.results, function(key,val){
@@ -65,7 +65,7 @@ heresay.getOptions = function() {
     }
     
     else { 
-        url = 'api/list_tags.php';
+        url = '/api/list_tags.php';
         
         $.get(url, function(data){
             $.each(data.results, function(key,val){
