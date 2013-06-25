@@ -34,7 +34,6 @@
             <select id='option_2' class='dropdown' data-id='2' ><option> -- select -- </option></select>
             <select id='option_3' class='dropdown' data-id='3' ><option> -- select -- </option></select>
         
-        
             <span id='instructions'><a href='/'>More about Heresay &raquo;</a></span>
         </div>
         

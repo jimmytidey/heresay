@@ -8,7 +8,10 @@ $results = array();
 
 $site    = @addslashes($_GET['site']); 
 
-$query = "SELECT * FROM manual_sites GROUP BY site";
+$query = "SELECT *, count(*) FROM manual_sites
+JOIN manual_updates ON  manual_updates.site = manual_sites.site
+GROUP BY manual_sites.site
+HAVING count(*) > 150";
 
 $results['query'] = $query;
 $results['results'] = $db->fetch($query);
