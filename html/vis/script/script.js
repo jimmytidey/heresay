@@ -90,7 +90,7 @@ heresay.renderMap = function(){
 
 heresay.renderDropDowns = function() {
     if(heresay.mode === 'sites') { 
-        $('#header').prepend('<p id="filter_type">Filter by sites</p>');
+        $('#header').prepend('<p id="filter_type">Filter by top sites</p>');
     } else { 
         $('#header').prepend('<p id="filter_type">Filter by tag</p>');
     }
