@@ -157,7 +157,7 @@ heresay.updateMainMap = function() {
 	};
 	
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
-	console.log('running else');
+	
 
 	heresay.mainMap.points = []; 
 	heresay.mainMap.infoWindows = []; 
