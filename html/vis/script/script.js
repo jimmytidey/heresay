@@ -173,20 +173,9 @@ heresay.dropDownChange = function(elem){
 function changeGradient(elem, id) {
    if (id == 1) {
        var gradient = [
-       'rgba(0, 255, 255, 0)',
-       'rgba(0, 255, 255, 1)',
-       'rgba(0, 191, 255, 1)',
-       'rgba(0, 127, 255, 1)',
-       'rgba(0, 63, 255, 1)',
-       'rgba(0, 0, 255, 1)',
-       'rgba(0, 0, 223, 1)',
-       'rgba(0, 0, 191, 1)',
-       'rgba(0, 0, 159, 1)',
-       'rgba(0, 0, 127, 1)',
-       'rgba(63, 0, 91, 1)',
-       'rgba(127, 0, 63, 1)',
-       'rgba(191, 0, 31, 1)',
-       'rgba(255, 0, 0, 1)'
+       'rgba(225, 4, 104, 0)',
+       'rgba(225, 4, 104, 1)',
+       'rgba(169, 4, 255, 1)'
        ];
 
        elem.setOptions({
@@ -196,17 +185,25 @@ function changeGradient(elem, id) {
    
    else if (id == 2) { 
        var  gradient = [
-           'rgba(169,3,41,0.0)', 
-           'rgba(169,3,41,1)', 
-           'rgba(242,234,4,1)', 
-           'rgba(252,0,29,1)'
+       'rgba(53,187,207, 0)', 
+       'rgba(53,187,207, 1)', 
+        'rgba(53,207,71,1)'
+       ];
+   }
+   
+   else if (id == 3) { 
+       var  gradient = [
+       'rgba(0, 0, 191, 0)',
+       'rgba(4, 87, 255, 1)',
+       'rgba(4, 255, 199, 1)'
+
        
        ];
-
-       elem.setOptions({
-           gradient: gradient
-       });
    }
+   
+   elem.setOptions({
+       gradient: gradient
+   });
 }
 
 function changeRadius(elem) {
