@@ -109,7 +109,7 @@ heresay.renderData = function(url) {
              var date_string = myDate.format('M jS, Y');       
              
              $.each(val.tags, function(key, val){
-                 if(val !== '') {
+                 if(val !== '' && val !== ' ') {
                      html += '<span class="tags">' + val + '</span>';
                  }
              });       
