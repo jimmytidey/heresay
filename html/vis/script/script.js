@@ -174,20 +174,18 @@ function changeGradient(elem, id) {
    if (id == 1) {
        var gradient = [
        'rgba(225, 4, 104, 0)',
-       'rgba(225, 4, 104, 1)',
+       'rgba(201, 57, 53, 1)',
+       'rgba(169, 4, 255, 1)',
        'rgba(169, 4, 255, 1)'
        ];
-
-       elem.setOptions({
-           gradient: gradient
-       });
    }
    
    else if (id == 2) { 
        var  gradient = [
        'rgba(53,187,207, 0)', 
        'rgba(53,187,207, 1)', 
-        'rgba(53,207,71,1)'
+       'rgba(53,207,71, 1)',
+       'rgba(53,207,71, 1)'
        ];
    }
    
@@ -195,9 +193,8 @@ function changeGradient(elem, id) {
        var  gradient = [
        'rgba(0, 0, 191, 0)',
        'rgba(4, 87, 255, 1)',
+       'rgba(4, 255, 199, 1)',
        'rgba(4, 255, 199, 1)'
-
-       
        ];
    }
    
@@ -211,7 +208,7 @@ function changeRadius(elem) {
 }
 
 function changeOpacity(elem) {
-   elem.setOptions({opacity: 0.6});
+   elem.setOptions({opacity: 0.9});
 }
 
 
