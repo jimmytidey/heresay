@@ -208,7 +208,7 @@ function changeRadius(elem) {
 }
 
 function changeOpacity(elem) {
-   elem.setOptions({opacity: 0.9});
+   elem.setOptions({opacity: 0.7});
 }
 
 
