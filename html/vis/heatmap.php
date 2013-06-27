@@ -26,7 +26,7 @@
         <!-- Add your site or application content here -->
         
         <h1 id='title'><a href="/">Heresay Heatmap</a></h1>
-        <!--[if lt IE 9]><!--> <p style='float:left; width:200px;color:red'>Displaying this amount of data can cause problem in older versions of Internet Explorer.<!--<![endif]-->
+        <!--[if lt IE 9]><!--> <p style='float:left; width:200px;color:red;margin-left:20px'>Displaying this amount of data can cause problem in older versions of Internet Explorer.<!--<![endif]-->
         <div id='header'>
             
             <div class='function_description'></div>
