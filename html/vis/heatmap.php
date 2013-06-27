@@ -28,7 +28,7 @@
         <h1 id='title'><a href="/">Heresay Heatmap</a></h1>
         
         <div id='header'>
-            
+            <!--[if lt IE 9]><!--> <p>Displaying this amount of data can cause problem in older versions of Internet Explorer.<!--<![endif]-->
             <div class='function_description'></div>
             
             <div id='selector_1' class='selector'>
