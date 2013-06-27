@@ -34,7 +34,7 @@ if (!empty($postcode)) {
     $lat = $location_data['wgs84_lat'];
     $lng = $location_data['wgs84_lon'];
 }
-
+  
 
 $query = "SELECT 
   *, 
