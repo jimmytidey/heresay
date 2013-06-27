@@ -143,10 +143,11 @@ heresay.dropDownChange = function(elem){
 	
 	heresay.heatmap_points[heresay.current_id] = [];
 	
+	$('#loading').show();
+   
+	
 	$.get(url, function(data){
-	    $('#loading').show();
-	    
-	    setTimeout(function(){$('#loading').hide();},3000);
+         setTimeout(function(){$('#loading').hide();},2000);
 	    
         heresay.data_count = data['results'].length -1; 
 	    $.each(data['results'],function(key, value) {
