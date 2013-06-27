@@ -25,15 +25,29 @@
         
         <!-- Add your site or application content here -->
         
-        <h1 id='title'><a href="/">Heresay</a></h1>
+        <h1 id='title'><a href="/">Heresay Heatmap</a></h1>
         
         <div id='header'>
-
             
-            <select id='option_1' class='dropdown' data-id='1' ><option> -- select -- </option></select>
-            <select id='option_2' class='dropdown' data-id='2' ><option> -- select -- </option></select>
-            <select id='option_3' class='dropdown' data-id='3' ><option> -- select -- </option></select>
-        
+            <div class='function_description'></div>
+            
+            <div id='selector_1' class='selector'>
+                <select id='option_1' class='dropdown' data-id='1' ><option> -- select -- </option></select>
+                <div class='graident' id='gradient_1' ></div>
+            </div>
+            
+            <div id='selector_2' class='selector'>
+                <select id='option_2' class='dropdown' data-id='2' ><option> -- select -- </option></select>
+                <div class='graident' id='gradient_2' ></div>
+            </div>
+            
+            <div id='selector_3' class='selector' >
+                <select id='option_3' class='dropdown' data-id='3' ><option> -- select -- </option></select>
+                <div class='graident' id='gradient_3' ></div>
+            </div>
+            
+            <img id='loading' src='image/ajax-loader-balls.gif' />
+                
             <span id='instructions'><a href='/'>More about Heresay &raquo;</a></span>
         </div>
         
