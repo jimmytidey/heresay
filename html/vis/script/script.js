@@ -101,21 +101,21 @@ heresay.renderDropDowns = function() {
     $('#option_1').append('<option value="">--select--</option>');
     $('#option_1').append('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
-        $('#option_1').append('<option value="'+option_val+'">'+option_val+'</option>');
+        $('#option_1').append('<option value="'+option_val+'">'+option_val.replace("_"," & ")+'</option>');
     });
     
     $('#option_2').empty();
     $('#option_2').append('<option value="">--select--</option>');
     $('#option_2').append('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
-        $('#option_2').append('<option value="'+option_val+'">'+option_val+'</option>');
+        $('#option_2').append('<option value="'+option_val+'">'+option_val.replace("_"," & ") +'</option>');
     });
     
     $('#option_3').empty();
     $('#option_3').append('<option value="">--select--</option>');
     $('#option_3').append('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
-        $('#option_3').append('<option value="'+option_val+'">'+option_val+'</option>');
+        $('#option_3').append('<option value="'+option_val+'">'+option_val.replace("_"," & ") +'</option>');
     });
 }
 
