@@ -13,13 +13,13 @@ if(!empty($tag)) {
     $query = "SELECT * FROM manual_updates 
         WHERE (category_1 = '$tag' || category_2= '$tag' || category_3= '$tag' || category_4= '$tag') 
         && lat !=''  
-        ORDER BY pubdate DESC LIMIT 1000";
+        ORDER BY pubdate DESC LIMIT 600";
 }
 else { 
     
     $query = "SELECT * FROM manual_updates 
         WHERE lat !=''  
-        ORDER BY pubdate DESC LIMIT 1000";
+        ORDER BY pubdate DESC LIMIT 600";
     
 }        
 
