@@ -2,8 +2,8 @@ body, html { width:100%; height:100%; margin:0px; padding:0px;}
 #map-canvas {
     position:absolute; 
     width:100%; 
-    top:100px;
-    bottom:0px;
+    top:140px;
+    bottom:10px;
     border-top:1px solid #ccc;
 }
 
@@ -30,6 +30,16 @@ body {
 
 #header { 
     margin-left:5px;
+    margin-top:30px;
+}
+
+.selector { 
+    float:left;
+    margin-left:10px;
+}
+
+#loading { 
+    margin-left:10px;
 }
 
 #filter_type { 
@@ -45,5 +55,25 @@ body {
 #title { 
     margin-left:14px;
 }
+
+.graident { 
+    width:220px;
+    height:7px;
+    background-image:url(../image/gradients.png);
+    left:-220px;
+    top:-50px;
+}
+
+#gradient_2 { 
+    background-position:0 14px;
+}
+
+#gradient_3 { 
+    background-position:0 7px;
+}
+
+
+
+
 
 

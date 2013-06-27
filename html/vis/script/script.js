@@ -46,6 +46,8 @@ $(document).ready(function(){
    
    heresay.getOptions();
    
+   $('#loading').hide();
+   
 });
 
 heresay.getOptions = function() { 
@@ -53,7 +55,7 @@ heresay.getOptions = function() {
     var url; 
     
     if(heresay.mode === 'sites') { 
-        url = '/api/list_sites.php';
+        url = '/api/list_sites.php?lat=' + heresay.lat + "&lng=" + heresay.lng + "&zoom=" + heresay.zoom;
         
         $.get(url, function(data){
             $.each(data.results, function(key,val){
@@ -90,22 +92,25 @@ heresay.renderMap = function(){
 
 heresay.renderDropDowns = function() {
     if(heresay.mode === 'sites') { 
-        $('#header').prepend('<p id="filter_type">Filter by top sites</p>');
+        $('#header .function_description').html('<p id="filter_type">Filter by top sites</p>');
     } else { 
-        $('#header').prepend('<p id="filter_type">Filter by tag</p>');
+        $('#header  .function_description').html('<p id="filter_type">Filter by tag</p>');
     }
     
-    $('#option_1').append('<option value="">All</option>');
+    $('#option_1').empty();
+    $('#option_1').html('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
         $('#option_1').append('<option value="'+option_val+'">'+option_val+'</option>');
     });
     
-    $('#option_2').append('<option value="">All</option>');
+    $('#option_2').empty();
+    $('#option_2').html('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
         $('#option_2').append('<option value="'+option_val+'">'+option_val+'</option>');
     });
     
-    $('#option_3').append('<option value="">All</option>');
+    $('#option_3').empty();
+    $('#option_3').html('<option value="">All</option>');
     $.each(heresay.options, function(option_key, option_val){
         $('#option_3').append('<option value="'+option_val+'">'+option_val+'</option>');
     });
@@ -117,7 +122,7 @@ heresay.dropDownChange = function(elem){
  	var value = $(elem).val();
     	
 	if(heresay.mode === 'sites') { 
-	    url = '/api/get_by_site.php?site=' + value; 
+	    url = '/api/get_by_site.php?site=' + value ; 
 	}
 	else {
 	    url = '/api/get_by_tag.php?tag=' +  value;
@@ -136,10 +141,13 @@ heresay.dropDownChange = function(elem){
 	heresay.heatmap_points[heresay.current_id] = [];
 	
 	$.get(url, function(data){
+	    $('#loading').show();
+	    
+	    setTimeout(function(){$('#loading').hide();},3000);
 	    
         heresay.data_count = data['results'].length -1; 
 	    $.each(data['results'],function(key, value) {
-	        if (key<800) {
+	        if (key<1000) {
 	            var lat = value['lat'];
 	            var lng = value['lng'];
 	            heresay.heatmap_points[heresay.current_id].push(new google.maps.LatLng(lat, lng)); 
@@ -176,16 +184,17 @@ function changeGradient(elem, id) {
        'rgba(225, 4, 104, 0)',
        'rgba(201, 57, 53, 1)',
        'rgba(169, 4, 255, 1)',
-       'rgba(169, 4, 255, 1)'
+       'rgba(255,255,255, 1)'
        ];
    }
    
    else if (id == 2) { 
        var  gradient = [
-       'rgba(53,187,207, 0)', 
-       'rgba(53,187,207, 1)', 
-       'rgba(53,207,71, 1)',
-       'rgba(53,207,71, 1)'
+       'rgba(0,0,0, 0)', 
+       'rgba(0, 0, 0, 1)', 
+       'rgba(0,0,0, 1)',
+       'rgba(255,255,255, 1)'
+
        ];
    }
    
@@ -194,7 +203,7 @@ function changeGradient(elem, id) {
        'rgba(0, 0, 191, 0)',
        'rgba(4, 87, 255, 1)',
        'rgba(4, 255, 199, 1)',
-       'rgba(4, 255, 199, 1)'
+       'rgba(255,255,255, 1)'
        ];
    }
    
