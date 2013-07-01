@@ -49,6 +49,10 @@ h1 {
     padding: 5px 10px;
 }
 
+.facebook_listing { 
+    background: none repeat scroll 0 0 #c7d9f8;
+}
+
 .listing .description { 
     margin-bottom:20px;
 }

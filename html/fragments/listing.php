@@ -30,7 +30,14 @@ function show_listing($result) {
     echo "<div class='listing' >";
     echo "<h3><a target='_blank' href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
     
-    echo "<p class='site'><strong>" . $result['site'] . "</strong></p>";
+    if($result['site_type'] == 'facebook') { 
+        $site_name = 'Facebook ' . $result['site'];
+    }
+    else { 
+        $site_name = $result['site']
+    }
+    
+    echo "<p class='site'><strong>" . $site_name . "</strong></p>";
     
     echo "<p class='description'>" . $result['description'] . "</p>";
 
