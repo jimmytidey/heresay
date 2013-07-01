@@ -39,12 +39,13 @@
             <div id='listing_container'>
             <h4 id='updates_header'>Selected updates from <?=$ward ?> ward</h4>
             
-            <?  
+            <?      
+                $horizon = time()-(30*24*60*60);
                 if (empty($ward)) {
                     $results = $db->fetch('SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
                 }
                 else { 
-                    $query = "SELECT * from manual_updates JOIN manual_sites ON manual_updates.site = manual_sites.site WHERE ward LIKE '$ward' ORDER BY pubdate desc LIMIT 30";
+                    $query = "SELECT * from manual_updates JOIN manual_sites ON manual_updates.site = manual_sites.site WHERE ward LIKE '$ward' && pubdate > $horizon ORDER BY pubdate desc LIMIT 30";
                    
                 }
                 
