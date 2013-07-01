@@ -50,8 +50,15 @@ function show_listing($result) {
 
     $location_name = $result['location_name'];
     
+    if($result['site_type'] == 'facebook') { 
+        $site_type_class='facebook_listing'
+    }
+    else { 
+        $site_type_class=''
+    }
+    
     if (!empty($result['ward'])) {
-        echo "<p class='ward'>Ward: <em>" . $result['ward'] . "</em>,";  
+        echo "<p class='ward ". $site_type_class ."'>Ward: <em>" . $result['ward'] . "</em>,";  
     }
     if (!empty($result['constituency'])) {
         echo " Constituency: <em>" . $result['constituency']  . "</em> </p>";
