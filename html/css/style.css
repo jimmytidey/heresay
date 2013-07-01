@@ -52,6 +52,13 @@ h1 {
 .facebook_listing { 
     background-image: url(../img/facebook.png);
     background-position:90% 90%;
+    background-repeat:no-repeat;
+}
+
+.twitter_listing { 
+    background-image: url(../img/twitter.png);
+    background-position:90% 90%;
+    background-repeat:no-repeat;
 }
 
 .listing .description { 
