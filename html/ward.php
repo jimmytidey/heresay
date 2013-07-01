@@ -49,7 +49,7 @@
                    
                 }
                 
-                print_R($query);
+                
                 
                 $results = $db->fetch($query);
                 
