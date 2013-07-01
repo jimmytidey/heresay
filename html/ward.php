@@ -46,8 +46,12 @@
                 }
                 else { 
                     $query = "SELECT * from manual_updates JOIN manual_sites ON manual_updates.site = manual_sites.site WHERE ward LIKE '$ward' ORDER BY pubdate desc LIMIT 30";
-                    $results = $db->fetch($query);
+                   
                 }
+                
+                print_R($query);
+                
+                $results = $db->fetch($query);
                 
                 foreach($results as $result) { 
                     show_listing($result);
