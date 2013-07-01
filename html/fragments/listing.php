@@ -3,7 +3,7 @@
 
 
 function show_listing($result) {
-    print_R($result);
+    
     $tag_conversion_array = array(
         'pets_nature' => "Pets & Nature",
         'forsale_giveaway' => "Selling / Giving away",
