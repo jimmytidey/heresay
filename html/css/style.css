@@ -50,7 +50,8 @@ h1 {
 }
 
 .facebook_listing { 
-    background: none repeat scroll 0 0 #c7d9f8;
+    background-image: url(../img/facebook.png);
+    background-position:90% 90%;
 }
 
 .listing .description { 

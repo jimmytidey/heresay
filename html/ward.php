@@ -41,6 +41,7 @@
             
             <?      
                 $horizon = time()-(30*24*60*60);
+                
                 if (empty($ward)) {
                     $results = $db->fetch('SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
                 }

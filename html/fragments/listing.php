@@ -32,6 +32,12 @@ function show_listing($result) {
         $site_type_class='facebook_listing';
         $site_name = 'Facebook ' . $result['site'];
     }
+    
+    else if($result['site_type'] == 'twitter') {
+        $site_type_class='twitter_listing';
+        $site_name = 'Twitter' . $result['site'];
+    }
+    
     else { 
         $site_type_class='';
         $site_name = $result['site'];
