@@ -26,18 +26,19 @@ function show_listing($result) {
         'disabilities' => "Disabilities",
         'kids' => "Kids"
     );
-        
-    echo "<div class='listing' >";
-    echo "<h3><a target='_blank' href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
     
-    print_r($result['site_type']);
     
-    if($result['site_type'] == 'facebook') { 
+    if($result['site_type'] == 'facebook') {
+        $site_type_class='facebook_listing';
         $site_name = 'Facebook ' . $result['site'];
     }
     else { 
+        $site_type_class='';
         $site_name = $result['site'];
     }
+        
+    echo "<div class='listing ".$site_type_class."' >";
+    echo "<h3><a target='_blank' href='" . $result['link'] . "'>" . $result['title'] . "</a></h3>";
     
     echo "<p class='site'><strong>" . $site_name . "</strong></p>";
     
@@ -58,16 +59,10 @@ function show_listing($result) {
     }
 
     $location_name = $result['location_name'];
-    
-    if($result['site_type'] == 'facebook') { 
-        $site_type_class='facebook_listing';
-    }
-    else { 
-        $site_type_class='';
-    }
+
     
     if (!empty($result['ward'])) {
-        echo "<p class='ward ". $site_type_class ."'>Ward: <em>" . $result['ward'] . "</em>,";  
+        echo "<p class='ward'>Ward: <em>" . $result['ward'] . "</em>,";  
     }
     if (!empty($result['constituency'])) {
         echo " Constituency: <em>" . $result['constituency']  . "</em> </p>";
