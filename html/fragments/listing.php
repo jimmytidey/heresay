@@ -34,7 +34,7 @@ function show_listing($result) {
         $site_name = 'Facebook ' . $result['site'];
     }
     else { 
-        $site_name = $result['site']
+        $site_name = $result['site'];
     }
     
     echo "<p class='site'><strong>" . $site_name . "</strong></p>";
@@ -58,10 +58,10 @@ function show_listing($result) {
     $location_name = $result['location_name'];
     
     if($result['site_type'] == 'facebook') { 
-        $site_type_class='facebook_listing'
+        $site_type_class='facebook_listing';
     }
     else { 
-        $site_type_class=''
+        $site_type_class='';
     }
     
     if (!empty($result['ward'])) {
