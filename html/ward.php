@@ -27,7 +27,7 @@
             <div id='listing_container'>
             
             <?      
-                $horizon = time()-(31*24*60*60);
+                $horizon = time()-(40*24*60*60);
                 
                 if (empty($ward)) {
                     $results = $db->fetch('SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
