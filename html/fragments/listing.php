@@ -56,8 +56,13 @@ function show_listing($result) {
     echo "<div class='row'>";
     echo "<div class='span5'>";
         echo "<p class='site'><strong>Source: " . $site_name . "</strong></p>";
-        echo "<h4><a target='_blank' href='" . $result['link'] . "'>" . html_entity_decode($result['title']) . "</a></h4>";    
-    
+        if(!empty($result['title'])){
+            echo "<h4><a target='_blank' href='" . $result['link'] . "'>" . html_entity_decode($result['title']) . "</a></h4>";    
+        }
+        else { 
+            echo "<h4><a target='_blank' href='" . $result['link'] . "'> [link] </a></h4>";    
+        
+        }
         echo "<p class='description'>";
         echo myTruncate($result['description'], 200); 
         echo "</p>";
