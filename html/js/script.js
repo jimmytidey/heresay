@@ -26,35 +26,37 @@ heresay.locations =  {
 
 $(document).ready(function(){
     
-	heresay.mainMap  = new google.maps.Map($("#main_map")[0]);
+    if($("#main_map").length > 0 ) {
+    	heresay.mainMap  = new google.maps.Map($("#main_map")[0]);
 	
-	if ($('#site_locations').length === 1 || $('#sites').length === 1) { 
-	    $.get('/api/get_sites.php', function(data){
-    	    heresay.data = data;
-            heresay.updateMainMap();
-    	});
-	}
+    	if ($('#site_locations').length === 1 || $('#sites').length === 1) { 
+    	    $.get('/api/get_sites.php', function(data){
+        	    heresay.data = data;
+                heresay.updateMainMap();
+        	});
+    	}
 	
-	else { 
+    	else { 
 	    
-    	$.get('/api/get_recent_favourites.php', function(data){
-    	    heresay.data = data;
-            heresay.updateMainMap();
-    	});
-    }	
+        	$.get('/api/get_recent_favourites.php', function(data){
+        	    heresay.data = data;
+                heresay.updateMainMap();
+        	});
+        }	
 	
 	
-    $('#seach_btn').click(function(){ 
+        $('#seach_btn').click(function(){ 
 
-       var search_val   =   $('#filter_by_borough').val();
-       heresay.search(search_val);
-    });
+           var search_val   =   $('#filter_by_borough').val();
+           heresay.search(search_val);
+        });
     
-    $('#user_seach_btn').click(function(){ 
+        $('#user_seach_btn').click(function(){ 
 
-       var search_val   =   $('#user').val();
-       heresay.search_by_user(search_val);
-    });
+           var search_val   =   $('#user').val();
+           heresay.search_by_user(search_val);
+        });
+    }    
 });
 
 
