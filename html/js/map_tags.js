@@ -5,7 +5,7 @@ $(document).ready(function(){
         var lat     = $(this).attr('data-lat');
         var lng     = $(this).attr('data-lng');
         var zoom    = parseInt($(this).attr('data-zoom'));
-        console.log(zoom);
+        
         var center  = new google.maps.LatLng(lat, lng);
         
     	var myOptions = {
