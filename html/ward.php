@@ -30,7 +30,7 @@
                 $horizon = time()-(40*24*60*60);
                 
                 if (empty($ward)) {
-                    $results = $db->fetch('SELECT * from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
+                    $results = $db->fetch('SELECT *, manual_updates.lat as manual_updates_lat, manual_updates.lng as manual_updates_lng from manual_updates WHERE favourite = 1 ORDER BY pubdate desc LIMIT 10');
                 }
                 else { 
                     $query = "SELECT * from manual_updates JOIN manual_sites ON manual_updates.site = manual_sites.site WHERE ward LIKE '$ward' && pubdate > $horizon ORDER BY pubdate desc LIMIT 30";

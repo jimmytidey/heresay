@@ -95,7 +95,7 @@ function show_listing($result) {
     
     echo "</div>";
     echo "<div class='span4 address_column'>";
-        echo "<div class='map' data-lat='".$result['lat']."' data-lng='".$result['lng']."' data-zoom='14' ></div>";
+        echo "<div class='map' data-lat='".$result['manual_updates.lat']."' data-lng='".$result['manual_updates_lng']."' data-zoom='14' ></div>";
         if (!empty($location_name)) {
             echo "<p class='location_name'>" . $result['location_name'] . "</p>";
         }
