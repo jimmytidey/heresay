@@ -38,6 +38,7 @@
         <div class='span8' >
             <h4 id='updates_header'>Example updates by borough</h4><br/>
             <select id='filter_by_borough'>
+                <option value=''>--Select--</option>
                 <option value='City of London Corporation'>City</option>
                 <option value='Westminster City Council'>Westminster</option>
                 <option value='Kensington and Chelsea Borough Council'>Kensington and Chelsea</option>
