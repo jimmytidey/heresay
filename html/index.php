@@ -25,7 +25,7 @@
         </div>
         
         <div class='span3'>
-            <h3 id='blog_link'><a href='/'>Read our blog &rarr;</a></h3>  
+            <h3 id='blog_link'><a href='http://heresay-blog.tumblr.com/'>Read our blog &rarr;</a></h3>  
         </div>    
     
     </div>
@@ -106,6 +106,7 @@
             <p><a href='http://localhost:88/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=tags'>By Topics</a></p>
              <p><a href='http://localhost:88/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=sites'>By the largest hyperlocal communities</a></p>
         </div>
+        <br/><br/><br/>
     </div>
     
     
