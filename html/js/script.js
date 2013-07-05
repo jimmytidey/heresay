@@ -28,7 +28,9 @@ $(document).ready(function(){
     
     if($("#main_map").length > 0 ) {
     	heresay.mainMap  = new google.maps.Map($("#main_map")[0]);
-	
+	    heresay.updateMainMap();
+	    
+	    
     	if ($('#site_locations').length === 1 || $('#sites').length === 1) { 
     	    $.get('/api/get_sites.php', function(data){
         	    heresay.data = data;
@@ -38,14 +40,14 @@ $(document).ready(function(){
 	
     	else { 
 	    
-        	$.get('/api/get_recent_favourites.php', function(data){
-        	    heresay.data = data;
-                heresay.updateMainMap();
-        	});
+        	//$.get('/api/get_recent_favourites.php', function(data){
+        	    //heresay.data = data;
+                //heresay.updateMainMap();
+        	//});
         }	
 	
 	
-        $('#seach_btn').click(function(){ 
+        $('#filter_by_borough').change(function(){ 
 
            var search_val   =   $('#filter_by_borough').val();
            heresay.search(search_val);
@@ -127,7 +129,7 @@ heresay.renderData = function(url) {
 }
 
 heresay.updateMainMap = function() {
-     
+    
 	var location = heresay.borough; 
 	
 	var lat = heresay.locations[location].lat;
@@ -159,15 +161,12 @@ heresay.updateMainMap = function() {
 	};
 	
 	heresay.mainMap  = new google.maps.Map($("#main_map")[0], myOptions);
-	
-
 	heresay.mainMap.points = []; 
 	heresay.mainMap.infoWindows = []; 
 	heresay.mainMap.markers = [];
-	
-
-	heresay.mainMapAddMarkers(heresay.data.results);
-		
+    if (typeof heresay.data !== 'undefined' ) {
+	    heresay.mainMapAddMarkers(heresay.data.results);		
+    }
 }
 
 
@@ -183,7 +182,6 @@ heresay.mainMapAddMarkers = function(results) {
 	$.each(results, function(key,val) { 	
 		heresay.mainMap.points[key] = new google.maps.LatLng(val.lat, val.lng);
 	
-        
         //if we have a site 
         if ($('#site_locations').length === 1)  {
             

@@ -97,8 +97,11 @@ foreach($results['results'] as $key=>$value) {
     for($i=1; $i<5; $i++) { 
         $cat = $value['category_'.$i];
         
-        if(!empty($cat) && $cat != 'undefined' && $cat !='--') { 
+        if(!empty($cat) && $cat != 'undefined' && $cat !='--' && in_array($cat, $tag_conversion_array)) { 
             $tags[] = $tag_conversion_array[$cat];
+        }
+        else if(!empty($cat) && $cat != 'undefined' && $cat !='--' && !in_array($cat, $tag_conversion_array)) { 
+             $tags[] = $cat;
         }
     }
     
