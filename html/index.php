@@ -8,7 +8,7 @@
 ?>
 
 
-<div class='container'>
+<div class='container index'>
     
     <div class='row'>
         <div class='span8 '>
