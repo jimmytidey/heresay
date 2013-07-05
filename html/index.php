@@ -94,7 +94,7 @@
     <div class='row'>
         <div class='span8' >
             <h4 id='updates_header'>Case Studies </h4> <br/>
-            <p>We've done two case studies in the Borough of Kensington and Chelsea, looking at data collected during June.</p> 
+            <p>We are working with Kensington and Chelsea to investigate hyperlocal activity in the borough. Two case studies here: </p> 
             <p><a href='casestudies/cremorne.php'>Cremorne</a></p>
             <p><a href='casestudies/golborne.php'>Golborne</a></p>
         </div>
