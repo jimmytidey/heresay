@@ -104,8 +104,8 @@
         <div class='span8' >
             <h4 id='updates_header'>Aggregate Data - Visualisation </h4> <br/>
             <p></p> 
-            <p><a href='http://localhost:88/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=tags'>By Topics</a></p>
-             <p><a href='http://localhost:88/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=sites'>By the largest hyperlocal communities</a></p>
+            <p><a href='/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=tags'>By Topics</a></p>
+             <p><a href='/vis/heatmap.php?lat=51.511214&lng=-0.119824&zoom=11&mode=sites'>By the largest hyperlocal communities</a></p>
         </div>
         <br/><br/><br/>
     </div>
