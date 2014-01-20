@@ -1,7 +1,119 @@
-<? 
-header('content-type: application/json; charset=utf-8');
-header("access-control-allow-origin: *");
-if(mt_rand(0,1) > 0.5) { 
-?>{"query":"SELECT *  FROM manual_updates  WHERE pubdate > 0   && borough='Kensington and Chelsea Borough Council' ORDER BY pubdate DESC LIMIT 4","results":[{"id":"01","title":"Free Training from Healthwatch CWL","ward":"citylivinglocallife.wordpress.com","short_url":"http://bit.ly/1bbAtHk","tags":["Tags: Health","Education"],"human_date":"19th Jan 2014"},{"id":"02","title":"Interested in First Aid Training?","ward":"National HIV Nurses Association Twitter","short_url":"http://bit.ly/1m8Rxml","tags":["Tags: Community Events","Health"],"human_date":"15th Jan 2014"},{"id":"03","title":"Our programme Communicate's next set of functional skills English classes will be starting at the end of Feb!","category_3":"","ward":"Twitter (@CLEMENTJAMES)","short_url":"http://bit.ly/17B16pa","tags":["Tags: Learning","Shops"],"human_date":"15th Jan 2014"},{"id":"04","title":"Sadly we are having to announce that on Friday the 17th of January we are closing our doors for the last time","description":"","ward":"Facebook (theearlofportobello)","short_url":"http://on.fb.me/19wOK6d","":"","tags":["Tags: Pubs & bars",""],"human_date":"14th Jan 2014"}]}<?
- } else{ 
-?>{"query":"SELECT *  FROM manual_updates  WHERE pubdate > 0   && borough='Kensington and Chelsea Borough Council' ORDER BY pubdate DESC LIMIT 4","results":[{"id":"01","title":"Free Training from Healthwatch CWL","ward":"citylivinglocallife.wordpress.com","short_url":"http://bit.ly/1bbAtHk","tags":["Tags: Health","Education"],"human_date":"19th Jan 2014"},{"id":"02","title":"Interested in First Aid Training?","ward":"National HIV Nurses Association Twitter","short_url":"http://bit.ly/1m8Rxml","tags":["Tags: Community Events","Health"],"human_date":"15th Jan 2014"},{"id":"03","title":"Our programme Communicate's next set of functional skills English classes will be starting at the end of Feb!","category_3":"","ward":"Twitter (@CLEMENTJAMES)","short_url":"http://bit.ly/17B16pa","tags":["Tags: Learning","Shops"],"human_date":"15th Jan 2014"},{"id":"04","title":"Sadly we are having to announce that on Friday the 17th of January we are closing our doors for the last time","description":"","ward":"Facebook (theearlofportobello)","short_url":"http://on.fb.me/19wOK6d","":"","tags":["Tags: Pubs & bars",""],"human_date":"14th Jan 2014"}]}<? } ?>
+<?
+
+
+include('../ini.php');
+
+$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
+$results = array();
+
+$borough = @addslashes($_GET['borough']); 
+$tags    = @addslashes($_GET['tags']); 
+$tags = explode(',', $tags);
+$results = array();
+
+$lat       = @addslashes($_GET['lat']); 
+$lng       = @addslashes($_GET['lng']); 
+$tags      = @addslashes($_GET['tags']);
+$mode      = @addslashes($_GET['mode']);
+$borough   = @addslashes($_GET['borough']);
+
+$tags = explode(',', $tags);
+
+$query = "SELECT * "; 
+if(!empty($lat) && !empty($lng)) {
+    $query .= ",SQRT(
+        POW(69.1 * (lat - $lat), 2) +
+        POW(69.1 * ($lng - lng) * COS(lat / 57.3), 2)) AS distance";
+}
+ 
+$query .= " FROM manual_updates ";
+
+$tag_q = array();
+
+if(!empty($tags)) { 
+    $query .= " WHERE pubdate > 0  ";
+    if ($tags[0] != '') { 
+   
+        foreach ($tags as $tag) {
+            if ($tag != '') { 
+                $tag_query  = '';
+                $tag_query .= "category_1 = '$tag' || ";
+                $tag_query .= "category_2 = '$tag' || ";
+                $tag_query .= "category_3 = '$tag' || ";
+                $tag_query .= "category_4 = '$tag' ";
+                $tag_q[] =  $tag_query;
+            }                                       
+        }
+        $where = implode('||', $tag_q);
+        $query .= " && (" . $where .")";
+    }
+}
+
+if(!empty($borough)) { 
+    $query .= " && borough='" . $borough ."' ";
+}
+
+
+ 
+if(!empty($lat) && !empty($lng)) {
+    $query .= "  HAVING distance < 2 " ;
+}
+
+
+
+$query .= "ORDER BY pubdate DESC LIMIT 4"; 
+ 
+$results['query'] = $query;
+$results['results'] = $db->fetch($query);
+
+$tag_conversion_array = array(
+    'pets_nature' => "Pets & Nature",
+    'forsale_giveaway' => "Selling / Giving away",
+    'sport' => "Sports",
+    'lost' => "Lost",
+    'community_events' => "Community Events",
+    'local_knowledge'=>"Local Knowledge",
+    'crime_emergencies' => "Crime and emergency",
+    'art'=> 'Arts & Culture',
+    'jobs' => "Jobs", 
+    'charity' => "Charity",
+    'elderly' => "Elderly",
+    'parks' => "Parks",
+    'shops'=> "Shops",
+    'restaurants_bars'=> "Restaurants, bars & pubs",
+    'shops_restaurants'=> "Restaurants, bars & pubs",
+    'buy_sell'=> "Buying and Selling",
+    'food_drink' => "Food & Drink",
+    'council'=> "Local Government",
+    'transport' => "Transport",
+    'councils'=> "Local Government",
+    'disabilities' => "Disabilities",
+    'kids' => "Kids",
+    'publicspace' => "Public Space"
+);
+
+foreach($results['results'] as $key=>$value) { 
+    
+    $tags = array();
+    
+    for($i=1; $i<5; $i++) { 
+        $cat = $value['category_'.$i];
+        
+        if(!empty($cat) && $cat != 'undefined' && $cat !='--' && in_array($cat, $tag_conversion_array)) { 
+            $tags[] = $tag_conversion_array[$cat];
+        }
+        else if(!empty($cat) && $cat != 'undefined' && $cat !='--' && !in_array($cat, $tag_conversion_array)) { 
+             $tags[] = $cat;
+        }
+    }
+    
+    $results['results'][$key]['tags'] = $tags; 
+    
+    $results['results'][$key]['human_date'] = date("F j, Y", $value['pubdate']);
+}
+
+//print_r($results);
+
+
+output_json($results);
+?>
