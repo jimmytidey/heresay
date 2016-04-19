@@ -224,15 +224,6 @@ function changeGradient(elem, id) {
        ];
    }
 
-  else if (id == 4){ 
-	var gradient = [
-       'rgba(0, 0, 191, 0)',
-       'rgba(4, 87, 255, 1)',
-       'rgba(4, 255, 199, 1)',
-       'rgba(255,255,255, 1)'
-       ];
-
-	}
    
    elem.setOptions({
        gradient: gradient
@@ -253,8 +244,8 @@ function gup( name ){
    var regexS = "[\\?&]"+name+"=([^&#]*)";  
    var regex = new RegExp( regexS );  
    var results = regex.exec( window.location.href ); 
-   if( results == null )    return "";  
-   else    return results[1];
+   if( results == null )  {  return "";}  
+   else    {return results[1];}
 }
 
 heresay.draw_brockley = function(){ 
