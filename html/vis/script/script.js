@@ -231,7 +231,6 @@ function changeGradient(elem, id) {
        'rgba(4, 255, 199, 1)',
        'rgba(255,255,255, 1)'
        ];
-	];
 
 	}
    
