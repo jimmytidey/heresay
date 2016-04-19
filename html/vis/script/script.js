@@ -8,8 +8,11 @@ heresay.heatmap_points[1] = [];
 heresay.heatmap[2] = []; 
 heresay.heatmap_points[2] = [];
 
-heresay.heatmap[3] = [];            
+heresay.heatmap[3] = [];
 heresay.heatmap_points[3] = [];
+
+heresay.heatmap[4] = [];            
+heresay.heatmap_points[4] = [];
 heresay.options = [];
 
 
@@ -18,8 +21,9 @@ heresay.mode    = 'site';
 heresay.lat     = 51.5073346;
 heresay.lng     = -0.1276831;
 heresay.zoom    = 11;
+heresay.layer = "toner";
 
-if (gup('mode') !== '') { 
+if  (gup('mode') !== '') { 
     heresay.mode = gup('mode');
 }
 
@@ -29,7 +33,7 @@ if (gup('lat') !== '') {
 
 if (gup('lng') !== '') { 
     heresay.lng = parseFloat(gup('lng'));
-}
+
 
 if (gup('zoom') !== '') { 
     heresay.zoom = parseInt(gup('zoom'));
@@ -85,9 +89,15 @@ heresay.renderMap = function(){
    	heresay.map = new google.maps.Map(document.getElementById("map-canvas"), {
         zoom: heresay.zoom,
         center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-   	});   
+   	mapTypeId: heresay.layer,
+    	mapTypeControlOptions: {
+        	mapTypeIds: [heresay.layer]
+   	}
+	});  
+	heresay.map.mapTypes.set(heresay.layer, new google.maps.StamenMapType(heresay.layer)); 
+	heresay.draw_brockley();
 }
+
 
 
 heresay.renderDropDowns = function() {
@@ -148,7 +158,7 @@ heresay.dropDownChange = function(elem){
 	
 	$.get(url, function(data){
          setTimeout(function(){$('#loading').hide();},2000);
-	    
+	   console.log(data); 
         heresay.data_count = data['results'].length -1; 
 	    $.each(data['results'],function(key, value) {
 	        if (key<1000) {
@@ -182,6 +192,9 @@ heresay.dropDownChange = function(elem){
 }
 
 
+
+
+
 function changeGradient(elem, id) {
    if (id == 1) {
        var gradient = [
@@ -210,6 +223,16 @@ function changeGradient(elem, id) {
        'rgba(255,255,255, 1)'
        ];
    }
+
+  else if (id == 4){ 
+	var gradient = [
+		'rgba(125,000,000,0.2)',
+		'rgba(125,000,000,0.8)',
+		'rgba(255,000,000,1)',
+		'rgba(255,000,000,1)'
+	];
+
+	}
    
    elem.setOptions({
        gradient: gradient
@@ -217,7 +240,7 @@ function changeGradient(elem, id) {
 }
 
 function changeRadius(elem) {
-   elem.setOptions({radius: 20});
+   elem.setOptions({radius: 30});
 }
 
 function changeOpacity(elem) {
@@ -233,4 +256,43 @@ function gup( name ){
    if( results == null )    return "";  
    else    return results[1];
 }
-   
+
+heresay.draw_brockley = function(){ 
+
+console.log('draw fun');
+	heresay.data_count = brockley_central.length -1;
+	heresay.current_id = 4; 
+	$.each(brockley_central,function(key, value) {
+console.log(value);
+
+console.log('hi');
+
+		if (key<1000) {
+			var lat = value['lat'];
+			var lng = value['lng'];
+			heresay.heatmap_points[heresay.current_id].push(new google.maps.LatLng(lat, lng));
+		}
+		if(key == heresay.data_count){
+
+		}
+	});
+
+	var pointArray = new google.maps.MVCArray(heresay.heatmap_points[heresay.current_id]);
+
+	heresay.heatmap[heresay.current_id].push(new google.maps.visualization.HeatmapLayer({
+		data: pointArray,
+		dissipating: true,
+		maxIntensity: 8,
+		radius: 50
+	}));
+
+
+	var last_map_id = heresay.heatmap[heresay.current_id].length -1;
+
+	heresay.heatmap[heresay.current_id][last_map_id].setMap(heresay.map);
+
+	changeGradient(heresay.heatmap[heresay.current_id][last_map_id], heresay.current_id);
+	heresay.heatmap[heresay.current_id][last_map_id].setOptions({radius: 30})
+
+	changeOpacity(heresay.heatmap[heresay.current_id][last_map_id]);
+}
