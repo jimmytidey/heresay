@@ -33,7 +33,7 @@ if (gup('lat') !== '') {
 
 if (gup('lng') !== '') { 
     heresay.lng = parseFloat(gup('lng'));
-
+}
 
 if (gup('zoom') !== '') { 
     heresay.zoom = parseInt(gup('zoom'));
