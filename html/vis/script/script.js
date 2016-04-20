@@ -223,7 +223,7 @@ function changeGradient(elem, id) {
        'rgba(255,255,255, 1)'
        ];
        
-   else if (id == 54) { 
+   else if (id == 4) { 
        var  gradient = [
        'rgba(255, 150, 150, 0)',
        'rgba(255, 100, 100, 1)',
