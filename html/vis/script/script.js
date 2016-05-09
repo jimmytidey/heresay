@@ -211,9 +211,6 @@ function changeGradient(elem, id) {
        'rgba(255, 0, 0, 1)',
        'rgba(255, 0, 0, 1)',
        'rgba(255, 0, 0, 1)',
-        'rgba(255, 0, 150, 1)',
-       'rgba(255, 0, 100, 1)',
-       'rgba(255, 0, 0, 1)',
        'rgba(255, 0, 0, 1)',
        'rgba(255, 0, 0, 1)',
        'rgba(255,255,255, 1)'       	
@@ -234,6 +231,10 @@ function changeGradient(elem, id) {
        'rgba(0,0,0, 0)', 
        'rgba(0, 0, 0, 1)', 
        'rgba(0,0,0, 1)',
+       'rgba(0,0,0, 0)', 
+       'rgba(0, 0, 0, 1)', 
+       'rgba(0,0,0, 1)',
+              
        'rgba(255,255,255, 1)'
        ];
        
