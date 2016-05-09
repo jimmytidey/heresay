@@ -208,10 +208,7 @@ function changeGradient(elem, id) {
    else if (id == 2) { 
        var  gradient = [
        'rgba(255, 0, 0, 0.0)',
-       'rgba(255, 0, 0, 1)',
-       'rgba(255, 0, 0, 1)',
-       'rgba(255, 0, 0, 1)',
-       'rgba(255, 0, 0, 1)',
+       'rgba(155, 0, 0, 1)',
        'rgba(255, 0, 0, 1)',
        'rgba(255,255,255, 1)'       	
        ];
@@ -231,7 +228,7 @@ function changeGradient(elem, id) {
        'rgba(0,0,0, 0)', 
        'rgba(0, 0, 0, 1)', 
        'rgba(0,0,0, 1)',
-       'rgba(0,0,0, 0)', 
+      'rgba(0,0,0, 0.7)', 
        'rgba(0, 0, 0, 1)', 
        'rgba(0,0,0, 1)',
               
