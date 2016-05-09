@@ -198,8 +198,8 @@ heresay.dropDownChange = function(elem){
 function changeGradient(elem, id) {
    if (id == 1) {
        var gradient = [
-       'rgba(225, 4, 104, 0)',
-       'rgba(10, 10, 53, 1)',
+       'rgba(30, 4, 200, 0)',
+       'rgba(10, 10, 200, 1)',
        'rgba(20, 20, 200, 1)',
        'rgba(255,255,255, 1)'
        ];
